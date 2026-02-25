@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+
+{% block title %}{{ reminder.title }} - Reminder - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}View details for {{ reminder.title }} reminder.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+{{ breadcrumb([
+  {"label": "Dashboard", "url": url_for('dashboard.index')},
+  {"label": "Reminders", "url": url_for('reminders.index')},
+  {"label": reminder.title},
+]) }}
+
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="page-title">
+    {{ reminder.title }}
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    {{ reminder.reminder_type|replace('_', ' ')|title }} reminder for
+    <a href="{{ url_for('plants.view', plant_id=reminder.plant_id) }}" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300">
+      {{ reminder.plants.name }}{% if reminder.plants.nickname %} "{{ reminder.plants.nickname }}"{% endif %}
+    </a>
+  </p>
+</div>
+
+<!-- Action Button -->
+<div class="mb-8">
+  <a href="{{ url_for('reminders.edit', reminder_id=reminder.id) }}" class="btn btn-secondary">
+    <span aria-hidden="true">✏️</span> Edit
+  </a>
+</div>
+
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+  <!-- Reminder Details -->
+  <div class="lg:col-span-2">
+    <div class="card">
+      <h2 class="section-title">Details</h2>
+
+      <!-- Plant Info -->
+      <div class="flex items-start gap-4 mb-6 pb-6 border-b border-slate-200 dark:border-slate-700">
+        {% if reminder.plants.photo_url_thumb or reminder.plants.photo_url %}
+        <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+          <img
+            src="{{ reminder.plants.photo_url_thumb or reminder.plants.photo_url }}"
+            alt="{{ reminder.plants.name }}"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        {% else %}
+        <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 flex items-center justify-center flex-shrink-0">
+          <span class="text-4xl opacity-60" aria-hidden="true">🪴</span>
+        </div>
+        {% endif %}
+        <div class="flex-1 min-w-0">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
+            <a href="{{ url_for('plants.view', plant_id=reminder.plant_id) }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">
+              {{ reminder.plants.name }}
+            </a>
+          </h3>
+          {% if reminder.plants.nickname %}
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-1">"{{ reminder.plants.nickname }}"</p>
+          {% endif %}
+          {% if reminder.plants.location %}
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            <span aria-hidden="true">📍</span> {{ reminder.plants.location }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+
+      <dl class="space-y-4">
+        <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+          <dt class="text-2xl flex-shrink-0" aria-hidden="true">🔄</dt>
+          <div class="flex-1">
+            <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Frequency</dt>
+            <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">
+              {{ reminder.frequency|replace('_', ' ')|title }}
+              {% if reminder.custom_interval_days %}
+              ({{ reminder.custom_interval_days }} days)
+              {% endif %}
+            </dd>
+          </div>
+        </div>
+
+        {% if reminder.next_due %}
+        <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+          <dt class="text-2xl flex-shrink-0" aria-hidden="true">📅</dt>
+          <div class="flex-1">
+            <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">
+              {% if reminder.weather_adjusted_due %}Original Due Date{% else %}Next Due Date{% endif %}
+            </dt>
+            <dd class="mt-1 text-base font-semibold text-slate-900 dark:text-slate-100">
+              {{ reminder.next_due }}
+            </dd>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if reminder.weather_adjusted_due and reminder.weather_adjustment_reason %}
+        <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+          <dt class="text-2xl flex-shrink-0" aria-hidden="true">☔</dt>
+          <div class="flex-1">
+            <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Weather Adjusted Due Date</dt>
+            <dd class="mt-1">
+              <span class="text-base font-semibold text-slate-900 dark:text-slate-100">{{ reminder.weather_adjusted_due }}</span>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                {{ reminder.weather_adjustment_reason }}
+                {% if reminder.updated_at %}
+                <span class="text-slate-500 dark:text-slate-500">&middot; Adjusted {{ reminder.updated_at | relative_date }}</span>
+                {% endif %}
+              </p>
+              <form method="POST" action="{{ url_for('reminders.clear_weather', reminder_id=reminder.id) }}" class="mt-3">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <button type="submit" class="btn btn-sm btn-secondary">
+                  Clear Adjustment
+                </button>
+              </form>
+            </dd>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if reminder.last_completed_at %}
+        <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+          <dt class="text-2xl flex-shrink-0" aria-hidden="true">✅</dt>
+          <div class="flex-1">
+            <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Last Completed</dt>
+            <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">
+              <time datetime="{{ reminder.last_completed_at }}">{{ reminder.last_completed_at }}</time>
+            </dd>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+          <dt class="text-2xl flex-shrink-0" aria-hidden="true">📊</dt>
+          <div class="flex-1">
+            <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Status</dt>
+            <dd class="mt-1">
+              {% if reminder.is_active %}
+              <span class="badge badge-emerald">Active</span>
+              {% else %}
+              <span class="badge badge-rose">Inactive</span>
+              {% endif %}
+            </dd>
+          </div>
+        </div>
+
+        {% if reminder.notes %}
+        <div class="flex items-start gap-3">
+          <dt class="text-2xl flex-shrink-0" aria-hidden="true">📝</dt>
+          <div class="flex-1">
+            <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Notes</dt>
+            <dd class="mt-1 text-base text-slate-900 dark:text-slate-100 whitespace-pre-wrap">{{ reminder.notes }}</dd>
+          </div>
+        </div>
+        {% endif %}
+      </dl>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="lg:col-span-1">
+    <div class="card">
+      <h2 class="section-title">Actions</h2>
+
+      {% if reminder.is_active %}
+      <div class="space-y-3">
+        <!-- Mark Complete -->
+        <form method="POST" action="{{ url_for('reminders.complete', reminder_id=reminder.id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <button type="submit" class="btn btn-primary w-full">
+            <span aria-hidden="true">✓</span> Mark Complete
+          </button>
+        </form>
+
+        <!-- Snooze Options -->
+        <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+          <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+            <span aria-hidden="true">💤</span> Snooze Reminder
+          </summary>
+          <div class="px-4 pb-3 pt-2 flex flex-wrap gap-2 border-t border-slate-200 dark:border-slate-700">
+            <form method="POST" action="{{ url_for('reminders.snooze', reminder_id=reminder.id) }}">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+              <input type="hidden" name="days" value="1"/>
+              <button type="submit" class="btn btn-secondary">1 day</button>
+            </form>
+            <form method="POST" action="{{ url_for('reminders.snooze', reminder_id=reminder.id) }}">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+              <input type="hidden" name="days" value="2"/>
+              <button type="submit" class="btn btn-secondary">2 days</button>
+            </form>
+            <form method="POST" action="{{ url_for('reminders.snooze', reminder_id=reminder.id) }}">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+              <input type="hidden" name="days" value="3"/>
+              <button type="submit" class="btn btn-secondary">3 days</button>
+            </form>
+          </div>
+        </details>
+
+        <!-- Toggle Weather Adjustments (Phase 2C) -->
+        {% if reminder.reminder_type in ['watering', 'misting'] %}
+        <form method="POST" action="{{ url_for('reminders.toggle_weather_adjustment', reminder_id=reminder.id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <button type="submit" class="btn btn-secondary w-full">
+            {% if reminder.skip_weather_adjustment %}
+            <span aria-hidden="true">✅</span> Enable Weather Adjustments
+            {% else %}
+            <span aria-hidden="true">⛔</span> Disable Weather Adjustments
+            {% endif %}
+          </button>
+        </form>
+        {% endif %}
+
+        <!-- Weather Adjustment -->
+        {% if reminder.reminder_type == 'watering' and not reminder.skip_weather_adjustment %}
+          {% if not reminder.weather_adjusted_due %}
+          <!-- Only show button if NO adjustment exists -->
+          <form method="POST" action="{{ url_for('reminders.adjust_weather', reminder_id=reminder.id) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <button type="submit" class="btn btn-secondary w-full">
+              <span aria-hidden="true">🌤️</span> Check Weather Adjustment
+            </button>
+          </form>
+          {% else %}
+          <!-- Show status instead when adjustment is active -->
+          <div class="text-sm text-cyan-600 dark:text-cyan-400 text-center p-3 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg border border-cyan-200 dark:border-cyan-700">
+            <span aria-hidden="true">☔</span> Weather adjustment active
+          </div>
+          <!-- Clear button below status -->
+          <form method="POST" action="{{ url_for('reminders.clear_weather', reminder_id=reminder.id) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <button type="submit" class="btn btn-secondary w-full">
+              Clear Weather Adjustment
+            </button>
+          </form>
+          {% endif %}
+        {% endif %}
+
+        <!-- Deactivate -->
+        <form method="POST" action="{{ url_for('reminders.toggle_status', reminder_id=reminder.id) }}" data-confirm="Deactivate this reminder? You can reactivate it later from the history page.">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <button type="submit" class="btn btn-danger w-full">
+            Deactivate Reminder
+          </button>
+        </form>
+      </div>
+      {% else %}
+      <p class="text-slate-500 dark:text-slate-400 mb-4">This reminder is inactive.</p>
+      <div class="space-y-3">
+        <form method="POST" action="{{ url_for('reminders.toggle_status', reminder_id=reminder.id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <button type="submit" class="btn btn-primary w-full">
+            <span aria-hidden="true">✓</span> Activate Reminder
+          </button>
+        </form>
+        <a href="{{ url_for('reminders.index') }}" class="btn btn-secondary w-full">
+          <span aria-hidden="true">←</span> Back to Active Reminders
+        </a>
+        <a href="{{ url_for('reminders.history') }}" class="btn btn-secondary w-full">
+          View Reminder History
+        </a>
+      </div>
+      {% endif %}
+
+      <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 space-y-1">
+        <p>Created: <time datetime="{{ reminder.created_at }}">{{ reminder.created_at }}</time></p>
+        <p>Updated: <time datetime="{{ reminder.updated_at }}">{{ reminder.updated_at }}</time></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Back Button -->
+<div class="flex flex-wrap gap-3">
+  <a href="{{ url_for('web.assistant', plant_id=reminder.plant_id) }}" class="btn btn-primary">
+    <span aria-hidden="true">🤖</span> Ask AI about {{ reminder.plants.name }}
+  </a>
+  <a href="{{ url_for('reminders.index') }}" class="btn btn-secondary">
+    <span aria-hidden="true">←</span> Back to Reminders
+  </a>
+</div>
+
+{% endblock %}

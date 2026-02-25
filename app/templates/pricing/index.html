@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}Features - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}Free forever for plant parents. Track plants, get AI care advice, and never miss a watering.{% endblock %}
+
+{% block extra_head %}
+<!-- SoftwareApplication Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PlantCareAI",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free AI-powered plant care assistant with weather-aware reminders and personalized tips."
+}
+</script>
+<!-- FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it really free forever?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Our core features will always be free. We're building this for plant parents, and we want everyone to have access to quality plant care tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is it free? What's the catch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No catch! We're focused on building features users love first. Once we launch premium features, those will be optional paid add-ons. The free tier stays free, always."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will Premium features launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We're currently in active development. Premium features will launch once our free tier is solid and users love it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will I lose my plants if Premium launches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never! Your free tier will always include 20 plants. Any plants you add now will stay in your account forever."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Your data is encrypted at rest and in transit. We never share your information with third parties."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="mb-12 text-center">
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Currently Free for All Plant Parents <span class="inline-block" aria-hidden="true">🌱</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    We're building features you love. Premium options coming soon.
+  </p>
+</section>
+
+<!-- Pricing Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16" id="pricing">
+  <!-- Current: Free Forever -->
+  <div class="card relative border-4 border-emerald-500 dark:border-emerald-600 shadow-xl shadow-emerald-500/20">
+    <!-- Badge -->
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-emerald-600 dark:bg-emerald-500 text-white text-sm font-bold rounded-full shadow-lg">
+      Available Now
+    </div>
+
+    <!-- Header -->
+    <div class="text-center mb-8 pt-4">
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">Free Forever</h3>
+      <div class="mb-2">
+        <span class="text-5xl font-bold text-emerald-600 dark:text-emerald-400">$0</span>
+      </div>
+      <p class="text-slate-600 dark:text-slate-400">Perfect for home gardeners</p>
+    </div>
+
+    <!-- Features -->
+    <ul class="space-y-3 mb-8">
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Track up to 20 plants</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>AI care assistant</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Photo uploads & timeline</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Care reminders</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Weather-aware tips</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Seasonal care adjustments</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Permanent history</span>
+      </li>
+    </ul>
+
+    <!-- CTA Button -->
+    {% if is_authenticated %}
+      <a href="{{ url_for('dashboard.index') }}" class="btn btn-primary w-full">
+        <span aria-hidden="true">🏡</span> Go to Dashboard
+      </a>
+    {% else %}
+      <a href="{{ url_for('auth.signup') }}" class="btn btn-primary w-full">
+        <span aria-hidden="true">🌱</span> Sign Up Free
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Future: Premium Features -->
+  <div class="card border-2 border-slate-200 dark:border-slate-700">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">Premium</h3>
+      <div class="mb-2">
+        <span class="text-3xl font-bold text-slate-600 dark:text-slate-400">Coming Soon</span>
+      </div>
+      <p class="text-slate-600 dark:text-slate-400">Advanced features for power users</p>
+    </div>
+
+    <!-- Features -->
+    <ul class="space-y-3 mb-8">
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span><strong>Everything in Free</strong></span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Unlimited plants</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>AI image diagnosis</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>CSV/PDF export</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Custom themes</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Priority support</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-label="Included">✓</span>
+        <span>Early access to new features</span>
+      </li>
+    </ul>
+
+    <!-- CTA Button -->
+    <button class="btn btn-secondary w-full opacity-60 cursor-not-allowed" disabled>
+      Join Waitlist (Coming Soon)
+    </button>
+  </div>
+</div>
+
+<!-- FAQ Section -->
+<section class="card max-w-3xl mx-auto">
+  <h3 class="section-title text-center mb-8">Frequently Asked Questions</h3>
+
+  <div class="space-y-4">
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        Is it really free forever?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          Yes! Our core features will always be free. We're building this for plant parents, and we want everyone to have access to quality plant care tools.
+        </p>
+      </div>
+    </details>
+
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        Why is it free? What's the catch?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          No catch! We're focused on building features users love first. Once we launch premium features (like AI image diagnosis and unlimited plants), those will be optional paid add-ons. The free tier stays free, always.
+        </p>
+      </div>
+    </details>
+
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        When will Premium features launch?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          We're currently in active development. Premium features (AI image diagnosis, unlimited plants, export tools, etc.) will launch once our free tier is solid and users love it. Want early access? Join our waitlist (coming soon)!
+        </p>
+      </div>
+    </details>
+
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        Will I lose my plants if Premium launches?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          Never! Your free tier will always include 20 plants. Any plants you add now will stay in your account forever.
+        </p>
+      </div>
+    </details>
+
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        Is my data safe?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          Yes! Your data is encrypted at rest and in transit. We never share your information with third parties. Read our <a href="{{ url_for('legal.privacy') }}" class="text-emerald-600 dark:text-emerald-400 hover:underline">Privacy Policy</a>.
+        </p>
+      </div>
+    </details>
+
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        How can I support this project?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          Thank you for asking! You can <a href="https://buymeacoffee.com/edhdev" target="_blank" rel="noopener" class="text-emerald-600 dark:text-emerald-400 hover:underline">buy me a coffee ☕</a> to help cover server costs. The best support is using the app and sharing it with fellow plant parents!
+        </p>
+      </div>
+    </details>
+  </div>
+</section>
+
+{% endblock %}

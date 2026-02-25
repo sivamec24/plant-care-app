@@ -1,0 +1,510 @@
+{% extends "base.html" %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+
+{% block title %}Account Settings - Plant Care AI Assistant - PlantCareAI{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+{{ breadcrumb([
+  {"label": "Dashboard", "url": url_for('dashboard.index')},
+  {"label": "Account Settings"},
+]) }}
+
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="page-title">
+    Account Settings <span class="inline-block" aria-hidden="true">⚙️</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Manage your profile, plan, and preferences.
+  </p>
+</div>
+
+<!-- Account Information -->
+<section class="card mb-8" aria-labelledby="account-info-title">
+  <h3 id="account-info-title" class="section-title">Account Information</h3>
+
+  <dl class="space-y-4">
+    <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+      <span class="text-2xl flex-shrink-0" aria-hidden="true">📧</span>
+      <div class="flex-1">
+        <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Email Address</dt>
+        <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">{{ profile.email if profile else current_user.email }}</dd>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+      <span class="text-2xl flex-shrink-0" aria-hidden="true">🆔</span>
+      <div class="flex-1">
+        <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Account ID</dt>
+        <dd class="mt-1 text-base font-mono text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded inline-block">{{ current_user.id[:8] }}...</dd>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3">
+      <span class="text-2xl flex-shrink-0" aria-hidden="true">📅</span>
+      <div class="flex-1">
+        <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Member Since</dt>
+        <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">{{ current_user.created_at.strftime('%B %d, %Y') if current_user.created_at else 'Recently' }}</dd>
+      </div>
+    </div>
+  </dl>
+</section>
+
+<!-- Subscription & Plan -->
+<section class="card mb-8" aria-labelledby="subscription-title">
+  <h3 id="subscription-title" class="section-title">Subscription & Plan</h3>
+
+  <!-- Current Plan Badge -->
+  <div class="flex items-center gap-4 p-4 mb-4 bg-gradient-to-r from-emerald-50 to-cyan-50 dark:from-emerald-900/20 dark:to-cyan-900/20 rounded-xl border-2 border-emerald-200 dark:border-emerald-700">
+    <span class="text-4xl" aria-hidden="true">🌱</span>
+    <div>
+      <strong class="text-lg text-slate-900 dark:text-slate-100">Starter Plan</strong>
+      <p class="text-sm text-slate-600 dark:text-slate-400">Free forever, up to 20 plants</p>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <p class="text-slate-900 dark:text-slate-100 mb-2">You're on the <strong>Starter</strong> plan (free forever).</p>
+    <p class="text-sm text-slate-500 dark:text-slate-400">All core features included. Premium options will be available in the future for power users who want advanced features like unlimited plants, AI image diagnosis, and export tools.</p>
+  </div>
+
+  <!-- Plan Comparison -->
+  <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+    <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+      Compare plans
+    </summary>
+    <div class="px-4 pb-4 border-t border-slate-200 dark:border-slate-700 overflow-x-auto">
+      <table class="w-full mt-4">
+        <caption class="sr-only">Plan feature comparison</caption>
+        <thead>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="col" class="text-left py-2 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300">Feature</th>
+            <th scope="col" class="text-center py-2 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300">Starter</th>
+            <th scope="col" class="text-center py-2 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300">Premium</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">Plants</th>
+            <td class="text-center py-2 px-3 text-slate-700 dark:text-slate-300">Up to 20</td>
+            <td class="text-center py-2 px-3 text-slate-700 dark:text-slate-300">Unlimited</td>
+          </tr>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">Care reminders</th>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">AI assistant</th>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">Photo uploads</th>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">AI image diagnosis</th>
+            <td class="text-center py-2 px-3 text-slate-400"><span aria-label="Not included">—</span></td>
+            <td class="text-center py-2 px-3 text-slate-700 dark:text-slate-300">Coming soon</td>
+          </tr>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">CSV/PDF export</th>
+            <td class="text-center py-2 px-3 text-slate-400"><span aria-label="Not included">—</span></td>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">Seasonal task generator</th>
+            <td class="text-center py-2 px-3 text-slate-400"><span aria-label="Not included">—</span></td>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-left py-2 px-3 font-medium text-slate-900 dark:text-slate-100">Priority support</th>
+            <td class="text-center py-2 px-3 text-slate-400"><span aria-label="Not included">—</span></td>
+            <td class="text-center py-2 px-3"><span aria-label="Included">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>
+
+<!-- Preferences -->
+<section class="card mb-8" aria-labelledby="preferences-title">
+  <h3 id="preferences-title" class="section-title">Preferences</h3>
+
+  <form method="POST" action="{{ url_for('dashboard.account') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+    <!-- Location -->
+    <div class="mb-6">
+      <label for="city" class="label">
+        Location <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <p id="city-help" class="help-text">
+        Enter your city or ZIP code for weather-aware reminder adjustments.
+        <br>
+        <em>Example: Austin, TX or 78701</em>
+      </p>
+      <input
+        type="text"
+        id="city"
+        name="city"
+        class="input"
+        value="{{ profile.city if profile and profile.city else '' }}"
+        placeholder="Enter city or ZIP code"
+        aria-describedby="city-help"
+        maxlength="200"
+      />
+    </div>
+
+    <!-- Timezone (derived from location or manual override) -->
+    <div class="mb-6">
+      <label for="timezone" class="label">
+        Timezone
+      </label>
+      <p id="timezone-help" class="help-text mb-2">
+        {% if profile and profile.timezone %}
+        Currently set to: <strong class="text-slate-700 dark:text-slate-300">{{ profile.timezone | replace('_', ' ') }}</strong>
+        {% if profile.city %}<span class="text-slate-400">(auto-detected from {{ profile.city }})</span>{% endif %}
+        {% else %}
+        Currently using: <strong class="text-slate-700 dark:text-slate-300" id="browser-timezone-display">browser default</strong>
+        <span class="text-slate-400">(auto-detected)</span>
+        {% endif %}
+      </p>
+      <select id="timezone" name="timezone" class="input" aria-describedby="timezone-help">
+        <option value="">Use location-derived / browser default</option>
+        {% for region, zones in timezone_groups.items() %}
+        <optgroup label="{{ region }}">
+          {% for tz in zones %}
+          <option value="{{ tz }}" {% if profile and profile.timezone == tz %}selected{% endif %}>
+            {{ tz | replace('_', ' ') }}
+          </option>
+          {% endfor %}
+        </optgroup>
+        {% endfor %}
+      </select>
+      <p class="help-text mt-1">Override if the auto-detected timezone is incorrect</p>
+    </div>
+
+    <!-- Hemisphere Selection -->
+    <div class="mb-6">
+      <label for="hemisphere" class="label">
+        Hemisphere
+      </label>
+      <p id="hemisphere-help" class="help-text mb-2">
+        {% if profile and profile.hemisphere %}
+        Currently set to: <strong class="text-slate-700 dark:text-slate-300">{{ profile.hemisphere | capitalize }} Hemisphere</strong>
+        <span class="text-slate-400">(manually set)</span>
+        {% elif detected_hemisphere %}
+        Currently set to: <strong class="text-slate-700 dark:text-slate-300">{{ detected_hemisphere }} Hemisphere</strong>
+        {% if profile and profile.city %}<span class="text-slate-400">(auto-detected from {{ profile.city }})</span>{% endif %}
+        {% else %}
+        Currently using: <strong class="text-slate-700 dark:text-slate-300">Northern Hemisphere</strong>
+        <span class="text-slate-400">(default)</span>
+        {% endif %}
+        <br>
+        <span class="text-slate-500 dark:text-slate-400">Your hemisphere affects seasonal plant care advice and emails.</span>
+      </p>
+      <select id="hemisphere" name="hemisphere" class="input" aria-describedby="hemisphere-help">
+        <option value="" {% if not profile or not profile.hemisphere %}selected{% endif %}>
+          Auto (detect from location)
+        </option>
+        <option value="northern" {% if profile and profile.hemisphere == 'northern' %}selected{% endif %}>
+          Northern Hemisphere
+        </option>
+        <option value="southern" {% if profile and profile.hemisphere == 'southern' %}selected{% endif %}>
+          Southern Hemisphere
+        </option>
+      </select>
+      <p class="help-text mt-1">Override if auto-detection is incorrect or you prefer to set it manually</p>
+    </div>
+
+    <!-- Theme Preference -->
+    <fieldset class="mb-8 border-0 p-0 m-0">
+      <legend class="label">
+        Theme Preference
+      </legend>
+      <p id="theme-help" class="help-text">
+        Choose your preferred color scheme. "Auto" follows your device's system setting.
+      </p>
+
+      <div class="space-y-3" role="radiogroup" aria-describedby="theme-help">
+        <label class="radio-label">
+          <input
+            type="radio"
+            name="theme"
+            value="light"
+            class="radio-input"
+            {% if profile and profile.theme_preference == 'light' %}checked{% endif %}
+            data-theme-toggle
+            data-theme-value="light"
+          />
+          <span class="radio-text">
+            <span class="radio-icon" aria-hidden="true">☀️</span>
+            <span>
+              <strong>Light Mode</strong>
+              <br>
+              <span class="text-sm text-slate-500 dark:text-slate-400">Bright, clean interface</span>
+            </span>
+          </span>
+        </label>
+
+        <label class="radio-label">
+          <input
+            type="radio"
+            name="theme"
+            value="dark"
+            class="radio-input"
+            {% if profile and profile.theme_preference == 'dark' %}checked{% endif %}
+            data-theme-toggle
+            data-theme-value="dark"
+          />
+          <span class="radio-text">
+            <span class="radio-icon" aria-hidden="true">🌙</span>
+            <span>
+              <strong>Dark Mode</strong>
+              <br>
+              <span class="text-sm text-slate-500 dark:text-slate-400">Easy on the eyes at night</span>
+            </span>
+          </span>
+        </label>
+
+        <label class="radio-label">
+          <input
+            type="radio"
+            name="theme"
+            value="auto"
+            class="radio-input"
+            {% if not profile or not profile.theme_preference or profile.theme_preference == 'auto' %}checked{% endif %}
+            data-theme-toggle
+            data-theme-value="auto"
+          />
+          <span class="radio-text">
+            <span class="radio-icon" aria-hidden="true">🌓</span>
+            <span>
+              <strong>Auto (System)</strong>
+              <br>
+              <span class="text-sm text-slate-500 dark:text-slate-400">Matches your device setting</span>
+            </span>
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Email Preferences -->
+    {% if config.MARKETING_EMAILS_ENABLED %}
+    <div class="mb-8">
+      <label class="label">
+        Email Preferences
+      </label>
+      <p id="email-pref-help" class="help-text mb-3">
+        Control what emails you receive from PlantCareAI.
+      </p>
+
+      <div class="space-y-3">
+        <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+          <input
+            type="checkbox"
+            name="marketing_opt_in"
+            class="mt-1 h-5 w-5 rounded border-slate-300 dark:border-slate-600 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+            {% if profile and profile.marketing_opt_in %}checked{% endif %}
+            aria-describedby="email-pref-help marketing-desc"
+          />
+          <div class="flex-1">
+            <strong class="text-slate-900 dark:text-slate-100">Plant care tips & updates</strong>
+            <p id="marketing-desc" class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+              Seasonal advice, new features, and expert plant care tips delivered to your inbox.
+            </p>
+          </div>
+        </label>
+      </div>
+
+      {% if profile and profile.marketing_unsubscribed_at %}
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-3">
+        You unsubscribed on {{ profile.marketing_unsubscribed_at[:10] }}. Check the box above to resubscribe.
+      </p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Plant Care Preferences (AI Personalization) -->
+    <div class="mb-8 p-4 bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 rounded-xl border border-emerald-200 dark:border-emerald-800">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-xl" aria-hidden="true">🌿</span>
+        <label class="label mb-0">
+          Plant Care Preferences
+        </label>
+      </div>
+      <p id="plant-prefs-help" class="help-text mb-4">
+        These preferences help personalize AI advice to your experience level and goals.
+        {% if profile and profile.preferences_completed_at %}
+        <span class="text-emerald-600 dark:text-emerald-400 font-medium">Configured</span>
+        {% else %}
+        <span class="text-amber-600 dark:text-amber-400 font-medium">Not yet configured</span>
+        {% endif %}
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Experience Level -->
+        <div>
+          <label for="experience_level" class="text-sm font-medium text-slate-700 dark:text-slate-300 block mb-1">
+            Experience Level
+          </label>
+          <select id="experience_level" name="experience_level" class="input">
+            <option value="">Not specified</option>
+            <option value="beginner" {% if profile and profile.experience_level == 'beginner' %}selected{% endif %}>Beginner - new to plant care</option>
+            <option value="intermediate" {% if profile and profile.experience_level == 'intermediate' %}selected{% endif %}>Intermediate - some experience</option>
+            <option value="expert" {% if profile and profile.experience_level == 'expert' %}selected{% endif %}>Expert - advanced knowledge</option>
+          </select>
+        </div>
+
+        <!-- Primary Goal -->
+        <div>
+          <label for="primary_goal" class="text-sm font-medium text-slate-700 dark:text-slate-300 block mb-1">
+            Primary Goal
+          </label>
+          <select id="primary_goal" name="primary_goal" class="input">
+            <option value="">Not specified</option>
+            <option value="keep_alive" {% if profile and profile.primary_goal == 'keep_alive' %}selected{% endif %}>Keep plants alive - focus on basics</option>
+            <option value="grow_collection" {% if profile and profile.primary_goal == 'grow_collection' %}selected{% endif %}>Grow collection - expand my plants</option>
+            <option value="specific_focus" {% if profile and profile.primary_goal == 'specific_focus' %}selected{% endif %}>Specific focus - certain plant types</option>
+          </select>
+        </div>
+
+        <!-- Time Commitment -->
+        <div>
+          <label for="time_commitment" class="text-sm font-medium text-slate-700 dark:text-slate-300 block mb-1">
+            Time Commitment
+          </label>
+          <select id="time_commitment" name="time_commitment" class="input">
+            <option value="">Not specified</option>
+            <option value="minimal" {% if profile and profile.time_commitment == 'minimal' %}selected{% endif %}>Minimal - low-maintenance plants</option>
+            <option value="moderate" {% if profile and profile.time_commitment == 'moderate' %}selected{% endif %}>Moderate - regular care routine</option>
+            <option value="dedicated" {% if profile and profile.time_commitment == 'dedicated' %}selected{% endif %}>Dedicated - love spending time</option>
+          </select>
+        </div>
+
+        <!-- Environment -->
+        <div>
+          <label for="environment_preference" class="text-sm font-medium text-slate-700 dark:text-slate-300 block mb-1">
+            Growing Environment
+          </label>
+          <select id="environment_preference" name="environment_preference" class="input">
+            <option value="">Not specified</option>
+            <option value="indoor" {% if profile and profile.environment_preference == 'indoor' %}selected{% endif %}>Indoor - houseplants</option>
+            <option value="outdoor" {% if profile and profile.environment_preference == 'outdoor' %}selected{% endif %}>Outdoor - garden or patio</option>
+            <option value="both" {% if profile and profile.environment_preference == 'both' %}selected{% endif %}>Both - indoor and outdoor</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mb-6">
+      <button type="submit" class="btn btn-primary">
+        <span aria-hidden="true">💾</span> Save Preferences
+      </button>
+    </div>
+  </form>
+
+  <!-- Privacy Info -->
+  <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+    <summary class="px-4 py-3 cursor-pointer text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors rounded-xl">
+      How is my location used?
+    </summary>
+    <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+      <p class="text-sm text-slate-500 dark:text-slate-400">
+        Your location is used to provide weather-based watering adjustments for outdoor plants.
+        We fetch current weather conditions from OpenWeather API to help optimize your plant care schedule.
+        Your location is never shared with third parties and you can clear it at any time.
+      </p>
+    </div>
+  </details>
+</section>
+
+<!-- Account Management -->
+<section class="card mb-8 border-2 border-rose-200 dark:border-rose-800" aria-labelledby="danger-title">
+  <h3 id="danger-title" class="section-title">Account Management</h3>
+
+  <div class="space-y-4">
+    <!-- Log Out -->
+    <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+      <div>
+        <strong class="text-slate-900 dark:text-slate-100">Log Out</strong>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Sign out of your account on this device.</p>
+      </div>
+      <a href="{{ url_for('auth.logout') }}" class="btn btn-secondary flex-shrink-0">
+        Log Out
+      </a>
+    </div>
+
+    <!-- Export Data -->
+    <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+      <div>
+        <strong class="text-slate-900 dark:text-slate-100">Export My Data</strong>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Download all your data as a JSON file.</p>
+      </div>
+      <form method="POST" action="{{ url_for('dashboard.export_data') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <button type="submit" class="btn btn-secondary flex-shrink-0">
+          Export Data
+        </button>
+      </form>
+    </div>
+
+    <!-- Delete Account -->
+    <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+      <div>
+        <strong class="text-slate-900 dark:text-slate-100">Delete Account</strong>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Permanently delete your account and all data. This action cannot be undone.</p>
+      </div>
+      <button type="button" class="btn btn-danger flex-shrink-0"
+              onclick="document.getElementById('delete-modal').classList.remove('hidden')">
+        Delete Account
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Delete Account Confirmation Modal -->
+<div id="delete-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+     role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+  <div class="card max-w-md w-full">
+    <h3 id="delete-modal-title" class="text-xl font-bold text-rose-600 dark:text-rose-400 mb-2">Delete Account</h3>
+    <p class="text-slate-600 dark:text-slate-400 mb-4">
+      This will <strong>permanently delete</strong> your account and all associated data including plants, reminders, journal entries, and photos. This cannot be undone.
+    </p>
+    <form method="POST" action="{{ url_for('dashboard.delete_account') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <label for="confirm-delete" class="label">Type <strong>DELETE</strong> to confirm:</label>
+      <input type="text" id="confirm-delete" name="confirm_delete"
+             class="input mb-4" placeholder="DELETE" autocomplete="off" required/>
+      <div class="flex gap-3 justify-end">
+        <button type="button" class="btn btn-secondary"
+                onclick="document.getElementById('delete-modal').classList.add('hidden')">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-danger">
+          Permanently Delete
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Back to Dashboard -->
+<div class="mb-8">
+  <a href="{{ url_for('dashboard.index') }}" class="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+    <span aria-hidden="true">←</span> Back to Dashboard
+  </a>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/account.js') }}"></script>
+{% endblock %}

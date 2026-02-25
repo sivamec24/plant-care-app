@@ -1,0 +1,101 @@
+[
+    {
+        "slug": "plant-watering-guide",
+        "route_name": "watering_hub",
+        "title": "Complete Guide to Watering Houseplants",
+        "meta_description": "Master the art of watering houseplants. Learn when to water, how much, and what to watch for—from soil checks to seasonal adjustments and common mistakes.",
+        "emoji": "\ud83d\udca7",
+        "intro": "Watering is the single most important plant care skill—and the one most people get wrong. There's no universal schedule that works for every plant. Instead, successful watering comes down to understanding your plant's signals, your environment, and a few reliable techniques.",
+        "sections": [
+            {
+                "title": "The Golden Rule: Check Before You Water",
+                "content": "Forget calendars and schedules. The only reliable way to know if your plant needs water is to check the soil. Stick your finger 1-2 inches into the soil. If it feels dry, water thoroughly until water drains from the bottom. If it's still moist, wait. This single habit prevents the #1 cause of houseplant death: overwatering.",
+                "icon": "\u261d\ufe0f"
+            },
+            {
+                "title": "How to Water Properly",
+                "content": "Water slowly and evenly until it flows from the drainage holes. This ensures the entire root ball gets moisture, not just the surface. Empty the saucer after 30 minutes—roots sitting in standing water develop rot. For really dry soil that has pulled away from pot edges, bottom-water by placing the pot in a tray of water for 20-30 minutes.",
+                "icon": "\ud83e\udea3"
+            },
+            {
+                "title": "Factors That Affect Watering Frequency",
+                "content": "Light intensity, pot size, soil type, humidity, temperature, and season all change how fast soil dries. A plant in bright light and a terracotta pot dries much faster than one in low light and a plastic pot. Summer growth means more water; winter dormancy means less. Pay attention to these variables rather than following a rigid schedule.",
+                "icon": "\u2600\ufe0f"
+            },
+            {
+                "title": "Signs of Underwatering vs. Overwatering",
+                "content": "Underwatering: wilting leaves that perk up after watering, dry crispy leaf edges, soil pulling away from pot edges, lightweight pot. Overwatering: yellowing lower leaves, mushy stems, soggy soil that smells musty, fungus gnats, mold on soil surface. The fix for both starts with checking soil moisture before each watering.",
+                "icon": "\u26a0\ufe0f"
+            },
+            {
+                "title": "Seasonal Watering Adjustments",
+                "content": "Most houseplants need significantly less water in fall and winter when growth slows. Reduce frequency by 30-50% during shorter days. In spring and summer, actively growing plants drink more—check soil more frequently. If your plant gets weather-aware reminders from PlantCareAI, seasonal adjustments happen automatically.",
+                "icon": "\ud83c\udf43"
+            },
+            {
+                "title": "Water Quality Matters",
+                "content": "Tap water works for most plants, but sensitive species like calatheas, dracaenas, and spider plants can develop brown tips from fluoride and chlorine. Solutions: leave tap water out overnight, use filtered water, or collect rainwater. Avoid softened water—the sodium buildup harms roots over time.",
+                "icon": "\ud83e\uddea"
+            }
+        ],
+        "spoke_pages": [
+            "am-i-overwatering-my-plant",
+            "how-often-should-i-water-my-plant",
+            "should-i-water-my-plant-today",
+            "how-to-get-rid-of-fungus-gnats"
+        ],
+        "cta_text": "Get personalized watering advice for your plants",
+        "cta_question": "How should I water my plants?",
+        "last_updated": "2026-02-21"
+    },
+    {
+        "slug": "plant-leaf-problems",
+        "route_name": "leaf_problems_hub",
+        "title": "Plant Leaf Problems: Diagnosis & Treatment Guide",
+        "meta_description": "Yellow, brown, drooping, or curling leaves? Use this visual diagnosis guide to identify what's wrong with your plant and learn exactly how to fix it.",
+        "emoji": "\ud83c\udf3f",
+        "intro": "Your plant's leaves are its voice. When something is wrong—too much water, not enough light, pests, or nutrient issues—leaves show it first. This guide helps you decode what your plant is telling you and take the right action.",
+        "sections": [
+            {
+                "title": "Yellow Leaves",
+                "content": "The most common leaf color change. Yellow lower leaves usually signal overwatering—check if soil is soggy. Yellow leaves throughout the plant can mean nutrient deficiency (especially nitrogen) or too little light. If only old leaves yellow while new growth looks healthy, it may just be normal leaf turnover.",
+                "icon": "\ud83d\udfe1"
+            },
+            {
+                "title": "Brown Leaves & Tips",
+                "content": "Where the browning appears matters. Brown crispy edges = low humidity. Brown mushy spots = overwatering or fungal infection. Brown dry patches = sunburn. Brown leaf tips on spider plants and dracaenas = mineral buildup from tap water. Identify the pattern to find the cause.",
+                "icon": "\ud83d\udfe4"
+            },
+            {
+                "title": "Drooping & Wilting",
+                "content": "Drooping leaves usually mean a water problem—but which one? Check the soil. Bone dry = underwatering (water immediately). Soggy = overwatering or root rot (let dry out, check roots). Other causes: transplant shock, temperature extremes, or root-bound plants that can't absorb enough water.",
+                "icon": "\ud83e\udd40"
+            },
+            {
+                "title": "Curling Leaves",
+                "content": "Leaves curling inward often indicate underwatering or low humidity—the plant is trying to conserve moisture. Curling downward can mean overwatering or heat stress. Curling with distortion (twisted, bumpy) often points to pest damage. Check leaf undersides for tiny insects.",
+                "icon": "\ud83c\udf00"
+            },
+            {
+                "title": "Spots & Patches",
+                "content": "Dark water-soaked spots = bacterial or fungal infection (isolate the plant, remove affected leaves, improve airflow). White powdery coating = powdery mildew (reduce humidity, increase air circulation). Small dots with webbing = spider mites. Brown spots with yellow halos = leaf spot disease.",
+                "icon": "\ud83d\udd35"
+            },
+            {
+                "title": "When to Worry vs. Normal Leaf Loss",
+                "content": "It's normal for plants to drop older lower leaves as they grow—this is how they redirect energy to new growth. Occasional yellowing of the oldest leaf is not a crisis. Worry when: multiple leaves change at once, new growth is affected, the problem spreads quickly, or you notice pests.",
+                "icon": "\u2705"
+            }
+        ],
+        "spoke_pages": [
+            "why-are-my-plant-leaves-drooping",
+            "why-are-my-plant-leaves-turning-yellow",
+            "why-are-my-plant-leaves-curling",
+            "why-are-my-plant-leaves-turning-brown",
+            "how-to-treat-root-rot"
+        ],
+        "cta_text": "Get AI diagnosis for your plant's symptoms",
+        "cta_question": "What's wrong with my plant's leaves?",
+        "last_updated": "2026-02-21"
+    }
+]

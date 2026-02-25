@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% from "components/reminder_icon.html" import reminder_icon %}
+
+{% block title %}Reminder History - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}View your completed and inactive reminders.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="page-title">
+    Reminder History <span class="inline-block" aria-hidden="true">📜</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    View your completed and inactive reminders
+  </p>
+</div>
+
+<!-- Action Button -->
+<div class="mb-8">
+  <a href="{{ url_for('reminders.index') }}" class="btn btn-secondary">
+    <span aria-hidden="true">←</span> Back to Active Reminders
+  </a>
+</div>
+
+{% if inactive_reminders %}
+<div class="card">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="section-title !mb-0">Inactive Reminders</h2>
+    <span class="badge badge-rose">{{ inactive_reminders|length }}</span>
+  </div>
+
+  <div class="space-y-3">
+    {% for reminder in inactive_reminders %}
+    <div class="flex flex-col sm:flex-row items-start gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 transition-all duration-200 hover:border-emerald-500 dark:hover:border-emerald-400">
+      {{ reminder_icon(reminder.reminder_type, size="text-2xl") }}
+
+      <div class="flex-1 min-w-0">
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+          <a href="{{ url_for('reminders.view', reminder_id=reminder.id) }}" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            {{ reminder.title }}
+          </a>
+        </h3>
+        <div class="flex items-center gap-2 flex-wrap mb-2">
+          <span class="text-sm font-medium text-slate-700 dark:text-slate-300">
+            {{ reminder.frequency|replace('_', ' ')|title }}
+          </span>
+          {% if reminder.frequency == 'one_time' %}
+          <span class="badge badge-rose">One-time</span>
+          {% endif %}
+        </div>
+        {% if reminder.last_completed_at %}
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-2">
+          Completed: <time datetime="{{ reminder.last_completed_at }}">{{ reminder.last_completed_at }}</time>
+        </p>
+        {% endif %}
+        {% if reminder.notes %}
+        <p class="text-sm text-slate-500 dark:text-slate-400">{{ reminder.notes }}</p>
+        {% endif %}
+      </div>
+
+      <div class="flex-shrink-0 w-full sm:w-auto">
+        <form method="POST" action="{{ url_for('reminders.toggle_status', reminder_id=reminder.id) }}" class="w-full sm:w-auto">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <button type="submit" class="btn btn-primary w-full sm:w-auto" title="Activate this reminder">
+            <span aria-hidden="true">✓</span> Activate
+          </button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% else %}
+<div class="empty-state">
+  <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-slate-100 to-cyan-100 dark:from-slate-800/30 dark:to-cyan-900/30 flex items-center justify-center">
+    <span class="text-6xl opacity-60" aria-hidden="true">📜</span>
+  </div>
+  <h2 class="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+    No inactive reminders yet
+  </h2>
+  <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-md">
+    When you complete one-time reminders or deactivate recurring ones, they'll appear here.
+  </p>
+  <a href="{{ url_for('reminders.index') }}" class="btn btn-primary">
+    <span aria-hidden="true">→</span> View Active Reminders
+  </a>
+</div>
+{% endif %}
+
+{% endblock %}

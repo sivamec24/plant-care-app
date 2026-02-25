@@ -1,0 +1,18 @@
+{# Reusable reminder-type emoji icon.
+   Usage:
+     {% from "components/reminder_icon.html" import reminder_icon %}
+     {{ reminder_icon(reminder.reminder_type) }}
+     {{ reminder_icon(reminder.reminder_type, size="text-2xl") }}
+#}
+{% macro reminder_icon(type, size="text-3xl") %}
+<span class="{{ size }} flex-shrink-0" aria-hidden="true">
+  {%- if type == 'watering' -%}💧
+  {%- elif type == 'fertilizing' -%}🌿
+  {%- elif type == 'misting' -%}💦
+  {%- elif type == 'pruning' -%}✂️
+  {%- elif type == 'repotting' -%}🪴
+  {%- elif type == 'inspection' -%}🔍
+  {%- else -%}📝
+  {%- endif -%}
+</span>
+{% endmacro %}

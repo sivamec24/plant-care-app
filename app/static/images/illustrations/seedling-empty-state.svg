@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Cute sprouting seedling for empty state -->
+  <!-- Opacity will be controlled via CSS (0.15) -->
+
+  <!-- Pot -->
+  <g id="pot">
+    <path d="M 70,140 L 60,180 L 140,180 L 130,140 Z"
+          fill="#D4745E"
+          stroke="#B85E48"
+          stroke-width="2"/>
+    <rect x="60" y="138" width="80" height="6"
+          fill="#B85E48"/>
+    <!-- Pot rim highlight -->
+    <rect x="60" y="138" width="80" height="2"
+          fill="#E8967D"
+          opacity="0.6"/>
+  </g>
+
+  <!-- Soil -->
+  <ellipse cx="100" cy="142" rx="35" ry="8"
+           fill="#3E2F1F"
+           opacity="0.8"/>
+
+  <!-- Sprouting stem -->
+  <g id="stem">
+    <path d="M 100,142 Q 98,120 100,100"
+          fill="none"
+          stroke="#0f766e"
+          stroke-width="3"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- First leaf (left) -->
+  <g id="leaf-left">
+    <path d="M 100,110 Q 75,105 70,95 Q 75,100 100,108"
+          fill="#8BA888"
+          stroke="#0f766e"
+          stroke-width="1.5"/>
+    <!-- Leaf vein -->
+    <line x1="100" y1="109" x2="75" y2="100"
+          stroke="#0f766e"
+          stroke-width="0.8"
+          opacity="0.6"/>
+  </g>
+
+  <!-- Second leaf (right) -->
+  <g id="leaf-right">
+    <path d="M 100,110 Q 125,105 130,95 Q 125,100 100,108"
+          fill="#8BA888"
+          stroke="#0f766e"
+          stroke-width="1.5"/>
+    <!-- Leaf vein -->
+    <line x1="100" y1="109" x2="125" y2="100"
+          stroke="#0f766e"
+          stroke-width="0.8"
+          opacity="0.6"/>
+  </g>
+
+  <!-- Top emerging leaf (center, unfurling) -->
+  <g id="leaf-top">
+    <path d="M 100,100 Q 95,85 100,75 Q 105,85 100,100"
+          fill="#A7D0A3"
+          stroke="#0f766e"
+          stroke-width="1.5"/>
+    <!-- Central vein -->
+    <line x1="100" y1="100" x2="100" y2="78"
+          stroke="#0f766e"
+          stroke-width="0.8"
+          opacity="0.7"/>
+  </g>
+
+  <!-- Cute sparkle/shine effects -->
+  <g id="sparkles" opacity="0.5">
+    <circle cx="80" cy="90" r="2" fill="#E8B86D"/>
+    <circle cx="120" cy="95" r="1.5" fill="#E8B86D"/>
+    <circle cx="105" cy="75" r="1.8" fill="#E8B86D"/>
+  </g>
+
+  <!-- Growth droplets (cute detail) -->
+  <g id="droplets" opacity="0.4">
+    <circle cx="85" cy="115" r="2" fill="#5eead4"/>
+    <circle cx="115" cy="118" r="1.5" fill="#5eead4"/>
+  </g>
+</svg>

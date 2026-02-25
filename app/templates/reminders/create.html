@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+
+{% block title %}New Reminder - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}Create a new care reminder for your plants.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+{{ breadcrumb([
+  {"label": "Dashboard", "url": url_for('dashboard.index')},
+  {"label": "Reminders", "url": url_for('reminders.index')},
+  {"label": "New Reminder"},
+]) }}
+
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="page-title">
+    Create Care Reminder <span class="inline-block" aria-hidden="true">📝</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Set up a one-time or recurring reminder for plant care
+  </p>
+</div>
+
+<!-- Form -->
+<div class="max-w-2xl">
+  <form method="POST" action="{{ url_for('reminders.create') }}" class="card">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+    <!-- Plant Selection -->
+    <div class="mb-6">
+      <label for="plant_id" class="label label-required">
+        Plant
+      </label>
+      <select
+        id="plant_id"
+        name="plant_id"
+        class="input{% if preselected_plant_id %} bg-slate-100 dark:bg-slate-700 cursor-not-allowed{% endif %}"
+        required
+        aria-required="true"
+        aria-describedby="plant-help"
+        {% if preselected_plant_id %}disabled{% endif %}
+      >
+        <option value="">Select a plant...</option>
+        {% for plant in plants %}
+        <option value="{{ plant.id }}" {% if plant.id == preselected_plant_id %}selected{% endif %}>
+          {{ plant.name }}{% if plant.nickname %} "{{ plant.nickname }}"{% endif %}
+        </option>
+        {% endfor %}
+      </select>
+      {% if preselected_plant_id %}
+      <!-- Hidden field to submit value when select is disabled -->
+      <input type="hidden" name="plant_id" value="{{ preselected_plant_id }}" />
+      {% endif %}
+      <p id="plant-help" class="help-text">
+        {% if preselected_plant %}
+          Creating reminder for <strong>{{ preselected_plant.name }}</strong>
+        {% else %}
+          Which plant is this reminder for?
+        {% endif %}
+      </p>
+    </div>
+
+    <!-- Reminder Type -->
+    <div class="mb-6">
+      <label for="reminder_type" class="label label-required">
+        Reminder Type
+      </label>
+      <select id="reminder_type" name="reminder_type" class="input" required aria-required="true" aria-describedby="type-help">
+        {% for value, label in reminder_types.items() %}
+        <option value="{{ value }}" {% if value == 'watering' %}selected{% endif %}>
+          {{ label }}
+        </option>
+        {% endfor %}
+      </select>
+      <p id="type-help" class="help-text">What kind of care does this plant need?</p>
+    </div>
+
+    <!-- Title -->
+    <div class="mb-6">
+      <label for="title" class="label label-required">
+        Reminder Title
+      </label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="input"
+        maxlength="255"
+        placeholder="e.g., Water Monstera"
+        required
+        aria-required="true"
+        aria-describedby="title-help"
+        autocomplete="off"
+      />
+      <p id="title-help" class="help-text">Give your reminder a descriptive name</p>
+    </div>
+
+    <!-- Frequency -->
+    <div class="mb-6">
+      <label for="frequency" class="label label-required">
+        Frequency
+      </label>
+      <select id="frequency" name="frequency" class="input" required aria-required="true" aria-describedby="frequency-help" aria-controls="custom-interval-group">
+        <option value="daily">Daily</option>
+        <option value="every_2_days">Every 2 Days</option>
+        <option value="every_3_days">Every 3 Days</option>
+        <option value="weekly" selected>Weekly</option>
+        <option value="biweekly">Biweekly (Every 2 Weeks)</option>
+        <option value="monthly">Monthly</option>
+        <option value="one_time">One-time Only</option>
+        <option value="custom">Custom Interval</option>
+      </select>
+      <p id="frequency-help" class="help-text">One-time reminders will become inactive after completion</p>
+    </div>
+
+    <!-- Custom Interval (hidden by default) -->
+    <div class="mb-6 hidden" id="custom-interval-group">
+      <label for="custom_interval_days" class="label label-required">
+        Custom Interval (Days)
+      </label>
+      <input
+        type="number"
+        id="custom_interval_days"
+        name="custom_interval_days"
+        class="input"
+        min="1"
+        max="365"
+        placeholder="e.g., 5"
+        aria-describedby="custom-help"
+      />
+      <p id="custom-help" class="help-text">Enter number of days between reminders (1-365)</p>
+    </div>
+
+    <!-- Notes -->
+    <div class="mb-6">
+      <label for="notes" class="label">
+        Notes <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <textarea
+        id="notes"
+        name="notes"
+        class="input"
+        rows="3"
+        maxlength="500"
+        placeholder="Add any special instructions or notes..."
+        aria-describedby="notes-help"
+        autocomplete="off"
+      ></textarea>
+      <p id="notes-help" class="help-text">Optional care instructions or reminders</p>
+    </div>
+
+    <!-- Weather Adjustment -->
+    <div class="mb-8">
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input
+          type="checkbox"
+          name="skip_weather_adjustment"
+          class="mt-1 w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 dark:bg-slate-700 dark:checked:bg-emerald-500"
+        />
+        <div>
+          <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Skip weather adjustments</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">If checked, this reminder won't be adjusted based on weather conditions</p>
+        </div>
+      </label>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button type="submit" class="btn btn-primary">
+        <span aria-hidden="true">✓</span> Create Reminder
+      </button>
+      <a href="{{ url_for('reminders.index') }}" class="btn btn-secondary">
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/reminders.js') }}"></script>
+{% endblock %}

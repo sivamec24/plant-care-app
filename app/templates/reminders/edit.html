@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+
+{% block title %}Edit Reminder - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}Update your care reminder settings.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+{{ breadcrumb([
+  {"label": "Dashboard", "url": url_for('dashboard.index')},
+  {"label": "Reminders", "url": url_for('reminders.index')},
+  {"label": "Edit Reminder"},
+]) }}
+
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="page-title">
+    Edit Reminder <span class="inline-block" aria-hidden="true">✏️</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Update your care reminder settings
+  </p>
+</div>
+
+<!-- Form -->
+<div class="max-w-2xl">
+  <form method="POST" action="{{ url_for('reminders.edit', reminder_id=reminder.id) }}" class="card">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+    <!-- Title -->
+    <div class="mb-6">
+      <label for="title" class="label label-required">
+        Reminder Title
+      </label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="input"
+        maxlength="255"
+        value="{{ reminder.title }}"
+        placeholder="e.g., Water Monstera"
+        required
+        aria-describedby="title-help"
+        autocomplete="off"
+      />
+      <p id="title-help" class="help-text">Give your reminder a descriptive name</p>
+    </div>
+
+    <!-- Frequency -->
+    <div class="mb-6">
+      <label for="frequency" class="label label-required">
+        Frequency
+      </label>
+      <select id="frequency" name="frequency" class="input" required aria-describedby="frequency-help" aria-controls="custom-interval-group">
+        <option value="daily" {% if reminder.frequency == 'daily' %}selected{% endif %}>Daily</option>
+        <option value="every_2_days" {% if reminder.frequency == 'every_2_days' %}selected{% endif %}>Every 2 Days</option>
+        <option value="every_3_days" {% if reminder.frequency == 'every_3_days' %}selected{% endif %}>Every 3 Days</option>
+        <option value="weekly" {% if reminder.frequency == 'weekly' %}selected{% endif %}>Weekly</option>
+        <option value="biweekly" {% if reminder.frequency == 'biweekly' %}selected{% endif %}>Biweekly (Every 2 Weeks)</option>
+        <option value="monthly" {% if reminder.frequency == 'monthly' %}selected{% endif %}>Monthly</option>
+        <option value="one_time" {% if reminder.frequency == 'one_time' %}selected{% endif %}>One-time Only</option>
+        <option value="custom" {% if reminder.frequency == 'custom' %}selected{% endif %}>Custom Interval</option>
+      </select>
+      <p id="frequency-help" class="help-text">One-time reminders will become inactive after completion</p>
+    </div>
+
+    <!-- Custom Interval (conditionally visible) -->
+    <div class="mb-6 {% if reminder.frequency != 'custom' %}hidden{% endif %}" id="custom-interval-group">
+      <label for="custom_interval_days" class="label label-required">
+        Custom Interval (Days)
+      </label>
+      <input
+        type="number"
+        id="custom_interval_days"
+        name="custom_interval_days"
+        class="input"
+        min="1"
+        max="365"
+        value="{{ reminder.custom_interval_days or '' }}"
+        placeholder="e.g., 5"
+        {% if reminder.frequency == 'custom' %}required{% endif %}
+        aria-describedby="custom-help"
+      />
+      <p id="custom-help" class="help-text">Enter number of days between reminders (1-365)</p>
+    </div>
+
+    <!-- Notes -->
+    <div class="mb-6">
+      <label for="notes" class="label">
+        Notes <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <textarea
+        id="notes"
+        name="notes"
+        class="input"
+        rows="3"
+        maxlength="500"
+        placeholder="Add any special instructions or notes..."
+        aria-describedby="notes-help"
+        autocomplete="off"
+      >{{ reminder.notes or '' }}</textarea>
+      <p id="notes-help" class="help-text">Optional care instructions or reminders</p>
+    </div>
+
+    <!-- Due Date -->
+    <div class="mb-6">
+      <label for="next_due" class="label">
+        Due Date <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="date"
+        id="next_due"
+        name="next_due"
+        class="input"
+        value="{{ reminder.next_due }}"
+        min="{{ today }}"
+        aria-describedby="due-help"
+      />
+      <p id="due-help" class="help-text">Manually set or adjust the due date (today or later)</p>
+      {% if reminder.weather_adjusted_due %}
+      <p class="text-sm text-amber-600 dark:text-amber-400 mt-2">
+        <span aria-hidden="true">&#9888;</span> Changing the due date will clear the current weather adjustment.
+      </p>
+      {% endif %}
+    </div>
+
+    <!-- Weather Adjustment -->
+    <div class="mb-8">
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input
+          type="checkbox"
+          name="skip_weather_adjustment"
+          {% if reminder.skip_weather_adjustment %}checked{% endif %}
+          class="mt-1 w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 dark:bg-slate-700 dark:checked:bg-emerald-500"
+        />
+        <div>
+          <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Skip weather adjustments</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">If checked, this reminder won't be adjusted based on weather conditions</p>
+        </div>
+      </label>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button type="submit" class="btn btn-primary">
+        <span aria-hidden="true">💾</span> Save Changes
+      </button>
+      <a href="{{ url_for('reminders.view', reminder_id=reminder.id) }}" class="btn btn-secondary">
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/reminders.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Analytics - Plant Care AI Assistant{% endblock %}
+{% block description %}View product metrics and analytics.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Admin Dashboard
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Key product metrics and user behavior insights
+  </p>
+</div>
+
+<!-- Quick Navigation Cards -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+  <a href="{{ url_for('admin.overview') }}" class="card hover:shadow-lg transition-shadow text-center py-4">
+    <span class="text-2xl mb-2 block">📋</span>
+    <span class="text-sm font-medium text-slate-900 dark:text-slate-100">Overview</span>
+    <span class="text-xs text-slate-500 dark:text-slate-400 block mt-1">{{ counts.users }} users</span>
+  </a>
+  <a href="{{ url_for('admin.users') }}" class="card hover:shadow-lg transition-shadow text-center py-4">
+    <span class="text-2xl mb-2 block">👥</span>
+    <span class="text-sm font-medium text-slate-900 dark:text-slate-100">Users</span>
+    <span class="text-xs text-slate-500 dark:text-slate-400 block mt-1">Manage users</span>
+  </a>
+  <a href="{{ url_for('admin.usage') }}" class="card hover:shadow-lg transition-shadow text-center py-4">
+    <span class="text-2xl mb-2 block">📊</span>
+    <span class="text-sm font-medium text-slate-900 dark:text-slate-100">Usage</span>
+    <span class="text-xs text-slate-500 dark:text-slate-400 block mt-1">Feature stats</span>
+  </a>
+  <a href="{{ url_for('admin.growth') }}" class="card hover:shadow-lg transition-shadow text-center py-4">
+    <span class="text-2xl mb-2 block">📈</span>
+    <span class="text-sm font-medium text-slate-900 dark:text-slate-100">Growth</span>
+    <span class="text-xs text-slate-500 dark:text-slate-400 block mt-1">Signup trends</span>
+  </a>
+  <a href="{{ url_for('admin.weather') }}" class="card hover:shadow-lg transition-shadow text-center py-4">
+    <span class="text-2xl mb-2 block">🌤️</span>
+    <span class="text-sm font-medium text-slate-900 dark:text-slate-100">Weather</span>
+    <span class="text-xs text-slate-500 dark:text-slate-400 block mt-1">API cache</span>
+  </a>
+  <a href="{{ url_for('admin.marketing') }}" class="card hover:shadow-lg transition-shadow text-center py-4">
+    <span class="text-2xl mb-2 block">📬</span>
+    <span class="text-sm font-medium text-slate-900 dark:text-slate-100">Marketing</span>
+    <span class="text-xs text-slate-500 dark:text-slate-400 block mt-1">Email subs</span>
+  </a>
+  <div class="card bg-emerald-50 dark:bg-emerald-900/20 text-center py-4 border-2 border-emerald-200 dark:border-emerald-800">
+    <span class="text-2xl mb-2 block">🎯</span>
+    <span class="text-sm font-medium text-emerald-700 dark:text-emerald-300">Metrics</span>
+    <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1">Current page</span>
+  </div>
+</div>
+
+<!-- Error Messages -->
+{% if metrics.errors %}
+<div class="card mb-6 border-l-4 border-amber-500">
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+    ⚠️ Warnings
+  </h3>
+  <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-400">
+    {% for error in metrics.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<!-- Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+  <!-- Activation Rate -->
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">Activation Rate</h3>
+      <span class="text-2xl">🚀</span>
+    </div>
+    {% if metrics.activation %}
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+      {{ metrics.activation.activation_rate }}%
+    </div>
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+      {{ metrics.activation.activated_users }} / {{ metrics.activation.total_signups }} users added first plant
+    </p>
+    <p class="text-xs text-slate-500 dark:text-slate-500 mt-2">
+      Last 30 days ({{ period_start }} to {{ today }})
+    </p>
+    {% else %}
+    <div class="text-2xl font-bold text-slate-400 dark:text-slate-600">
+      No data
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Weekly Active Users -->
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">Weekly Active Users</h3>
+      <span class="text-2xl">📊</span>
+    </div>
+    {% if metrics.wau is not none %}
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+      {{ metrics.wau }}
+    </div>
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+      Active in last 7 days
+    </p>
+    {% else %}
+    <div class="text-2xl font-bold text-slate-400 dark:text-slate-600">
+      No data
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Monthly Active Users -->
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">Monthly Active Users</h3>
+      <span class="text-2xl">📈</span>
+    </div>
+    {% if metrics.mau is not none %}
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+      {{ metrics.mau }}
+    </div>
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+      Active in last 30 days
+    </p>
+    {% else %}
+    <div class="text-2xl font-bold text-slate-400 dark:text-slate-600">
+      No data
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Stickiness -->
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">Stickiness (WAU/MAU)</h3>
+      <span class="text-2xl">🎯</span>
+    </div>
+    {% if metrics.stickiness is not none %}
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+      {{ metrics.stickiness }}%
+    </div>
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+      Weekly vs Monthly engagement
+    </p>
+    <p class="text-xs text-slate-500 dark:text-slate-500 mt-2">
+      Higher is better (target: 20%+)
+    </p>
+    {% else %}
+    <div class="text-2xl font-bold text-slate-400 dark:text-slate-600">
+      No data
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Reminder Completion Rate -->
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">Reminder Completion</h3>
+      <span class="text-2xl">✅</span>
+    </div>
+    {% if metrics.reminder_completion %}
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+      {{ metrics.reminder_completion.completion_rate }}%
+    </div>
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+      {{ metrics.reminder_completion.total_completions }} completions
+    </p>
+    <p class="text-xs text-slate-500 dark:text-slate-500 mt-2">
+      Last 30 days
+    </p>
+    {% else %}
+    <div class="text-2xl font-bold text-slate-400 dark:text-slate-600">
+      No data
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- D30 Retention -->
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">D30 Retention</h3>
+      <span class="text-2xl">🔄</span>
+    </div>
+    {% if metrics.d30_retention %}
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+      {{ metrics.d30_retention.retention_rate }}%
+    </div>
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+      {{ metrics.d30_retention.retained_users }} / {{ metrics.d30_retention.cohort_size }} users retained
+    </p>
+    <p class="text-xs text-slate-500 dark:text-slate-500 mt-2">
+      Cohort: {{ cohort_start }} to {{ cohort_end }}
+    </p>
+    {% else %}
+    <div class="text-2xl font-bold text-slate-400 dark:text-slate-600">
+      No data
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+
+<!-- Metric Definitions -->
+<div class="card">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Metric Definitions
+  </h2>
+
+  <div class="space-y-4">
+    <div>
+      <h3 class="font-semibold text-slate-900 dark:text-slate-100">Activation Rate</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Percentage of new users who added at least one plant. Measures how effectively we onboard users to the core product value.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-slate-900 dark:text-slate-100">Weekly Active Users (WAU)</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Number of unique users who performed any action in the last 7 days.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-slate-900 dark:text-slate-100">Monthly Active Users (MAU)</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Number of unique users who performed any action in the last 30 days.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-slate-900 dark:text-slate-100">Stickiness (WAU/MAU)</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Ratio of weekly to monthly active users. Shows how often users return. Target: 20%+ (users come back at least once a week).
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-slate-900 dark:text-slate-100">Reminder Completion Rate</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Percentage of reminders that were marked complete. Indicates engagement with the core reminder feature.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-slate-900 dark:text-slate-100">D30 Retention</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Percentage of users who were active 30 days after signup. Measures long-term product-market fit and user value.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Dashboard -->
+<div class="mt-8">
+  <a href="{{ url_for('dashboard.index') }}" class="btn btn-secondary">
+    ← Back to Dashboard
+  </a>
+</div>
+
+{% endblock %}

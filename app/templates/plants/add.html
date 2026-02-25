@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% block title %}Add Plant - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}Add a new plant to your collection.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Add New Plant <span class="inline-block" aria-hidden="true">🌱</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Tell us about your new plant friend
+  </p>
+</div>
+
+<!-- Form -->
+<div class="max-w-2xl">
+  <form method="POST" action="{{ url_for('plants.add') }}" enctype="multipart/form-data" class="card">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+    <!-- Plant Name -->
+    <div class="mb-6">
+      <label for="name" class="label label-required">
+        Plant Name
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="input"
+        required
+        aria-required="true"
+        placeholder="e.g., Snake Plant, Monstera"
+        maxlength="100"
+        aria-describedby="name-help"
+        autocomplete="off"
+      />
+      <p id="name-help" class="help-text">What kind of plant is this?</p>
+    </div>
+
+    <!-- Nickname -->
+    <div class="mb-6">
+      <label for="nickname" class="label">
+        Nickname <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="text"
+        id="nickname"
+        name="nickname"
+        class="input"
+        placeholder="e.g., Planty McPlantface"
+        maxlength="50"
+        aria-describedby="nickname-help"
+        autocomplete="off"
+      />
+      <p id="nickname-help" class="help-text">Give your plant a fun name!</p>
+    </div>
+
+    <!-- Species -->
+    <div class="mb-6">
+      <label for="species" class="label">
+        Species/Variety <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="text"
+        id="species"
+        name="species"
+        class="input"
+        placeholder="e.g., Sansevieria trifasciata"
+        maxlength="100"
+        autocomplete="off"
+      />
+    </div>
+
+    <!-- Location & Light (Two Columns) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+      <!-- Location -->
+      <div>
+        <label for="location" class="label">
+          Where is the plant?
+        </label>
+        <select id="location" name="location" class="input">
+          <option value="">Select location</option>
+          <option value="indoor_potted">Indoor (potted)</option>
+          <option value="outdoor_potted">Outdoor (potted)</option>
+          <option value="outdoor_bed">Outdoor (in-ground bed)</option>
+          <option value="greenhouse">Greenhouse</option>
+          <option value="office">Office</option>
+        </select>
+      </div>
+
+      <!-- Light Conditions -->
+      <div>
+        <label for="light" class="label">
+          Light Conditions
+        </label>
+        <select id="light" name="light" class="input">
+          <option value="">Select light level</option>
+          <option value="low">Low light (north-facing, no direct sun)</option>
+          <option value="medium">Medium light (east/west-facing, some direct sun)</option>
+          <option value="bright">Bright indirect light</option>
+          <option value="direct">Direct sunlight (south-facing)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Care Notes -->
+    <div class="mb-6">
+      <label for="notes" class="label">
+        Care Notes <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <textarea
+        id="notes"
+        name="notes"
+        class="input"
+        rows="4"
+        placeholder="Any special care instructions, watering schedule, or observations..."
+        maxlength="500"
+        autocomplete="off"
+      ></textarea>
+    </div>
+
+    <!-- Initial Assessment (Collapsible) -->
+    <details class="disclosure mb-6">
+      <summary class="cursor-pointer p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="text-lg" aria-hidden="true">📊</span>
+          <span class="font-semibold text-slate-900 dark:text-slate-100">Initial Assessment</span>
+          <span class="text-sm text-slate-500 dark:text-slate-400">(Optional)</span>
+        </div>
+      </summary>
+
+      <div class="mt-4 p-4 bg-slate-50 dark:bg-slate-800/30 rounded-lg border border-slate-200 dark:border-slate-700 space-y-6">
+        <p class="text-sm text-slate-600 dark:text-slate-400">
+          This baseline helps track your plant's progress over time and gives the AI context for better advice.
+        </p>
+
+        <!-- Health State & Ownership Duration -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Current Health State -->
+          <div>
+            <label for="initial_health_state" class="label">
+              Current Health
+            </label>
+            <select id="initial_health_state" name="initial_health_state" class="input">
+              <option value="">Select health state</option>
+              <option value="thriving">Thriving - looks great!</option>
+              <option value="okay">Okay - doing alright</option>
+              <option value="struggling">Struggling - needs help</option>
+            </select>
+          </div>
+
+          <!-- Ownership Duration -->
+          <div>
+            <label for="ownership_duration" class="label">
+              How long have you had it?
+            </label>
+            <select id="ownership_duration" name="ownership_duration" class="input">
+              <option value="">Select duration</option>
+              <option value="just_got">Just got it</option>
+              <option value="few_weeks">A few weeks</option>
+              <option value="few_months">A few months</option>
+              <option value="year_plus">A year or more</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Current Watering Schedule -->
+        <div>
+          <label for="current_watering_schedule" class="label">
+            Current Watering Schedule
+          </label>
+          <input
+            type="text"
+            id="current_watering_schedule"
+            name="current_watering_schedule"
+            class="input"
+            placeholder="e.g., once a week, every 3 days, when soil is dry"
+            maxlength="100"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Initial Concerns -->
+        <div>
+          <label for="initial_concerns" class="label">
+            Any Current Concerns?
+          </label>
+          <textarea
+            id="initial_concerns"
+            name="initial_concerns"
+            class="input"
+            rows="3"
+            placeholder="e.g., yellow leaves, slow growth, pest issues..."
+            maxlength="500"
+            autocomplete="off"
+          ></textarea>
+        </div>
+      </div>
+    </details>
+
+    <!-- Photo Upload -->
+    <div class="mb-8">
+      <label for="photo" class="label">
+        Photo <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        class="input file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 dark:file:bg-emerald-900/30 dark:file:text-emerald-400 dark:hover:file:bg-emerald-900/50 file:cursor-pointer"
+        accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
+        aria-describedby="photo-help"
+      />
+      <p id="photo-help" class="help-text">Max 5MB. Supported: JPG, PNG, GIF, WebP</p>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button type="submit" class="btn btn-primary">
+        <span aria-hidden="true">🪴</span> Add Plant
+      </button>
+      <a href="{{ url_for('plants.index') }}" class="btn btn-secondary">
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

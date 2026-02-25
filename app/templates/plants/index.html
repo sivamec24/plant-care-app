@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}My Plants - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}View and manage your plant collection.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    My Plants <span class="inline-block" aria-hidden="true">🪴</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    You're caring for <strong class="text-emerald-600 dark:text-emerald-400">{{ plant_count }}</strong> {{ 'plant' if plant_count == 1 else 'plants' }}
+  </p>
+</div>
+
+<!-- Actions Bar -->
+<div class="mb-8">
+  <a href="{{ url_for('plants.add') }}" class="btn btn-primary">
+    <span aria-hidden="true">🪴</span> Add Plant
+  </a>
+</div>
+
+{% if plants %}
+  <!-- Plants Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for plant in plants %}
+      <article class="card group relative focus-within:ring-2 focus-within:ring-emerald-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-slate-900">
+        <!-- Plant Photo -->
+        {% if plant.photo_url %}
+          <div class="aspect-square w-full mb-4 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img
+              src="{{ plant.photo_url }}"
+              alt="Photo of {{ plant.name }}"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            >
+          </div>
+        {% else %}
+          <div class="aspect-square w-full mb-4 rounded-xl bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 flex items-center justify-center">
+            <span class="text-6xl opacity-60" aria-hidden="true">🌱</span>
+          </div>
+        {% endif %}
+
+        <!-- Plant Info -->
+        <div class="space-y-3">
+          <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100">
+            <a href="{{ url_for('plants.view', plant_id=plant.id) }}" class="after:absolute after:inset-0 focus:outline-none">
+              {{ plant.name }}
+            </a>
+            {% if plant.nickname %}
+              <span class="text-base font-normal text-emerald-600 dark:text-emerald-400">"{{ plant.nickname }}"</span>
+            {% endif %}
+          </h3>
+
+          {% if plant.species %}
+            <p class="text-sm text-slate-600 dark:text-slate-400 italic">{{ plant.species }}</p>
+          {% endif %}
+
+          <!-- Plant Tags -->
+          <div class="flex flex-wrap gap-2">
+            {% if plant.location %}
+              <span class="badge badge-emerald">
+                <span aria-hidden="true">📍</span> {{ plant.location }}
+              </span>
+            {% endif %}
+            {% if plant.light %}
+              <span class="badge badge-cyan">
+                <span aria-hidden="true">☀️</span> {{ plant.light }}
+              </span>
+            {% endif %}
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-2 relative z-10">
+            <a href="{{ url_for('plants.view', plant_id=plant.id) }}" class="btn btn-secondary w-full" tabindex="-1" aria-hidden="true">
+              View Details →
+            </a>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <!-- Empty State -->
+  <div class="empty-state">
+    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 flex items-center justify-center">
+      <span class="text-6xl opacity-60" aria-hidden="true">🌱</span>
+    </div>
+    <h2 class="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+      No plants yet!
+    </h2>
+    <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-md">
+      Start building your plant collection by adding your first plant.
+    </p>
+    <a href="{{ url_for('plants.add') }}" class="btn btn-primary">
+      <span aria-hidden="true">🌱</span> Add Your First Plant
+    </a>
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Growth Trends - Admin{% endblock %}
+{% block description %}View signup and growth trends.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+    <a href="{{ url_for('admin.index') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">Admin</a>
+    <span>/</span>
+    <span>Growth</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Growth Trends
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Signup trends and user growth
+  </p>
+</div>
+
+{% if error %}
+<div class="card mb-6 border-l-4 border-amber-500">
+  <p class="text-amber-700 dark:text-amber-400">{{ error }}</p>
+</div>
+{% endif %}
+
+<!-- Current Activity Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">Weekly Active Users</h3>
+      <span class="text-2xl">📊</span>
+    </div>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">
+      {{ wau if wau is not none else 'N/A' }}
+    </div>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+      Active in the last 7 days
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-sm font-medium text-slate-600 dark:text-slate-400">Monthly Active Users</h3>
+      <span class="text-2xl">📈</span>
+    </div>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">
+      {{ mau if mau is not none else 'N/A' }}
+    </div>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+      Active in the last 30 days
+    </p>
+  </div>
+</div>
+
+<!-- Signups by Week -->
+<div class="card">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Weekly Signups (Last 12 Weeks)
+  </h2>
+
+  {% if signups_by_week %}
+  <div class="space-y-3">
+    {% set max_signups = signups_by_week | map(attribute='count') | max %}
+    {% for week in signups_by_week %}
+    <div class="flex items-center gap-4">
+      <div class="flex-shrink-0 w-24 text-sm text-slate-600 dark:text-slate-400">
+        {{ week.week_start }}
+      </div>
+      <div class="flex-1">
+        <div class="relative h-8 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden">
+          {% if max_signups > 0 %}
+          <div
+            class="absolute inset-y-0 left-0 bg-emerald-500 dark:bg-emerald-600 rounded-lg transition-all"
+            style="width: {{ (week.count / max_signups) * 100 }}%"
+          ></div>
+          {% endif %}
+          <div class="absolute inset-0 flex items-center px-3">
+            <span class="text-sm font-medium {% if week.count > 0 and (week.count / max_signups) > 0.3 %}text-white{% else %}text-slate-900 dark:text-slate-100{% endif %}">
+              {{ week.count }} signups
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Summary Stats -->
+  <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+    <div class="grid grid-cols-3 gap-4 text-center">
+      <div>
+        <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">
+          {{ signups_by_week | map(attribute='count') | sum }}
+        </div>
+        <div class="text-sm text-slate-500 dark:text-slate-400">Total Signups</div>
+      </div>
+      <div>
+        <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">
+          {{ ((signups_by_week | map(attribute='count') | sum) / (signups_by_week | length)) | round(1) }}
+        </div>
+        <div class="text-sm text-slate-500 dark:text-slate-400">Avg per Week</div>
+      </div>
+      <div>
+        <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">
+          {{ signups_by_week | map(attribute='count') | max }}
+        </div>
+        <div class="text-sm text-slate-500 dark:text-slate-400">Best Week</div>
+      </div>
+    </div>
+  </div>
+
+  {% else %}
+  <p class="text-slate-500 dark:text-slate-400 text-center py-8">
+    No signup data available
+  </p>
+  {% endif %}
+</div>
+
+<!-- Back Navigation -->
+<div class="mt-8">
+  <a href="{{ url_for('admin.index') }}" class="btn btn-secondary">
+    &larr; Back to Admin Dashboard
+  </a>
+</div>
+
+{% endblock %}

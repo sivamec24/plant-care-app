@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+{% from "components/reminder_icon.html" import reminder_icon %}
+
+{% block title %}{{ plant.name }} - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}View details for {{ plant.name }}.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+{{ breadcrumb([
+  {"label": "Dashboard", "url": url_for('dashboard.index')},
+  {"label": "My Plants", "url": url_for('plants.index')},
+  {"label": plant.name},
+]) }}
+
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="page-title">
+    {{ plant.name }}
+    {% if plant.nickname %}
+      <span class="text-2xl sm:text-3xl font-normal text-emerald-600 dark:text-emerald-400">"{{ plant.nickname }}"</span>
+    {% endif %}
+  </h1>
+  {% if plant.species %}
+    <p class="text-lg text-slate-600 dark:text-slate-400 italic">{{ plant.species }}</p>
+  {% endif %}
+</div>
+
+<!-- Plant Detail Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+  <!-- Plant Photo (if exists) -->
+  {% if plant.photo_url %}
+    <div class="lg:col-span-1">
+      <div class="card p-0 overflow-hidden">
+        <img
+          src="{{ plant.photo_url }}"
+          alt="Photo of {{ plant.name }}"
+          class="w-full h-auto object-cover"
+        >
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Plant Information -->
+  <div class="{% if plant.photo_url %}lg:col-span-2{% else %}lg:col-span-3{% endif %}">
+    <div class="card">
+      <h2 class="section-title">Plant Information</h2>
+
+      <dl class="space-y-4">
+        {% if plant.location %}
+          <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+            <span class="text-2xl flex-shrink-0" aria-hidden="true">📍</span>
+            <div class="flex-1">
+              <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Location</dt>
+              <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">{{ plant.location }}</dd>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if plant.light %}
+          <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+            <span class="text-2xl flex-shrink-0" aria-hidden="true">☀️</span>
+            <div class="flex-1">
+              <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Light</dt>
+              <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">{{ plant.light }}</dd>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if plant.notes %}
+          <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+            <span class="text-2xl flex-shrink-0" aria-hidden="true">📝</span>
+            <div class="flex-1">
+              <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Notes</dt>
+              <dd class="mt-1 text-base text-slate-900 dark:text-slate-100 whitespace-pre-wrap">{{ plant.notes }}</dd>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="flex items-start gap-3">
+          <span class="text-2xl flex-shrink-0" aria-hidden="true">📅</span>
+          <div class="flex-1">
+            <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Added</dt>
+            <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">
+              {% if plant.created_at %}
+              <time datetime="{{ plant.created_at[:10] }}">{{ plant.created_at[:10] }}</time>
+              {% else %}
+              Unknown
+              {% endif %}
+            </dd>
+          </div>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<!-- Initial Assessment (read-only) -->
+{% if plant.initial_health_state or plant.ownership_duration or plant.current_watering_schedule or plant.initial_concerns %}
+<div class="card mb-8">
+  <h2 class="section-title">Initial Assessment</h2>
+  <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
+    Recorded when this plant was added
+    {% if plant.created_at %}
+    on <time datetime="{{ plant.created_at[:10] }}">{{ plant.created_at[:10] }}</time>
+    {% endif %}
+  </p>
+
+  <dl class="space-y-4">
+    {% if plant.initial_health_state %}
+      <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+        <span class="text-2xl flex-shrink-0" aria-hidden="true">
+          {% if plant.initial_health_state == 'thriving' %}🌟
+          {% elif plant.initial_health_state == 'okay' %}👍
+          {% else %}🩹{% endif %}
+        </span>
+        <div class="flex-1">
+          <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Initial Health</dt>
+          <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">
+            {% if plant.initial_health_state == 'thriving' %}Thriving
+            {% elif plant.initial_health_state == 'okay' %}Okay
+            {% elif plant.initial_health_state == 'struggling' %}Struggling
+            {% else %}{{ plant.initial_health_state }}{% endif %}
+          </dd>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if plant.ownership_duration %}
+      <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+        <span class="text-2xl flex-shrink-0" aria-hidden="true">⏱️</span>
+        <div class="flex-1">
+          <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Ownership Duration</dt>
+          <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">
+            {% if plant.ownership_duration == 'just_got' %}Just got it
+            {% elif plant.ownership_duration == 'few_weeks' %}A few weeks
+            {% elif plant.ownership_duration == 'few_months' %}A few months
+            {% elif plant.ownership_duration == 'year_plus' %}Over a year
+            {% else %}{{ plant.ownership_duration }}{% endif %}
+          </dd>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if plant.current_watering_schedule %}
+      <div class="flex items-start gap-3 pb-4 border-b border-slate-200 dark:border-slate-700">
+        <span class="text-2xl flex-shrink-0" aria-hidden="true">💧</span>
+        <div class="flex-1">
+          <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Watering Schedule</dt>
+          <dd class="mt-1 text-base text-slate-900 dark:text-slate-100">{{ plant.current_watering_schedule }}</dd>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if plant.initial_concerns %}
+      <div class="flex items-start gap-3">
+        <span class="text-2xl flex-shrink-0" aria-hidden="true">💭</span>
+        <div class="flex-1">
+          <dt class="text-sm font-medium text-slate-700 dark:text-slate-300">Initial Concerns</dt>
+          <dd class="mt-1 text-base text-slate-900 dark:text-slate-100 whitespace-pre-wrap">{{ plant.initial_concerns }}</dd>
+        </div>
+      </div>
+    {% endif %}
+  </dl>
+
+  <div class="mt-6 p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-700/50">
+    <p class="text-sm text-emerald-800 dark:text-emerald-200">
+      <span aria-hidden="true">💡</span>
+      Use the <a href="{{ url_for('journal.add_entry', plant_id=plant.id) }}" class="font-medium underline hover:no-underline">Journal</a> to track current health and care activities over time.
+    </p>
+  </div>
+</div>
+{% endif %}
+
+<!-- Care Statistics -->
+{% if stats and stats.total_actions > 0 %}
+<div class="card mb-8">
+  <h2 class="section-title">Care Statistics</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">💧</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.watering_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Waterings</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">🌿</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.fertilizing_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Fertilizations</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">🪴</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.repotting_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Repottings</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">✂️</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.pruning_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Prunings</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">📝</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.total_actions }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Total Entries</div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Care Reminders Section -->
+<div class="card mb-8">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <h2 class="section-title !mb-0">Care Reminders</h2>
+    <a href="{{ url_for('reminders.create', plant_id=plant.id) }}" class="btn btn-primary">
+      <span aria-hidden="true">+</span> Add Reminder
+    </a>
+  </div>
+
+  {% if plant_reminders %}
+    <div class="space-y-3">
+      {% for reminder in plant_reminders %}
+      <div class="flex flex-col sm:flex-row items-start gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 transition-all duration-200 hover:border-emerald-500 dark:hover:border-emerald-400">
+        {{ reminder_icon(reminder.reminder_type, size="text-2xl") }}
+
+        <div class="flex-1 min-w-0">
+          <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">
+            <a href="{{ url_for('reminders.view', reminder_id=reminder.id) }}" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+              {{ reminder.title }}
+            </a>
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2 flex-wrap">
+            <span>{{ reminder_type_names.get(reminder.reminder_type, reminder.reminder_type) }}</span>
+            <span aria-hidden="true">•</span>
+            <span>{{ reminder.frequency|replace('_', ' ')|title }}</span>
+            <span aria-hidden="true">•</span>
+            <span>Next: {{ reminder.next_due }}</span>
+            {% if reminder.weather_adjustment_reason %}
+            <span class="badge badge-cyan" title="{{ reminder.weather_adjustment_reason }}">
+              <span aria-hidden="true">🌤️</span> Adjusted
+            </span>
+            {% endif %}
+          </p>
+        </div>
+
+        <div class="flex-shrink-0 w-full sm:w-auto">
+          <a href="{{ url_for('reminders.edit', reminder_id=reminder.id) }}" class="btn btn-secondary w-full sm:w-auto">
+            Edit
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <!-- Empty State -->
+    <div class="flex flex-col items-center justify-center text-center py-8">
+      <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-100 to-emerald-100 dark:from-cyan-900/30 dark:to-emerald-900/30 flex items-center justify-center">
+        <span class="text-4xl opacity-60" aria-hidden="true">⏰</span>
+      </div>
+      <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+        No reminders yet
+      </h3>
+      <p class="text-slate-600 dark:text-slate-400 mb-4 max-w-sm">
+        Create care reminders to stay on top of watering, fertilizing, and other tasks for {{ plant.name }}.
+      </p>
+      <a href="{{ url_for('reminders.create', plant_id=plant.id) }}" class="btn btn-primary">
+        <span aria-hidden="true">+</span> Create First Reminder
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+<!-- Recent Care History -->
+<div class="card mb-8">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <h2 class="section-title !mb-0">Recent Care History</h2>
+    <a href="{{ url_for('journal.view_plant_journal', plant_id=plant.id) }}" class="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
+      View all →
+    </a>
+  </div>
+
+  {% if recent_actions %}
+    <div class="space-y-3 mb-6">
+      {% for action in recent_actions %}
+      <div class="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+        <div class="text-2xl flex-shrink-0">
+          {{ action_type_emojis.get(action.action_type, '📝') }}
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="font-semibold text-slate-900 dark:text-slate-100">
+              {{ action_type_names.get(action.action_type, action.action_type) }}
+            </span>
+            {% if action.amount_ml %}
+              <span class="text-sm text-slate-600 dark:text-slate-400">({{ action.amount_ml }} ml)</span>
+            {% endif %}
+          </div>
+          {% if action.notes %}
+            <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-1">{{ action.notes }}</p>
+          {% endif %}
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            {{ action.action_at|relative_date }}
+          </p>
+        </div>
+        {% if action.photo_url_thumb or action.photo_url %}
+          <img src="{{ action.photo_url_thumb or action.photo_url }}" alt="{{ action.action_type }} photo from {{ action.action_at|relative_date }}" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{{ url_for('journal.add_entry', plant_id=plant.id) }}" class="btn btn-primary">
+      <span aria-hidden="true">📝</span> Log Care Activity
+    </a>
+  {% else %}
+    <!-- Empty State -->
+    <div class="flex flex-col items-center justify-center text-center py-8">
+      <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-100 to-emerald-100 dark:from-cyan-900/30 dark:to-emerald-900/30 flex items-center justify-center">
+        <span class="text-5xl opacity-60" aria-hidden="true">📝</span>
+      </div>
+      <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+        No care history yet
+      </h3>
+      <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-sm">
+        Start logging care activities to track {{ plant.name }}'s health and growth over time.
+      </p>
+      <a href="{{ url_for('journal.add_entry', plant_id=plant.id) }}" class="btn btn-primary">
+        <span aria-hidden="true">📝</span> Log First Activity
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+<!-- Action Buttons -->
+<div class="flex flex-wrap gap-3">
+  <a href="{{ url_for('web.assistant', plant_id=plant.id) }}" class="btn btn-primary">
+    <span aria-hidden="true">🤖</span> Ask AI about this plant
+  </a>
+  <a href="{{ url_for('plants.edit', plant_id=plant.id) }}" class="btn btn-secondary">
+    <span aria-hidden="true">✏️</span> Edit Plant
+  </a>
+  <a href="{{ url_for('plants.index') }}" class="btn btn-secondary">
+    <span aria-hidden="true">←</span> Back to Plants
+  </a>
+
+  <form
+    method="POST"
+    action="{{ url_for('plants.delete', plant_id=plant.id) }}"
+    class="inline-block"
+    data-confirm="Are you sure you want to delete {{ plant.name }}? This cannot be undone."
+  >
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <button type="submit" class="btn btn-danger">
+      <span aria-hidden="true">🗑️</span> Delete Plant
+    </button>
+  </form>
+</div>
+{% endblock %}

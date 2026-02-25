@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Plant Care Guides - How to Care for Popular Houseplants | PlantCareAI{% endblock %}
+
+{% block description %}Free plant care guides for popular houseplants. Learn how to water, fertilize, and care for Monstera, Pothos, Snake Plant, and more.{% endblock %}
+
+{% block og_title %}Plant Care Guides - How to Care for Popular Houseplants{% endblock %}
+{% block og_description %}Detailed care guides for the most popular houseplants. Get tips on watering, light requirements, humidity, and troubleshooting common problems.{% endblock %}
+
+{% block og_image %}
+<meta property="og:image" content="{{ url_for('static', filename='images/og/guides-index.png', _external=True) }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Plant Care Guides - PlantCareAI" />
+{% endblock %}
+{% block twitter_title %}Plant Care Guides | PlantCareAI{% endblock %}
+{% block twitter_description %}Learn how to care for popular houseplants with our free guides.{% endblock %}
+{% block twitter_image %}
+<meta name="twitter:image" content="{{ url_for('static', filename='images/og/guides-index.png', _external=True) }}" />
+<meta name="twitter:image:alt" content="Plant Care Guides - PlantCareAI" />
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="text-center py-12 md:py-16">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-6xl mb-6" aria-hidden="true">📚🌿</div>
+    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+      Plant Care Guides
+    </h1>
+    <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+      Free, detailed guides for popular houseplants. Learn watering schedules, light requirements, and how to keep your plants thriving.
+    </p>
+    <a href="{{ url_for('web.assistant') }}" class="btn btn-primary">
+      Or ask our AI for personalized advice
+    </a>
+  </div>
+</section>
+
+<!-- Guides Grid -->
+<section class="py-8">
+  {% if guides %}
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for guide in guides %}
+    <a href="{{ url_for('guides.view', slug=guide.slug) }}"
+       class="card hover:shadow-lg hover:border-emerald-300 dark:hover:border-emerald-600 transition-all group">
+      <div class="flex items-start gap-4">
+        <div class="text-5xl flex-shrink-0" aria-hidden="true">{{ guide.emoji }}</div>
+        <div class="min-w-0">
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+            {{ guide.name }}
+          </h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 italic mb-2">{{ guide.scientific_name }}</p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">
+            {{ guide.summary }}
+          </p>
+        </div>
+      </div>
+      <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded">
+            {{ guide.light }}
+          </span>
+          <span class="px-2 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded">
+            {{ guide.water }}
+          </span>
+          <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded">
+            {{ guide.difficulty }}
+          </span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-center py-12">
+    <p class="text-slate-600 dark:text-slate-400 text-lg mb-4">
+      No guides available yet. Check back soon!
+    </p>
+    <a href="{{ url_for('web.assistant') }}" class="btn btn-primary">
+      Ask our AI instead
+    </a>
+  </div>
+  {% endif %}
+</section>
+
+<!-- Common Plant Problems Section -->
+<section class="py-8 border-t border-slate-200 dark:border-slate-700">
+  <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 text-center">
+    Common Plant Problems
+  </h2>
+  <p class="text-slate-600 dark:text-slate-400 text-center mb-8 max-w-2xl mx-auto">
+    Troubleshooting guides for the most common plant care issues.
+  </p>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+    <a href="{{ url_for('seo.drooping') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">🥀</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">Why Are My Leaves Drooping?</span>
+    </a>
+    <a href="{{ url_for('seo.yellow_leaves') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">🍂</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">Why Are Leaves Turning Yellow?</span>
+    </a>
+    <a href="{{ url_for('seo.overwatering') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">💧</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">Am I Overwatering?</span>
+    </a>
+    <a href="{{ url_for('seo.watering_frequency') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">🚿</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">How Often Should I Water?</span>
+    </a>
+    <a href="{{ url_for('seo.water_today') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">🤔</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">Should I Water Today?</span>
+    </a>
+    <a href="{{ url_for('seo.not_growing') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">🌱</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">Why Is My Plant Not Growing?</span>
+    </a>
+    <a href="{{ url_for('seo.beginners_guide') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">🪴</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">Indoor Plant Care for Beginners</span>
+    </a>
+    <a href="{{ url_for('seo.curling_leaves') }}" class="card hover:shadow-lg transition-shadow p-4">
+      <span class="text-2xl mb-2 block" aria-hidden="true">🍃</span>
+      <span class="font-medium text-slate-900 dark:text-slate-100">Why Are My Leaves Curling?</span>
+    </a>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-12 text-center bg-white dark:bg-slate-800 -mx-4 px-4 rounded-2xl mt-8">
+  <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Need personalized advice?
+  </h2>
+  <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-xl mx-auto">
+    Our AI plant doctor can answer specific questions about your plants and provide weather-aware recommendations for your location.
+  </p>
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <a href="{{ url_for('web.assistant') }}" class="btn btn-primary">
+      Ask the AI Plant Doctor
+    </a>
+    <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary">
+      Create Free Account
+    </a>
+  </div>
+</section>
+{% endblock %}

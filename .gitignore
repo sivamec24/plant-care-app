@@ -1,0 +1,73 @@
+# ========================================
+# Python / Flask / Virtualenv
+# ========================================
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.pycache
+*.pkl
+*.db
+instance/
+.env
+.venv/
+venv/
+env/
+.env.*
+*.sqlite3
+*.log
+
+# ========================================
+# IDE / OS / Editor junk
+# ========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# ========================================
+# Pytest / Coverage
+# ========================================
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.mypy_cache/
+.cache/
+
+# ========================================
+# Deployment / Render / Artifacts
+# ========================================
+*.egg-info/
+dist/
+build/
+site/
+*.tar.gz
+*.zip
+*.bak
+*.old
+*.tmp
+
+# Keep lock file tracked
+!requirements-lock.txt
+
+# ========================================
+# Node modules (if any front-end build)
+# ========================================
+node_modules/
+
+# ========================================
+# Debug Docs and Notes
+# ========================================
+.claude/
+docs/
+migrations/
+supabase_migrations/
+email_previews/
+newsletters/
+tests/
+scripts/
+.ui-design/
+CLAUDE.md

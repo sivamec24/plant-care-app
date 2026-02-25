@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}Create your free account to track plants, set reminders, and get personalized care tips.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto">
+  <!-- Signup Card -->
+  <section class="card mb-8" aria-labelledby="signup-title">
+    <h1 id="signup-title" class="page-title text-center">
+      Sign Up for Free <span class="inline-block" aria-hidden="true">🌱</span>
+    </h1>
+
+    <p class="text-center text-lg mb-6 text-slate-700 dark:text-slate-300">
+      <strong class="text-emerald-600 dark:text-emerald-400">Free forever</strong> for home gardeners — no credit card, ever
+    </p>
+
+    <!-- Benefits List -->
+    <ul class="space-y-3 mb-8 p-4 bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/20 dark:to-cyan-900/20 rounded-xl border-2 border-emerald-200 dark:border-emerald-700">
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-xl flex-shrink-0" aria-hidden="true">🪴</span>
+        <span>Track up to 20 plants with photos</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-xl flex-shrink-0" aria-hidden="true">💧</span>
+        <span>Smart watering & fertilizer reminders</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-xl flex-shrink-0" aria-hidden="true">🤖</span>
+        <span>AI plant care assistant</span>
+      </li>
+      <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+        <span class="text-xl flex-shrink-0" aria-hidden="true">🌤️</span>
+        <span>Weather-aware suggestions</span>
+      </li>
+    </ul>
+
+    <!-- OTP Signup Form -->
+    <form method="POST" action="{{ url_for('auth.signup') }}" class="auth-form" novalidate>
+      <!-- CSRF Protection -->
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+      <!-- Honeypot field (hidden from users, bots will fill it) -->
+      <div class="absolute -left-[9999px]" aria-hidden="true">
+        <label for="website">Website (leave blank)</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="mb-6">
+        <label for="email" class="label label-required">
+          Email Address
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="input"
+          required
+          autocomplete="email"
+          aria-required="true"
+          aria-describedby="email-help"
+          placeholder="you@example.com"
+        />
+        <p id="email-help" class="help-text">
+          We'll send you a 6-digit verification code — no password needed.
+          <br>
+          <strong>Returning user?</strong> Just enter your email and we'll log you in.
+        </p>
+      </div>
+
+      <fieldset class="mb-6 border-0 p-0 m-0">
+        <legend class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Account preferences</legend>
+
+        <!-- Marketing Email Opt-in -->
+        {% if config.MARKETING_EMAILS_ENABLED %}
+        <div class="flex items-start gap-3 mb-4">
+          <input
+            type="checkbox"
+            id="marketing_opt_in"
+            name="marketing_opt_in"
+            class="mt-1 h-5 w-5 rounded border-slate-300 dark:border-slate-600 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+            aria-describedby="marketing-help"
+          />
+          <div>
+            <label for="marketing_opt_in" class="text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
+              Get plant care tips & seasonal advice
+            </label>
+            <p id="marketing-help" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Free monthly tips, no spam. Unsubscribe anytime.
+            </p>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Age Confirmation (COPPA compliance) -->
+        <div class="flex items-start gap-3">
+          <input
+            type="checkbox"
+            id="age_confirmation"
+            name="age_confirmation"
+            class="mt-1 h-5 w-5 rounded border-slate-300 dark:border-slate-600 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+            required
+            aria-required="true"
+          />
+          <label for="age_confirmation" class="text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
+            I confirm I am 13 years of age or older
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Hidden field to preserve 'next' parameter -->
+      {% if next %}
+        <input type="hidden" name="next" value="{{ next }}">
+      {% endif %}
+
+      <button type="submit" class="btn btn-primary w-full">
+        <span aria-hidden="true">📧</span> Send Verification Code
+      </button>
+    </form>
+
+    <!-- Terms & Privacy -->
+    <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+      <p class="text-xs text-center text-slate-500 dark:text-slate-400">
+        By signing up, you agree to our <a href="{{ url_for('legal.terms') }}" rel="noopener" class="text-emerald-600 dark:text-emerald-400 hover:underline">Terms of Service</a>
+        and <a href="{{ url_for('legal.privacy') }}" rel="noopener" class="text-emerald-600 dark:text-emerald-400 hover:underline">Privacy Policy</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Security & Privacy Notice -->
+  <section class="card border-2 border-emerald-200 dark:border-emerald-700" aria-labelledby="privacy-title">
+    <h3 id="privacy-title" class="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
+      <span aria-hidden="true">🔒</span> Your Privacy & Security
+    </h3>
+    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-hidden="true">✓</span>
+        <span>Passwordless authentication via secure one-time codes</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-hidden="true">✓</span>
+        <span>Your data is encrypted and only shared with essential service providers per our <a href="{{ url_for('legal.privacy') }}" class="underline">Privacy Policy</a></span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-hidden="true">✓</span>
+        <span>Rate limiting protects against abuse</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-hidden="true">✓</span>
+        <span>WCAG 2.1 AA accessible by design</span>
+      </li>
+    </ul>
+  </section>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Weather API Monitor - Admin{% endblock %}
+{% block description %}Monitor weather API cache and usage.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+    <a href="{{ url_for('admin.index') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">Admin</a>
+    <span>/</span>
+    <span>Weather</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Weather API Monitor
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    OpenWeather API cache status and configuration
+  </p>
+</div>
+
+<!-- Cache Configuration -->
+<div class="card mb-6">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Configuration
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+      <div class="text-sm text-slate-500 dark:text-slate-400 mb-1">Cache TTL</div>
+      <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+        {{ (cache_stats.cache_ttl / 60) | round(0) | int }} minutes
+      </div>
+      <div class="text-xs text-slate-400 dark:text-slate-500">{{ cache_stats.cache_ttl }} seconds</div>
+    </div>
+    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+      <div class="text-sm text-slate-500 dark:text-slate-400 mb-1">Max Cached Cities per Function</div>
+      <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+        {{ cache_stats.max_per_function }}
+      </div>
+      <div class="text-xs text-slate-400 dark:text-slate-500">LRU eviction when exceeded</div>
+    </div>
+    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+      <div class="text-sm text-slate-500 dark:text-slate-400 mb-1">Free Tier Rate Limit</div>
+      <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+        {{ cache_stats.free_tier_rpm }} req/min
+      </div>
+      <div class="text-xs text-slate-400 dark:text-slate-500">OpenWeather free tier limit</div>
+    </div>
+  </div>
+</div>
+
+<!-- Current Cache Stats -->
+<div class="card mb-6">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Current Cache Status
+  </h2>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="text-center">
+      <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">
+        {{ cache_stats.total_entries }}
+      </div>
+      <div class="text-sm text-slate-500 dark:text-slate-400">Total Cached Entries</div>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+        {{ cache_stats.cached_cities | length }}
+      </div>
+      <div class="text-sm text-slate-500 dark:text-slate-400">Unique Cities Cached</div>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">
+        {% if cache_stats.oldest_entry_age is not none %}
+        {{ (cache_stats.oldest_entry_age / 60) | round(1) }}m
+        {% else %}
+        N/A
+        {% endif %}
+      </div>
+      <div class="text-sm text-slate-500 dark:text-slate-400">Oldest Entry Age</div>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">
+        {% if cache_stats.newest_entry_age is not none %}
+        {{ (cache_stats.newest_entry_age / 60) | round(1) }}m
+        {% else %}
+        N/A
+        {% endif %}
+      </div>
+      <div class="text-sm text-slate-500 dark:text-slate-400">Newest Entry Age</div>
+    </div>
+  </div>
+
+  <!-- Cache by Function -->
+  {% if cache_stats.by_function %}
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-3">Cache by Function</h3>
+  <div class="space-y-2">
+    {% for func_name, count in cache_stats.by_function.items() %}
+    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+      <div class="text-sm font-medium text-slate-900 dark:text-slate-100">{{ func_name }}</div>
+      <div class="flex items-center gap-3">
+        <div class="w-32 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-emerald-500 dark:bg-emerald-600 rounded-full"
+            style="width: {{ (count / cache_stats.max_per_function) * 100 }}%"
+          ></div>
+        </div>
+        <span class="text-sm text-slate-600 dark:text-slate-400 w-16 text-right">
+          {{ count }} / {{ cache_stats.max_per_function }}
+        </span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<!-- Cached Cities -->
+{% if cache_stats.cached_cities %}
+<div class="card">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Cached Cities
+  </h2>
+  <div class="flex flex-wrap gap-2">
+    {% for city in cache_stats.cached_cities | sort %}
+    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+      {{ city }}
+    </span>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="card">
+  <p class="text-slate-500 dark:text-slate-400 text-center py-8">
+    No cities currently cached
+  </p>
+</div>
+{% endif %}
+
+<!-- Back Navigation -->
+<div class="mt-8">
+  <a href="{{ url_for('admin.index') }}" class="btn btn-secondary">
+    &larr; Back to Admin Dashboard
+  </a>
+</div>
+
+{% endblock %}

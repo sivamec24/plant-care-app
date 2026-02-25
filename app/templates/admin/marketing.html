@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Marketing - Admin{% endblock %}
+{% block description %}Marketing email metrics and subscriber overview.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+    <a href="{{ url_for('admin.index') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">Admin</a>
+    <span>/</span>
+    <span>Marketing</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Marketing Emails
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Subscriber metrics and welcome email statistics
+  </p>
+</div>
+
+{% if error %}
+<div class="card border-l-4 border-amber-500 mb-6">
+  <p class="text-amber-700 dark:text-amber-400">{{ error }}</p>
+</div>
+{% endif %}
+
+<!-- Stats Overview -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+  <div class="card text-center py-6">
+    <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">
+      {{ stats.total_subscribers or 0 }}
+    </div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Subscribers</div>
+  </div>
+  <div class="card text-center py-6">
+    <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+      {{ stats.opt_in_rate or 0 }}%
+    </div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Opt-in Rate</div>
+  </div>
+  <div class="card text-center py-6">
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">
+      {{ stats.total_users or 0 }}
+    </div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Total Users</div>
+  </div>
+  <div class="card text-center py-6">
+    <div class="text-3xl font-bold text-rose-600 dark:text-rose-400">
+      {{ stats.unsubscribed_count or 0 }}
+    </div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Unsubscribed</div>
+  </div>
+</div>
+
+<!-- Welcome Email Stats -->
+<div class="card mb-6">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Welcome Email Series
+  </h2>
+  <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
+    Automated welcome emails sent to subscribers
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="p-4 rounded-lg bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/20 dark:to-cyan-900/20 border border-emerald-200 dark:border-emerald-700">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">1</span>
+        <div>
+          <div class="font-semibold text-slate-900 dark:text-slate-100">Day 0: Welcome</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">Sent immediately</div>
+        </div>
+      </div>
+      <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+        {{ stats.welcome_emails.day0 if stats.welcome_emails else 0 }}
+      </div>
+      <div class="text-xs text-slate-500 dark:text-slate-400">emails sent</div>
+    </div>
+
+    <div class="p-4 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-700">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">2</span>
+        <div>
+          <div class="font-semibold text-slate-900 dark:text-slate-100">Day 3: Tips</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">Plant care tips</div>
+        </div>
+      </div>
+      <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+        {{ stats.welcome_emails.day3 if stats.welcome_emails else 0 }}
+      </div>
+      <div class="text-xs text-slate-500 dark:text-slate-400">emails sent</div>
+    </div>
+
+    <div class="p-4 rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-700">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">3</span>
+        <div>
+          <div class="font-semibold text-slate-900 dark:text-slate-100">Day 7: Features</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">Feature highlights</div>
+        </div>
+      </div>
+      <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">
+        {{ stats.welcome_emails.day7 if stats.welcome_emails else 0 }}
+      </div>
+      <div class="text-xs text-slate-500 dark:text-slate-400">emails sent</div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Activity -->
+<div class="card mb-6">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Recent Activity
+  </h2>
+
+  {% if activity %}
+  <div class="space-y-2">
+    {% for item in activity %}
+    <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50">
+      <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm
+        {% if item.type == 'subscribed' %}
+        bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400
+        {% elif item.type == 'unsubscribed' %}
+        bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400
+        {% else %}
+        bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400
+        {% endif %}
+      ">
+        {% if item.type == 'subscribed' %}+
+        {% elif item.type == 'unsubscribed' %}-
+        {% else %}@
+        {% endif %}
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="text-sm font-medium text-slate-900 dark:text-slate-100 truncate">
+          {{ item.email }}
+        </div>
+        <div class="text-xs text-slate-500 dark:text-slate-400">
+          {% if item.type == 'subscribed' %}
+          Subscribed
+          {% elif item.type == 'unsubscribed' %}
+          Unsubscribed
+          {% else %}
+          {{ item.type | replace('welcome_', '') | replace('_', ' ') | title }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="text-xs text-slate-400 dark:text-slate-500">
+        {{ item.timestamp[:16] | replace('T', ' ') if item.timestamp else '' }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-slate-500 dark:text-slate-400 text-center py-8">
+    No marketing activity yet
+  </p>
+  {% endif %}
+</div>
+
+<!-- Resend Dashboard Link -->
+<div class="card mb-6">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Send Campaigns
+  </h2>
+  <p class="text-slate-600 dark:text-slate-400 mb-4">
+    Use the Resend dashboard to create and send one-time marketing campaigns to your subscribers.
+  </p>
+  <a href="https://resend.com/emails" target="_blank" rel="noopener noreferrer" class="btn btn-primary inline-flex items-center gap-2">
+    Open Resend Dashboard
+    <span aria-hidden="true">-></span>
+  </a>
+</div>
+
+<!-- Back Navigation -->
+<div class="mt-8">
+  <a href="{{ url_for('admin.index') }}" class="btn btn-secondary">
+    &larr; Back to Admin Dashboard
+  </a>
+</div>
+
+{% endblock %}

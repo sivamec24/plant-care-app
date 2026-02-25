@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+
+{% block title %}{{ plant.name }} Care Journal - PlantCareAI{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+{{ breadcrumb([
+  {"label": "Dashboard", "url": url_for('dashboard.index')},
+  {"label": plant.name, "url": url_for('plants.view', plant_id=plant.id)},
+  {"label": "Care Journal"},
+]) }}
+
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="page-title">
+    Care Journal: {{ plant.name }}
+  </h1>
+  {% if plant.species %}
+    <p class="text-lg text-slate-600 dark:text-slate-400 italic">{{ plant.species }}</p>
+  {% endif %}
+</div>
+
+<!-- Stats Summary -->
+{% if stats and stats.total_actions > 0 %}
+<div class="card mb-8">
+  <h2 class="section-title">Care Summary</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">💧</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.watering_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Waterings</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">🌿</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.fertilizing_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Fertilizations</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">🪴</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.repotting_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Repottings</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">✂️</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.pruning_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Prunings</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">🐛</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.pest_count }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Pest Treatments</div>
+    </div>
+    <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+      <div class="text-3xl mb-2">📝</div>
+      <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ stats.total_actions }}</div>
+      <div class="text-xs text-slate-600 dark:text-slate-400">Total Entries</div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Journal Entries -->
+<div class="card mb-8">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <h2 class="section-title !mb-0">Journal Entries</h2>
+    <a href="{{ url_for('journal.add_entry', plant_id=plant.id) }}" class="btn btn-primary">
+      <span aria-hidden="true">📝</span> Log New Activity
+    </a>
+  </div>
+
+  {% if actions %}
+    <div class="space-y-4">
+      {% for action in actions %}
+      <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+        <div class="flex items-start gap-4">
+          <!-- Icon -->
+          <div class="text-3xl flex-shrink-0">
+            {{ action_type_emojis.get(action.action_type, '📝') }}
+          </div>
+
+          <!-- Content -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-3 mb-2">
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                {{ action_type_names.get(action.action_type, action.action_type) }}
+              </h3>
+              {% if action.amount_ml %}
+                <span class="badge-emerald">{{ action.amount_ml }} ml</span>
+              {% endif %}
+            </div>
+
+            {% if action.notes %}
+              <p class="text-sm text-slate-700 dark:text-slate-300 mb-2 whitespace-pre-wrap">{{ action.notes }}</p>
+            {% endif %}
+
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              {{ action.action_at|relative_date }}
+            </p>
+          </div>
+
+          <!-- Photo -->
+          {% if action.photo_url_thumb or action.photo_url %}
+            <img src="{{ action.photo_url_thumb or action.photo_url }}" alt="Care photo" class="w-24 h-24 object-cover rounded-lg flex-shrink-0">
+          {% endif %}
+
+          <!-- Delete Button -->
+          <form method="POST" action="{{ url_for('journal.delete_entry', action_id=action.id) }}" class="flex-shrink-0" data-confirm="Are you sure you want to delete this entry?">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <button type="submit" class="text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors p-2" title="Delete entry">
+              <span aria-hidden="true">🗑️</span>
+            </button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="text-6xl mb-4">📝</div>
+      <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+        No journal entries yet
+      </h3>
+      <p class="text-slate-600 dark:text-slate-400 mb-6">
+        Start tracking your plant care activities to see how {{ plant.name }} is doing over time.
+      </p>
+      <a href="{{ url_for('journal.add_entry', plant_id=plant.id) }}" class="btn btn-primary">
+        <span aria-hidden="true">📝</span> Log First Activity
+      </a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,443 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to PlantCareAI - Getting Started{% endblock %}
+{% block description %}Set up your first plant and start your plant care journey.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<!-- Onboarding Container -->
+<div class="max-w-3xl mx-auto">
+  <!-- Progress Bar -->
+  <div class="mb-8">
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="text-sm font-semibold text-slate-600 dark:text-slate-400">Getting Started</h2>
+      <span class="text-sm text-slate-500 dark:text-slate-400">
+        Step <span id="current-step">1</span> of 4
+      </span>
+    </div>
+    <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+      <div id="progress-bar" class="bg-emerald-500 h-2 rounded-full transition-all duration-300" style="width: 25%"></div>
+    </div>
+  </div>
+
+  <!-- Step 1: Welcome -->
+  <div id="step-1" class="step-content">
+    <div class="card text-center">
+      <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 flex items-center justify-center">
+        <span class="text-5xl" aria-hidden="true">🌱</span>
+      </div>
+
+      <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+        Welcome to PlantCareAI!
+      </h1>
+
+      <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+        Let's set up your first plant together. This will only take a minute, and you'll be ready to:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 text-left">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mb-3">
+            <span class="text-2xl" aria-hidden="true">💧</span>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">Track Care</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Get reminded when to water, fertilize, and more</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center">
+          <div class="w-12 h-12 rounded-full bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center mb-3">
+            <span class="text-2xl" aria-hidden="true">🤖</span>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">Ask AI</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Get personalized plant care advice anytime</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center">
+          <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-3">
+            <span class="text-2xl" aria-hidden="true">📔</span>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">Journal</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Track progress with photos and notes</p>
+        </div>
+      </div>
+
+      <!-- Marketing Opt-in Reminder (for users who didn't opt in at signup) -->
+      {% if config.MARKETING_EMAILS_ENABLED and not marketing_opt_in %}
+      <div class="mt-8 p-4 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl border-2 border-amber-200 dark:border-amber-700">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl flex-shrink-0" aria-hidden="true">📬</span>
+          <div class="flex-1">
+            <p class="font-semibold text-slate-900 dark:text-slate-100 mb-1">
+              Don't let your plants down!
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+              Get timely reminders for seasonal care, expert tips, and new features that help your plants thrive.
+            </p>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                name="onboarding_marketing_opt_in"
+                id="onboarding_marketing_opt_in"
+                class="h-5 w-5 rounded border-slate-300 dark:border-slate-600 text-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                aria-describedby="onboarding-marketing-help"
+              />
+              <span class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                Yes, send me plant care tips & updates
+              </span>
+            </label>
+            <p id="onboarding-marketing-help" class="text-xs text-slate-500 dark:text-slate-400 mt-1 ml-7">
+              Free monthly tips, no spam. Unsubscribe anytime.
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center {% if config.MARKETING_EMAILS_ENABLED and not marketing_opt_in %}mt-6{% endif %}">
+        <button type="button" data-action="next-step" class="btn btn-primary">
+          Get Started <span aria-hidden="true">→</span>
+        </button>
+        <form method="POST" action="{{ url_for('plants.onboarding_skip') }}" class="inline">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <button type="submit" class="btn btn-secondary">Skip for Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Tell Us About You (Preferences) -->
+  <div id="step-2" class="step-content hidden">
+    <div class="card">
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+          Tell Us About You <span class="inline-block" aria-hidden="true">🌿</span>
+        </h1>
+        <p class="text-slate-600 dark:text-slate-400">
+          This helps us personalize your plant care advice. You can skip or update this anytime.
+        </p>
+      </div>
+
+      <form id="preferences-form">
+        <!-- Experience Level -->
+        <div class="mb-6">
+          <label class="label">How would you describe your plant care experience?</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="relative cursor-pointer">
+              <input type="radio" name="experience_level" value="beginner" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🌱</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Beginner</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">New to plant care</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="experience_level" value="intermediate" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🪴</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Intermediate</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Some experience</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="experience_level" value="expert" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🌳</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Expert</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Advanced knowledge</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Primary Goal -->
+        <div class="mb-6">
+          <label class="label">What's your main goal?</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="relative cursor-pointer">
+              <input type="radio" name="primary_goal" value="keep_alive" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">💚</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Keep Plants Alive</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Focus on the basics</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="primary_goal" value="grow_collection" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🌿</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Grow Collection</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Expand my plants</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="primary_goal" value="specific_focus" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🎯</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Specific Focus</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Certain plant types</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Time Commitment -->
+        <div class="mb-6">
+          <label class="label">How much time can you dedicate to plant care?</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="relative cursor-pointer">
+              <input type="radio" name="time_commitment" value="minimal" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">⏱️</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Minimal</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Low-maintenance only</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="time_commitment" value="moderate" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">⏰</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Moderate</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Regular care routine</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="time_commitment" value="dedicated" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🕐</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Dedicated</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Love spending time</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Environment -->
+        <div class="mb-8">
+          <label class="label">Where do you mainly grow plants?</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="relative cursor-pointer">
+              <input type="radio" name="environment_preference" value="indoor" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🏠</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Indoor</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Houseplants</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="environment_preference" value="outdoor" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🌳</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Outdoor</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Garden or patio</p>
+              </div>
+            </label>
+            <label class="relative cursor-pointer">
+              <input type="radio" name="environment_preference" value="both" class="peer sr-only" />
+              <div class="p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 peer-focus-visible:ring-4 peer-focus-visible:ring-emerald-500/50 transition-all hover:border-slate-300 dark:hover:border-slate-600">
+                <div class="text-2xl mb-2 text-center" aria-hidden="true">🌍</div>
+                <div class="font-semibold text-slate-900 dark:text-slate-100 text-center">Both</div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">Indoor and outdoor</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button type="button" data-action="save-preferences" class="btn btn-primary">
+            Continue <span aria-hidden="true">→</span>
+          </button>
+          <button type="button" data-action="skip-preferences" class="btn btn-secondary">
+            Skip for Now
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Step 3: Add Plant Basics -->
+  <div id="step-3" class="step-content hidden">
+    <div class="card">
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+          Tell Us About Your Plant <span class="inline-block" aria-hidden="true">🪴</span>
+        </h1>
+        <p class="text-slate-600 dark:text-slate-400">
+          Just the basics - you can add more details later!
+        </p>
+      </div>
+
+      <form id="onboarding-form" method="POST" action="{{ url_for('plants.onboarding') }}" enctype="multipart/form-data">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="hidden" name="step" value="3" id="form-step"/>
+        <input type="hidden" name="marketing_opt_in" id="marketing_opt_in_hidden" value=""/>
+        <!-- Hidden fields for preferences (populated by JS from step 2) -->
+        <input type="hidden" name="experience_level" id="pref_experience_level" value=""/>
+        <input type="hidden" name="primary_goal" id="pref_primary_goal" value=""/>
+        <input type="hidden" name="time_commitment" id="pref_time_commitment" value=""/>
+        <input type="hidden" name="environment_preference" id="pref_environment_preference" value=""/>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+        <!-- Plant Name (Required) -->
+        <div class="mb-6">
+          <label for="name" class="label label-required">
+            What kind of plant is it?
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="input"
+            required
+            placeholder="e.g., Snake Plant, Pothos, Fiddle Leaf Fig"
+            maxlength="100"
+            aria-describedby="name-help"
+            autocomplete="off"
+            value="{{ request.form.get('name', '') }}"
+          />
+          <p id="name-help" class="help-text">The common or scientific name of your plant</p>
+        </div>
+
+        <!-- Nickname (Optional) -->
+        <div class="mb-6">
+          <label for="nickname" class="label">
+            Give it a nickname <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+          </label>
+          <input
+            type="text"
+            id="nickname"
+            name="nickname"
+            class="input"
+            placeholder="e.g., Planty, Green Friend, Bob"
+            maxlength="50"
+            autocomplete="off"
+            value="{{ request.form.get('nickname', '') }}"
+          />
+          <p class="help-text">Makes it more personal!</p>
+        </div>
+
+        <!-- Location & Light -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+          <div>
+            <label for="location" class="label">
+              Where is it?
+            </label>
+            <select id="location" name="location" class="input">
+              <option value="indoor_potted" {% if request.form.get('location') == 'indoor_potted' %}selected{% endif %}>Indoor (potted)</option>
+              <option value="outdoor_potted" {% if request.form.get('location') == 'outdoor_potted' %}selected{% endif %}>Outdoor (potted)</option>
+              <option value="outdoor_bed" {% if request.form.get('location') == 'outdoor_bed' %}selected{% endif %}>Outdoor (in-ground)</option>
+              <option value="greenhouse" {% if request.form.get('location') == 'greenhouse' %}selected{% endif %}>Greenhouse</option>
+              <option value="office" {% if request.form.get('location') == 'office' %}selected{% endif %}>Office</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="light" class="label">
+              Light level
+            </label>
+            <select id="light" name="light" class="input">
+              <option value="">Not sure yet</option>
+              <option value="low" {% if request.form.get('light') == 'low' %}selected{% endif %}>Low light</option>
+              <option value="medium" {% if request.form.get('light') == 'medium' %}selected{% endif %}>Medium light</option>
+              <option value="bright" {% if request.form.get('light') == 'bright' %}selected{% endif %}>Bright indirect</option>
+              <option value="direct" {% if request.form.get('light') == 'direct' %}selected{% endif %}>Direct sunlight</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Photo (Optional) -->
+        <div class="mb-8">
+          <label for="photo" class="label">
+            Add a photo <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+          </label>
+          <input
+            type="file"
+            id="photo"
+            name="photo"
+            class="input file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 dark:file:bg-emerald-900/30 dark:file:text-emerald-400 dark:hover:file:bg-emerald-900/50 file:cursor-pointer"
+            accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
+          />
+          <p class="help-text">Max 5MB</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button type="button" data-action="submit-continue" class="btn btn-primary">
+            Continue <span aria-hidden="true">→</span>
+          </button>
+          <button type="button" data-action="prev-step" class="btn btn-secondary">
+            <span aria-hidden="true">←</span> Back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Step 4: Set Up First Reminder -->
+  <div id="step-4" class="step-content hidden">
+    <div class="card">
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+          Set Your First Reminder <span class="inline-block" aria-hidden="true">💧</span>
+        </h1>
+        <p class="text-slate-600 dark:text-slate-400">
+          We'll remind you when it's time to water. You can add more reminders later!
+        </p>
+      </div>
+
+      <form id="reminder-form" method="POST" action="{{ url_for('plants.onboarding') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="hidden" name="step" value="4"/>
+
+        <!-- Watering Frequency -->
+        <div class="mb-6">
+          <label for="watering_frequency" class="label label-required">
+            How often should we remind you to water?
+          </label>
+          <select id="watering_frequency" name="watering_frequency" class="input" required>
+            <option value="">Choose a frequency</option>
+            <option value="daily">Every day</option>
+            <option value="every_2_days">Every 2 days</option>
+            <option value="every_3_days">Every 3 days</option>
+            <option value="weekly" selected>Once a week</option>
+            <option value="biweekly">Every 2 weeks</option>
+            <option value="monthly">Once a month</option>
+          </select>
+          <p class="help-text">Don't worry, you can always adjust this later!</p>
+        </div>
+
+        <!-- Skip Reminder Option -->
+        <div class="mb-8 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700">
+          <label class="flex items-start cursor-pointer">
+            <input
+              type="checkbox"
+              name="skip_reminder"
+              id="skip_reminder"
+              class="mt-1 h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-slate-300 rounded"
+            />
+            <span class="ml-3 text-sm text-slate-700 dark:text-slate-300">
+              Skip setting up a reminder for now (I'll add one later)
+            </span>
+          </label>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button type="submit" class="btn btn-primary">
+            <span aria-hidden="true">✓</span> Finish Setup
+          </button>
+          <button type="button" data-action="prev-step" class="btn btn-secondary">
+            <span aria-hidden="true">←</span> Back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/onboarding.js') }}"></script>
+{% endblock %}

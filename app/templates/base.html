@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}PlantCareAI | Smart Plant Assistant for Weather-Aware Watering & Tips | EDH Dev{% endblock %}</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="{% block description %}PlantCareAI helps you keep every plant thriving with AI-powered reminders, weather-aware watering, and personalized care tips. Free to start, built by EDH Dev.{% endblock %}" />
+  <meta name="keywords"
+        content="plant care ai, plant care app, AI plant assistant, smart plant watering, plant reminder app, weather-based plant care, gardening app, houseplant tips">
+  <meta name="author" content="EDH Dev" />
+  <!-- Theme color adapts to light/dark mode -->
+  <meta name="theme-color" content="#10b981" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+
+  <!-- Robots (overridable per page) -->
+  {% block robots %}<meta name="robots" content="index, follow" />{% endblock %}
+
+  <!-- Security Meta Tags -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ APP_URL }}{{ request.path }}" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PlantCareAI.app" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="{{ APP_URL }}{{ request.path }}" />
+  <meta property="og:title" content="{% block og_title %}PlantCareAI 🌿 Your Smart Plant Assistant{% endblock %}" />
+  <meta property="og:description" content="{% block og_description %}Personalized, weather-aware plant care powered by AI. No ads, just greener growth.{% endblock %}" />
+  {% block og_image %}
+  <meta property="og:image" content="{{ url_for('static', filename='images/logos/og-preview.png', _external=True) }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="PlantCareAI - Smart Plant Assistant" />
+  {% endblock %}
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{% block twitter_title %}PlantCareAI – Smart Plant Assistant{% endblock %}" />
+  <meta name="twitter:description" content="{% block twitter_description %}AI-powered plant care reminders and weather-aware guidance.{% endblock %}" />
+  {% block twitter_image %}
+  <meta name="twitter:image" content="{{ url_for('static', filename='images/logos/og-preview.png', _external=True) }}" />
+  <meta name="twitter:image:alt" content="PlantCareAI - Smart Plant Assistant" />
+  {% endblock %}
+
+   <!-- Icons & PWA -->
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/icons/favicon.svg') }}">
+  <link rel="alternate icon" type="image/x-icon" href="{{ url_for('static', filename='images/icons/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/icons/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/icons/favicon-16x16.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/icons/apple-touch-icon.png') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+  <link rel="dns-prefetch" href="//static.cloudflareinsights.com">
+
+  <!-- Google Fonts (preconnect hints above minimize latency) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700;800&display=swap">
+
+  <!-- Tailwind CSS (Horti-Futuristic Design System) -->
+  <link rel="preload" href="{{ url_for('static', filename='css/output.css') }}" as="style">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
+
+  <!-- Theme & timezone configuration for JavaScript (CSP-compliant) -->
+  {% if is_authenticated and profile and profile.theme_preference %}
+  <meta name="x-initial-theme" content="{{ profile.theme_preference }}">
+  {% endif %}
+  <meta name="x-user-timezone" content="{{ g.user_timezone or '' }}">
+
+  <!-- Theme Manager (load early to prevent flash) -->
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+
+  {% block extra_head %}{% endblock %}
+
+  <!-- Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PlantCareAI",
+    "url": "{{ APP_URL }}/",
+    "description": "AI-powered plant care assistant with weather-aware reminders and personalized tips."
+  }
+  </script>
+
+  <!-- BreadcrumbList Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ APP_URL }}/"
+      }{% if request.path != '/' %},
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ self.title() | replace(' | PlantCareAI', '') | replace(' - PlantCareAI', '') | replace(' — PlantCareAI', '') | truncate(60) }}",
+        "item": "{{ APP_URL }}{{ request.path }}"
+      }{% endif %}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PlantCareAI",
+    "applicationCategory": "LifestyleApplication",
+    "applicationSubCategory": "Plant Care",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "AI-powered plant care assistant that provides personalized, weather-aware care reminders and tips for your plants.",
+    "url": "{{ APP_URL }}/",
+    "featureList": [
+      "AI plant care advice powered by GPT-4o-mini",
+      "Weather-aware watering reminders",
+      "Plant health tracking with photo journal",
+      "Automated care schedule with rain detection"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "EDH Dev"
+    }
+  }
+  </script>
+
+  <!-- Web Analytics (Cloudflare) -->
+  {% if CF_BEACON_TOKEN %}
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ CF_BEACON_TOKEN }}"}'></script>
+  {% endif %}
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+  <!-- Skip Link for Accessibility -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-emerald-600 focus:text-white focus:rounded-lg focus:shadow-lg">
+    Skip to main content
+  </a>
+
+  <!-- Site Header -->
+  <header class="relative cosmic-header border-b border-purple-700/30 sticky top-0 z-40 shadow-lg shadow-purple-900/50 overflow-visible backdrop-blur-sm">
+    <div class="container mx-auto px-4 py-3 overflow-visible">
+      <div class="flex items-center justify-between gap-3 overflow-visible">
+        <!-- Logo & Branding -->
+        <div class="flex items-start gap-1 min-w-1">
+          <a href="{{ url_for('web.index') }}" aria-label="PlantCareAI Home Logo" class="flex-shrink-0 hover:bg-purple-900/40 rounded-lg p-0.5 transition-all duration-200 group">
+            <img src="{{ url_for('static', filename='images/illustrations/custom-leaf.svg') }}"
+                 alt=""
+                 aria-hidden="true"
+                 class="h-12 w-12 logo-glow transition-all duration-200" />
+            <span class="sr-only">Home</span>
+          </a>
+          <div class="min-w-0">
+            <a href="{{ url_for('web.index') }}" aria-label="PlantCareAI Home Banner" class="block">
+              <div class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-400 via-lime-300 to-amber-300 bg-clip-text text-transparent drop-shadow-lg">
+                PlantCareAI <span aria-hidden="true" class="hidden sm:inline md:hidden lg:inline whitespace-nowrap">🪴 🌱 🌵</span>
+              </div>
+              <p class="text-xs sm:text-sm text-amber-200/80">{% block subtitle %}Your plants deserve to thrive. <span class="whitespace-nowrap">We'll show you how.</span>{% endblock %}</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="md:hidden p-2 rounded-lg text-slate-100 hover:text-amber-300 hover:bg-purple-900/30 transition-colors"
+                id="mobile-menu-btn"
+                aria-expanded="false"
+                aria-controls="mobile-menu-panel"
+                aria-label="Toggle navigation menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-3 overflow-visible" aria-label="Main navigation">
+          {% if is_authenticated %}
+            <a class="{% if request.endpoint and request.endpoint.startswith('dashboard.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %}"
+               href="{{ url_for('dashboard.index') }}"
+               title="View your plant dashboard with reminders and stats"
+               {% if request.endpoint and request.endpoint.startswith('dashboard.') %}aria-current="page"{% endif %}>Dashboard</a>
+            <a class="{% if request.endpoint == 'web.assistant' %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %}"
+               href="{{ url_for('web.assistant') }}"
+               title="Get AI-powered plant care advice"
+               {% if request.endpoint == 'web.assistant' %}aria-current="page"{% endif %}>Assistant</a>
+            {% if profile and profile.get("is_admin", False) %}
+            <a class="{% if request.endpoint and request.endpoint.startswith('admin.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %}"
+               href="{{ url_for('admin.index') }}"
+               title="Admin dashboard with product metrics"
+               {% if request.endpoint and request.endpoint.startswith('admin.') %}aria-current="page"{% endif %}>Admin</a>
+            {% endif %}
+
+            <!-- User Menu Dropdown -->
+            <div class="relative">
+              <button class="nav-link-cosmic flex items-center gap-1"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      id="user-menu-btn">
+                <span aria-label="Account menu for {{ current_user.email }}">{{ current_user.email|truncate(20) }}</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-1 hidden z-50"
+                   id="user-menu-dropdown"
+                   role="menu"
+                   aria-labelledby="user-menu-btn">
+                <a href="{{ url_for('dashboard.account') }}"
+                   role="menuitem"
+                   class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-emerald-600 dark:hover:text-emerald-400">
+                  Account Settings
+                </a>
+                <a href="{{ url_for('auth.logout') }}"
+                   role="menuitem"
+                   class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-emerald-600 dark:hover:text-emerald-400">
+                  Log Out
+                </a>
+              </div>
+            </div>
+          {% else %}
+            <a class="{% if request.endpoint == 'web.assistant' %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %}"
+               href="{{ url_for('web.assistant') }}"
+               title="Get AI-powered plant care advice"
+               {% if request.endpoint == 'web.assistant' %}aria-current="page"{% endif %}>Assistant</a>
+            <a class="{% if request.endpoint and request.endpoint.startswith('guides.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %}"
+               href="{{ url_for('guides.index') }}"
+               title="Browse plant care guides"
+               {% if request.endpoint and request.endpoint.startswith('guides.') %}aria-current="page"{% endif %}>Guides</a>
+            <a class="{% if request.endpoint and request.endpoint.startswith('pricing.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %}"
+               href="{{ url_for('pricing.index') }}"
+               title="View features and pricing plans"
+               {% if request.endpoint and request.endpoint.startswith('pricing.') %}aria-current="page"{% endif %}>Features</a>
+            <a class="{% if request.endpoint and request.endpoint.startswith('auth.login') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} whitespace-nowrap"
+               href="{{ url_for('auth.login') }}"
+               title="Log in to your account"
+               {% if request.endpoint and request.endpoint.startswith('auth.login') %}aria-current="page"{% endif %}>Log In</a>
+            <a class="btn btn-primary whitespace-nowrap" href="{{ url_for('auth.signup') }}" title="Create a free account">Sign Up Free</a>
+          {% endif %}
+        </nav>
+      </div>
+
+      <!-- Mobile Navigation Panel -->
+      <nav class="hidden md:hidden border-t border-purple-700/30 mt-4 pt-4"
+           id="mobile-menu-panel"
+           aria-label="Mobile navigation">
+        <div class="flex flex-col gap-2">
+          {% if is_authenticated %}
+            <a class="{% if request.endpoint and request.endpoint.startswith('dashboard.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('dashboard.index') }}"
+               {% if request.endpoint and request.endpoint.startswith('dashboard.') %}aria-current="page"{% endif %}>Dashboard</a>
+            <a class="{% if request.endpoint == 'plants.index' %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('plants.index') }}"
+               {% if request.endpoint == 'plants.index' %}aria-current="page"{% endif %}>My Plants</a>
+            <a class="{% if request.endpoint and request.endpoint.startswith('reminders.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('reminders.index') }}"
+               {% if request.endpoint and request.endpoint.startswith('reminders.') %}aria-current="page"{% endif %}>Reminders</a>
+            <a class="{% if request.endpoint == 'web.assistant' %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('web.assistant') }}"
+               {% if request.endpoint == 'web.assistant' %}aria-current="page"{% endif %}>Assistant</a>
+            <a class="{% if request.endpoint and request.endpoint.startswith('guides.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('guides.index') }}"
+               {% if request.endpoint and request.endpoint.startswith('guides.') %}aria-current="page"{% endif %}>Guides</a>
+            {% if profile and profile.get("is_admin", False) %}
+            <a class="{% if request.endpoint and request.endpoint.startswith('admin.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('admin.index') }}"
+               {% if request.endpoint and request.endpoint.startswith('admin.') %}aria-current="page"{% endif %}>Admin Dashboard</a>
+            {% endif %}
+            <div class="border-t border-purple-700/30 my-2"></div>
+            <a class="{% if request.endpoint == 'dashboard.account' %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('dashboard.account') }}"
+               {% if request.endpoint == 'dashboard.account' %}aria-current="page"{% endif %}>Account Settings</a>
+            <a class="nav-link-cosmic py-3"
+               href="{{ url_for('auth.logout') }}">Log Out</a>
+          {% else %}
+            <a class="{% if request.endpoint == 'web.assistant' %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('web.assistant') }}"
+               {% if request.endpoint == 'web.assistant' %}aria-current="page"{% endif %}>Assistant</a>
+            <a class="{% if request.endpoint and request.endpoint.startswith('guides.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('guides.index') }}"
+               {% if request.endpoint and request.endpoint.startswith('guides.') %}aria-current="page"{% endif %}>Guides</a>
+            <a class="{% if request.endpoint and request.endpoint.startswith('pricing.') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('pricing.index') }}"
+               {% if request.endpoint and request.endpoint.startswith('pricing.') %}aria-current="page"{% endif %}>Features</a>
+            <div class="border-t border-purple-700/30 my-2"></div>
+            <a class="{% if request.endpoint and request.endpoint.startswith('auth.login') %}nav-link-cosmic-active{% else %}nav-link-cosmic{% endif %} py-3"
+               href="{{ url_for('auth.login') }}"
+               {% if request.endpoint and request.endpoint.startswith('auth.login') %}aria-current="page"{% endif %}>Log In</a>
+            <a class="btn btn-primary text-center" href="{{ url_for('auth.signup') }}">Sign Up Free</a>
+          {% endif %}
+        </div>
+      </nav>
+
+      {% set show_debug = (config.UI_DEBUG_LINKS or request.args.get('debug') == 'true') %}
+      {% if show_debug %}
+      <!-- Debug Links -->
+        <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-700">
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            <a href="{{ url_for('web.healthz') }}" target="_blank" rel="noopener" class="hover:text-emerald-600 dark:hover:text-emerald-400">Health check</a>
+            <span class="mx-2">·</span>
+            <a href="{{ url_for('web.debug_info') }}" target="_blank" rel="noopener" class="hover:text-emerald-600 dark:hover:text-emerald-400">Debug info</a>
+          </p>
+        </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Flash Messages (WCAG-compliant alerts) -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container mx-auto px-4 py-4">
+        <div role="region" aria-label="Notifications" class="space-y-3">
+          {% for category, message in messages %}
+            <div class="flash-{{ category if category in ('success', 'error', 'warning') else 'info' }}"
+                 role="alert"
+                 aria-live="polite">
+              <span class="flex-1">{{ message }}</span>
+              <button class="flash-dismiss-btn flex-shrink-0 text-2xl leading-none hover:opacity-70 transition-opacity"
+                      aria-label="Dismiss notification"
+                      type="button">
+                &times;
+              </button>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Legal Update Banner (persistent until acknowledged) -->
+  {% if show_legal_banner %}
+  <div class="container mx-auto px-4 pt-4" id="legal-banner-container">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-lg border-2 border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20 text-sm text-slate-700 dark:text-slate-300"
+         role="alert" aria-live="polite">
+      <div class="flex-1">
+        <strong class="text-slate-900 dark:text-slate-100">Updated Terms &amp; Privacy Policy</strong>
+        <span class="hidden sm:inline"> &mdash; </span><br class="sm:hidden">
+        Our <a href="{{ url_for('legal.terms') }}" class="underline font-medium text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300">Terms of Service</a>
+        and <a href="{{ url_for('legal.privacy') }}" class="underline font-medium text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300">Privacy Policy</a>
+        were updated on February 15, 2026. Please review the changes.
+      </div>
+      <button type="button"
+              id="legal-acknowledge-btn"
+              class="btn btn-sm bg-amber-600 hover:bg-amber-700 text-white flex-shrink-0 whitespace-nowrap">
+        I've Reviewed
+      </button>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-8 flex-1">
+    <main id="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Navigation (app-like experience) -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 cosmic-header border-t border-purple-700/30 shadow-lg shadow-purple-900/50 z-40" aria-label="Mobile navigation">
+    <div class="flex justify-around items-center h-16">
+      {% if is_authenticated %}
+        {# Authenticated users: Dashboard, Assistant, Account #}
+        <a href="{{ url_for('dashboard.index') }}"
+           class="relative flex flex-col items-center justify-center flex-1 h-full gap-1 text-sm font-medium transition-all duration-200 {% if request.endpoint and request.endpoint.startswith('dashboard.') and request.endpoint != 'dashboard.account' %}text-amber-300 scale-105{% else %}text-slate-100 hover:text-amber-300 active:scale-95{% endif %}"
+           {% if request.endpoint and request.endpoint.startswith('dashboard.') and request.endpoint != 'dashboard.account' %}aria-current="page"{% endif %}>
+          {% if request.endpoint and request.endpoint.startswith('dashboard.') and request.endpoint != 'dashboard.account' %}<span class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-amber-300 rounded-full"></span>{% endif %}
+          <span class="text-3xl" aria-hidden="true">🏡</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="{{ url_for('web.assistant') }}"
+           class="relative flex flex-col items-center justify-center flex-1 h-full gap-1 text-sm font-medium transition-all duration-200 {% if request.endpoint == 'web.assistant' %}text-amber-300 scale-105{% else %}text-slate-100 hover:text-amber-300 active:scale-95{% endif %}"
+           {% if request.endpoint == 'web.assistant' %}aria-current="page"{% endif %}>
+          {% if request.endpoint == 'web.assistant' %}<span class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-amber-300 rounded-full"></span>{% endif %}
+          <span class="text-3xl" aria-hidden="true">💡</span>
+          <span>Assistant</span>
+        </a>
+        <a href="{{ url_for('dashboard.account') }}"
+           class="relative flex flex-col items-center justify-center flex-1 h-full gap-1 text-sm font-medium transition-all duration-200 {% if request.endpoint == 'dashboard.account' %}text-amber-300 scale-105{% else %}text-slate-100 hover:text-amber-300 active:scale-95{% endif %}"
+           {% if request.endpoint == 'dashboard.account' %}aria-current="page"{% endif %}>
+          {% if request.endpoint == 'dashboard.account' %}<span class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-amber-300 rounded-full"></span>{% endif %}
+          <span class="text-3xl" aria-hidden="true">👤</span>
+          <span>Account</span>
+        </a>
+        {% if profile and profile.get("is_admin", False) %}
+        <a href="{{ url_for('admin.index') }}"
+           class="relative flex flex-col items-center justify-center flex-1 h-full gap-1 text-sm font-medium transition-all duration-200 {% if request.endpoint and request.endpoint.startswith('admin.') %}text-amber-300 scale-105{% else %}text-slate-100 hover:text-amber-300 active:scale-95{% endif %}"
+           {% if request.endpoint and request.endpoint.startswith('admin.') %}aria-current="page"{% endif %}>
+          {% if request.endpoint and request.endpoint.startswith('admin.') %}<span class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-amber-300 rounded-full"></span>{% endif %}
+          <span class="text-2xl" aria-hidden="true">⚙️</span>
+          <span>Admin</span>
+        </a>
+        {% endif %}
+      {% else %}
+        {# Unauthenticated users: Assistant, Guides, Sign Up #}
+        <a href="{{ url_for('web.assistant') }}"
+           class="relative flex flex-col items-center justify-center flex-1 h-full gap-1 text-sm font-medium transition-all duration-200 {% if request.endpoint == 'web.assistant' %}text-amber-300 scale-105{% else %}text-slate-100 hover:text-amber-300 active:scale-95{% endif %}"
+           {% if request.endpoint == 'web.assistant' %}aria-current="page"{% endif %}>
+          {% if request.endpoint == 'web.assistant' %}<span class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-amber-300 rounded-full"></span>{% endif %}
+          <span class="text-3xl" aria-hidden="true">💡</span>
+          <span>Assistant</span>
+        </a>
+        <a href="{{ url_for('guides.index') }}"
+           class="relative flex flex-col items-center justify-center flex-1 h-full gap-1 text-sm font-medium transition-all duration-200 {% if request.endpoint and request.endpoint.startswith('guides.') %}text-amber-300 scale-105{% else %}text-slate-100 hover:text-amber-300 active:scale-95{% endif %}"
+           {% if request.endpoint and request.endpoint.startswith('guides.') %}aria-current="page"{% endif %}>
+          {% if request.endpoint and request.endpoint.startswith('guides.') %}<span class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-amber-300 rounded-full"></span>{% endif %}
+          <span class="text-2xl" aria-hidden="true">📚</span>
+          <span>Guides</span>
+        </a>
+        <a href="{{ url_for('auth.signup') }}"
+           class="relative flex flex-col items-center justify-center flex-1 h-full gap-1 text-sm font-medium transition-all duration-200 {% if request.endpoint and request.endpoint.startswith('auth.signup') %}text-amber-300 scale-105{% else %}text-slate-100 hover:text-amber-300 active:scale-95{% endif %}"
+           {% if request.endpoint and request.endpoint.startswith('auth.signup') %}aria-current="page"{% endif %}>
+          {% if request.endpoint and request.endpoint.startswith('auth.signup') %}<span class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-amber-300 rounded-full"></span>{% endif %}
+          <span class="text-2xl" aria-hidden="true">🌱</span>
+          <span>Sign Up</span>
+        </a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 mt-auto mb-16 md:mb-0">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
+        <!-- Row 1: Topic-grouped navigation -->
+        <nav class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 pb-4 border-b border-slate-200 dark:border-slate-700" aria-label="Footer navigation">
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-xs uppercase tracking-wider">Plant Care</h3>
+            <ul class="space-y-1.5">
+              <li><a href="{{ url_for('seo.watering_hub') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">Watering Guide</a></li>
+              <li><a href="{{ url_for('seo.leaf_problems_hub') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">Leaf Problems Guide</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-xs uppercase tracking-wider">Troubleshoot</h3>
+            <ul class="space-y-1.5">
+              <li><a href="{{ url_for('seo.drooping') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">Drooping Leaves</a></li>
+              <li><a href="{{ url_for('seo.yellow_leaves') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">Yellow Leaves</a></li>
+              <li><a href="{{ url_for('seo.overwatering') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">Overwatering</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2 text-xs uppercase tracking-wider">Resources</h3>
+            <ul class="space-y-1.5">
+              <li><a href="{{ url_for('guides.index') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">Plant Guides</a></li>
+              <li><a href="{{ url_for('web.assistant') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">AI Assistant</a></li>
+              <li><a href="{{ url_for('pricing.index') }}" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">Features & Pricing</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Row 2: Legal, social, and support links -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+          <div class="flex items-center gap-4">
+            <a href="{{ url_for('legal.terms') }}" class="text-slate-600 dark:text-slate-400 underline decoration-slate-400/50 dark:decoration-slate-500/50 underline-offset-2 hover:text-emerald-600 hover:decoration-emerald-600 dark:hover:text-emerald-400 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:text-emerald-600 focus-visible:decoration-emerald-600 dark:focus-visible:text-emerald-400 dark:focus-visible:decoration-emerald-400 transition-colors">Terms</a>
+            <span aria-hidden="true" class="text-slate-400 dark:text-slate-500">•</span>
+            <a href="{{ url_for('legal.privacy') }}" class="text-slate-600 dark:text-slate-400 underline decoration-slate-400/50 dark:decoration-slate-500/50 underline-offset-2 hover:text-emerald-600 hover:decoration-emerald-600 dark:hover:text-emerald-400 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:text-emerald-600 focus-visible:decoration-emerald-600 dark:focus-visible:text-emerald-400 dark:focus-visible:decoration-emerald-400 transition-colors">Privacy</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://www.instagram.com/plantcareai/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-slate-600 dark:text-slate-400 underline decoration-slate-400/50 dark:decoration-slate-500/50 underline-offset-2 hover:text-emerald-600 hover:decoration-emerald-600 dark:hover:text-emerald-400 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:text-emerald-600 focus-visible:decoration-emerald-600 dark:focus-visible:text-emerald-400 dark:focus-visible:decoration-emerald-400 transition-colors"
+               aria-label="PlantCareAI on Instagram">
+              Instagram
+            </a>
+            <span aria-hidden="true" class="text-slate-400 dark:text-slate-500">•</span>
+            <a href="https://www.linkedin.com/company/plantcareai/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-slate-600 dark:text-slate-400 underline decoration-slate-400/50 dark:decoration-slate-500/50 underline-offset-2 hover:text-emerald-600 hover:decoration-emerald-600 dark:hover:text-emerald-400 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:text-emerald-600 focus-visible:decoration-emerald-600 dark:focus-visible:text-emerald-400 dark:focus-visible:decoration-emerald-400 transition-colors"
+               aria-label="PlantCareAI on LinkedIn">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Row 2: Branding -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <!-- Copyright -->
+          <p class="text-center md:text-left">
+            PlantCareAI.app
+            <span aria-label="Copyright">&copy;</span>
+            <span id="copyright-year"></span>
+            by <a href="https://www.ehermance.com" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-600/30 dark:decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-600 dark:hover:decoration-emerald-400 focus-visible:outline-none focus-visible:decoration-emerald-600 dark:focus-visible:decoration-emerald-400">EDH Dev</a>
+            <span class="hidden sm:inline mx-2">—</span>
+            <span class="hidden sm:inline">Built with care</span>
+          </p>
+
+          <!-- Support Link -->
+          <a href="https://buymeacoffee.com/edhdev"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded-lg hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors font-medium"
+             aria-label="Support this project - Buy me a coffee">
+            <span aria-hidden="true">☕</span> Buy Me a Coffee
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Form enhancements: character counters + submit loading state -->
+  <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
+
+  {% block extra_scripts %}{% endblock %}
+
+  <!-- Toast notification system -->
+  <script src="{{ url_for('static', filename='js/toast.js') }}"></script>
+
+  <!-- Timezone conversion for timestamps -->
+  <script src="{{ url_for('static', filename='js/timezone.js') }}"></script>
+
+  <!-- Mobile bottom navigation -->
+  <script src="{{ url_for('static', filename='js/bottom-nav.js') }}"></script>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>

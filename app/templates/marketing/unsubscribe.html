@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Unsubscribe - PlantCareAI{% endblock %}
+{% block description %}Manage your email preferences for PlantCareAI.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto">
+  <div class="card text-center" role="main">
+    {% if success %}
+      <!-- Success State -->
+      <div role="alert" aria-live="polite">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+          <span class="text-4xl" aria-hidden="true">✓</span>
+        </div>
+
+        {% if already_unsubscribed %}
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+            Already Unsubscribed
+          </h1>
+          <p class="text-slate-600 dark:text-slate-400 mb-6">
+            You're not currently subscribed to our marketing emails.
+          </p>
+        {% else %}
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+            You've Been Unsubscribed
+          </h1>
+          <p class="text-slate-600 dark:text-slate-400 mb-6">
+            You won't receive marketing emails from PlantCareAI anymore.
+            We'll still send you important account notifications.
+          </p>
+        {% endif %}
+
+        <div class="pt-6 border-t border-slate-200 dark:border-slate-700">
+          <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
+            Changed your mind? You can update your preferences anytime.
+          </p>
+          {% if is_authenticated %}
+            <a href="{{ url_for('dashboard.account') }}" class="btn btn-primary inline-block">
+              Manage Email Preferences
+            </a>
+          {% else %}
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary inline-block">
+              Log In to Manage Preferences
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+    {% else %}
+      <!-- Error State -->
+      <div role="alert" aria-live="assertive">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
+          <span class="text-4xl" aria-hidden="true">!</span>
+        </div>
+
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+          Couldn't Unsubscribe
+        </h1>
+
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          {{ error or "Something went wrong. Please try again." }}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          {% if is_authenticated %}
+            <a href="{{ url_for('dashboard.account') }}" class="btn btn-primary">
+              Manage Email Preferences
+            </a>
+          {% else %}
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary">
+              Log In to Manage Preferences
+            </a>
+          {% endif %}
+          <a href="{{ url_for('web.index') }}" class="btn btn-secondary">
+            Go to Homepage
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Help Text -->
+  <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
+    Need help? Contact us at
+    <a href="mailto:support@plantcareai.app" class="text-emerald-600 dark:text-emerald-400 hover:underline">
+      support@plantcareai.app
+    </a>
+  </p>
+</div>
+{% endblock %}

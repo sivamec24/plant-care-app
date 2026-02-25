@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}User Detail - Admin{% endblock %}
+{% block description %}View detailed user information.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+    <a href="{{ url_for('admin.index') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">Admin</a>
+    <span>/</span>
+    <a href="{{ url_for('admin.users') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">Users</a>
+    <span>/</span>
+    <span>Detail</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    User Detail
+  </h1>
+</div>
+
+{% if error %}
+<div class="card border-l-4 border-red-500 mb-6">
+  <p class="text-red-700 dark:text-red-400">{{ error }}</p>
+</div>
+{% elif user %}
+
+<!-- User Profile Card -->
+<div class="card mb-6">
+  <div class="flex items-start gap-4">
+    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-2xl">
+      👤
+    </div>
+    <div class="flex-1">
+      <div class="flex items-center gap-2">
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100">{{ user.email }}</h2>
+        {% if user.is_admin %}
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">Admin</span>
+        {% endif %}
+      </div>
+      <p class="text-sm text-slate-500 dark:text-slate-400">ID: {{ user.id }}</p>
+      <div class="mt-2 flex flex-wrap gap-3 text-sm">
+        <span class="text-slate-600 dark:text-slate-400">
+          Signed up: {{ user.created_at[:10] if user.created_at else 'Unknown' }}
+        </span>
+        {% if user.timezone %}
+        <span class="text-slate-600 dark:text-slate-400">
+          Timezone: {{ user.timezone }}
+        </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+  <div class="card text-center py-4">
+    <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ user.plants | length if user.plants else 0 }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Plants</div>
+  </div>
+  <div class="card text-center py-4">
+    <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ user.reminders | length if user.reminders else 0 }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Reminders</div>
+  </div>
+  <div class="card text-center py-4">
+    <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ user.journal_entries | length if user.journal_entries else 0 }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Journal Entries</div>
+  </div>
+  <div class="card text-center py-4">
+    <div class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ user.recent_events | length if user.recent_events else 0 }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Recent Events</div>
+  </div>
+</div>
+
+<!-- Plants Section -->
+{% if user.plants %}
+<div class="card mb-6">
+  <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">Plants</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+    {% for plant in user.plants %}
+    <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+      <div class="font-medium text-slate-900 dark:text-slate-100">{{ plant.name }}</div>
+      <div class="text-sm text-slate-500 dark:text-slate-400">{{ plant.species or 'Unknown species' }}</div>
+      <div class="text-xs text-slate-400 dark:text-slate-500 mt-1">{{ plant.location | replace('_', ' ') | title if plant.location else 'No location' }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Reminders Section -->
+{% if user.reminders %}
+<div class="card mb-6">
+  <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">Reminders</h3>
+  <div class="space-y-2">
+    {% for reminder in user.reminders[:10] %}
+    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+      <div>
+        <div class="font-medium text-slate-900 dark:text-slate-100">{{ reminder.action_type | replace('_', ' ') | title }}</div>
+        <div class="text-sm text-slate-500 dark:text-slate-400">{{ reminder.plant_name or 'Unknown plant' }}</div>
+      </div>
+      <div class="text-right">
+        <div class="text-sm text-slate-600 dark:text-slate-400">
+          {% if reminder.is_active %}
+          <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">Active</span>
+          {% else %}
+          <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400">Inactive</span>
+          {% endif %}
+        </div>
+        <div class="text-xs text-slate-400 dark:text-slate-500 mt-1">{{ reminder.frequency }}</div>
+      </div>
+    </div>
+    {% endfor %}
+    {% if user.reminders | length > 10 %}
+    <p class="text-sm text-slate-500 dark:text-slate-400 text-center mt-2">
+      And {{ user.reminders | length - 10 }} more...
+    </p>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Recent Activity Section -->
+{% if user.recent_events %}
+<div class="card mb-6">
+  <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">Recent Activity</h3>
+  <div class="space-y-2">
+    {% for event in user.recent_events %}
+    <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50">
+      <div class="flex-shrink-0 text-lg">
+        {% if event.event_type == 'plant_added' %}🌱
+        {% elif event.event_type == 'reminder_created' %}⏰
+        {% elif event.event_type == 'reminder_completed' %}✅
+        {% elif event.event_type == 'journal_entry_created' %}📔
+        {% elif event.event_type == 'ai_question_asked' %}🤖
+        {% else %}📌
+        {% endif %}
+      </div>
+      <div class="flex-1">
+        <span class="text-sm text-slate-900 dark:text-slate-100">{{ event.event_type | replace('_', ' ') | title }}</span>
+      </div>
+      <div class="text-xs text-slate-500 dark:text-slate-400">
+        {{ event.created_at[:16] | replace('T', ' ') if event.created_at else '' }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% else %}
+<div class="card">
+  <p class="text-slate-500 dark:text-slate-400 text-center py-8">User not found</p>
+</div>
+{% endif %}
+
+<!-- Back Navigation -->
+<div class="mt-8">
+  <a href="{{ url_for('admin.users') }}" class="btn btn-secondary">
+    &larr; Back to Users
+  </a>
+</div>
+
+{% endblock %}

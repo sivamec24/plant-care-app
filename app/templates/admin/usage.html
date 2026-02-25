@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Feature Usage - Admin{% endblock %}
+{% block description %}View feature usage analytics.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+    <a href="{{ url_for('admin.index') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">Admin</a>
+    <span>/</span>
+    <span>Usage</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Feature Usage
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Analytics for {{ period_start }} to {{ period_end }}
+  </p>
+</div>
+
+{% if error %}
+<div class="card mb-6 border-l-4 border-amber-500">
+  <p class="text-amber-700 dark:text-amber-400">{{ error }}</p>
+</div>
+{% endif %}
+
+<!-- Key Feature Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">🤖</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ ai_questions }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">AI Questions Asked</div>
+  </div>
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">📔</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ journal_entries }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Journal Entries</div>
+  </div>
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">⏰</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ reminders_created }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Reminders Created</div>
+  </div>
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">✅</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ reminders_completed }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Reminders Completed</div>
+  </div>
+</div>
+
+<!-- Event Breakdown Table -->
+<div class="card">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    All Events Breakdown
+  </h2>
+
+  {% if event_counts %}
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead class="bg-slate-50 dark:bg-slate-800/50">
+        <tr>
+          <th class="px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100">Event Type</th>
+          <th class="px-4 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Count</th>
+          <th class="px-4 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Percentage</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+        {% set total_events = event_counts.values() | sum %}
+        {% for event_type, count in event_counts.items() | sort(attribute='1', reverse=true) %}
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30">
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">
+                {% if event_type == 'plant_added' %}🌱
+                {% elif event_type == 'reminder_created' %}⏰
+                {% elif event_type == 'reminder_completed' %}✅
+                {% elif event_type == 'journal_entry_created' %}📔
+                {% elif event_type == 'ai_question_asked' %}🤖
+                {% elif event_type == 'user_signup' %}👤
+                {% elif event_type == 'plant_deleted' %}🗑️
+                {% elif event_type == 'reminder_deleted' %}❌
+                {% else %}📌
+                {% endif %}
+              </span>
+              <span class="text-sm font-medium text-slate-900 dark:text-slate-100">
+                {{ event_type | replace('_', ' ') | title }}
+              </span>
+            </div>
+          </td>
+          <td class="px-4 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">
+            {{ count }}
+          </td>
+          <td class="px-4 py-3 text-right text-sm text-slate-600 dark:text-slate-400">
+            {% if total_events > 0 %}
+            {{ ((count / total_events) * 100) | round(1) }}%
+            {% else %}
+            0%
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot class="bg-slate-50 dark:bg-slate-800/50">
+        <tr>
+          <td class="px-4 py-3 text-sm font-semibold text-slate-900 dark:text-slate-100">Total</td>
+          <td class="px-4 py-3 text-right text-sm font-bold text-slate-900 dark:text-slate-100">{{ total_events }}</td>
+          <td class="px-4 py-3 text-right text-sm text-slate-600 dark:text-slate-400">100%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  {% else %}
+  <p class="text-slate-500 dark:text-slate-400 text-center py-8">
+    No events recorded in this period
+  </p>
+  {% endif %}
+</div>
+
+<!-- Back Navigation -->
+<div class="mt-8">
+  <a href="{{ url_for('admin.index') }}" class="btn btn-secondary">
+    &larr; Back to Admin Dashboard
+  </a>
+</div>
+
+{% endblock %}

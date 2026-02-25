@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | PlantCareAI{% endblock %}
+
+{% block description %}{{ page.meta_description }}{% endblock %}
+
+{% block og_title %}{{ page.title }} | PlantCareAI{% endblock %}
+{% block og_description %}{{ page.meta_description }}{% endblock %}
+
+{% block og_image %}
+<meta property="og:image" content="{{ url_for('static', filename='images/og/hub-' ~ page.slug ~ '.png', _external=True) }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="{{ page.title }} - PlantCareAI" />
+{% endblock %}
+{% block twitter_title %}{{ page.title }}{% endblock %}
+{% block twitter_description %}{{ page.meta_description }}{% endblock %}
+{% block twitter_image %}
+<meta name="twitter:image" content="{{ url_for('static', filename='images/og/hub-' ~ page.slug ~ '.png', _external=True) }}" />
+<meta name="twitter:image:alt" content="{{ page.title }} - PlantCareAI" />
+{% endblock %}
+
+{% block extra_head %}
+<!-- Article Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | tojson }},
+  "description": {{ page.meta_description | tojson }},
+  "author": {
+    "@type": "Organization",
+    "name": "PlantCareAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PlantCareAI"
+  },
+  "image": "{{ url_for('static', filename='images/og/hub-' ~ page.slug ~ '.png', _external=True) }}",
+  "datePublished": "{{ page.last_updated }}T00:00:00+00:00",
+  "dateModified": "{{ page.last_updated }}T00:00:00+00:00"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+{{ breadcrumb([
+  {"label": "Plant Care Guides", "url": url_for('guides.index')},
+  {"label": page.title},
+]) }}
+
+<!-- Header -->
+<header class="mb-10 text-center max-w-3xl mx-auto">
+  <div class="text-6xl mb-4" aria-hidden="true">{{ page.emoji }}</div>
+  <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    {{ page.title }}
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+    {{ page.intro }}
+  </p>
+</header>
+
+{% macro section_id(title) %}{{ title | lower | replace(' ', '-') | replace('&', 'and') | replace(':', '') | replace('.', '') | truncate(40, false, '') }}{% endmacro %}
+
+<!-- Table of Contents -->
+<nav class="max-w-4xl mx-auto mb-8" aria-label="Table of contents">
+  <div class="card">
+    <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wider">In This Guide</h3>
+    <ul class="flex flex-wrap gap-2">
+      {% for section in page.sections %}
+      <li>
+        <a href="#{{ section_id(section.title) }}"
+           class="inline-block px-3 py-1.5 text-sm rounded-lg bg-slate-100 dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-colors">
+          {{ section.title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content Sections -->
+<div class="max-w-4xl mx-auto space-y-8">
+  {% for section in page.sections %}
+  <section class="card scroll-mt-20" id="{{ section_id(section.title) }}">
+    <div class="flex items-start gap-4">
+      <div class="text-3xl flex-shrink-0" aria-hidden="true">{{ section.icon }}</div>
+      <div>
+        <h2 class="section-title">{{ section.title }}</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          {{ section.content }}
+        </p>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+
+  <!-- Related Deep Dives -->
+  {% if spoke_pages %}
+  <section class="card bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/20 dark:to-cyan-900/20 border-2 border-emerald-200 dark:border-emerald-700">
+    <h2 class="section-title">Deep Dive Articles</h2>
+    <p class="text-slate-600 dark:text-slate-400 mb-6">
+      Explore these detailed guides for specific topics covered in this guide:
+    </p>
+    <div class="grid sm:grid-cols-2 gap-4">
+      {% for spoke in spoke_pages %}
+      <a href="{{ url_for('seo.' ~ spoke.route_name) }}"
+         class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors group">
+        <span class="text-2xl" aria-hidden="true">{{ spoke.emoji }}</span>
+        <span class="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
+          {{ spoke.title }}
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+<!-- Bottom CTA -->
+<section class="mt-12 py-10 text-center bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 -mx-4 px-4 rounded-2xl max-w-4xl mx-auto">
+  <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+    Get Personalized Plant Care Advice
+  </h2>
+  <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-xl mx-auto">
+    PlantCareAI uses your location and local weather to give you advice tailored to your exact situation. No signup required to try.
+  </p>
+  <a href="{{ url_for('web.assistant') }}?question={{ page.cta_question | urlencode }}" class="btn btn-primary btn-lg">
+    {{ page.cta_text }} &rarr;
+  </a>
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: plant-care-ai-assistant
+    env: python
+    plan: free
+    buildCommand: |
+      pip install --upgrade pip; pip install -r requirements-lock.txt
+    startCommand: >
+      gunicorn "wsgi:app" -w 2 -k gthread --threads 4 -b 0.0.0.0:$PORT
+      --max-requests 200 --max-requests-jitter 50 --timeout 120
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: APP_CONFIG
+        value: app.config.ProdConfig
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: FLASK_SECRET_KEY
+        sync: false
+      - key: CF_BEACON_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENWEATHER_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RATELIMIT_ENABLED
+        value: "true"
+      - key: RATELIMIT_DEFAULT
+        value: "40 per minute; 2000 per day"
+      - key: RATELIMIT_ASK
+        value: "8 per minute; 1 per 2 seconds; 200 per day"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_REDIRECT_URL
+        sync: false

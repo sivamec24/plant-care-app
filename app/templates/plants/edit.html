@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ plant.name }} - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}Edit {{ plant.name }} details.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Edit {{ plant.name }} <span class="inline-block" aria-hidden="true">✏️</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Update your plant's information
+  </p>
+</div>
+
+<!-- Form -->
+<div class="max-w-2xl">
+  <form method="POST" action="{{ url_for('plants.edit', plant_id=plant.id) }}" enctype="multipart/form-data" class="card">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+    <!-- Plant Name -->
+    <div class="mb-6">
+      <label for="name" class="label label-required">
+        Plant Name
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="input"
+        required
+        value="{{ plant.name }}"
+        placeholder="e.g., Snake Plant, Monstera"
+        maxlength="100"
+        aria-describedby="name-help"
+        autocomplete="off"
+      />
+      <p id="name-help" class="help-text">What kind of plant is this?</p>
+    </div>
+
+    <!-- Nickname -->
+    <div class="mb-6">
+      <label for="nickname" class="label">
+        Nickname <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="text"
+        id="nickname"
+        name="nickname"
+        class="input"
+        value="{{ plant.nickname or '' }}"
+        placeholder="e.g., Planty McPlantface"
+        maxlength="50"
+        aria-describedby="nickname-help"
+        autocomplete="off"
+      />
+      <p id="nickname-help" class="help-text">Give your plant a fun name!</p>
+    </div>
+
+    <!-- Species -->
+    <div class="mb-6">
+      <label for="species" class="label">
+        Species/Variety <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="text"
+        id="species"
+        name="species"
+        class="input"
+        value="{{ plant.species or '' }}"
+        placeholder="e.g., Sansevieria trifasciata"
+        maxlength="100"
+        autocomplete="off"
+      />
+    </div>
+
+    <!-- Location & Light (Two Columns) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+      <!-- Location -->
+      <div>
+        <label for="location" class="label">
+          Where is the plant?
+        </label>
+        <select id="location" name="location" class="input">
+          <option value="">Select location</option>
+          <option value="indoor_potted" {% if plant.location == 'indoor_potted' %}selected{% endif %}>Indoor (potted)</option>
+          <option value="outdoor_potted" {% if plant.location == 'outdoor_potted' %}selected{% endif %}>Outdoor (potted)</option>
+          <option value="outdoor_bed" {% if plant.location == 'outdoor_bed' %}selected{% endif %}>Outdoor (in-ground bed)</option>
+          <option value="greenhouse" {% if plant.location == 'greenhouse' %}selected{% endif %}>Greenhouse</option>
+          <option value="office" {% if plant.location == 'office' %}selected{% endif %}>Office</option>
+        </select>
+      </div>
+
+      <!-- Light Conditions -->
+      <div>
+        <label for="light" class="label">
+          Light Conditions
+        </label>
+        <select id="light" name="light" class="input">
+          <option value="">Select light level</option>
+          <option value="low" {% if plant.light == 'low' %}selected{% endif %}>Low light (north-facing, no direct sun)</option>
+          <option value="medium" {% if plant.light == 'medium' %}selected{% endif %}>Medium light (east/west-facing, some direct sun)</option>
+          <option value="bright" {% if plant.light == 'bright' %}selected{% endif %}>Bright indirect light</option>
+          <option value="direct" {% if plant.light == 'direct' %}selected{% endif %}>Direct sunlight (south-facing)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Care Notes -->
+    <div class="mb-6">
+      <label for="notes" class="label">
+        Care Notes <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <textarea
+        id="notes"
+        name="notes"
+        class="input"
+        rows="4"
+        placeholder="Any special care instructions, watering schedule, or observations..."
+        maxlength="500"
+        autocomplete="off"
+      >{{ plant.notes or '' }}</textarea>
+    </div>
+
+    <!-- Current Photo -->
+    {% if plant.photo_url %}
+    <div class="mb-6">
+      <label class="label">Current Photo</label>
+      <div class="mt-2 w-full max-w-sm rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-700">
+        <img
+          src="{{ plant.photo_url }}"
+          alt="{{ plant.name }}"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+
+      <!-- Delete Photo Checkbox -->
+      <div class="mt-3">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            name="delete_photo"
+            value="true"
+            class="w-4 h-4 text-rose-600 bg-slate-100 border-slate-300 rounded focus:ring-rose-500 focus:ring-2 dark:bg-slate-700 dark:border-slate-600"
+          />
+          <span class="text-sm text-slate-700 dark:text-slate-300">Delete this photo</span>
+        </label>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Photo Upload -->
+    <div class="mb-8">
+      <label for="photo" class="label">
+        {% if plant.photo_url %}Replace Photo{% else %}Add Photo{% endif %} <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        class="input file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 dark:file:bg-emerald-900/30 dark:file:text-emerald-400 dark:hover:file:bg-emerald-900/50 file:cursor-pointer"
+        accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
+        aria-describedby="photo-help"
+      />
+      <p id="photo-help" class="help-text">Max 5MB. Supported: JPG, PNG, GIF, WebP</p>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button type="submit" class="btn btn-primary">
+        <span aria-hidden="true">💾</span> Save Changes
+      </button>
+      <a href="{{ url_for('plants.view', plant_id=plant.id) }}" class="btn btn-secondary">
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

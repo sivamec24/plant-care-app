@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+
+{% block title %}AI Plant Doctor - Free Plant Care Advice | PlantCareAI{% endblock %}
+
+{% block description %}Get instant, expert plant care advice from our AI plant doctor. Weather-aware watering tips, pest identification, and personalized care for any houseplant or garden plant.{% endblock %}
+
+{% block og_title %}AI Plant Doctor - Free Plant Care Advice | PlantCareAI{% endblock %}
+{% block og_description %}Get instant answers to your plant care questions. Our AI plant doctor provides weather-aware advice for watering, pest control, light requirements, and more.{% endblock %}
+
+{% block twitter_title %}AI Plant Doctor - Free Plant Care Advice{% endblock %}
+{% block twitter_description %}Ask our AI plant doctor any question about your plants. Get personalized, weather-aware care advice instantly.{% endblock %}
+
+{% block extra_head %}
+<!-- FAQ Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How often should I water my plants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Watering frequency depends on the plant type, pot size, humidity, and season. Our AI plant doctor considers your local weather conditions to give you personalized recommendations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are my plant's leaves turning yellow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yellow leaves can indicate overwatering, underwatering, nutrient deficiency, or too much direct sunlight. Describe your plant and care routine to our AI for a specific diagnosis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI plant doctor free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You can ask plant care questions for free without creating an account. Sign up free to save your plants and get personalized reminders."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="text-center py-12 md:py-16">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-6xl mb-6" aria-hidden="true">🩺🌿</div>
+    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+      AI Plant Doctor
+    </h1>
+    <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+      Get expert plant care advice instantly. Ask any question about watering, light, pests, or general plant health.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{{ url_for('web.assistant') }}" class="btn btn-primary text-lg px-8 py-3">
+        Ask Your Question
+      </a>
+      <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary text-lg px-8 py-3">
+        Create Free Account
+      </a>
+    </div>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-4">
+      No account required to ask questions
+    </p>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="py-12 md:py-16 bg-white dark:bg-slate-800 -mx-4 px-4 rounded-2xl">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-slate-900 dark:text-slate-100 mb-12">
+      How It Works
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Step 1 -->
+      <div class="text-center">
+        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-3xl" aria-hidden="true">1</span>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+          Describe Your Plant
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400">
+          Tell us what plant you have and your location. We'll factor in your local weather.
+        </p>
+      </div>
+      <!-- Step 2 -->
+      <div class="text-center">
+        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-3xl" aria-hidden="true">2</span>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+          Ask Any Question
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400">
+          Watering schedule? Yellow leaves? Pest problems? Ask anything about plant care.
+        </p>
+      </div>
+      <!-- Step 3 -->
+      <div class="text-center">
+        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-3xl" aria-hidden="true">3</span>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+          Get Personalized Advice
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400">
+          Receive weather-aware, science-based care recommendations tailored to your situation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Example Questions -->
+<section class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-slate-900 dark:text-slate-100 mb-4">
+      See It In Action
+    </h2>
+    <p class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">
+      Here are examples of questions our AI plant doctor can answer:
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Example 1 -->
+      <div class="card bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 border-2 border-emerald-200 dark:border-emerald-700">
+        <div class="flex items-start gap-3 mb-4">
+          <span class="text-2xl" aria-hidden="true">💬</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">Question:</p>
+            <p class="text-slate-700 dark:text-slate-300 italic">"How often should I water my Monstera in winter?"</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl" aria-hidden="true">🤖</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">AI Response:</p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm">
+              In winter, Monsteras enter a dormant period and need less water. Check the soil every 10-14 days and water only when the top 2 inches are dry. With your local humidity at 45%, aim for watering about once every 2 weeks...
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example 2 -->
+      <div class="card bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/10 dark:to-orange-900/10 border-2 border-amber-200 dark:border-amber-700">
+        <div class="flex items-start gap-3 mb-4">
+          <span class="text-2xl" aria-hidden="true">💬</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">Question:</p>
+            <p class="text-slate-700 dark:text-slate-300 italic">"My pothos has brown tips. What's wrong?"</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl" aria-hidden="true">🤖</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">AI Response:</p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm">
+              Brown leaf tips on Pothos usually indicate low humidity, inconsistent watering, or mineral buildup from tap water. Try misting your plant, using filtered water, and ensuring the soil doesn't completely dry out...
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example 3 -->
+      <div class="card bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 border-2 border-purple-200 dark:border-purple-700">
+        <div class="flex items-start gap-3 mb-4">
+          <span class="text-2xl" aria-hidden="true">💬</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">Question:</p>
+            <p class="text-slate-700 dark:text-slate-300 italic">"Is it too cold to leave my succulents outside tonight?"</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl" aria-hidden="true">🤖</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">AI Response:</p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm">
+              Based on tonight's forecast of 38°F in your area, I'd recommend bringing your succulents inside. Most succulents are sensitive to temperatures below 40°F and can suffer frost damage...
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example 4 -->
+      <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 border-2 border-blue-200 dark:border-blue-700">
+        <div class="flex items-start gap-3 mb-4">
+          <span class="text-2xl" aria-hidden="true">💬</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">Question:</p>
+            <p class="text-slate-700 dark:text-slate-300 italic">"What's the best fertilizer for my tomato plants?"</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl" aria-hidden="true">🤖</span>
+          <div>
+            <p class="font-medium text-slate-900 dark:text-slate-100">AI Response:</p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm">
+              Tomatoes are heavy feeders. Use a balanced fertilizer (10-10-10) early in the season, then switch to a higher phosphorus formula (5-10-10) once flowering begins to encourage fruit production...
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Signals -->
+<section class="py-12 md:py-16 bg-white dark:bg-slate-800 -mx-4 px-4 rounded-2xl">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-8">
+      Why Use Our AI Plant Doctor?
+    </h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="p-4">
+        <div class="text-4xl mb-3" aria-hidden="true">🌦️</div>
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">Weather-Aware</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Advice adapts to your local weather conditions</p>
+      </div>
+      <div class="p-4">
+        <div class="text-4xl mb-3" aria-hidden="true">📚</div>
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">Science-Based</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Recommendations grounded in horticultural science</p>
+      </div>
+      <div class="p-4">
+        <div class="text-4xl mb-3" aria-hidden="true">⚡</div>
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">Instant Answers</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Get help in seconds, not hours</p>
+      </div>
+      <div class="p-4">
+        <div class="text-4xl mb-3" aria-hidden="true">🆓</div>
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-1">Free to Use</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400">No account required for basic questions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Plant Guides Section -->
+<section class="py-12 md:py-16">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+      Want Detailed Care Instructions?
+    </h2>
+    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+      Browse our comprehensive plant care guides for step-by-step instructions on watering, light, humidity, and common problems.
+    </p>
+    <a href="{{ url_for('guides.index') }}" class="btn btn-secondary text-lg px-8 py-3">
+      <span aria-hidden="true">📚</span> Browse Plant Care Guides
+    </a>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-12 md:py-16 text-center">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+      Ready to Get Started?
+    </h2>
+    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+      Ask your first question now, or create a free account to save your plants and get personalized care reminders.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{{ url_for('web.assistant') }}" class="btn btn-primary text-lg px-8 py-3">
+        Ask the AI Plant Doctor
+      </a>
+      <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary text-lg px-8 py-3">
+        Sign Up Free
+      </a>
+    </div>
+    <div class="mt-8 text-sm text-slate-500 dark:text-slate-400">
+      <p>Free account includes:</p>
+      <ul class="inline-flex flex-wrap justify-center gap-x-4 gap-y-1 mt-2">
+        <li>Up to 20 plants</li>
+        <li>Smart watering reminders</li>
+        <li>Weather-adjusted care</li>
+        <li>Care history tracking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

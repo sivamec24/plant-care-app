@@ -1,0 +1,42 @@
+# robots.txt for PlantCareAI.app
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Block authenticated/private areas
+Disallow: /admin/
+Disallow: /api/
+
+# Block query parameters that create duplicate content
+Disallow: /*?debug=
+Disallow: /*?next=
+Disallow: /*?plant=
+Disallow: /*?plant_id=
+Disallow: /*?question=
+Disallow: /*?utm_
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Sitemap location
+Sitemap: https://plantcareai.app/sitemap.xml

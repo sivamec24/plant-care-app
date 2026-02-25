@@ -1,0 +1,303 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | PlantCareAI{% endblock %}
+
+{% block description %}{{ page.meta_description }}{% endblock %}
+
+{% block og_title %}{{ page.title }} | PlantCareAI{% endblock %}
+{% block og_description %}{{ page.meta_description }}{% endblock %}
+
+{% block og_image %}
+<meta property="og:image" content="{{ url_for('static', filename='images/og/seo-' ~ page.slug ~ '.png', _external=True) }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="{{ page.title }} - PlantCareAI" />
+{% endblock %}
+{% block twitter_title %}{{ page.title }}{% endblock %}
+{% block twitter_description %}{{ page.meta_description }}{% endblock %}
+{% block twitter_image %}
+<meta name="twitter:image" content="{{ url_for('static', filename='images/og/seo-' ~ page.slug ~ '.png', _external=True) }}" />
+<meta name="twitter:image:alt" content="{{ page.title }} - PlantCareAI" />
+{% endblock %}
+
+{% block extra_head %}
+<!-- Article Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | tojson }},
+  "description": {{ page.meta_description | tojson }},
+  "author": {
+    "@type": "Organization",
+    "name": "PlantCareAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PlantCareAI"
+  },
+  "image": "{{ url_for('static', filename='images/og/seo-' ~ page.slug ~ '.png', _external=True) }}",
+  "datePublished": "{{ page.last_updated }}T00:00:00+00:00",
+  "dateModified": "{{ page.last_updated }}T00:00:00+00:00"
+}
+</script>
+<!-- FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% set all_faqs = [] %}
+    {% for cause in page.causes %}
+      {% set _ = all_faqs.append({"q": cause.title, "a": cause.description}) %}
+    {% endfor %}
+    {% for faq in page.faqs | default([]) %}
+      {% set _ = all_faqs.append({"q": faq.question, "a": faq.answer}) %}
+    {% endfor %}
+    {% for item in all_faqs %}
+    {
+      "@type": "Question",
+      "name": {{ item.q | tojson }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.a | tojson }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+{% from "components/breadcrumb.html" import breadcrumb %}
+{% if parent_hub %}
+{{ breadcrumb([
+  {"label": parent_hub.title, "url": url_for('seo.' ~ parent_hub.route_name)},
+  {"label": page.title},
+]) }}
+{% else %}
+{{ breadcrumb([
+  {"label": "Plant Care Guides", "url": url_for('guides.index')},
+  {"label": page.title},
+]) }}
+{% endif %}
+
+<!-- Header -->
+<header class="mb-8 text-center max-w-3xl mx-auto">
+  <div class="text-6xl mb-4" aria-hidden="true">{{ page.emoji }}</div>
+  <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    {{ page.title }}
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+    {{ page.intro }}
+  </p>
+</header>
+
+<!-- Quick Answer (targets featured snippets) -->
+{% if page.quick_answer %}
+<section class="max-w-3xl mx-auto mb-8" aria-label="Quick answer">
+  <div class="card bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500">
+    <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+      <strong class="text-slate-900 dark:text-slate-100">Quick Answer:</strong>
+      {{ page.quick_answer }}
+    </p>
+  </div>
+</section>
+{% endif %}
+
+<!-- Main Content -->
+<div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <!-- Causes Section -->
+  <div class="lg:col-span-2">
+    <section class="card mb-8">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">
+        {{ page.h2_causes | default('Common Causes') }}
+      </h2>
+      <ol class="space-y-6 list-none pl-0 m-0">
+        {% for cause in page.causes %}
+        <li id="cause-{{ loop.index }}" class="flex items-start gap-4 scroll-mt-20">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-sm" aria-hidden="true">
+            {{ loop.index }}
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 dark:text-slate-100 mb-1">
+              {{ cause.title }}
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+              {{ cause.description }}
+            </p>
+            {% if cause.fix %}
+            <p class="text-slate-700 dark:text-slate-200 leading-relaxed mt-2">
+              <strong class="text-emerald-600 dark:text-emerald-400">How to fix it:</strong>
+              {{ cause.fix }}
+            </p>
+            {% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+
+    <!-- Comparison Table -->
+    {% if page.comparison_table %}
+    <section id="comparison" class="card mb-8 scroll-mt-20">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+        {{ page.comparison_table.title }}
+      </h2>
+      {% if page.comparison_table.intro %}
+      <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+        {{ page.comparison_table.intro }}
+      </p>
+      {% endif %}
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-700">
+              {% for header in page.comparison_table.headers %}
+              <th class="py-3 px-4 font-semibold text-slate-900 dark:text-slate-100">{{ header }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in page.comparison_table.rows %}
+            <tr class="border-b border-slate-100 dark:border-slate-800">
+              {% for cell in row %}
+              <td class="py-3 px-4 text-slate-600 dark:text-slate-400">{{ cell }}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Related Plant Care Guides -->
+    {% if page.related_guides %}
+    <section id="related-guides" class="card mb-8 scroll-mt-20">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+        Plant-Specific Guides
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+        For care advice tailored to your specific plant, check out these guides:
+      </p>
+      <ul class="grid sm:grid-cols-2 gap-2">
+        {% for guide in page.related_guides %}
+        <li>
+          <a href="{{ url_for('guides.view', slug=guide.slug) }}"
+             class="text-emerald-600 dark:text-emerald-400 hover:underline">
+            {{ guide.name }} Care Guide &rarr;
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    <!-- Bottom Line -->
+    <section id="bottom-line" class="card bg-slate-50 dark:bg-slate-800/50 border-l-4 border-emerald-500 scroll-mt-20">
+      <h2 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">
+        {{ page.h2_bottom_line | default('The Bottom Line') }}
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+        {{ page.bottom_line }}
+      </p>
+    </section>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="space-y-6">
+    <!-- Table of Contents -->
+    <nav class="card" aria-label="Table of contents">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-3">
+        On This Page
+      </h3>
+      <ol class="space-y-2 text-sm list-decimal list-inside">
+        {% for cause in page.causes %}
+        <li>
+          <a href="#cause-{{ loop.index }}" class="text-emerald-600 dark:text-emerald-400 hover:underline">
+            {{ cause.title }}
+          </a>
+        </li>
+        {% endfor %}
+        {% if page.comparison_table %}
+        <li>
+          <a href="#comparison" class="text-emerald-600 dark:text-emerald-400 hover:underline">
+            {{ page.comparison_table.title }}
+          </a>
+        </li>
+        {% endif %}
+        {% if page.related_guides %}
+        <li>
+          <a href="#related-guides" class="text-emerald-600 dark:text-emerald-400 hover:underline">
+            Plant-Specific Guides
+          </a>
+        </li>
+        {% endif %}
+        <li>
+          <a href="#bottom-line" class="text-emerald-600 dark:text-emerald-400 hover:underline font-medium">
+            {{ page.h2_bottom_line | default('The Bottom Line') }}
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Primary CTA -->
+    <div class="card bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/20 dark:to-cyan-900/20 border-2 border-emerald-200 dark:border-emerald-700">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">
+        Need personalized help?
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+        PlantCareAI can diagnose your specific situation using your plant type, location, and local weather.
+      </p>
+      <a href="{{ url_for('web.assistant') }}?question={{ page.cta_question | urlencode }}"
+         class="btn btn-primary w-full text-center">
+        {{ page.cta_text }} &rarr;
+      </a>
+    </div>
+
+    <!-- Related Articles -->
+    {% if related_pages %}
+    <div class="card">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">
+        Related Articles
+      </h3>
+      <ul class="space-y-3">
+        {% for related in related_pages %}
+        <li>
+          <a href="{{ url_for('seo.' ~ related.route_name) }}"
+             class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline text-sm">
+            {{ related.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- Quick Tip -->
+    <div class="card">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-3">
+        Quick Tip
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        When diagnosing plant problems, always check the soil moisture first. About 80% of common plant issues are related to watering—either too much or too little.
+      </p>
+    </div>
+  </aside>
+</div>
+
+<!-- Bottom CTA Section -->
+<section class="mt-12 py-10 text-center bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 -mx-4 px-4 rounded-2xl max-w-4xl mx-auto">
+  <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+    Get Personalized Plant Care Advice
+  </h2>
+  <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-xl mx-auto">
+    PlantCareAI uses your location and local weather to give you advice tailored to your exact situation. No signup required to try.
+  </p>
+  <a href="{{ url_for('web.assistant') }}" class="btn btn-primary btn-lg">
+    Try the AI Plant Doctor
+  </a>
+</section>
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Log Care Activity - {{ plant.name }} - PlantCareAI{% endblock %}
+{% block description %}Record care activities for {{ plant.name }}.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    Log Care Activity
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Record care for <strong>{{ plant.name }}</strong>
+  </p>
+</div>
+
+<!-- Form -->
+<div class="max-w-2xl">
+  <form method="POST" action="{{ url_for('journal.add_entry', plant_id=plant.id) }}" enctype="multipart/form-data" class="card">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+    <!-- Action Type -->
+    <div class="mb-6">
+      <label for="action_type" class="label label-required">
+        Activity Type
+      </label>
+      <select
+        id="action_type"
+        name="action_type"
+        class="input"
+        required
+        aria-describedby="action-type-help"
+      >
+        <option value="">Select activity type</option>
+        {% for type_key, type_name in action_types.items() %}
+        <option value="{{ type_key }}">{{ type_name }}</option>
+        {% endfor %}
+      </select>
+      <p id="action-type-help" class="help-text">What did you do for this plant?</p>
+    </div>
+
+    <!-- Amount (for watering/fertilizing) -->
+    <div class="mb-6">
+      <label for="amount_ml" class="label">
+        Amount <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional, in mL)</span>
+      </label>
+      <input
+        type="number"
+        id="amount_ml"
+        name="amount_ml"
+        class="input"
+        min="0"
+        step="50"
+        placeholder="e.g., 500"
+        aria-describedby="amount-help"
+      />
+      <p id="amount-help" class="help-text">For watering or fertilizing, how much did you use?</p>
+    </div>
+
+    <!-- Notes -->
+    <div class="mb-6">
+      <label for="notes" class="label">
+        Notes <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <textarea
+        id="notes"
+        name="notes"
+        class="input"
+        rows="4"
+        placeholder="Any observations, changes, or details about this activity..."
+        maxlength="500"
+        aria-describedby="notes-help"
+        autocomplete="off"
+      ></textarea>
+      <p id="notes-help" class="help-text">Record any observations or special notes.</p>
+    </div>
+
+    <!-- Photo Upload -->
+    <div class="mb-8">
+      <label for="photo" class="label">
+        Add Photo <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span>
+      </label>
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        class="input file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 dark:file:bg-emerald-900/30 dark:file:text-emerald-400 dark:hover:file:bg-emerald-900/50 file:cursor-pointer"
+        accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
+        aria-describedby="photo-help"
+      />
+      <p id="photo-help" class="help-text">Max 5MB. Supported: JPG, PNG, GIF, WebP</p>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button type="submit" class="btn btn-primary">
+        <span aria-hidden="true">✓</span> Log Activity
+      </button>
+      <a href="{{ url_for('plants.view', plant_id=plant.id) }}" class="btn btn-secondary">
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

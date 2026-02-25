@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Code - Plant Care AI Assistant - PlantCareAI{% endblock %}
+{% block description %}Enter your verification code to sign in.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto">
+  <!-- Verify OTP Card -->
+  <section class="card mb-8" aria-labelledby="verify-title">
+    <div class="text-center mb-6">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 flex items-center justify-center">
+        <span class="text-3xl" aria-hidden="true">📧</span>
+      </div>
+
+      <h1 id="verify-title" class="page-title">
+        Check Your Email
+      </h1>
+
+      <p class="text-slate-600 dark:text-slate-400 mb-2">
+        We've sent a 6-digit verification code to:
+      </p>
+      <p class="font-semibold text-slate-900 dark:text-slate-100 mb-4">
+        {{ email }}
+      </p>
+      <div class="p-3 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-700 rounded-lg mb-4">
+        <p class="text-sm text-emerald-800 dark:text-emerald-200 font-semibold">
+          ⏱️ Code expires in 15 minutes
+        </p>
+        <p class="text-xs text-emerald-700 dark:text-emerald-300 mt-1">
+          You have plenty of time to check your email and enter the code. If it's in spam, you can still use it.
+        </p>
+      </div>
+    </div>
+
+    <!-- OTP Verification Form -->
+    <form method="POST" action="{{ url_for('auth.verify_otp') }}" novalidate>
+      <!-- CSRF Protection -->
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+      <div class="mb-6">
+        <label for="code" class="label label-required">
+          Verification Code
+        </label>
+        <input
+          type="text"
+          id="code"
+          name="code"
+          class="input text-center text-2xl tracking-widest font-mono"
+          required
+          autocomplete="one-time-code"
+          inputmode="numeric"
+          pattern="[0-9]{6}"
+          maxlength="6"
+          aria-required="true"
+          aria-describedby="code-help"
+          placeholder="000000"
+          autofocus
+        />
+        <p id="code-help" class="help-text">
+          Enter the 6-digit code from your email
+        </p>
+      </div>
+
+      <button type="submit" id="verify-btn" class="btn btn-primary w-full">
+        <span id="verify-icon" aria-hidden="true">✓</span>
+        <span id="verify-text">Verify Code</span>
+        <span id="verify-loading" class="hidden">Verifying...</span>
+      </button>
+    </form>
+
+    <!-- Resend Link -->
+    <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700 text-center">
+      <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+        Didn't receive the code?
+      </p>
+      <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary">
+        <span aria-hidden="true">↻</span> Request New Code
+      </a>
+    </div>
+  </section>
+
+  <!-- Help Section -->
+  <section class="card border-2 border-slate-200 dark:border-slate-700" aria-labelledby="help-title">
+    <h3 id="help-title" class="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
+      <span aria-hidden="true">💡</span> Tips
+    </h3>
+    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-hidden="true">•</span>
+        <span>Check your spam folder if you don't see the email</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-hidden="true">•</span>
+        <span>The code expires after 15 minutes for security</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" aria-hidden="true">•</span>
+        <span>You can request a new code if needed</span>
+      </li>
+    </ul>
+  </section>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/verify-otp.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Authenticating... - Plant Care AI Assistant - PlantCareAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  <style>
+    /* Ensure full height layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 min-h-screen flex items-center justify-center">
+  <div class="text-center p-8" role="status" aria-live="polite">
+    <!-- Spinner -->
+    <div class="inline-block w-20 h-20 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mb-6" aria-hidden="true"></div>
+
+    <!-- Title -->
+    <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">Signing you in...</h1>
+
+    <!-- Status Message -->
+    <p id="status-message" class="text-lg text-slate-600 dark:text-slate-400 mb-2">
+      Please wait while we authenticate your account.
+    </p>
+
+    <!-- Loading Phrase -->
+    <p id="loading-phrase" class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+      Planting seeds...
+    </p>
+  </div>
+
+  <!-- External JavaScript (CSP compliant) -->
+  <script src="{{ url_for('static', filename='js/auth-callback.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,1698 @@
+[
+  {
+    "slug": "monstera-deliciosa",
+    "last_updated": "2026-02-23",
+    "name": "Monstera Deliciosa",
+    "scientific_name": "Monstera deliciosa",
+    "emoji": "🌿",
+    "summary": "The Swiss Cheese Plant is beloved for its dramatic, fenestrated leaves. Native to the tropical rainforests of southern Mexico and Central America, Monstera deliciosa is an easy-care climbing aroid that thrives indoors. Its iconic split leaves have made it one of the most popular houseplants worldwide.",
+    "meta_description": "Complete Monstera Deliciosa care guide. Learn watering, light requirements, humidity needs, propagation methods, popular varieties, and how to encourage fenestration in your Swiss Cheese Plant.",
+    "light": "Bright indirect",
+    "water": "Weekly",
+    "humidity_level": "Medium-High",
+    "difficulty": "Easy",
+    "watering": "Water your Monstera when the top 2 inches of soil feel dry — push your finger in to check. In spring and summer, this is typically once a week. Reduce to every 10-14 days in winter when growth slows. Monsteras prefer consistent moisture but will suffer from overwatering, so ensure your pot has drainage holes and never let the plant sit in standing water. When you water, soak thoroughly until water runs from the drainage holes, then let the excess drain completely. If you notice yellowing lower leaves, you may be watering too frequently. Conversely, curling or drooping leaves often signal it's time to water. Using room-temperature filtered water is ideal, as Monsteras can be sensitive to chlorine and fluoride in tap water.",
+    "light_details": "Monsteras thrive in bright, indirect light — the kind you'd find a few feet from an east- or north-facing window. They can tolerate medium light but will grow slower and produce smaller leaves with fewer fenestrations. Avoid direct sunlight, especially harsh afternoon sun, which can scorch the leaves and cause brown patches. If your Monstera is producing solid leaves without splits, it likely needs more light. Fenestrations (the iconic holes and splits) develop as the plant matures and receives adequate brightness. Aim for 6 or more hours of bright indirect light daily for the best growth. In darker rooms, consider supplementing with a grow light. Rotate your plant quarterly to promote even, balanced growth on all sides.",
+    "humidity": "As tropical understory plants, Monsteras prefer humidity levels of 60% or higher. They'll adapt to average home humidity (40-50%) but will truly thrive with a humidifier nearby or regular misting. Brown, crispy leaf edges are a telltale sign of low humidity. Grouping your Monstera with other tropical plants can create a beneficial microclimate of higher humidity. Pebble trays filled with water beneath the pot also help. Keep temperatures between 65-85°F (18-29°C) and avoid cold drafts from windows, doors, or air conditioning vents. Monsteras stop growing below 55°F and can suffer cold damage if exposed to temperatures below 50°F for extended periods.",
+    "fertilizing": "Feed monthly during the growing season (spring through fall) with a balanced liquid fertilizer diluted to half strength. A 20-20-20 or 10-10-10 formula works well. Skip fertilizing in winter when growth naturally slows — feeding a dormant plant can lead to salt buildup in the soil. Over-fertilizing causes brown leaf tips and can damage roots. If you notice white crusty deposits on the soil surface, flush the pot thoroughly with plain water to remove accumulated salts. For a more organic approach, worm castings or fish emulsion are gentle alternatives that won't burn roots. Always water before fertilizing to protect roots from concentrated nutrients.",
+    "common_problems": [
+      "Yellow leaves: Usually overwatering. Let soil dry more between waterings.",
+      "Brown leaf tips: Low humidity or inconsistent watering.",
+      "No fenestrations: Young plants and low light both cause solid leaves. Be patient and provide bright indirect light.",
+      "Leggy growth: Not enough light. Move closer to a window.",
+      "Brown spots: Could be sunburn (direct light) or bacterial infection (overwatering)."
+    ],
+    "quick_tips": [
+      "Provide a moss pole or trellis — aerial roots will attach and support larger leaf growth",
+      "Clean leaves monthly with a damp cloth to remove dust and improve photosynthesis",
+      "Rotate plant quarterly for even growth on all sides",
+      "Propagate easily from stem cuttings with at least one node and aerial root",
+      "Repot in spring when roots circle the bottom or emerge from drainage holes"
+    ],
+    "howto": {
+      "totalTime": "PT15M",
+      "supplies": ["Well-draining potting mix", "Moss pole or trellis", "Balanced liquid fertilizer"],
+      "tools": ["Watering can", "Spray bottle for misting", "Clean cloth for leaf wiping"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When top 2\u2033 dry", "frequency": "Weekly (summer), every 10-14 days (winter)"},
+      {"aspect": "Light", "requirement": "Bright indirect", "frequency": "6+ hours daily"},
+      {"aspect": "Humidity", "requirement": "60%+ ideal", "frequency": "Mist 2-3 times weekly if dry"},
+      {"aspect": "Fertilizing", "requirement": "Balanced liquid, half strength", "frequency": "Monthly (spring-fall)"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 1-2 years"}
+    ],
+    "propagation": {
+      "intro": "Monstera Deliciosa is one of the easiest tropical houseplants to propagate. The most reliable method is stem cuttings taken just below a node — the bumpy ring on the stem where aerial roots and new leaves emerge. Spring and early summer are the best times to propagate, when the plant is actively growing and will recover quickly from cuttings.",
+      "methods": [
+        {
+          "name": "Stem Cutting in Water",
+          "steps": [
+            "Identify a healthy stem with at least one node and one leaf — an aerial root at the node is a bonus.",
+            "Cut 1-2 inches below the node using clean, sharp shears.",
+            "Place the cutting in a jar of room-temperature water so the node is submerged but leaves stay above water.",
+            "Change the water every 3-5 days to prevent bacteria buildup.",
+            "Wait for roots to grow 2-3 inches long (usually 2-4 weeks), then pot in well-draining soil."
+          ]
+        },
+        {
+          "name": "Stem Cutting in Soil",
+          "steps": [
+            "Take a cutting with at least one node and aerial root.",
+            "Let the cut end callous for a few hours.",
+            "Dip the cut end in rooting hormone (optional but speeds the process).",
+            "Plant the cutting in moist, well-draining potting mix with the node buried.",
+            "Keep the soil consistently moist and in bright indirect light. Roots develop in 3-6 weeks."
+          ]
+        },
+        {
+          "name": "Air Layering",
+          "steps": [
+            "Choose a node on the mother plant with an aerial root.",
+            "Wrap the node and aerial root in damp sphagnum moss, secured with plastic wrap.",
+            "Keep the moss moist by spraying water through a small opening.",
+            "After 4-6 weeks, roots will grow through the moss. Cut below the rooted section and pot it up."
+          ]
+        }
+      ],
+      "best_time": "Spring and early summer",
+      "difficulty": "Easy"
+    },
+    "varieties": [
+      {
+        "name": "Monstera Deliciosa (Standard)",
+        "also_known_as": "Swiss Cheese Plant",
+        "description": "The classic variety with large, deeply fenestrated leaves that can grow over 2 feet wide in ideal conditions. Mature plants may produce edible fruit that tastes like a blend of pineapple and banana.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect",
+        "special_note": "Leaves develop more fenestrations with age and adequate light."
+      },
+      {
+        "name": "Monstera Adansonii",
+        "also_known_as": "Swiss Cheese Vine",
+        "description": "A smaller, vining species with delicate, heavily perforated leaves. Grows faster than Deliciosa and is perfect for hanging baskets or trailing along shelves. Leaves stay under 12 inches.",
+        "difficulty": "Easy",
+        "light_needs": "Medium to bright indirect",
+        "special_note": "More tolerant of lower light than Deliciosa."
+      },
+      {
+        "name": "Monstera Thai Constellation",
+        "also_known_as": null,
+        "description": "A stunning variegated cultivar with creamy white and green marbled leaves. Each leaf has a unique pattern of speckles and sectors. Grows slower than the standard variety due to reduced chlorophyll.",
+        "difficulty": "Moderate",
+        "light_needs": "Bright indirect",
+        "special_note": "Stable variegation — won't revert to solid green unlike Albo."
+      },
+      {
+        "name": "Monstera Albo Borsigiana",
+        "also_known_as": "Monstera Albo",
+        "description": "A highly sought-after variegated form with bold white sectors and half-moon patterns on its leaves. More compact growth habit than standard Deliciosa. Variegation is unstable and can revert.",
+        "difficulty": "Moderate",
+        "light_needs": "Bright indirect",
+        "special_note": "Prune reverted all-green stems to maintain variegation."
+      }
+    ],
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume regular weekly watering",
+          "Begin monthly fertilizing",
+          "Repot if root-bound",
+          "Take stem cuttings for propagation"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water weekly, more often in heat",
+          "Continue monthly fertilizing",
+          "Mist regularly or run humidifier",
+          "Watch for pests (spider mites, thrips)"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Gradually reduce watering frequency",
+          "Give last fertilizer dose in early fall",
+          "Move away from cold drafty windows",
+          "Clean leaves before shorter days"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water every 10-14 days",
+          "Stop fertilizing completely",
+          "Increase humidity near heating vents",
+          "Rotate for even light exposure"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Yellow leaves",
+        "causes": "The most common cause is overwatering. When roots sit in soggy soil, they can't absorb oxygen and begin to rot, causing leaves to turn yellow starting from the bottom. Less commonly, yellow leaves can indicate underwatering, nutrient deficiency, or natural aging of lower leaves.",
+        "fix": "Check the soil moisture before watering — it should be dry 2 inches down. Ensure your pot has drainage holes and you're emptying the saucer after watering. If multiple leaves are yellowing rapidly, unpot and check for mushy, brown roots (root rot). Trim affected roots and repot in fresh, well-draining mix.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-yellow",
+        "landing_page_title": "Why Are My Plant Leaves Turning Yellow?"
+      },
+      {
+        "symptom": "Brown leaf tips or edges",
+        "causes": "Brown, crispy edges are almost always a humidity issue. Monsteras are tropical plants that prefer 60%+ humidity. Low humidity, inconsistent watering, or mineral buildup from tap water can all cause browning at the leaf margins.",
+        "fix": "Increase humidity with a humidifier, pebble tray, or by grouping plants together. Water consistently before the soil dries out completely. If you suspect mineral buildup, switch to filtered water and flush the soil monthly with plain water.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "No fenestrations (holes or splits)",
+        "causes": "Fenestrations develop as Monstera matures — most plants need to be at least 2-3 years old. Insufficient light is the other major factor. In low light, even mature plants produce smaller, solid leaves without the characteristic splits.",
+        "fix": "Be patient with young plants. Move your Monstera to a brighter spot with 6+ hours of indirect light. A moss pole encourages the plant to produce larger, more fenestrated leaves by mimicking its natural climbing habit. Adequate fertilizing during the growing season also helps.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      },
+      {
+        "symptom": "Drooping or wilting leaves",
+        "causes": "Drooping can signal either underwatering or overwatering. When underwatered, leaves droop because cells lose turgor pressure. When overwatered, damaged roots can't transport water to leaves, causing a similar wilt despite wet soil.",
+        "fix": "Check the soil. If it's dry, water thoroughly and the plant should perk up within hours. If the soil is wet and the plant is drooping, you likely have root rot. Stop watering, let the soil dry, and inspect the roots. Trim any mushy roots and repot in fresh soil.",
+        "landing_page_slug": "why-are-my-plant-leaves-drooping",
+        "landing_page_title": "Why Are My Plant Leaves Drooping?"
+      },
+      {
+        "symptom": "Brown spots on leaves",
+        "causes": "Brown spots have several possible causes. Sunburn from direct light creates dry, bleached patches. Bacterial leaf spot from overwatering produces dark brown spots with yellow halos. Fungal issues cause spreading brown patches, often starting at leaf edges.",
+        "fix": "Move the plant out of direct sun. For bacterial spots, remove affected leaves, improve air circulation, and reduce watering. Avoid getting water on the leaves. If the problem spreads, treat with a copper-based fungicide.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      }
+    ]
+  },
+  {
+    "slug": "pothos",
+    "last_updated": "2026-02-23",
+    "name": "Pothos",
+    "scientific_name": "Epipremnum aureum",
+    "emoji": "💚",
+    "summary": "Often called Devil's Ivy for its near-indestructible nature, Pothos is one of the most forgiving houseplants available. Its trailing vines and heart-shaped leaves make it perfect for beginners and experienced plant parents alike. With dozens of stunning varieties and a tolerance for neglect, it's the plant that started many a houseplant obsession.",
+    "meta_description": "Complete Pothos care guide. Learn how to water, propagate, and care for Devil's Ivy. Tips for golden, marble queen, neon, and other popular pothos varieties.",
+    "light": "Low to bright indirect",
+    "water": "Weekly",
+    "humidity_level": "Low-Medium",
+    "difficulty": "Very Easy",
+    "watering": "Water when the top inch of soil is dry — simply push your finger into the soil to check. Pothos is drought-tolerant and would rather be slightly underwatered than overwatered. Drooping leaves that perk up after watering is completely normal — it's the plant's built-in watering reminder. In spring and summer, you'll typically water once a week. In winter, stretch to every 10-14 days as growth slows. Always water thoroughly until it drains from the bottom, then discard excess water from the saucer. Pothos in hanging baskets or small pots may dry out faster and need more frequent watering. If the leaves feel thin and floppy rather than firm and waxy, the plant is thirsty.",
+    "light_details": "Pothos is incredibly adaptable and survives in a wider range of light conditions than almost any other houseplant. It can handle low light (an office with fluorescent lighting), but it grows noticeably faster and produces larger leaves in bright indirect light. Direct sun will scorch the leaves, causing bleached or brown patches. Variegated varieties like Marble Queen and N'Joy need brighter light to maintain their white patterns — in low light, they'll gradually revert to solid green as the plant prioritizes chlorophyll production. Neon Pothos, on the other hand, keeps its bright chartreuse color in moderate light. If your Pothos is producing small, widely-spaced leaves on long bare stems, it's stretching toward light and would benefit from a brighter spot.",
+    "humidity": "Pothos tolerates average home humidity (30-50%) remarkably well, making it ideal for offices, kitchens, and even bathrooms. While it appreciates higher humidity and will reward you with larger, glossier leaves, it's not required for healthy growth. This adaptability is one reason Pothos thrives in environments that would stress more tropical plants. Keep temperatures between 60-85°F (15-29°C). Avoid cold drafts from windows and doors, and never expose Pothos to temperatures below 50°F. The plant stops growing below 55°F and can suffer cold damage that shows as blackened, wilted leaves.",
+    "fertilizing": "Feed monthly during spring and summer with a balanced liquid fertilizer diluted to half strength. Pothos isn't a heavy feeder, and over-fertilizing is worse than under-fertilizing — it causes brown leaf tips and salt buildup in the soil. No fertilizer is needed in fall and winter when growth naturally slows. If you notice white crusty deposits on the soil surface, flush the pot with plain water several times to wash away accumulated mineral salts. For a low-maintenance approach, slow-release fertilizer granules applied once in spring can replace monthly liquid feeding.",
+    "common_problems": [
+      "Yellow leaves: Usually overwatering. Check that soil is drying between waterings.",
+      "Brown tips: Underwatering, low humidity, or salt buildup from tap water.",
+      "Loss of variegation: Not enough light. Move to brighter location.",
+      "Leggy vines with few leaves: Needs more light or hasn't been pruned recently.",
+      "Root rot: Caused by overwatering or poor drainage. Repot in fresh soil if caught early."
+    ],
+    "quick_tips": [
+      "Prune regularly to encourage bushier, fuller growth — cuttings root easily",
+      "Root cuttings in water on a windowsill for a simple propagation project",
+      "NASA-studied air purifier that filters formaldehyde and benzene",
+      "Toxic to cats and dogs — keep trailing vines out of reach or choose pet-safe Peperomia instead",
+      "Train vines up a moss pole for larger leaves or let them cascade from a high shelf"
+    ],
+    "howto": {
+      "totalTime": "PT10M",
+      "supplies": ["Well-draining potting mix", "Balanced liquid fertilizer"],
+      "tools": ["Watering can", "Pruning shears"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When top 1\u2033 dry", "frequency": "Weekly"},
+      {"aspect": "Light", "requirement": "Low to bright indirect", "frequency": "Adapts to any"},
+      {"aspect": "Humidity", "requirement": "Average home humidity", "frequency": "No misting needed"},
+      {"aspect": "Fertilizing", "requirement": "Balanced liquid, half strength", "frequency": "Monthly (spring-summer)"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 1-2 years"}
+    ],
+    "propagation": {
+      "intro": "Pothos is one of the easiest houseplants to propagate, making it a perfect starter project. Each vine has nodes — small brown bumps opposite each leaf — and that's where new roots will emerge. You can root cuttings in water or soil with near-100% success rates during the growing season.",
+      "methods": [
+        {
+          "name": "Water Propagation",
+          "steps": [
+            "Cut a vine segment with 4-6 inches of stem and at least 2-3 nodes. Cut just below a node.",
+            "Remove the bottom 1-2 leaves so nodes will be submerged.",
+            "Place the cutting in a jar of room-temperature water with nodes below the waterline.",
+            "Set in bright indirect light and change water every 4-5 days.",
+            "Roots appear in 1-2 weeks. Pot in soil once roots are 2-3 inches long."
+          ]
+        },
+        {
+          "name": "Soil Propagation",
+          "steps": [
+            "Take a cutting with at least 2 nodes, removing lower leaves.",
+            "Optionally dip the cut end in rooting hormone.",
+            "Plant directly in moist, well-draining potting mix with nodes buried.",
+            "Keep soil consistently moist (not soggy) for the first 2-3 weeks.",
+            "Tug gently after 3-4 weeks — resistance means roots have formed."
+          ]
+        }
+      ],
+      "best_time": "Spring through summer",
+      "difficulty": "Easy"
+    },
+    "varieties": [
+      {
+        "name": "Golden Pothos",
+        "also_known_as": "Devil's Ivy",
+        "description": "The classic variety with green heart-shaped leaves splashed with golden-yellow variegation. Extremely hardy and fast-growing, it's the most commonly found Pothos and the one most often recommended for beginners.",
+        "difficulty": "Very Easy",
+        "light_needs": "Low to bright indirect",
+        "special_note": "More golden color in brighter light; reverts to green in low light."
+      },
+      {
+        "name": "Marble Queen Pothos",
+        "also_known_as": null,
+        "description": "Stunning white and green marbled foliage that looks like each leaf was hand-painted. Grows slower than Golden Pothos due to less chlorophyll in the heavily variegated leaves.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect",
+        "special_note": "Needs good light to maintain variegation — reverts to green in low light."
+      },
+      {
+        "name": "Neon Pothos",
+        "also_known_as": null,
+        "description": "Solid chartreuse-lime leaves that almost seem to glow. No variegation pattern — the entire leaf is a vibrant neon green-yellow. Equally hardy as Golden Pothos but with a completely different aesthetic.",
+        "difficulty": "Very Easy",
+        "light_needs": "Medium to bright indirect",
+        "special_note": "Color stays vibrant even in moderate light, unlike variegated types."
+      },
+      {
+        "name": "Manjula Pothos",
+        "also_known_as": null,
+        "description": "A patented variety with wider, rounder leaves featuring cream, white, silver, and green variegation. Leaves have wavy edges and a more compact growth habit than trailing varieties.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect",
+        "special_note": "Slower growing but more compact — great for tabletops and shelves."
+      }
+    ],
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume regular weekly watering",
+          "Begin monthly fertilizing at half strength",
+          "Prune leggy vines to encourage bushier growth",
+          "Take cuttings for propagation"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water when top inch of soil dries",
+          "Continue monthly fertilizing",
+          "Check for mealybugs and spider mites",
+          "Train vines or trim to desired shape"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering as growth slows",
+          "Stop fertilizing by late fall",
+          "Move away from cold windows",
+          "Check for pests before heating season"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water every 10-14 days",
+          "No fertilizer needed",
+          "Keep away from heating vents and cold drafts",
+          "Wipe leaves to maximize light absorption"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Yellow leaves",
+        "causes": "The most common cause is overwatering. When roots sit in consistently wet soil, they suffocate and begin to rot, sending stress signals that turn leaves yellow. Underwatering can also cause yellowing, but the leaves will feel thin and papery rather than soft and mushy. Natural aging of the oldest leaves (closest to the soil) is normal.",
+        "fix": "Let the soil dry out between waterings — the top inch should feel dry before you water again. Ensure your pot has drainage holes. If multiple leaves are yellowing at once, check the roots for rot (mushy, brown roots). Trim affected roots and repot in fresh soil. Remove individual yellow leaves, as they won't recover.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-yellow",
+        "landing_page_title": "Why Are My Plant Leaves Turning Yellow?"
+      },
+      {
+        "symptom": "Brown, crispy leaf tips",
+        "causes": "Brown tips on Pothos are typically caused by underwatering, low humidity, or mineral buildup from tap water. Fluoride and chlorine in municipal water can accumulate in leaf tips over time. Over-fertilizing also causes salt burns that appear as brown edges.",
+        "fix": "Water more consistently, ensuring you soak thoroughly each time. Switch to filtered or distilled water if you suspect mineral sensitivity. Flush the soil monthly with plain water to clear salt buildup. Cut off brown tips with clean scissors for a neater appearance — they won't turn green again.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "Loss of variegation",
+        "causes": "Variegated Pothos varieties (Marble Queen, Manjula, N'Joy) lose their white or cream patterns when they don't get enough light. The plant produces more chlorophyll (green pigment) to compensate for low light, gradually replacing the variegated portions.",
+        "fix": "Move the plant to a brighter location with consistent indirect light. Prune any fully green stems, as they'll dominate and outgrow the variegated sections. The new growth that emerges in better light should show improved variegation. Avoid direct sun, which burns the white portions faster than green.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      },
+      {
+        "symptom": "Leggy, sparse vines",
+        "causes": "Long vines with widely-spaced small leaves indicate insufficient light. The plant is stretching toward the nearest light source, investing energy in stem length rather than leaf size. This is called etiolation and is especially common in dim offices or far from windows.",
+        "fix": "Move your Pothos to a brighter location. Prune the leggy vines back to a node near the soil line — each cut point will branch into two new growing tips, creating a fuller plant. Use the pruned vine segments as cuttings to propagate new plants.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      },
+      {
+        "symptom": "Mushy stems and root rot",
+        "causes": "Root rot is caused by overwatering or poor drainage. When soil stays perpetually wet, fungal pathogens attack the roots and stem base. You may notice a mushy texture at the soil line, a foul smell from the pot, or stems that detach easily when tugged.",
+        "fix": "Unpot the plant and trim all mushy, brown roots with clean scissors. Let the remaining healthy roots dry for an hour. Repot in fresh, well-draining soil in a pot with drainage holes. Water sparingly until the plant shows new growth. Take healthy vine cuttings as insurance in case the mother plant doesn't recover.",
+        "landing_page_slug": "how-to-treat-root-rot",
+        "landing_page_title": "How to Treat Root Rot"
+      }
+    ]
+  },
+  {
+    "slug": "snake-plant",
+    "last_updated": "2026-02-23",
+    "name": "Snake Plant",
+    "scientific_name": "Dracaena trifasciata",
+    "emoji": "🌵",
+    "summary": "Also known as Mother-in-Law's Tongue, Snake Plants are nearly indestructible. Their architectural, upright leaves add bold structure to any space while requiring minimal care. Recently reclassified from Sansevieria to Dracaena, these succulents are among the hardiest houseplants you can own — perfect for beginners, frequent travelers, or anyone who wants greenery without the fuss.",
+    "meta_description": "Complete Snake Plant care guide. Learn watering frequency, light needs, propagation methods, and popular varieties for Sansevieria / Dracaena trifasciata.",
+    "light": "Low to bright indirect",
+    "water": "Every 2-3 weeks",
+    "humidity_level": "Low",
+    "difficulty": "Very Easy",
+    "watering": "Snake plants are succulents that store water in their thick, fleshy leaves, so they need far less water than most houseplants. Water only when the soil is completely dry — push your finger all the way down to check, not just the surface. In summer, this typically means every 2-3 weeks. In winter, once a month or even less is sufficient. Overwatering is the number one killer of snake plants. When in doubt, wait another week. Always water thoroughly until it runs from the drainage holes, then discard any standing water. Never let a snake plant sit in a saucer of water. Use a pot with drainage — terra cotta is ideal because it wicks moisture away from roots. If the leaves feel soft and mushy near the base, you've been watering too often.",
+    "light_details": "Snake plants tolerate a wider range of light conditions than almost any other houseplant — from a dim corner office to a bright windowsill. They'll grow fastest in bright indirect light, producing taller leaves more quickly, but they're perfectly content in low light where other plants would struggle. Avoid intense, direct afternoon sun, which can bleach and scorch the leaves, leaving pale or brown marks. Variegated varieties like Laurentii and Moonshine maintain their distinctive coloring better in brighter light; in very low light, they may gradually lose contrast. If you have a dark room that needs a plant, this is your best choice — snake plants can survive on fluorescent office lighting alone.",
+    "humidity": "Snake plants thrive in dry conditions and actively dislike high humidity. They're perfect for air-conditioned offices, dry climates, and heated winter rooms — environments that stress most tropical houseplants. No misting, no pebble trays, no humidifiers needed. Keep temperatures between 55-85°F (13-29°C). They're more cold-tolerant than most tropicals and can handle brief dips to 50°F, but prolonged cold exposure below that causes damage. Keep them away from frosted windows in winter. One of their unique traits is converting CO2 to oxygen at night (via CAM photosynthesis), making them popular bedroom plants.",
+    "fertilizing": "Snake plants are very light feeders and grow slowly even with perfect care. Fertilize just 2-3 times total during the growing season (spring through summer) with a balanced liquid fertilizer diluted to half strength. Over-fertilizing does more harm than good — it can cause brown tips and chemical burn to the roots. Skip feeding entirely in fall and winter when the plant is essentially dormant. If you forget to fertilize altogether, your snake plant won't complain — many thrive for years without any supplemental feeding. For an even simpler approach, mix a small amount of worm castings into the soil during spring repotting.",
+    "common_problems": [
+      "Mushy leaves: Overwatering or root rot. Let dry completely and reduce watering.",
+      "Wrinkled leaves: Underwatering – surprisingly possible even for snake plants.",
+      "Brown tips: Could be overwatering, fluoride in tap water, or cold damage.",
+      "Falling over: Root rot, top-heavy growth, or pot too small.",
+      "Slow growth: Normal for snake plants. More light speeds it up slightly."
+    ],
+    "quick_tips": [
+      "Excellent bedroom plant — converts CO2 to oxygen at night via CAM photosynthesis",
+      "Propagate by leaf cuttings in water or soil, or by dividing root clumps",
+      "Tolerates neglect, drought, and low light better than almost any houseplant",
+      "NASA-studied air purifier that removes formaldehyde and benzene",
+      "Use well-draining cactus/succulent mix and a pot with drainage holes"
+    ],
+    "howto": {
+      "totalTime": "PT10M",
+      "supplies": ["Cactus or succulent potting mix", "Diluted balanced fertilizer"],
+      "tools": ["Watering can"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When soil completely dry", "frequency": "Every 2-3 weeks (summer), monthly (winter)"},
+      {"aspect": "Light", "requirement": "Low to bright indirect", "frequency": "Adapts to any"},
+      {"aspect": "Humidity", "requirement": "Low — no extra needed", "frequency": "No misting needed"},
+      {"aspect": "Fertilizing", "requirement": "Diluted balanced fertilizer", "frequency": "2-3 times per growing season"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 2-3 years"}
+    ],
+    "propagation": {
+      "intro": "Snake plants can be propagated by leaf cuttings or division. Division is faster and preserves variegation, while leaf cuttings take longer but let you create many new plants from a single leaf. Note that leaf cuttings of variegated varieties (like Laurentii) may lose their yellow edges — division is the only way to guarantee variegation in the offspring.",
+      "methods": [
+        {
+          "name": "Division",
+          "steps": [
+            "Remove the plant from its pot and shake off loose soil.",
+            "Identify natural clusters of leaves connected by underground rhizomes.",
+            "Use a clean, sharp knife to separate rhizome clusters, ensuring each section has at least 2-3 leaves and roots.",
+            "Let the cut surfaces dry for 24 hours to callous over.",
+            "Plant each division in fresh cactus/succulent mix and water lightly after one week."
+          ]
+        },
+        {
+          "name": "Leaf Cuttings in Water",
+          "steps": [
+            "Cut a healthy leaf at the base using a clean, sharp knife.",
+            "Cut the leaf into 3-4 inch segments, marking which end is 'down' (the end that was closer to the soil).",
+            "Place segments right-side-up in a jar with 1 inch of water covering the bottom cut.",
+            "Change water weekly and keep in bright indirect light.",
+            "Roots and tiny new shoots appear in 4-8 weeks. Pot in soil when roots are 2 inches long."
+          ]
+        },
+        {
+          "name": "Leaf Cuttings in Soil",
+          "steps": [
+            "Cut a healthy leaf into 3-4 inch segments, noting orientation.",
+            "Let cut ends callous for 1-2 days.",
+            "Insert the bottom end 1 inch deep into moist cactus mix.",
+            "Water sparingly — just enough to keep soil barely moist. Overwatering rots the cutting.",
+            "New pups emerge from the base of the cutting in 6-12 weeks."
+          ]
+        }
+      ],
+      "best_time": "Spring and summer",
+      "difficulty": "Easy"
+    },
+    "varieties": [
+      {
+        "name": "Sansevieria Laurentii",
+        "also_known_as": "Gold-Edged Snake Plant",
+        "description": "The most iconic variety with tall, sword-shaped leaves edged in bright yellow-gold. Can reach 3-4 feet tall indoors. The yellow margin makes it one of the most decorative snake plants available.",
+        "difficulty": "Very Easy",
+        "light_needs": "Low to bright indirect",
+        "special_note": "Yellow edges are brightest in good light. Propagate by division only to preserve variegation."
+      },
+      {
+        "name": "Sansevieria Moonshine",
+        "also_known_as": "Moonlight Snake Plant",
+        "description": "Pale silvery-green leaves with a subtle ethereal glow. Broad, paddle-shaped leaves are shorter and wider than Laurentii. The cool-toned color adds a modern, minimalist aesthetic to any space.",
+        "difficulty": "Very Easy",
+        "light_needs": "Medium to bright indirect",
+        "special_note": "Color fades to darker green in low light. Relatively compact — great for desktops."
+      },
+      {
+        "name": "Sansevieria Cylindrica",
+        "also_known_as": "African Spear Plant",
+        "description": "Completely different from flat-leaved varieties, Cylindrica has round, spear-like leaves that grow in a fan pattern. Often sold braided. A unique architectural statement that doesn't look like a typical snake plant.",
+        "difficulty": "Very Easy",
+        "light_needs": "Low to bright indirect",
+        "special_note": "Even more drought-tolerant than flat varieties. Unravel braided forms for healthier growth."
+      }
+    ],
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume watering every 2-3 weeks",
+          "Apply first fertilizer dose",
+          "Repot if roots are pushing out of the pot",
+          "Divide overcrowded clumps for propagation"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water every 2-3 weeks when dry",
+          "Apply second fertilizer dose",
+          "Move away from intense direct sun",
+          "Take leaf cuttings for propagation"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering to monthly",
+          "Apply final fertilizer dose in early fall",
+          "Move away from cold windows",
+          "Wipe leaves to remove dust"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water monthly or less — let soil stay dry",
+          "No fertilizer needed",
+          "Keep away from frost and cold drafts",
+          "Enjoy its air-purifying benefits in the bedroom"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Mushy, soft leaves",
+        "causes": "Almost always overwatering or root rot. Snake plant leaves store water, and when the roots sit in wet soil, they rot and can no longer regulate moisture. The rot travels up into the leaves, making them soft and mushy at the base. Cold temperatures combined with wet soil accelerate the problem.",
+        "fix": "Stop watering immediately and let the soil dry completely. If only a few leaves are affected, remove them at the soil line. If the base is mushy, unpot the plant, trim all rotten roots, and repot in fresh cactus mix. In severe cases, cut healthy leaf sections above the rot and propagate them as new plants.",
+        "landing_page_slug": "am-i-overwatering-my-plant",
+        "landing_page_title": "Am I Overwatering My Plant?"
+      },
+      {
+        "symptom": "Wrinkled or curling leaves",
+        "causes": "While rare for a succulent, snake plants can become dehydrated if neglected for very long periods (months without water) or if kept in extremely dry, hot conditions. The thick leaves wrinkle and curl inward as they use up stored water reserves.",
+        "fix": "Water thoroughly and let it drain. The leaves should plump back up within a day or two. Going forward, establish a regular check — even if it's just once a month. If the soil has become hydrophobic (water runs straight through), soak the entire pot in a basin of water for 15-20 minutes.",
+        "landing_page_slug": "why-are-my-plant-leaves-curling",
+        "landing_page_title": "Why Are My Plant Leaves Curling?"
+      },
+      {
+        "symptom": "Brown leaf tips",
+        "causes": "Brown tips can result from several factors: overwatering that damages root tips, fluoride or chloramine in tap water that accumulates in leaf edges, cold damage from exposure to temperatures below 50°F, or physical damage from being bumped or moved.",
+        "fix": "Switch to filtered or distilled water if you suspect chemical sensitivity. Ensure the plant isn't sitting near a cold window or AC vent. Trim off brown tips with clean scissors at a slight angle to mimic the natural leaf shape. The browning won't spread once the cause is addressed.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "Leaves falling over or splitting at base",
+        "causes": "Leaves toppling outward usually means root rot has weakened the base, the plant is top-heavy and root-bound, or the pot is too lightweight for tall varieties. Physical damage from pets or being knocked can also cause leaves to fold at the base.",
+        "fix": "Check for root rot first — if the base is mushy, trim rot and repot. For top-heavy plants, repot into a wider, heavier container (terra cotta is ideal). Stake leaning leaves temporarily while roots re-establish. For very tall varieties like Laurentii, a heavy ceramic pot provides better ballast.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      },
+      {
+        "symptom": "Very slow or no growth",
+        "causes": "Snake plants are naturally slow growers, producing only 2-4 new leaves per year even in ideal conditions. However, no growth at all can indicate too little light, temperatures that are too cool, a root-bound plant, or dormancy during winter months.",
+        "fix": "Move to a brighter location if it's in deep shade. Ensure temperatures are above 60°F during the growing season. Check if roots have filled the pot entirely — if so, repot to the next size up in spring. In winter, no growth is normal and expected.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      }
+    ]
+  },
+  {
+    "slug": "fiddle-leaf-fig",
+    "last_updated": "2026-02-23",
+    "name": "Fiddle Leaf Fig",
+    "scientific_name": "Ficus lyrata",
+    "emoji": "🎻",
+    "summary": "The Fiddle Leaf Fig is a showstopping statement plant with large, violin-shaped leaves that can grow up to 15 inches long. Native to the tropical rainforests of West Africa, it's more demanding than some houseplants — but its dramatic architectural foliage has made it one of the most sought-after indoor trees. With consistent care and the right conditions, a Fiddle Leaf Fig rewards you with stunning growth.",
+    "meta_description": "Fiddle Leaf Fig care guide with expert tips. Learn watering schedules, light requirements, propagation, and how to prevent brown spots, leaf drop, and other common problems.",
+    "light": "Bright indirect",
+    "water": "Weekly",
+    "humidity_level": "Medium",
+    "difficulty": "Moderate",
+    "watering": "Water when the top 2 inches of soil are dry — use your finger or a moisture meter to check. Fiddle Leaf Figs prefer consistent moisture but absolutely hate soggy soil. Water thoroughly until it drains from the bottom, then empty the saucer completely. Inconsistent watering — swinging between bone dry and soaking wet — is the top cause of problems, leading to brown spots, leaf drop, and root issues. Try to water on a regular schedule (most homes: once a week in summer, every 10-14 days in winter). The amount of water matters as much as frequency: for a plant in a 12-inch pot, aim for about 2 cups. Room-temperature water is gentler on roots than cold tap water. If you notice brown spots spreading from the edges of lower leaves, you may be overwatering.",
+    "light_details": "Fiddle Leaf Figs need abundant bright, indirect light — ideally 6 or more hours daily. South- or west-facing windows are perfect, though you may need to filter intense afternoon sun with a sheer curtain. East-facing windows also work well and provide gentler morning light. Low light causes leggy growth, smaller leaves, and eventual leaf drop as the plant sheds foliage it can't sustain. Once you've found a good spot, avoid moving the plant frequently — Fiddle Leaf Figs are notoriously sensitive to environmental changes and may drop leaves in protest after being relocated. Rotate the pot a quarter turn each month to prevent the plant from leaning toward the light.",
+    "humidity": "Aim for 30-65% humidity. Average home humidity (40-50%) is usually fine for Fiddle Leaf Figs, making them less demanding than some tropicals in this regard. However, dry winter air from central heating can cause brown, crispy leaf edges. If you notice browning, mist the leaves occasionally, place a humidifier nearby, or group the plant with other tropicals to create a humid microclimate. Keep temperatures between 60-80°F (15-27°C) and avoid placement near heating vents, AC units, or drafty windows. Fiddle Leaf Figs are particularly sensitive to cold drafts, which can trigger sudden leaf drop. Temperatures below 55°F can cause permanent damage.",
+    "fertilizing": "Feed monthly from spring through summer with a liquid fertilizer formulated specifically for Fiddle Leaf Figs or a balanced formula with a 3-1-2 NPK ratio (like 9-3-6). These plants are moderate feeders during active growth and respond well to consistent nutrition. Reduce to every other month in fall and stop entirely in winter when growth slows. Never fertilize a stressed plant — if your FLF is dropping leaves or showing signs of root rot, address those problems first. Over-fertilizing causes salt buildup that damages roots and shows as brown leaf margins. If you see white crust on the soil surface, flush the pot thoroughly with plain water.",
+    "common_problems": [
+      "Brown spots: Bacterial infection (dark with yellow halo) or root rot (spreading from edges).",
+      "Dropping leaves: Usually environmental stress – drafts, inconsistent watering, or recent move.",
+      "Red spots on new leaves: Normal – just new growth maturing.",
+      "Leggy or leaning: Not enough light. Rotate and consider moving closer to window.",
+      "Stunted growth: Check roots – may need repotting or have root rot."
+    ],
+    "quick_tips": [
+      "Wipe leaves monthly with a damp cloth — large leaves collect dust that blocks light",
+      "Stake or support young plants to encourage straight trunk growth",
+      "Once placed, don't move frequently — FLFs are sensitive to environmental changes",
+      "Prune the top to encourage branching and a bushier, tree-like shape",
+      "A moisture meter takes the guesswork out of watering"
+    ],
+    "howto": {
+      "totalTime": "PT20M",
+      "supplies": ["Well-draining potting mix", "Fiddle leaf fig fertilizer", "Plant stake or support"],
+      "tools": ["Watering can", "Clean cloth for leaf wiping", "Moisture meter"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When top 2\u2033 dry", "frequency": "Weekly"},
+      {"aspect": "Light", "requirement": "Bright indirect, 6+ hrs", "frequency": "Daily, consistent location"},
+      {"aspect": "Humidity", "requirement": "30-65%", "frequency": "Mist if edges brown"},
+      {"aspect": "Fertilizing", "requirement": "FLF or balanced 3-1-2 fertilizer", "frequency": "Monthly (spring-summer)"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 1-2 years"}
+    ],
+    "propagation": {
+      "intro": "Fiddle Leaf Figs can be propagated from stem cuttings, though the process is slower than with plants like Pothos. Stem tip cuttings with at least one leaf and node root most reliably. Air layering is also effective for larger branches. Patience is key — rooting can take 6-8 weeks.",
+      "methods": [
+        {
+          "name": "Stem Cutting in Water",
+          "steps": [
+            "Cut a 6-inch stem tip with 2-3 leaves, cutting just below a node.",
+            "Remove the bottom leaf so the node will be submerged.",
+            "Place in a jar of room-temperature water in bright indirect light.",
+            "Change the water every 5-7 days to prevent bacterial buildup.",
+            "Roots appear in 4-8 weeks. Pot in soil when roots are 2-3 inches long."
+          ]
+        },
+        {
+          "name": "Air Layering",
+          "steps": [
+            "Choose a healthy section of stem and make a small upward diagonal cut about one-third through the stem.",
+            "Prop the cut open with a toothpick and dust with rooting hormone.",
+            "Wrap the area in damp sphagnum moss, secured with plastic wrap.",
+            "Keep the moss moist over 6-8 weeks until roots grow through.",
+            "Cut below the rooted section and pot in well-draining mix."
+          ]
+        }
+      ],
+      "best_time": "Late spring to early summer",
+      "difficulty": "Moderate"
+    },
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume weekly watering",
+          "Begin monthly fertilizing",
+          "Repot if root-bound (go up only 2 inches in pot size)",
+          "Prune to shape or encourage branching"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water weekly, checking soil moisture first",
+          "Continue monthly fertilizing",
+          "Watch for spider mites and mealybugs",
+          "Rotate monthly for even growth"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering to every 10-14 days",
+          "Fertilize every other month, then stop",
+          "Move away from cold drafty windows",
+          "Clean leaves before shorter winter days"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water every 10-14 days",
+          "No fertilizer needed",
+          "Add humidity near heating vents",
+          "Avoid moving the plant during this sensitive period"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Brown spots on leaves",
+        "causes": "Brown spots are the most common Fiddle Leaf Fig complaint, and diagnosing the type matters. Dark brown spots with yellow halos are bacterial leaf spot, caused by overwatering and poor air circulation. Brown spots spreading inward from leaf edges suggest root rot. Dry, light-brown patches indicate sunburn from direct light.",
+        "fix": "For bacterial spots, remove affected leaves, reduce watering, and improve air circulation. For root rot, unpot the plant, trim mushy roots, and repot in fresh well-draining mix. For sunburn, move the plant back from direct sun or add a sheer curtain. Always ensure your pot drains well.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "Dropping leaves",
+        "causes": "Fiddle Leaf Figs drop leaves as a stress response. Common triggers include: being moved to a new location, sudden temperature changes from drafts or heating vents, inconsistent watering (drought followed by flooding), under- or overwatering, and seasonal light changes in winter. Even bringing a new FLF home from the store can trigger a few dropped leaves.",
+        "fix": "Identify and address the stressor. If you just moved the plant, give it 2-3 weeks to acclimate — some leaf drop is normal during adjustment. Check watering consistency and ensure the temperature is stable (no drafts). If leaves drop from the bottom only and the plant looks healthy otherwise, it may just be natural aging. Significant or sudden leaf loss warrants checking the roots for rot.",
+        "landing_page_slug": "why-are-my-plant-leaves-drooping",
+        "landing_page_title": "Why Are My Plant Leaves Drooping?"
+      },
+      {
+        "symptom": "Yellowing leaves",
+        "causes": "Yellow leaves on a Fiddle Leaf Fig usually indicate overwatering. The roots sit in wet soil, can't absorb oxygen, and begin to rot. The plant signals distress by turning leaves yellow, starting from the lower/inner leaves. Less commonly, yellowing can indicate underwatering, nutrient deficiency (especially nitrogen), or insufficient light.",
+        "fix": "Check soil moisture before watering — it should be dry 2 inches down. If the soil is wet and leaves are yellowing, let it dry out completely before watering again. Examine roots for signs of rot. If the plant hasn't been fertilized in months, start a monthly feeding schedule during the growing season.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-yellow",
+        "landing_page_title": "Why Are My Plant Leaves Turning Yellow?"
+      },
+      {
+        "symptom": "Leggy growth with small leaves",
+        "causes": "A Fiddle Leaf Fig that grows tall and thin with small, widely-spaced leaves isn't getting enough light. The plant stretches toward the nearest light source (etiolation), investing energy in stem length rather than leaf size. This is especially common in rooms with north-facing windows or plants placed far from windows.",
+        "fix": "Move the plant closer to a bright window. If growth is very leggy, prune the top of the trunk — this encourages the plant to branch out rather than grow straight up. Notching (making small cuts above dormant buds on the trunk) can also stimulate branching without removing height. Rotate quarterly for balanced growth.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      },
+      {
+        "symptom": "Red or brown spots on new leaves",
+        "causes": "Small reddish-brown spots on brand-new, unfurling leaves are edema — caused by the plant absorbing water faster than it can transpire. This is perfectly normal and not a disease. The spots appear as tiny red dots concentrated on new growth.",
+        "fix": "No action needed. This is normal new growth behavior, not a problem. The spots will fade as the leaf matures and hardens off. If red spots appear on mature leaves instead of new growth, investigate other causes like bacterial infection.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      }
+    ]
+  },
+  {
+    "slug": "peace-lily",
+    "last_updated": "2026-02-23",
+    "name": "Peace Lily",
+    "scientific_name": "Spathiphyllum",
+    "emoji": "☮️",
+    "summary": "Peace Lilies are elegant flowering plants that thrive in low light — a rare combination in the houseplant world. Their graceful white spathes (often mistaken for petals) and glossy dark green foliage make them popular for homes and offices alike. As one of NASA's top air-purifying plants, they remove common indoor toxins while adding a touch of tropical elegance to any room.",
+    "meta_description": "Peace Lily care guide with tips for blooming, watering, humidity, propagation, and troubleshooting. Learn how to care for Spathiphyllum in low light conditions.",
+    "light": "Low to medium indirect",
+    "water": "Weekly",
+    "humidity_level": "Medium-High",
+    "difficulty": "Easy",
+    "watering": "Peace Lilies like consistent moisture but not soggy soil. Water when the top inch feels dry — they prefer the soil to stay lightly moist rather than cycling between wet and dry. They'll dramatically droop when thirsty, which is a helpful built-in reminder, but try not to let them wilt regularly as repeated wilting stresses the plant and shortens its lifespan. Use filtered or distilled water if possible — Peace Lilies are notably sensitive to chlorine, fluoride, and other chemicals in tap water, which cause brown leaf tips over time. If you must use tap water, let it sit uncovered for 24 hours to allow chlorine to dissipate. Water thoroughly until it drains from the bottom, then empty the saucer.",
+    "light_details": "Peace Lilies are famous for tolerating low light conditions that would kill most flowering plants, making them perfect for offices, bathrooms, and north-facing windows. They can survive in as little as 50 foot-candles of light (a dimly lit room). However, there's a trade-off: Peace Lilies bloom much more readily with brighter indirect light. If your plant produces lush foliage but no flowers, try moving it to a spot with medium indirect light. Direct sun scorches their thin leaves quickly, leaving brown, papery patches. East-facing windows provide ideal morning light without the intensity of afternoon sun.",
+    "humidity": "As tropical understory plants from Central American and Southeast Asian rainforests, Peace Lilies love humidity above 50%. They tolerate average home humidity (30-40%) but truly thrive in more humid environments. Brown, crispy leaf tips — the most common Peace Lily complaint — are almost always caused by low humidity or chemicals in tap water. Increase humidity with a pebble tray, grouping with other plants, or running a humidifier nearby. Bathrooms with natural light are ideal locations. Keep temperatures between 65-85°F (18-29°C) and avoid cold drafts — Peace Lilies are sensitive to temperatures below 55°F and can show cold damage as blackened leaves.",
+    "fertilizing": "Feed monthly during spring and summer with a balanced liquid fertilizer at half strength. Peace Lilies are light feeders and quite sensitive to over-fertilizing, which manifests as brown leaf tips and edges — a problem that's easily confused with humidity issues. When in doubt, skip a feeding rather than add extra. No fertilizer is needed from fall through winter. If you notice white crusty salt deposits on the soil surface, flush the pot several times with plain water. Some growers prefer to fertilize at quarter-strength with every watering during the growing season instead of full-strength monthly.",
+    "common_problems": [
+      "Brown tips: Usually low humidity or fluoride/chlorine in tap water.",
+      "Yellow leaves: Overwatering, underwatering, or old age (bottom leaves naturally yellow).",
+      "No flowers: Needs more light. Peace Lilies also bloom more when slightly root-bound.",
+      "Drooping: Thirsty! Water immediately and it should recover within hours.",
+      "Brown spots: Could be sunburn or cold damage."
+    ],
+    "quick_tips": [
+      "Let tap water sit uncovered for 24 hours before using to dissipate chlorine",
+      "Remove spent blooms by cutting the stalk at the base to encourage new flowers",
+      "Excellent bathroom plant — loves the humidity from showers",
+      "Mildly toxic to pets and children if ingested — keep out of reach",
+      "Slightly root-bound plants bloom more — don't rush to repot"
+    ],
+    "howto": {
+      "totalTime": "PT15M",
+      "supplies": ["Well-draining potting mix", "Balanced liquid fertilizer", "Filtered or distilled water"],
+      "tools": ["Watering can", "Spray bottle for misting", "Pruning shears"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When top 1\u2033 dry, use filtered water", "frequency": "Weekly"},
+      {"aspect": "Light", "requirement": "Low to medium indirect", "frequency": "Tolerates low light"},
+      {"aspect": "Humidity", "requirement": "50%+ ideal", "frequency": "Mist or use pebble tray"},
+      {"aspect": "Fertilizing", "requirement": "Balanced liquid, half strength", "frequency": "Monthly (spring-summer)"},
+      {"aspect": "Repotting", "requirement": "When root-bound (blooms more)", "frequency": "Every 1-2 years"}
+    ],
+    "propagation": {
+      "intro": "Peace Lilies propagate by division — splitting the root ball into separate plants. Unlike many houseplants, they cannot be propagated from leaf or stem cuttings. The good news is that mature Peace Lilies naturally form multiple crowns (clusters of leaves growing from separate root sections), making division straightforward. Spring is the best time to divide.",
+      "methods": [
+        {
+          "name": "Root Division",
+          "steps": [
+            "Water the plant a day before dividing to reduce transplant shock.",
+            "Remove the plant from its pot and gently shake off excess soil.",
+            "Identify separate crowns — clusters of leaves with their own root systems.",
+            "Carefully pull or cut the crowns apart, ensuring each division has at least 3-4 leaves and a healthy root section.",
+            "Pot each division in fresh, well-draining mix and water gently. Keep in warm, humid conditions for 2-3 weeks while roots establish."
+          ]
+        }
+      ],
+      "best_time": "Spring",
+      "difficulty": "Easy"
+    },
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume weekly watering",
+          "Begin monthly fertilizing",
+          "Divide overcrowded plants",
+          "Watch for new flower spathes emerging"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water weekly, keeping soil lightly moist",
+          "Continue monthly fertilizing",
+          "Remove spent flower stalks at the base",
+          "Mist regularly in dry air-conditioned rooms"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering slightly as growth slows",
+          "Stop fertilizing by late fall",
+          "Move away from cold drafty windows",
+          "Clean leaves to maximize light in shorter days"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water when top inch is dry (less frequent)",
+          "No fertilizer needed",
+          "Increase humidity near heating vents",
+          "Move to brightest available spot for winter"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Brown leaf tips",
+        "causes": "The most common Peace Lily issue. Brown, crispy tips are caused by low humidity, chemicals in tap water (fluoride and chlorine), or over-fertilizing. Peace Lilies are more sensitive to water quality than most houseplants. All three causes produce similar symptoms, so you may need to address them one at a time.",
+        "fix": "Switch to filtered, distilled, or rainwater. If using tap water, let it sit uncovered for 24 hours before use. Increase humidity with a humidifier or pebble tray. If you've been fertilizing heavily, flush the soil with plain water and reduce to half-strength. Trim brown tips at an angle — they won't heal but new growth should be healthy.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "Drooping leaves",
+        "causes": "Peace Lilies are famous for their dramatic droop when thirsty — the entire plant will wilt visibly. This is usually a simple underwatering issue and recovers quickly. However, drooping can also indicate overwatering and root rot if the soil is wet, or cold shock from exposure to low temperatures.",
+        "fix": "If the soil is dry, water thoroughly and the plant should perk up within 2-4 hours. If the soil is already wet and the plant is drooping, you may have root rot — check the roots for mushiness. For cold shock, move to a warmer location and wait for recovery. Avoid letting the plant wilt repeatedly, as each drought episode stresses the plant.",
+        "landing_page_slug": "why-are-my-plant-leaves-drooping",
+        "landing_page_title": "Why Are My Plant Leaves Drooping?"
+      },
+      {
+        "symptom": "Yellow leaves",
+        "causes": "Yellow leaves can indicate overwatering (most common), underwatering, natural aging, or too much direct light. Bottom leaves yellowing gradually is normal as the plant redirects energy to new growth. Multiple leaves yellowing at once, especially from the center of the plant, is a warning sign of overwatering or root rot.",
+        "fix": "Check the soil moisture. If wet, reduce watering frequency and ensure drainage is adequate. If dry, water more consistently. Remove yellow leaves — they won't recover. If many leaves are yellowing, unpot and inspect roots for rot. Trim mushy roots and repot in fresh soil.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-yellow",
+        "landing_page_title": "Why Are My Plant Leaves Turning Yellow?"
+      },
+      {
+        "symptom": "No flowers",
+        "causes": "Peace Lilies need adequate light to bloom — they'll produce lush foliage in low light but may never flower. Young plants (under 1 year) may not be mature enough. Over-potting in too-large a container redirects energy to root growth instead of flowering. Insufficient nutrients during the growing season also reduce bloom frequency.",
+        "fix": "Move to brighter indirect light (not direct sun). Ensure you're fertilizing monthly in spring and summer. Keep the plant slightly root-bound — Peace Lilies bloom more when their roots are a bit crowded. Be patient with young plants; maturity is a factor. Some commercial growers use gibberellic acid to force blooms, so a newly purchased flowering plant may take a season to bloom again naturally.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      }
+    ]
+  },
+  {
+    "slug": "spider-plant",
+    "last_updated": "2026-02-23",
+    "name": "Spider Plant",
+    "scientific_name": "Chlorophytum comosum",
+    "emoji": "🕷️",
+    "summary": "Spider Plants are classic houseplants known for producing adorable baby plantlets that dangle from long arching stems like spiders on a web. They're incredibly resilient, non-toxic to cats and dogs, and perfect for beginners. Few plants are as satisfying to propagate — a single mature spider plant can produce dozens of babies each year that you can root and share.",
+    "meta_description": "Spider Plant care guide. Learn watering, light requirements, how to propagate spider plant babies, and troubleshooting tips. Pet-safe and beginner-friendly.",
+    "light": "Bright indirect",
+    "water": "Weekly",
+    "humidity_level": "Low-Medium",
+    "difficulty": "Very Easy",
+    "watering": "Water when the top inch of soil is dry. Spider plants have thick, tuberous roots that store water, making them somewhat drought-tolerant — but they're not as forgiving as succulents, so don't neglect them for weeks at a time. Overwatering causes root rot, while underwatering causes brown tips and leaf edges. Consistent, moderate watering is the sweet spot. Water thoroughly until it drains from the bottom, then let the soil dry slightly before watering again. Spider plants are notably sensitive to fluoride and chlorine in tap water, which accumulate in leaf tips and cause persistent browning. Using filtered, distilled, or rainwater makes a noticeable difference in leaf health.",
+    "light_details": "Spider plants prefer bright, indirect light but adapt to a surprisingly wide range of conditions. In good light, they grow vigorously and produce abundant babies. Variegated varieties (with white or cream stripes) need more light to maintain their coloring — in low light, they gradually revert toward solid green. In very dim conditions, spider plants survive but grow slowly and produce few or no plantlets. Avoid direct sun, especially intense afternoon light, which scorches the leaves and causes bleached or brown patches. An east-facing window or a spot a few feet from a south-facing window is ideal.",
+    "humidity": "Spider plants tolerate average home humidity (30-50%) without complaint. They're not fussy about humidity at all, making them great for offices and dry rooms. Occasional misting is fine but not necessary. Keep temperatures between 55-80°F (13-27°C). They can handle brief cold spells better than most tropical houseplants — they're actually subtropical, native to South Africa rather than the equatorial tropics. However, prolonged exposure below 50°F causes damage. Spider plants adapt well to fluctuating indoor temperatures, which is one reason they've been popular houseplants since the Victorian era.",
+    "fertilizing": "Feed monthly during spring and summer with a balanced liquid fertilizer at half strength. Spider plants aren't heavy feeders, and over-fertilizing is a common cause of brown leaf tips (along with fluoride in water). The salt buildup from excess fertilizer concentrates in the leaf tips and burns them. Flush the soil occasionally with plain water to wash away accumulated salts. No feeding is needed in fall and winter. For a gentle approach, worm castings mixed into the soil during repotting provide slow-release nutrients without the risk of chemical burn.",
+    "common_problems": [
+      "Brown tips: Fluoride in tap water, dry air, or over-fertilizing. Use filtered water.",
+      "Pale leaves: Too much direct sun – move to indirect light.",
+      "No babies: Needs maturity and slightly root-bound conditions to produce offsets.",
+      "Limp leaves: Usually underwatering. Water thoroughly.",
+      "Root rot: From overwatering. Ensure pot has drainage."
+    ],
+    "quick_tips": [
+      "Propagate babies by rooting in water or soil — they root in as little as one week",
+      "Excellent hanging basket plant — arching stems with babies create a cascading display",
+      "NASA-studied air purifier that removes formaldehyde and xylene",
+      "Non-toxic to cats and dogs — one of the best pet-safe houseplant choices",
+      "Slightly root-bound plants produce more babies — don't rush to repot"
+    ],
+    "howto": {
+      "totalTime": "PT10M",
+      "supplies": ["Well-draining potting mix", "Balanced liquid fertilizer", "Filtered water"],
+      "tools": ["Watering can", "Pruning shears"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When top 1\u2033 dry, use filtered water", "frequency": "Weekly"},
+      {"aspect": "Light", "requirement": "Bright indirect", "frequency": "4-6 hours daily"},
+      {"aspect": "Humidity", "requirement": "Average home humidity", "frequency": "No special needs"},
+      {"aspect": "Fertilizing", "requirement": "Balanced liquid, half strength", "frequency": "Monthly (spring-summer)"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 1-2 years"}
+    ],
+    "propagation": {
+      "intro": "Spider plants are among the easiest houseplants to propagate, thanks to their natural habit of producing baby plantlets on long arching runners. A mature, healthy spider plant can produce dozens of babies in a single growing season. You can also divide the root ball, but plantlet propagation is so easy it's the go-to method for most people.",
+      "methods": [
+        {
+          "name": "Plantlet in Water",
+          "steps": [
+            "Choose a baby plantlet that has small nubs or roots forming at its base.",
+            "Snip it from the runner using clean scissors, leaving a short stem attached.",
+            "Place the base of the plantlet in a small jar of water so the nubs are submerged but leaves stay above.",
+            "Set in bright indirect light and change water every 4-5 days.",
+            "Roots grow quickly — usually within 1-2 weeks. Pot in soil when roots are 1-2 inches long."
+          ]
+        },
+        {
+          "name": "Plantlet in Soil (While Attached)",
+          "steps": [
+            "Place a small pot of moist soil next to the mother plant.",
+            "Gently press a still-attached baby plantlet into the soil surface, pinning it with a bobby pin or bent paperclip.",
+            "Keep the soil lightly moist while the plantlet roots (1-2 weeks).",
+            "Once rooted (gentle tug meets resistance), snip the runner connecting it to the mother plant.",
+            "The baby is now an independent plant. Continue normal care."
+          ]
+        },
+        {
+          "name": "Root Division",
+          "steps": [
+            "Remove the mother plant from its pot.",
+            "Gently separate the thick tuberous roots into sections, each with several leaves.",
+            "Plant each division in its own pot with fresh potting mix.",
+            "Water lightly and keep in bright indirect light for 1-2 weeks while roots re-establish."
+          ]
+        }
+      ],
+      "best_time": "Spring and summer",
+      "difficulty": "Easy"
+    },
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume weekly watering",
+          "Begin monthly fertilizing at half strength",
+          "Repot if heavily root-bound",
+          "Watch for new runners with baby plantlets"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water when top inch is dry",
+          "Continue monthly fertilizing",
+          "Root baby plantlets for propagation",
+          "Move outdoors to shaded patio if desired"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering as growth slows",
+          "Stop fertilizing by late fall",
+          "Bring outdoor plants back inside",
+          "Flush soil to remove salt buildup"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water less frequently, every 10-14 days",
+          "No fertilizer needed",
+          "Keep away from cold drafts",
+          "Maximize light exposure in shorter days"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Brown leaf tips",
+        "causes": "The most common spider plant complaint. Brown, crispy tips are almost always caused by fluoride in tap water, which concentrates in the leaf tips over time. Over-fertilizing and low humidity are secondary causes. Unfortunately, many municipal water supplies contain enough fluoride to affect spider plants.",
+        "fix": "Switch to filtered, distilled, or rainwater — this single change often resolves the problem completely. If you've been over-fertilizing, flush the soil with plain water and reduce to half-strength. Trim brown tips at an angle for cosmetic purposes. Once the cause is addressed, new growth should be tip-burn-free.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "No baby plantlets",
+        "causes": "Spider plants need to be mature (at least 1-2 years old) and somewhat root-bound before they produce runners and babies. Insufficient light also reduces plantlet production. Over-potting in too large a container redirects energy to root growth rather than reproduction. Some solid-green varieties produce fewer babies than variegated types.",
+        "fix": "Be patient with young plants. Move to brighter indirect light. Don't repot into an overly large container — spider plants produce more babies when their roots are slightly crowded. Ensure you're fertilizing during the growing season to provide the nutrients needed for runner production.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      },
+      {
+        "symptom": "Pale or washed-out leaves",
+        "causes": "Leaves losing their vibrant green color or variegation becoming faded usually indicates too much direct sunlight. The intense UV bleaches the chlorophyll, leaving the leaves looking pale, washed out, or scorched. Conversely, variegated varieties losing their white stripes and becoming solid green are getting too little light.",
+        "fix": "For bleached/pale leaves from too much sun, move to a spot with bright indirect light (no direct rays). For variegated plants reverting to green, move to brighter conditions. The existing pale leaves won't change back, but new growth should show proper coloring.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      },
+      {
+        "symptom": "Limp, drooping leaves",
+        "causes": "Spider plant leaves that go limp and lose their arch are typically underwatered. The tuberous roots store some water, but once those reserves are depleted, leaves wilt. Root rot from overwatering can also cause limpness if the damaged roots can't transport water.",
+        "fix": "If the soil is dry, water thoroughly and the plant should recover within a day. If the soil is wet and leaves are still limp, check for root rot — unpot and trim any brown, mushy roots. Repot in fresh soil and water sparingly until new growth appears.",
+        "landing_page_slug": "why-are-my-plant-leaves-drooping",
+        "landing_page_title": "Why Are My Plant Leaves Drooping?"
+      }
+    ]
+  },
+  {
+    "slug": "zz-plant",
+    "last_updated": "2026-02-23",
+    "name": "ZZ Plant",
+    "scientific_name": "Zamioculcas zamiifolia",
+    "emoji": "✨",
+    "summary": "The ZZ Plant is virtually indestructible, with waxy, dark green leaves that stay glossy even through weeks of neglect. Native to eastern Africa, it stores water in thick underground rhizomes that allow it to survive drought conditions other houseplants couldn't handle. Perfect for forgetful waterers, dim offices, and anyone who wants a polished look with zero fuss.",
+    "meta_description": "ZZ Plant care guide. Learn watering, light needs, propagation, and Raven ZZ care tips for Zamioculcas zamiifolia — the ultimate low-maintenance houseplant.",
+    "light": "Low to bright indirect",
+    "water": "Every 2-3 weeks",
+    "humidity_level": "Low",
+    "difficulty": "Very Easy",
+    "watering": "ZZ Plants store water in their thick, potato-like rhizomes and fleshy stems, making them among the most drought-tolerant houseplants you can own. Water only when the soil is completely dry — push your finger all the way down. In summer, this is typically every 2-3 weeks; in winter, once a month or even less. Overwatering is the only reliable way to kill a ZZ Plant. When the soil stays wet, the rhizomes rot, and the damage is often fatal. When in doubt, skip the watering. Always use a pot with drainage holes and discard any standing water. Terra cotta pots are a good match because they wick excess moisture. When you do water, soak thoroughly and let it drain completely.",
+    "light_details": "ZZ Plants thrive in virtually any light condition from a dim, windowless office to a bright living room. They're one of the very few houseplants that can survive on fluorescent lighting alone, which is why they're so popular in commercial spaces. They'll grow faster in brighter conditions but remain healthy and attractive in low light for years. Avoid direct sunlight, which can scorch the waxy leaves and cause brown, bleached patches. The Raven ZZ (near-black variety) develops its deepest color in brighter light; in very low light, new growth stays green longer before darkening.",
+    "humidity": "ZZ Plants actively prefer dry conditions and need no extra humidity whatsoever. No misting, no pebble trays, no grouping with other plants. They're perfectly content in air-conditioned offices, heated winter rooms, and dry climates — environments that stress most tropical houseplants. Keep temperatures between 60-85°F (15-29°C). While they look tropical, they're more tolerant of cool temperatures than you'd expect, handling brief dips to 50°F without complaint. However, prolonged cold below that or any frost will damage the rhizomes.",
+    "fertilizing": "Feed just 2-3 times total during the entire growing season (spring through summer) with a balanced liquid fertilizer diluted to half strength. ZZ Plants are extremely light feeders and grow slowly regardless of nutrition. Over-fertilizing does more harm than good — it can cause salt buildup and chemical burn to the rhizomes. Many ZZ Plant owners skip fertilizing entirely and their plants do just fine, especially if repotted every few years in fresh soil. If you see white salt deposits on the soil surface, flush with plain water.",
+    "common_problems": [
+      "Yellow leaves: Almost always overwatering. Let soil dry completely.",
+      "Leaning stems: Can be normal for older stems, or overwatering.",
+      "No growth: Normal – ZZ Plants grow slowly. More light helps slightly.",
+      "Brown leaf tips: Rare, but usually means extreme underwatering.",
+      "Mushy stems: Root rot from overwatering. May need to propagate healthy parts."
+    ],
+    "quick_tips": [
+      "Wipe waxy leaves with a damp cloth to maintain their natural glossy shine",
+      "Propagate by leaf or stem cuttings — be patient, it can take months to form rhizomes",
+      "Perfect office plant that thrives in fluorescent lighting with minimal water",
+      "Wash hands after handling — calcium oxalate crystals in the sap can irritate skin",
+      "New stems emerge as bright green shoots that unfurl all at once, then darken over weeks"
+    ],
+    "howto": {
+      "totalTime": "PT10M",
+      "supplies": ["Cactus or succulent potting mix", "Diluted balanced fertilizer"],
+      "tools": ["Watering can"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When soil completely dry", "frequency": "Every 2-3 weeks (summer), monthly (winter)"},
+      {"aspect": "Light", "requirement": "Low to bright indirect", "frequency": "Adapts to any"},
+      {"aspect": "Humidity", "requirement": "Low — no extra needed", "frequency": "No misting needed"},
+      {"aspect": "Fertilizing", "requirement": "Diluted balanced fertilizer", "frequency": "2-3 times per growing season"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 2-3 years"}
+    ],
+    "propagation": {
+      "intro": "ZZ Plants can be propagated by stem cuttings, individual leaf cuttings, or rhizome division. Fair warning: ZZ propagation requires serious patience. Leaf and stem cuttings need months to form the underground rhizome that stores water and supports the plant. Division is faster but requires a mature plant with multiple stems.",
+      "methods": [
+        {
+          "name": "Stem Cutting in Water",
+          "steps": [
+            "Cut a healthy stem at the base of the plant.",
+            "Place the cut end in a jar of water, submerging 2-3 inches of stem.",
+            "Set in bright indirect light and change water weekly.",
+            "Small rhizome nodules form at the base in 2-4 months.",
+            "Pot in well-draining cactus mix once the rhizome is marble-sized. Water sparingly."
+          ]
+        },
+        {
+          "name": "Leaf Cutting",
+          "steps": [
+            "Gently pull or cut a healthy leaf from a stem, including the leaf base.",
+            "Let the cut end callous for a few hours.",
+            "Insert the base 1/2 inch into moist cactus/succulent mix.",
+            "Keep in bright indirect light and water sparingly — the leaf stores enough moisture.",
+            "A tiny rhizome and new shoot emerge in 3-9 months. This is the slowest but most scalable method."
+          ]
+        },
+        {
+          "name": "Rhizome Division",
+          "steps": [
+            "Remove the plant from its pot.",
+            "Identify separate rhizome clusters with their attached stems.",
+            "Use a clean knife to divide, ensuring each section has at least one rhizome and stem.",
+            "Let cut surfaces dry for 24 hours.",
+            "Pot each division in cactus mix and wait 1-2 weeks before watering."
+          ]
+        }
+      ],
+      "best_time": "Spring and summer",
+      "difficulty": "Easy (but slow)"
+    },
+    "varieties": [
+      {
+        "name": "ZZ Plant (Standard)",
+        "also_known_as": "Zanzibar Gem",
+        "description": "The classic variety with glossy, deep green leaves arranged in neat herringbone patterns along upright stems. Can reach 2-3 feet tall indoors. New growth emerges as bright green and darkens with maturity.",
+        "difficulty": "Very Easy",
+        "light_needs": "Low to bright indirect",
+        "special_note": "The toughest variety — thrives even in near-darkness."
+      },
+      {
+        "name": "Raven ZZ",
+        "also_known_as": "ZZ Raven",
+        "description": "A striking variety with leaves that emerge bright green and gradually turn near-black over several weeks. Creates a dramatic, almost gothic aesthetic. Same easy care as the standard ZZ but slightly slower growing.",
+        "difficulty": "Very Easy",
+        "light_needs": "Medium to bright indirect",
+        "special_note": "Brighter light produces deeper black coloring. New leaves are always bright green initially."
+      }
+    ],
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume watering every 2-3 weeks",
+          "Apply first fertilizer dose",
+          "Repot if rhizomes are pushing out of the pot",
+          "Take stem or leaf cuttings for propagation"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water every 2-3 weeks when completely dry",
+          "Apply second fertilizer dose",
+          "Watch for new stems emerging (exciting!)",
+          "Wipe leaves to maintain shine"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering to monthly",
+          "Apply final fertilizer dose in early fall",
+          "Move away from cold windows",
+          "Check for mealybugs in leaf joints"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water monthly or less — err on dry side",
+          "No fertilizer needed",
+          "Keep away from frost and cold drafts",
+          "Wipe leaves to maximize light absorption"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Yellow leaves",
+        "causes": "Almost always overwatering. ZZ Plants store so much water in their rhizomes that they rarely need watering, and sitting in wet soil quickly leads to rhizome rot. The first sign is yellowing leaves, starting with the lower or inner stems. Less commonly, yellowing can signal a root-bound plant or natural aging of the oldest stems.",
+        "fix": "Stop watering immediately and let the soil dry out completely. If the soil has been wet for days, consider repotting in dry cactus mix. Check the rhizomes — they should be firm and white/tan. If they're mushy or brown, trim off the rotten portions, let the cuts callous for a day, and repot. Going forward, water less frequently.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-yellow",
+        "landing_page_title": "Why Are My Plant Leaves Turning Yellow?"
+      },
+      {
+        "symptom": "Mushy stems at the base",
+        "causes": "Stems that go soft and mushy near the soil line indicate advanced rhizome rot from overwatering. By the time stems are visibly mushy, the underground rhizome has likely been rotting for weeks. This is the most serious ZZ Plant problem and can be fatal if not caught.",
+        "fix": "Act quickly. Remove the plant from its pot and cut away all mushy rhizomes and stems. If there are any firm, healthy rhizomes remaining, let them dry for 2-3 days, then repot in fresh, dry cactus mix. Don't water for 2 weeks. If all rhizomes are rotten, take healthy stem cuttings from the top portions and propagate in water as a last resort.",
+        "landing_page_slug": "how-to-treat-root-rot",
+        "landing_page_title": "How to Treat Root Rot"
+      },
+      {
+        "symptom": "Leaning or falling stems",
+        "causes": "ZZ stems that lean or fall outward can be normal — older, outer stems naturally arch as they mature and get heavy with leaves. However, if stems that were previously upright start to lean suddenly, it may indicate overwatering (weakened rhizomes) or a root-bound plant whose rhizomes are pushing stems sideways.",
+        "fix": "If the stems are firm and healthy, leaning is cosmetic. Rotate the pot so stems lean toward light. For top-heavy stems, you can stake them temporarily. If stems feel soft at the base, check for rot. If the plant is crowded, repot to a slightly larger container or divide the rhizomes.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      },
+      {
+        "symptom": "Very slow or no new growth",
+        "causes": "ZZ Plants are naturally among the slowest-growing houseplants. They may only produce 1-3 new stems per year, and these emerge in unpredictable bursts rather than continuous growth. No growth at all can mean the plant is dormant (winter), in too little light, or has damaged rhizomes limiting energy production.",
+        "fix": "If the plant looks healthy with firm, glossy leaves, slow growth is perfectly normal — just be patient. For truly stalled plants, try moving to a brighter spot and ensuring the rhizomes are healthy. New stems emerge as tightly coiled shoots that unfurl over days, so check the soil line for emerging growth.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      }
+    ]
+  },
+  {
+    "slug": "philodendron",
+    "last_updated": "2026-02-23",
+    "name": "Philodendron",
+    "scientific_name": "Philodendron spp.",
+    "emoji": "💖",
+    "summary": "Philodendrons are a diverse genus of over 400 tropical species, ranging from compact vining heartleaf types to dramatic self-heading varieties with massive split leaves. Native to Central and South American rainforests, they're among the easiest tropical plants to grow indoors — fast-growing, forgiving, and available in an incredible range of leaf shapes and colors.",
+    "meta_description": "Philodendron care guide for heartleaf, brasil, birkin and other varieties. Learn watering, light needs, propagation, and troubleshooting tips for these popular tropicals.",
+    "light": "Medium to bright indirect",
+    "water": "Weekly",
+    "humidity_level": "Medium",
+    "difficulty": "Easy",
+    "watering": "Water when the top inch of soil is dry. Philodendrons like consistent moisture but are forgiving of occasional missed waterings — more so than many other tropical plants. Vining types (heartleaf, brasil) are more drought-tolerant than self-heading types (birkin, hope), which have larger leaves that lose moisture faster. When you water, soak thoroughly until water drains from the bottom, then discard any standing water. Avoid letting the soil stay soggy, which causes root rot. In summer, you'll typically water weekly; in winter, every 10-14 days as growth slows. Drooping, soft leaves usually signal it's time to water.",
+    "light_details": "Most philodendrons prefer medium to bright indirect light, though they tolerate lower light better than many houseplants. In dim conditions, they'll survive but grow leggy with smaller leaves and lose any variegation. Variegated types like Brasil and Birkin need brighter light to maintain their colorful patterns — in low light, they'll gradually revert toward solid green. Self-heading varieties with large leaves (hope, xanadu) can handle slightly lower light than vining types. Direct sun burns the leaves of all philodendrons, causing brown, papery patches. An east-facing window or a spot a few feet from a south window is ideal for most varieties.",
+    "humidity": "Philodendrons appreciate humidity above 50% but adapt well to average home conditions (30-40%). Higher humidity promotes noticeably larger leaves and faster growth, especially for the large-leaved self-heading varieties. Brown, crispy leaf edges are a telltale sign of dry air. You can boost humidity by grouping tropical plants together, using a pebble tray, or running a humidifier. Bathrooms with natural light are excellent philodendron locations. Keep temperatures between 65-85°F (18-29°C) and avoid cold drafts — most philodendrons show cold stress below 55°F.",
+    "fertilizing": "Feed monthly during spring and summer with a balanced liquid fertilizer at regular or half strength. Philodendrons are moderate feeders that respond well to consistent nutrition — you'll notice faster growth and larger leaves during the fertilized growing season. Reduce to every 6-8 weeks in fall and stop in winter. Over-fertilizing causes salt buildup that shows as brown leaf tips. If you see white crust on the soil surface, flush thoroughly with plain water. Slow-release granules applied once in spring are a good low-maintenance alternative to monthly liquid feeding.",
+    "common_problems": [
+      "Yellow leaves: Usually overwatering, but can be underwatering or old age.",
+      "Leggy growth: Not enough light. Move closer to window.",
+      "Small leaves: Needs more light or fertilizer.",
+      "Loss of variegation: Too little light. Move to brighter spot.",
+      "Brown tips/edges: Low humidity or inconsistent watering."
+    ],
+    "quick_tips": [
+      "Vining types (heartleaf, brasil) trail beautifully from shelves or climb moss poles",
+      "Propagate vining types easily from stem cuttings — roots form in 1-2 weeks in water",
+      "Prune leggy vines to encourage bushier, fuller growth",
+      "Toxic to cats and dogs — keep trailing vines and fallen leaves out of reach",
+      "Give climbing types a moss pole or trellis for dramatically larger leaves"
+    ],
+    "howto": {
+      "totalTime": "PT15M",
+      "supplies": ["Well-draining potting mix", "Balanced liquid fertilizer", "Moss pole for climbing types"],
+      "tools": ["Watering can", "Pruning shears", "Spray bottle for misting"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When top 1\u2033 dry", "frequency": "Weekly"},
+      {"aspect": "Light", "requirement": "Medium to bright indirect", "frequency": "4-6 hours daily"},
+      {"aspect": "Humidity", "requirement": "50%+ ideal", "frequency": "Mist if edges brown"},
+      {"aspect": "Fertilizing", "requirement": "Balanced liquid fertilizer", "frequency": "Monthly (spring-summer)"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 1-2 years"}
+    ],
+    "propagation": {
+      "intro": "Vining philodendrons are among the easiest houseplants to propagate — they root quickly from stem cuttings in water or soil. Self-heading types are trickier and usually propagated by division or air layering. The key for vining types is to cut just below a node (the bump on the stem where leaves and aerial roots emerge), as that's where new roots will grow.",
+      "methods": [
+        {
+          "name": "Stem Cutting in Water (Vining Types)",
+          "steps": [
+            "Cut a 4-6 inch vine segment just below a node, with at least 2-3 leaves.",
+            "Remove the bottom leaf to expose the node.",
+            "Place in a jar of room-temperature water with the node submerged.",
+            "Set in bright indirect light and change water every 5-7 days.",
+            "Roots appear in 1-2 weeks. Pot in soil when roots are 2-3 inches long."
+          ]
+        },
+        {
+          "name": "Stem Cutting in Soil (Vining Types)",
+          "steps": [
+            "Take a cutting with 2-3 nodes, removing the bottom leaves.",
+            "Dip the cut end in rooting hormone (optional).",
+            "Plant in moist, well-draining potting mix with at least one node buried.",
+            "Keep soil consistently moist and in warm, bright indirect light.",
+            "Roots establish in 2-4 weeks. Tug gently to check — resistance means success."
+          ]
+        },
+        {
+          "name": "Division (Self-Heading Types)",
+          "steps": [
+            "Remove the plant from its pot when it has multiple growth points.",
+            "Gently separate the root ball into sections, each with leaves and roots.",
+            "Plant each division in its own pot with fresh potting mix.",
+            "Water lightly and keep in warm, humid conditions for 2-3 weeks."
+          ]
+        }
+      ],
+      "best_time": "Spring and summer",
+      "difficulty": "Easy"
+    },
+    "varieties": [
+      {
+        "name": "Heartleaf Philodendron",
+        "also_known_as": "Philodendron hederaceum",
+        "description": "The classic vining philodendron with small, heart-shaped dark green leaves on trailing stems. Extremely hardy and fast-growing. One of the most popular houseplants for hanging baskets, shelves, and trellises.",
+        "difficulty": "Very Easy",
+        "light_needs": "Low to bright indirect",
+        "special_note": "The most forgiving philodendron — tolerates low light and irregular watering."
+      },
+      {
+        "name": "Philodendron Brasil",
+        "also_known_as": null,
+        "description": "A variegated sport of the heartleaf philodendron with stunning lime-green and dark green striped leaves. Each leaf has a unique pattern. Same easy vining habit as the heartleaf but with much more visual impact.",
+        "difficulty": "Easy",
+        "light_needs": "Medium to bright indirect",
+        "special_note": "Needs good light to maintain variegation — reverts to solid green in low light."
+      },
+      {
+        "name": "Philodendron Birkin",
+        "also_known_as": null,
+        "description": "A compact, self-heading variety with dark green leaves featuring striking cream-white pinstripe variegation. Each new leaf unfurls with more pronounced stripes. Grows upright rather than trailing, making it perfect for desktops and shelves.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect",
+        "special_note": "Occasionally produces a reverted leaf or sport — these are normal genetic quirks."
+      }
+    ],
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume weekly watering",
+          "Begin monthly fertilizing",
+          "Take stem cuttings for propagation",
+          "Repot if root-bound"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water weekly, more often in heat",
+          "Continue monthly fertilizing",
+          "Train vines on moss poles or trellises",
+          "Watch for mealybugs and spider mites"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering to every 10-14 days",
+          "Fertilize every 6-8 weeks, then stop",
+          "Prune leggy growth for bushier shape",
+          "Move away from cold windows"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water every 10-14 days",
+          "No fertilizer needed",
+          "Increase humidity near heating vents",
+          "Clean leaves to maximize light absorption"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Yellow leaves",
+        "causes": "Overwatering is the most common cause. When roots sit in wet soil, they can't absorb oxygen and begin to rot, sending stress signals to the leaves. Underwatering, natural aging of older leaves, and nutrient deficiency can also cause yellowing. On vining types, the oldest leaves closest to the soil naturally yellow and drop.",
+        "fix": "Check soil moisture — let the top inch dry between waterings. Ensure drainage holes aren't blocked. If multiple leaves yellow suddenly, inspect roots for rot (brown, mushy roots). Remove affected roots, repot in fresh soil, and water less frequently. A few bottom leaves yellowing over time is normal aging.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-yellow",
+        "landing_page_title": "Why Are My Plant Leaves Turning Yellow?"
+      },
+      {
+        "symptom": "Leggy growth with small leaves",
+        "causes": "Insufficient light causes philodendrons to stretch toward the nearest light source, producing long internodes (the space between leaves) and progressively smaller leaves. This is especially noticeable in vining types, which can produce long bare stems with tiny leaves at the tips.",
+        "fix": "Move to a brighter location. Prune leggy vines back to a node — each cut point will produce new growth, creating a bushier plant. Use the pruned cuttings to propagate new plants. For climbing types, providing a moss pole in good light encourages larger leaf production.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      },
+      {
+        "symptom": "Brown, crispy leaf edges",
+        "causes": "Brown edges on philodendron leaves are most commonly caused by low humidity. The thin leaf margins lose moisture fastest, resulting in crispy brown borders. Inconsistent watering (letting the soil dry out too much between waterings) and salt buildup from fertilizer can contribute.",
+        "fix": "Increase humidity with a humidifier, pebble tray, or grouping plants together. Water more consistently — don't let the soil dry out completely. Flush the soil with plain water to remove salt buildup. Brown edges won't heal but new growth should be healthy once conditions improve.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "Loss of variegation",
+        "causes": "Variegated philodendrons (Brasil, Birkin, Pink Princess) lose their patterns in insufficient light. The plant prioritizes chlorophyll production over decorative coloring to maximize energy from limited light. Fully green stems will outcompete variegated growth if not managed.",
+        "fix": "Move to brighter indirect light immediately. Prune any fully reverted (solid green) stems, as they'll dominate the plant with their faster growth. New growth in better light should show improved variegation. For Birkin, occasional reverted leaves are normal genetic quirks and don't indicate a problem.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      },
+      {
+        "symptom": "Drooping, wilting leaves",
+        "causes": "Philodendron leaves droop when the plant is thirsty — the cells lose turgor pressure and can't hold the leaves upright. However, overwatering can cause the same symptom if root rot prevents water uptake. The key difference: underwatered leaves feel thin and light; overwatered leaves feel heavy and limp.",
+        "fix": "Check the soil. If it's dry, water thoroughly and the plant should recover within hours. If the soil is wet, you may have root rot. Stop watering, let it dry, and inspect roots. Trim any mushy roots and repot in fresh soil. Going forward, water only when the top inch is dry.",
+        "landing_page_slug": "why-are-my-plant-leaves-drooping",
+        "landing_page_title": "Why Are My Plant Leaves Drooping?"
+      }
+    ]
+  },
+  {
+    "slug": "rubber-plant",
+    "last_updated": "2026-02-23",
+    "name": "Rubber Plant",
+    "scientific_name": "Ficus elastica",
+    "emoji": "🌳",
+    "summary": "Rubber Plants are bold statement plants with thick, glossy leaves in deep green or dramatic burgundy. A close relative of the Fiddle Leaf Fig but significantly easier to care for, they offer the same impressive, tree-like presence without the fussy temperament. Available in several stunning color varieties, Rubber Plants can grow into impressive 6-8 foot indoor trees with proper care.",
+    "meta_description": "Rubber Plant care guide for Ficus elastica. Learn watering, light needs, propagation, and care tips for burgundy, tineke, and ruby varieties.",
+    "light": "Bright indirect",
+    "water": "Every 1-2 weeks",
+    "humidity_level": "Medium",
+    "difficulty": "Easy",
+    "watering": "Water when the top 2 inches of soil are dry — push your finger down to check. Rubber plants prefer to dry out between waterings but don't like to stay bone-dry for extended periods. They'll droop their leaves dramatically when thirsty, which is a clear visual cue but shouldn't be relied on regularly. In summer, this typically means watering every 1-2 weeks. In winter, stretch to every 2-3 weeks as growth slows significantly. Water thoroughly until it runs from the drainage holes, then discard any standing water in the saucer. Rubber plants are susceptible to root rot from overwatering, so erring on the dry side is safer than keeping soil too moist.",
+    "light_details": "Rubber plants thrive in bright indirect light with 6 or more hours daily. Darker varieties (burgundy, black prince) are more tolerant of lower light conditions, while variegated types (tineke, ruby) absolutely need bright light to maintain their colorful patterns — in dim conditions, they'll gradually revert to solid green. Some direct morning sun is perfectly fine and even beneficial, but intense afternoon sun through a south or west window can scorch the leaves, leaving brown, crispy patches. If your rubber plant is growing slowly or losing lower leaves, it likely needs more light. Rotate the pot monthly for balanced, upright growth.",
+    "humidity": "Average home humidity (40-50%) works well for rubber plants. They appreciate slightly higher humidity and will produce larger, glossier leaves in more humid environments, but they're not nearly as demanding as their Fiddle Leaf Fig cousins. Brown leaf edges may appear in very dry air (below 30%), especially during winter heating season. If needed, a light misting or nearby humidifier helps. Keep temperatures between 60-80°F (15-27°C) and avoid cold drafts from windows, doors, and AC vents. Rubber plants are sensitive to sudden temperature drops, which can trigger leaf drop.",
+    "fertilizing": "Feed monthly during spring and summer with a balanced liquid fertilizer at regular strength. Rubber plants are moderate feeders that grow actively during warm months and benefit from consistent nutrition. Reduce feeding to every 6-8 weeks in fall and stop entirely in winter when growth is dormant. Over-fertilizing causes salt buildup in the soil and brown leaf margins. If you see white crust on the soil surface, flush with plain water. Avoid fertilizing a stressed plant — address watering or light issues first, then resume feeding once the plant is stable.",
+    "common_problems": [
+      "Dropping leaves: Usually environmental stress – overwatering, cold drafts, or sudden change.",
+      "Yellow leaves: Overwatering or natural aging of lower leaves.",
+      "Leggy growth: Not enough light. Prune and move to brighter spot.",
+      "Sticky leaves: Scale insects. Wipe leaves and treat with neem oil.",
+      "Loss of variegation: Too little light for variegated types."
+    ],
+    "quick_tips": [
+      "Wipe large leaves monthly with a damp cloth — dust blocks light and dulls the glossy finish",
+      "Prune the growing tip to control height and encourage side branching",
+      "Rotate monthly for straight, balanced growth — they lean toward light",
+      "White milky sap (latex) irritates skin — wear gloves when pruning and wash hands after",
+      "A heavy ceramic or terra cotta pot prevents taller plants from tipping over"
+    ],
+    "howto": {
+      "totalTime": "PT15M",
+      "supplies": ["Well-draining potting mix", "Balanced liquid fertilizer"],
+      "tools": ["Watering can", "Clean cloth for leaf wiping", "Pruning shears"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When top 2\u2033 dry", "frequency": "Every 1-2 weeks"},
+      {"aspect": "Light", "requirement": "Bright indirect", "frequency": "6+ hours daily"},
+      {"aspect": "Humidity", "requirement": "Average home humidity", "frequency": "No special needs"},
+      {"aspect": "Fertilizing", "requirement": "Balanced liquid fertilizer", "frequency": "Monthly (spring-summer)"},
+      {"aspect": "Repotting", "requirement": "When root-bound", "frequency": "Every 1-2 years"}
+    ],
+    "propagation": {
+      "intro": "Rubber Plants can be propagated from stem tip cuttings or by air layering larger branches. Stem cuttings are simpler but work best with younger, flexible stems. Air layering is ideal for larger plants where you want to maintain height or create a new plant from a mature branch. The white latex sap that oozes from cuts is normal but can irritate skin — wear gloves.",
+      "methods": [
+        {
+          "name": "Stem Cutting in Water",
+          "steps": [
+            "Cut a 6-inch stem tip with 2-3 leaves using clean, sharp shears. Let the latex sap drain and dry for 30 minutes.",
+            "Remove the bottom leaf to expose the node.",
+            "Place in a jar of room-temperature water in bright indirect light.",
+            "Change water weekly. The latex may cloud the water initially — this is normal.",
+            "Roots appear in 3-6 weeks. Pot in well-draining soil when roots are 2-3 inches long."
+          ]
+        },
+        {
+          "name": "Air Layering",
+          "steps": [
+            "Choose a healthy section of stem and make an upward diagonal cut about one-third through.",
+            "Prop the cut open with a toothpick and dust with rooting hormone.",
+            "Wrap the area in damp sphagnum moss, secured with plastic wrap.",
+            "Keep the moss moist for 4-8 weeks until roots grow through.",
+            "Cut below the rooted section and pot in well-draining mix."
+          ]
+        }
+      ],
+      "best_time": "Late spring to early summer",
+      "difficulty": "Moderate"
+    },
+    "varieties": [
+      {
+        "name": "Ficus elastica 'Burgundy'",
+        "also_known_as": "Burgundy Rubber Plant",
+        "description": "Deep, near-black burgundy leaves with a subtle dark red sheen. New leaves unfurl from a dramatic red sheath. The most popular colored variety and more forgiving of lower light than variegated types.",
+        "difficulty": "Easy",
+        "light_needs": "Medium to bright indirect",
+        "special_note": "The dark color deepens with more light. Tolerates lower light than other varieties."
+      },
+      {
+        "name": "Ficus elastica 'Tineke'",
+        "also_known_as": "Variegated Rubber Plant",
+        "description": "Stunning tricolor leaves with patches of green, cream, and pink. Each leaf has a unique pattern that becomes more pronounced with good light. New growth emerges with prominent pink tones.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect",
+        "special_note": "Needs consistent bright light to maintain variegation. Cream sections burn faster in direct sun."
+      },
+      {
+        "name": "Ficus elastica 'Ruby'",
+        "also_known_as": "Ruby Rubber Plant",
+        "description": "Similar to Tineke but with more vibrant pink and red variegation. The pink tones are especially intense on new growth and the leaf undersides. A showstopping variety for bright spaces.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect",
+        "special_note": "Pink color fades in low light. Slightly slower growing than the standard green variety."
+      }
+    ],
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume regular watering every 1-2 weeks",
+          "Begin monthly fertilizing",
+          "Prune to shape or encourage branching",
+          "Repot if root-bound"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water every 1-2 weeks when top 2 inches dry",
+          "Continue monthly fertilizing",
+          "Watch for scale insects on leaf undersides",
+          "Take stem cuttings for propagation"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering to every 2-3 weeks",
+          "Reduce fertilizing, then stop by late fall",
+          "Move away from cold drafty windows",
+          "Clean leaves before shorter winter days"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water every 2-3 weeks",
+          "No fertilizer needed",
+          "Keep away from cold drafts and heating vents",
+          "Maximize light for variegated varieties"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Dropping leaves",
+        "causes": "Rubber plants drop leaves as a stress response. The most common triggers are overwatering, cold drafts, sudden environmental changes (being moved), and seasonal light changes. Like their Fiddle Leaf Fig cousins, they're sensitive to being relocated. Under-watering and root rot are also possible causes.",
+        "fix": "Identify the stressor. If you just moved the plant, give it 2-3 weeks to adjust — some leaf drop is expected. Check watering (top 2 inches should dry between waterings). Ensure the plant isn't near cold drafts or heating vents. If leaf drop is severe, check roots for rot. A few lower leaves dropping over time is normal aging.",
+        "landing_page_slug": "why-are-my-plant-leaves-drooping",
+        "landing_page_title": "Why Are My Plant Leaves Drooping?"
+      },
+      {
+        "symptom": "Yellow leaves",
+        "causes": "Overwatering is the most common cause of yellow leaves on rubber plants. The thick, fleshy leaves can handle some drought but react poorly to constantly wet soil. Lower leaves yellowing gradually is normal aging. Sudden widespread yellowing suggests a root problem or environmental stress.",
+        "fix": "Reduce watering frequency — let the top 2 inches of soil dry between waterings. Check that your pot has adequate drainage. If multiple leaves are yellowing at once, unpot and inspect the roots. Trim mushy, brown roots and repot in fresh well-draining mix. Yellow leaves won't recover — remove them cleanly.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-yellow",
+        "landing_page_title": "Why Are My Plant Leaves Turning Yellow?"
+      },
+      {
+        "symptom": "Leggy growth",
+        "causes": "A rubber plant that grows tall and thin with widely-spaced leaves isn't getting enough light. It's stretching toward the brightest available light source, investing energy in height rather than fullness. Without pruning, rubber plants naturally grow as a single tall stem rather than branching.",
+        "fix": "Move to a brighter location. Prune the top of the plant — cut just above a leaf node — to stimulate branching. You can also notch the bark above dormant buds to encourage side shoots without removing height. The pruned top makes an excellent cutting for propagation. Rotate quarterly for balanced growth.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      },
+      {
+        "symptom": "Sticky residue on leaves",
+        "causes": "Sticky leaves almost always indicate scale insects — small, flat brown bumps that attach to stems and leaf undersides and secrete a sticky honeydew. Scale is one of the most common pests on rubber plants and can be hard to spot because the insects don't move and look like natural bumps.",
+        "fix": "Wipe leaves and stems with a cotton ball dipped in rubbing alcohol to remove visible scale. Follow up with neem oil spray applied to all leaf surfaces every 7-10 days for 3 applications. For severe infestations, use an insecticidal soap. Check nearby plants for spread. The sticky residue washes off with soapy water.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      },
+      {
+        "symptom": "Loss of variegation (Tineke/Ruby)",
+        "causes": "Variegated rubber plants losing their pink, cream, and white patterns are not getting enough light. The plant produces more chlorophyll (green pigment) at the expense of decorative coloring to compensate for dim conditions. This is a gradual process — you'll notice new leaves emerge progressively greener.",
+        "fix": "Move immediately to brighter indirect light. Variegated rubber plants need more light than solid-colored varieties to maintain their patterns. Prune any fully reverted green stems if they appear, as they'll outcompete variegated growth. The existing green-reverted leaves won't regain variegation, but new growth in better light should show improved color.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      }
+    ]
+  },
+  {
+    "slug": "aloe-vera",
+    "last_updated": "2026-02-23",
+    "name": "Aloe Vera",
+    "scientific_name": "Aloe barbadensis miller",
+    "emoji": "🧴",
+    "summary": "Aloe Vera is a succulent famous for its soothing, medicinal gel used for burns, skincare, and natural remedies. Native to the Arabian Peninsula, it's been cultivated for thousands of years. Beyond its healing properties, Aloe Vera is low-maintenance, drought-tolerant, and produces offsets (pups) you can share with friends — making it both practical and rewarding to grow.",
+    "meta_description": "Aloe Vera care guide. Learn watering, light requirements, gel harvesting tips, propagation from pups, and how to keep your aloe healthy and thriving indoors.",
+    "light": "Bright indirect to direct",
+    "water": "Every 2-3 weeks",
+    "humidity_level": "Low",
+    "difficulty": "Easy",
+    "watering": "As a succulent, Aloe Vera stores water in its thick, fleshy leaves and needs infrequent watering. Water deeply only when the soil is completely dry — push your finger all the way down to check. In summer, this typically means every 2-3 weeks; in winter, once a month or less. Overwatering is the number one killer, causing mushy, translucent leaves and root rot. Always use a pot with drainage holes and discard standing water from saucers. Terra cotta pots are ideal because they wick excess moisture away from the roots. When you do water, soak thoroughly until water runs from the bottom, then let the soil dry completely before watering again. If leaves feel firm and plump, the plant doesn't need water yet.",
+    "light_details": "Aloe Vera loves bright light and can handle direct sun — especially gentle morning light from an east-facing window. South- and west-facing windows are ideal for indoor growing. In low light, aloe becomes leggy and pale, stretching toward the nearest light source with thin, floppy leaves. If moving an aloe from low light to direct sun, acclimate it gradually over 1-2 weeks to prevent sunburn (white or brown bleached patches). Outdoors, aloe thrives in partial sun but may need afternoon shade in hot climates. Aim for at least 6 hours of bright light daily for compact, healthy growth and vibrant color.",
+    "humidity": "Aloe thrives in dry conditions and actively dislikes high humidity — making it the opposite of most tropical houseplants. No misting, no pebble trays, no humidifiers needed. It's perfectly suited for arid climates, air-conditioned offices, and dry winter rooms. Keep temperatures between 55-85°F (13-29°C). Aloe is not cold-hardy — even brief exposure to frost causes permanent cell damage that shows as water-soaked, mushy patches on the leaves. In winter, keep it away from cold windows. Aloe can spend summer outdoors in many climates but must come inside before the first frost.",
+    "fertilizing": "Aloe is a very light feeder that grows slowly regardless of nutrition. Fertilize just 2-3 times during the growing season (spring and summer) with a diluted succulent or cactus fertilizer. Over-fertilizing does more harm than good — it can cause salt buildup and brown leaf tips. Many aloe plants thrive for years without any supplemental fertilizer, especially if repotted every few years in fresh potting mix. For a gentle organic approach, a small amount of worm castings mixed into the soil during repotting provides slow-release nutrients.",
+    "common_problems": [
+      "Mushy leaves: Overwatering or root rot. Let dry completely and reduce watering.",
+      "Brown tips: Usually sunburn or underwatering.",
+      "Flat, thin leaves: Not enough light or water.",
+      "Leggy growth: Insufficient light. Move to brighter location.",
+      "Red/brown coloring: Sun stress – can be normal but move to indirect light if concerned."
+    ],
+    "quick_tips": [
+      "Harvest gel by slicing outer leaves at the base — inner leaves are younger and should keep growing",
+      "Propagate pups (offsets) when they're 3-4 inches tall with their own root system",
+      "Use terracotta pots with cactus mix for best drainage and root health",
+      "Let cut leaf ends callous for a day before applying gel to skin",
+      "Place in the kitchen for quick access to gel for minor burns and cuts"
+    ],
+    "howto": {
+      "totalTime": "PT10M",
+      "supplies": ["Cactus or succulent potting mix", "Succulent fertilizer", "Terracotta pot with drainage"],
+      "tools": ["Watering can", "Clean sharp knife for gel harvesting"]
+    },
+    "care_table": [
+      {"aspect": "Watering", "requirement": "When soil completely dry", "frequency": "Every 2-3 weeks (summer), monthly (winter)"},
+      {"aspect": "Light", "requirement": "Bright indirect to direct", "frequency": "6+ hours daily"},
+      {"aspect": "Humidity", "requirement": "Low — no extra needed", "frequency": "No misting needed"},
+      {"aspect": "Fertilizing", "requirement": "Succulent fertilizer", "frequency": "2-3 times per growing season"},
+      {"aspect": "Repotting", "requirement": "When root-bound or crowded by pups", "frequency": "Every 2-3 years"}
+    ],
+    "propagation": {
+      "intro": "Aloe Vera propagates primarily through offsets (pups) — baby plants that emerge from the base of the mother plant. Unlike some succulents, aloe leaf cuttings have a very low success rate, so pup division is by far the most reliable method. A healthy, mature aloe will produce multiple pups per year that you can separate and share.",
+      "methods": [
+        {
+          "name": "Pup Division",
+          "steps": [
+            "Wait until pups are 3-4 inches tall and have their own small root system.",
+            "Remove the mother plant from its pot and gently brush away soil to expose the connection point.",
+            "Use a clean, sharp knife to cut the pup away from the mother, keeping as many roots on the pup as possible.",
+            "Let both the pup and the mother plant's cut surface dry for 24-48 hours to callous over.",
+            "Plant the pup in its own small pot with cactus/succulent mix. Wait 5-7 days before watering."
+          ]
+        },
+        {
+          "name": "Gel Harvesting (Bonus)",
+          "steps": [
+            "Select a thick, mature outer leaf — these have the most gel.",
+            "Cut the leaf at the base using a clean, sharp knife.",
+            "Stand the leaf upright for 10-15 minutes to let yellow latex (aloin) drain out — this substance is irritating.",
+            "Slice the leaf lengthwise and scoop out the clear gel with a spoon.",
+            "Use fresh gel immediately or store in the refrigerator for up to a week. Freeze in ice cube trays for longer storage."
+          ]
+        }
+      ],
+      "best_time": "Spring and summer",
+      "difficulty": "Easy"
+    },
+    "varieties": [
+      {
+        "name": "Aloe Vera (Standard)",
+        "also_known_as": "Medicinal Aloe",
+        "description": "The classic variety grown for its healing gel. Green to gray-green leaves with subtle white spots when young. Can reach 2 feet tall with thick, plump leaves full of clear, soothing gel.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect to direct",
+        "special_note": "The only aloe species widely used for medicinal and cosmetic purposes."
+      },
+      {
+        "name": "Aloe 'Christmas Carol'",
+        "also_known_as": null,
+        "description": "A compact, colorful hybrid with deep red-to-green leaves covered in prominent white teeth along the edges. Stays small (under 12 inches) and produces vibrant red-orange flowers. Purely ornamental.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect to direct",
+        "special_note": "Color deepens with more sun exposure — a natural stress response."
+      },
+      {
+        "name": "Aloe aristata",
+        "also_known_as": "Lace Aloe",
+        "description": "A stemless, rosette-forming aloe with dark green leaves covered in white bumps. Smaller than standard aloe (6-8 inches) and more cold-tolerant. Produces orange-red flowers on tall stalks.",
+        "difficulty": "Easy",
+        "light_needs": "Bright indirect",
+        "special_note": "More shade-tolerant than standard Aloe Vera — good for lower light spots."
+      }
+    ],
+    "care_calendar": [
+      {
+        "season": "Spring",
+        "months": "March – May",
+        "tasks": [
+          "Resume watering every 2-3 weeks",
+          "Apply first fertilizer dose",
+          "Separate pups for propagation",
+          "Move outdoors gradually if desired"
+        ]
+      },
+      {
+        "season": "Summer",
+        "months": "June – August",
+        "tasks": [
+          "Water every 2-3 weeks when fully dry",
+          "Apply second fertilizer dose",
+          "Harvest gel from mature outer leaves",
+          "Watch for mealybugs in leaf crevices"
+        ]
+      },
+      {
+        "season": "Fall",
+        "months": "September – November",
+        "tasks": [
+          "Reduce watering to monthly",
+          "Apply final fertilizer dose in early fall",
+          "Bring outdoor aloe inside before first frost",
+          "Repot if crowded by pups"
+        ]
+      },
+      {
+        "season": "Winter",
+        "months": "December – February",
+        "tasks": [
+          "Water monthly or less",
+          "No fertilizer needed",
+          "Keep away from cold windows and frost",
+          "Ensure maximum available light"
+        ]
+      }
+    ],
+    "troubleshooting": [
+      {
+        "symptom": "Mushy, translucent leaves",
+        "causes": "This is almost always overwatering or root rot. Aloe stores water in its leaves, and when roots sit in constantly wet soil, they rot and can no longer regulate moisture uptake. The leaves absorb excess water, become waterlogged, and turn mushy and translucent. Cold temperatures combined with wet soil accelerate the problem dramatically.",
+        "fix": "Stop watering and let the soil dry completely. Remove any fully mushy leaves at the base. If the rot is at the root level, unpot the plant, trim all brown/mushy roots, let the plant air-dry for 2-3 days, then repot in fresh, dry cactus mix. Don't water for at least a week after repotting. Switch to a terra cotta pot if you're not already using one.",
+        "landing_page_slug": "am-i-overwatering-my-plant",
+        "landing_page_title": "Am I Overwatering My Plant?"
+      },
+      {
+        "symptom": "Brown, crispy leaf tips",
+        "causes": "Brown tips on aloe usually indicate sunburn (too much sudden direct light) or underwatering (the plant has used up its water reserves). Occasionally, mineral buildup from hard tap water causes browning at the tips.",
+        "fix": "For sunburn, move to a spot with less intense light or acclimate gradually. For underwatering, soak the soil thoroughly and wait — the plant should plump up within a day or two. If using hard water, switch to filtered water. Trim off brown tips at an angle for cosmetic purposes; they won't heal.",
+        "landing_page_slug": "why-are-my-plant-leaves-turning-brown",
+        "landing_page_title": "Why Are My Plant Leaves Turning Brown?"
+      },
+      {
+        "symptom": "Flat, thin, drooping leaves",
+        "causes": "Aloe leaves should be thick, plump, and upright. When they become flat, thin, and droop outward, the plant is either underwatered or not getting enough light. In low light, the plant stretches and thins its leaves to maximize surface area for photosynthesis.",
+        "fix": "Water thoroughly if the soil is completely dry. Move to a brighter location with 6+ hours of light. It can take several weeks for leaves to plump back up after a prolonged drought. If the plant is severely etiolated (stretched), it won't shrink back — but new growth will be more compact in better light.",
+        "landing_page_slug": "why-are-my-plant-leaves-drooping",
+        "landing_page_title": "Why Are My Plant Leaves Drooping?"
+      },
+      {
+        "symptom": "Red or brown leaf coloring",
+        "causes": "Aloe leaves turning reddish-brown is a sun stress response. It happens when the plant receives very intense light, especially if moved suddenly from shade to full sun. While not harmful in moderation (some growers find it attractive), extreme reddening means the plant is getting more UV than it can handle.",
+        "fix": "If you want to keep the green color, move to a spot with less direct sun or add afternoon shade. If you recently moved the plant to more light, the color change is temporary while it acclimates. Aloe that has always been in bright conditions and shows red/bronze tones is usually healthy — it's a natural protective response.",
+        "landing_page_slug": null,
+        "landing_page_title": null
+      },
+      {
+        "symptom": "Leggy, stretched growth",
+        "causes": "An aloe that grows tall and spindly instead of compact is not getting enough light. It's stretching toward the nearest light source (etiolation), producing thin leaves spaced far apart on an elongated stem. This is especially common in winter or in north-facing rooms.",
+        "fix": "Move to the brightest available location — ideally a south- or west-facing window. Once an aloe has stretched, it won't compact back. You can let it continue growing (it'll be top-heavy), or cut the top rosette off, let it callous for a few days, and replant it. The stump may produce new pups.",
+        "landing_page_slug": "why-is-my-plant-not-growing",
+        "landing_page_title": "Why Is My Plant Not Growing?"
+      }
+    ]
+  }
+]

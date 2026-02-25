@@ -1,0 +1,23 @@
+{# Reusable breadcrumb component.
+   Usage:
+     {% from "components/breadcrumb.html" import breadcrumb %}
+     {{ breadcrumb([
+       {"label": "Dashboard", "url": url_for('dashboard.index')},
+       {"label": "My Plants"},
+     ]) }}
+   The last item is rendered as the current page (no link).
+#}
+{% macro breadcrumb(items) %}
+<nav aria-label="Breadcrumb" class="mb-6">
+  <ol class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+    {% for item in items %}
+      {% if not loop.last %}
+        <li><a href="{{ item.url }}" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">{{ item.label }}</a></li>
+        <li aria-hidden="true" class="text-slate-400">/</li>
+      {% else %}
+        <li aria-current="page" class="text-slate-900 dark:text-slate-100 font-medium">{{ item.label }}</li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</nav>
+{% endmacro %}

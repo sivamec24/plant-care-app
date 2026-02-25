@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block title %}PlantCareAI | AI-Powered Plant Care Assistant for Weather-Aware Watering & Tips{% endblock %}
+
+{% block description %}PlantCareAI helps you keep every plant thriving with AI-powered reminders, weather-aware watering schedules, and personalized care tips. Free to start — no credit card required.{% endblock %}
+
+{% block og_title %}PlantCareAI — Your AI Plant Care Assistant{% endblock %}
+{% block og_description %}Weather-aware watering reminders, AI-powered plant advice, and personalized care tips. Free for up to 20 plants.{% endblock %}
+
+{% block og_image %}
+<meta property="og:image" content="{{ url_for('static', filename='images/og/home.png', _external=True) }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="PlantCareAI — AI-Powered Plant Care Assistant" />
+{% endblock %}
+{% block twitter_title %}PlantCareAI — AI Plant Care Assistant{% endblock %}
+{% block twitter_description %}Weather-aware watering reminders, AI plant advice, and personalized care tips. Free to start.{% endblock %}
+{% block twitter_image %}
+<meta name="twitter:image" content="{{ url_for('static', filename='images/og/home.png', _external=True) }}" />
+<meta name="twitter:image:alt" content="PlantCareAI — AI-Powered Plant Care Assistant" />
+{% endblock %}
+
+{% block extra_head %}
+<!-- WebSite Structured Data (enables sitelinks in SERP) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PlantCareAI",
+  "url": "{{ APP_URL }}/",
+  "description": "AI-powered plant care assistant with weather-aware reminders and personalized tips.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ APP_URL }}/ask?question={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<!-- FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does PlantCareAI know when to water my plants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PlantCareAI connects to real-time weather data for your location. When rain is forecast, it automatically adjusts your watering schedule so you never overwater. It factors in temperature, humidity, and precipitation to give you precise watering guidance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is PlantCareAI free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! PlantCareAI is free for up to 20 plants. You get AI-powered care advice, weather-aware reminders, photo journals, and seasonal tips at no cost. No credit card required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of plant advice does the AI provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PlantCareAI uses GPT-4o-mini to answer questions about watering, light requirements, pest control, repotting, pruning, and more. It tailors advice to your specific plant species, growing environment, and local weather conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to sign up to try the AI assistant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No! You can try the AI plant care assistant without creating an account. Just visit the Ask page, enter your plant and city, and get personalized advice instantly."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="text-center max-w-4xl mx-auto mb-16 pt-8 sm:pt-12" aria-labelledby="hero-heading">
+  <h1 id="hero-heading" class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6 leading-tight">
+    Your Plants Deserve <span class="text-gradient">Smarter Care</span>
+  </h1>
+  <p class="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+    AI-powered plant advice that checks your local weather before telling you to water.
+    Personalized reminders, care tips, and a photo journal for every plant you own.
+  </p>
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+    <a href="{{ url_for('auth.signup') }}" class="btn btn-primary btn-lg w-full sm:w-auto">
+      Start Free — No Credit Card
+    </a>
+    <a href="{{ url_for('web.assistant') }}" class="btn btn-secondary btn-lg w-full sm:w-auto">
+      Try the AI Assistant
+    </a>
+  </div>
+  <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">
+    Free for up to 20 plants. No ads, no data selling.
+  </p>
+</section>
+
+<!-- Features Grid -->
+<section class="mb-16 max-w-5xl mx-auto" aria-labelledby="features-heading">
+  <h2 id="features-heading" class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 text-center mb-10">
+    Everything Your Plants Need in One App
+  </h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="card text-center">
+      <div class="text-4xl mb-3" aria-hidden="true">&#x1F327;&#xFE0F;</div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Weather-Aware Watering</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Reminders that check the forecast first. If rain is coming, your schedule adjusts automatically.
+      </p>
+    </div>
+    <div class="card text-center">
+      <div class="text-4xl mb-3" aria-hidden="true">&#x1F916;</div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">AI Plant Doctor</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Ask anything — yellow leaves, drooping stems, pest problems. Get advice tailored to your plant and location.
+      </p>
+    </div>
+    <div class="card text-center">
+      <div class="text-4xl mb-3" aria-hidden="true">&#x1F4F8;</div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Photo Journal</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Track your plant's growth over time with photos and care logs. See how far they've come.
+      </p>
+    </div>
+    <div class="card text-center">
+      <div class="text-4xl mb-3" aria-hidden="true">&#x23F0;</div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Smart Reminders</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Watering, fertilizing, repotting — set it and forget it. We'll remind you when each plant needs attention.
+      </p>
+    </div>
+    <div class="card text-center">
+      <div class="text-4xl mb-3" aria-hidden="true">&#x1F321;&#xFE0F;</div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Seasonal Tips</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Care guidance that adapts to the season. Winter dormancy, summer heat — we've got your plants covered.
+      </p>
+    </div>
+    <div class="card text-center">
+      <div class="text-4xl mb-3" aria-hidden="true">&#x1F331;</div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Plant Library</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Track up to 20 plants for free. Each one gets its own profile, care schedule, and history.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="mb-16 max-w-4xl mx-auto" aria-labelledby="how-it-works-heading">
+  <h2 id="how-it-works-heading" class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 text-center mb-10">
+    How It Works
+  </h2>
+  <div class="grid sm:grid-cols-3 gap-8">
+    <div class="text-center">
+      <div class="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-xl mx-auto mb-4">1</div>
+      <h3 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Add Your Plants</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Tell us what you're growing and where. Indoor, outdoor, balcony — we'll adapt.
+      </p>
+    </div>
+    <div class="text-center">
+      <div class="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-xl mx-auto mb-4">2</div>
+      <h3 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Get Smart Reminders</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        We check the weather and tell you exactly when to water, fertilize, and prune.
+      </p>
+    </div>
+    <div class="text-center">
+      <div class="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-xl mx-auto mb-4">3</div>
+      <h3 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Watch Them Thrive</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Track progress with photos, ask the AI when problems come up, and grow with confidence.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof / Trust -->
+<section class="mb-16 py-10 bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 -mx-4 px-4 rounded-2xl" aria-labelledby="trust-heading">
+  <h2 id="trust-heading" class="text-2xl font-bold text-slate-900 dark:text-slate-100 text-center mb-8">
+    Built for Plant Parents Who Mean It
+  </h2>
+  <div class="grid sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto">
+    <div>
+      <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">Free</div>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Up to 20 plants, forever</p>
+    </div>
+    <div>
+      <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">AI&#8209;Powered</div>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">GPT-4o-mini plant advice</p>
+    </div>
+    <div>
+      <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">Real&#8209;Time</div>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Weather data for your city</p>
+    </div>
+  </div>
+</section>
+
+<!-- Plant Care Resources (internal linking for domain authority) -->
+<section class="mb-16 max-w-5xl mx-auto" aria-labelledby="resources-heading">
+  <h2 id="resources-heading" class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 text-center mb-4">
+    Plant Care Resources
+  </h2>
+  <p class="text-center text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+    Browse our free guides and articles — written by plant lovers, refined by AI.
+  </p>
+  <div class="grid sm:grid-cols-2 gap-4">
+    <a href="{{ url_for('seo.watering_hub') }}"
+       class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors group">
+      <span class="text-2xl" aria-hidden="true">&#x1F4A7;</span>
+      <span class="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Complete Plant Watering Guide</span>
+    </a>
+    <a href="{{ url_for('seo.leaf_problems_hub') }}"
+       class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors group">
+      <span class="text-2xl" aria-hidden="true">&#x1F343;</span>
+      <span class="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Plant Leaf Problem Solver</span>
+    </a>
+    <a href="{{ url_for('seo.overwatering') }}"
+       class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors group">
+      <span class="text-2xl" aria-hidden="true">&#x1F4A6;</span>
+      <span class="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Am I Overwatering My Plant?</span>
+    </a>
+    <a href="{{ url_for('seo.yellow_leaves') }}"
+       class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors group">
+      <span class="text-2xl" aria-hidden="true">&#x1F33F;</span>
+      <span class="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Why Are My Plant Leaves Turning Yellow?</span>
+    </a>
+    <a href="{{ url_for('seo.fungus_gnats') }}"
+       class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors group">
+      <span class="text-2xl" aria-hidden="true">&#x1FAB0;</span>
+      <span class="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">How to Get Rid of Fungus Gnats</span>
+    </a>
+    <a href="{{ url_for('guides.index') }}"
+       class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors group">
+      <span class="text-2xl" aria-hidden="true">&#x1F4DA;</span>
+      <span class="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Browse All Plant Care Guides</span>
+    </a>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="mb-16 max-w-3xl mx-auto" aria-labelledby="faq-heading">
+  <h2 id="faq-heading" class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 text-center mb-8">
+    Frequently Asked Questions
+  </h2>
+  <div class="space-y-4">
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        How does PlantCareAI know when to water my plants?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          PlantCareAI connects to real-time weather data for your location. When rain is forecast, it automatically adjusts your watering schedule so you never overwater. It factors in temperature, humidity, and precipitation to give you precise watering guidance.
+        </p>
+      </div>
+    </details>
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        Is PlantCareAI free to use?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          Yes! PlantCareAI is free for up to 20 plants. You get AI-powered care advice, weather-aware reminders, photo journals, and seasonal tips at no cost. No credit card required.
+        </p>
+      </div>
+    </details>
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        What kind of plant advice does the AI provide?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          PlantCareAI uses GPT-4o-mini to answer questions about watering, light, pests, repotting, pruning, and more. It tailors advice to your specific plant species, growing environment, and local weather conditions.
+        </p>
+      </div>
+    </details>
+    <details class="disclosure rounded-xl border border-slate-200 dark:border-slate-700">
+      <summary class="px-4 py-3 cursor-pointer font-medium text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-xl">
+        Do I need to sign up to try the AI assistant?
+      </summary>
+      <div class="px-4 pb-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+        <p class="text-slate-600 dark:text-slate-400">
+          No! You can <a href="{{ url_for('web.assistant') }}" class="text-emerald-600 dark:text-emerald-400 hover:underline">try the AI plant care assistant</a> without creating an account. Just enter your plant type and city, and get personalized advice instantly.
+        </p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="py-10 text-center bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 -mx-4 px-4 rounded-2xl" aria-labelledby="cta-heading">
+  <h2 id="cta-heading" class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+    Ready to Keep Your Plants Thriving?
+  </h2>
+  <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-xl mx-auto">
+    Join PlantCareAI and get weather-aware reminders, AI-powered advice, and a care journal for every plant you own.
+  </p>
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+    <a href="{{ url_for('auth.signup') }}" class="btn btn-primary btn-lg w-full sm:w-auto">
+      Sign Up Free
+    </a>
+    <a href="{{ url_for('web.assistant') }}" class="btn btn-ghost btn-lg w-full sm:w-auto">
+      Try Without Signing Up
+    </a>
+  </div>
+</section>
+{% endblock %}

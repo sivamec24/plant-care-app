@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}System Overview - Admin{% endblock %}
+{% block description %}System overview with quick stats and activity feed.{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+    <a href="{{ url_for('admin.index') }}" class="hover:text-emerald-600 dark:hover:text-emerald-400">Admin</a>
+    <span>/</span>
+    <span>Overview</span>
+  </div>
+  <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+    System Overview
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    Quick stats and recent activity
+  </p>
+</div>
+
+<!-- Quick Stats Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">👥</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ counts.users }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Total Users</div>
+  </div>
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">🌱</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ counts.plants }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Total Plants</div>
+  </div>
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">⏰</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ counts.reminders }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Total Reminders</div>
+  </div>
+  <div class="card text-center">
+    <span class="text-3xl mb-2 block">📔</span>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100">{{ counts.journal_entries }}</div>
+    <div class="text-sm text-slate-500 dark:text-slate-400">Journal Entries</div>
+  </div>
+</div>
+
+<!-- Recent Activity Feed -->
+<div class="card">
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Recent Activity
+  </h2>
+
+  {% if events_error %}
+  <div class="text-amber-600 dark:text-amber-400 text-sm mb-4">
+    Warning: {{ events_error }}
+  </div>
+  {% endif %}
+
+  {% if recent_events %}
+  <div class="space-y-3">
+    {% for event in recent_events %}
+    <div class="flex items-start gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+      <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-sm">
+        {% if event.event_type == 'plant_added' %}🌱
+        {% elif event.event_type == 'reminder_created' %}⏰
+        {% elif event.event_type == 'reminder_completed' %}✅
+        {% elif event.event_type == 'journal_entry_created' %}📔
+        {% elif event.event_type == 'ai_question_asked' %}🤖
+        {% elif event.event_type == 'user_signup' %}👤
+        {% else %}📌
+        {% endif %}
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="text-sm font-medium text-slate-900 dark:text-slate-100">
+          {{ event.event_type | replace('_', ' ') | title }}
+        </div>
+        <div class="text-xs text-slate-500 dark:text-slate-400">
+          {% if event.user_email %}{{ event.user_email }}{% else %}Anonymous{% endif %}
+          &middot; {{ event.created_at[:16] | replace('T', ' ') }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-slate-500 dark:text-slate-400 text-center py-8">
+    No recent activity recorded
+  </p>
+  {% endif %}
+</div>
+
+<!-- Back Navigation -->
+<div class="mt-8">
+  <a href="{{ url_for('admin.index') }}" class="btn btn-secondary">
+    &larr; Back to Admin Dashboard
+  </a>
+</div>
+
+{% endblock %}

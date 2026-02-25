@@ -1,0 +1,436 @@
+{% extends "base.html" %}
+{% from "components/reminder_icon.html" import reminder_icon %}
+
+{% block title %}Dashboard - Plant Care AI Assistant - PlantCareAI{% endblock %}
+
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<!-- Welcome Section -->
+<section class="mb-8">
+  <h1 class="page-title">
+    <span id="greeting-display">Welcome!</span>
+    <span class="inline-block animate-float" aria-hidden="true">🌱</span>
+  </h1>
+  <p class="text-lg text-slate-600 dark:text-slate-400">
+    {% if plant_count == 0 %}
+      Welcome to your plant care dashboard. Let's add your first plant!
+    {% elif plant_count == 1 %}
+      You're caring for <strong class="text-emerald-600 dark:text-emerald-400">1 plant</strong>. Great start!
+    {% else %}
+      You're caring for <strong class="text-emerald-600 dark:text-emerald-400">{{ plant_count }} plants</strong>. Nice collection!
+    {% endif %}
+  </p>
+</section>
+
+<!-- Quick Stats -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+  <a href="{{ url_for('plants.index') }}" class="stat-card">
+    <div class="text-4xl mb-3" aria-hidden="true">🪴</div>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">{{ plant_count }}</div>
+    <div class="text-sm text-slate-600 dark:text-slate-400">Plants</div>
+  </a>
+
+  <a href="{{ url_for('reminders.index') }}" class="{% if due_reminders %}stat-card-alert{% else %}stat-card{% endif %}">
+    <div class="text-4xl mb-3" aria-hidden="true">💧</div>
+    <div class="text-3xl font-bold {% if due_reminders %}text-amber-700 dark:text-amber-300{% else %}text-slate-900 dark:text-slate-100{% endif %} mb-1">{{ due_reminders|length }}</div>
+    <div class="text-sm {% if due_reminders %}text-amber-700 dark:text-amber-300{% else %}text-slate-600 dark:text-slate-400{% endif %}">Due Today</div>
+  </a>
+
+  <a href="{{ url_for('reminders.calendar') }}" class="stat-card">
+    <div class="text-4xl mb-3" aria-hidden="true">📅</div>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">{{ reminder_stats.upcoming_7_days or 0 }}</div>
+    <div class="text-sm text-slate-600 dark:text-slate-400">Calendar</div>
+  </a>
+
+  <a href="{{ url_for('pricing.index') }}" class="stat-card">
+    <div class="text-4xl mb-3" aria-hidden="true">🌱</div>
+    <div class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">Starter</div>
+    <div class="text-sm text-slate-600 dark:text-slate-400">Free Forever</div>
+  </a>
+</div>
+
+<!-- Weather Insights & Suggestions (Phase 2C - Consolidated) -->
+{% if (weather_context and weather_context.alerts) or weather_suggestions %}
+<section class="card mb-8 bg-gradient-to-br from-blue-50 to-amber-50 dark:from-blue-900/10 dark:to-amber-900/10 border-2 border-blue-200 dark:border-blue-700" aria-labelledby="weather-title">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="text-4xl" aria-hidden="true">🌤️</div>
+    <div>
+      <h3 id="weather-title" class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-1" tabindex="-1">Weather Insights & Suggestions</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">Weather conditions and recommendations for plant care</p>
+    </div>
+  </div>
+
+  <!-- Weather Alerts -->
+  {% if weather_context and weather_context.alerts %}
+  <div class="space-y-3 mb-6" role="alert" aria-live="polite">
+    {% for alert in weather_context.alerts %}
+    <div class="flex items-start gap-4 p-4 rounded-xl border-l-4 transition-all duration-200
+      {% if alert.type == 'rain' %}bg-cyan-50 dark:bg-cyan-900/20 border-cyan-400 dark:border-cyan-500
+      {% elif alert.type == 'freeze' %}bg-indigo-50 dark:bg-indigo-900/20 border-indigo-400 dark:border-indigo-500
+      {% elif alert.type == 'heat' %}bg-orange-50 dark:bg-orange-900/20 border-orange-400 dark:border-orange-500
+      {% endif %}">
+      <div class="text-3xl flex-shrink-0" aria-hidden="true">{{ alert.icon }}</div>
+      <div class="flex-1 min-w-0">
+        <p class="text-base font-medium text-slate-800 dark:text-slate-200">{{ alert.message }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Actionable Suggestions -->
+  {% if weather_suggestions %}
+  {% if weather_context and weather_context.alerts %}
+  <div class="border-t border-blue-200 dark:border-blue-700 pt-6 mb-3">
+    <h4 id="suggestions-heading" class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">Recommended Actions</h4>
+  </div>
+  {% endif %}
+  <ul class="space-y-3 list-none" role="list" {% if weather_context and weather_context.alerts %}aria-labelledby="suggestions-heading"{% endif %}>
+    {% for suggestion in weather_suggestions %}
+    <li class="flex flex-col sm:flex-row items-start gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-amber-200 dark:border-amber-700 transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2" data-reminder-id="{{ suggestion.reminder_id }}" role="listitem">
+      <div class="text-3xl flex-shrink-0" aria-hidden="true">
+        {% if 'rain' in suggestion.message.lower() %}☔
+        {% elif 'freeze' in suggestion.message.lower() or 'frost' in suggestion.message.lower() %}❄️
+        {% elif 'heat' in suggestion.message.lower() %}🌡️
+        {% elif 'dormancy' in suggestion.message.lower() %}🍂
+        {% else %}🌤️{% endif %}
+      </div>
+
+      <div class="flex-1 min-w-0">
+        <h4 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2" id="suggestion-title-{{ suggestion.reminder_id }}">
+          {{ suggestion.plant_name }}
+        </h4>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3" id="suggestion-desc-{{ suggestion.reminder_id }}">
+          {{ suggestion.message }}
+        </p>
+      </div>
+
+      <div class="flex gap-2 flex-shrink-0 w-full sm:w-auto" role="group" aria-label="Actions for {{ suggestion.plant_name }}">
+        <button
+          class="btn btn-sm btn-primary flex-1 sm:flex-initial weather-accept-btn"
+          data-days="{{ suggestion.days }}"
+          data-reason="{{ suggestion.message }}"
+          aria-label="{{ suggestion.action_label }} for {{ suggestion.plant_name }}"
+          aria-describedby="suggestion-desc-{{ suggestion.reminder_id }}"
+        >
+          {{ suggestion.action_label }}
+        </button>
+        <button
+          class="btn btn-sm btn-secondary weather-dismiss-btn"
+          aria-label="Keep original schedule for {{ suggestion.plant_name }}"
+        >
+          Keep Original Schedule
+        </button>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+{% endif %}
+
+<!-- Today's Plant Check (Consolidated from Today's Focus + Care Reminders Due Today) -->
+{% if due_reminders %}
+<section class="card mb-8 bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 border-2 border-emerald-200 dark:border-emerald-700" aria-labelledby="plant-check-title">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <div class="flex items-center gap-3">
+      <div class="text-4xl" aria-hidden="true">🌱</div>
+      <div>
+        <h3 id="plant-check-title" class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-1 flex items-center gap-3 flex-wrap">
+          <span>Today's Plant Check</span>
+          {% if due_reminders %}
+          <span class="badge-amber">{{ due_reminders|length }}</span>
+          {% endif %}
+        </h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Here's what needs attention today</p>
+      </div>
+    </div>
+    <a href="{{ url_for('reminders.index') }}" class="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
+      View all →
+    </a>
+  </div>
+
+  <div class="space-y-3" id="todays-focus-list">
+    {% for reminder in due_reminders[:3] %}
+    <div class="flex flex-col sm:flex-row items-start gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-all duration-200 hover:shadow-md hover:border-emerald-400 dark:hover:border-emerald-500" data-reminder-id="{{ reminder.id }}">
+      {{ reminder_icon(reminder.reminder_type) }}
+
+      <div class="flex-1 min-w-0">
+        <h4 class="text-lg font-semibold mb-2">
+          <a href="{{ url_for('reminders.view', reminder_id=reminder.id) }}" class="text-slate-900 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            {{ reminder.title }}
+          </a>
+        </h4>
+        <p class="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2 flex-wrap mb-2">
+          <a href="{{ url_for('plants.view', plant_id=reminder.plant_id) }}" class="font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300">
+            {{ reminder.plant_name }}{% if reminder.plant_nickname %} "{{ reminder.plant_nickname }}"{% endif %}
+          </a>
+          {% if reminder.adjustment %}
+          <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-full bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-700">
+            <span aria-hidden="true">☔</span> Weather adjusted
+          </span>
+          {% else %}
+          <span class="text-xs text-slate-500 dark:text-slate-400">Reminder due today</span>
+          {% endif %}
+        </p>
+
+        {% if reminder.adjustment %}
+        <div class="mt-2 p-2 bg-cyan-50 dark:bg-cyan-900/20 border-l-4 border-cyan-400 dark:border-cyan-500 rounded-r text-xs">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex-1">
+              <p class="text-slate-700 dark:text-slate-300 font-medium mb-1">
+                {{ reminder.adjustment.reason }}
+              </p>
+              <p class="text-slate-600 dark:text-slate-400">
+                Adjusted to <strong class="font-semibold text-slate-700 dark:text-slate-300">{{ reminder.adjustment.adjusted_due_date }}</strong>
+                {% if reminder.adjustment.days > 0 %}
+                  (+{{ reminder.adjustment.days }} day{% if reminder.adjustment.days > 1 %}s{% endif %})
+                {% elif reminder.adjustment.days < 0 %}
+                  ({{ reminder.adjustment.days }} day{% if reminder.adjustment.days < -1 %}s{% endif %})
+                {% endif %}
+                {% if reminder.adjustment.adjusted_at %}
+                <span class="text-slate-500 dark:text-slate-500">&middot; {{ reminder.adjustment.adjusted_at | relative_date }}</span>
+                {% endif %}
+              </p>
+            </div>
+            <button
+              class="flex-shrink-0 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 font-medium transition-colors adjustment-why-btn"
+              data-adjustment='{{ reminder.adjustment | tojson }}'
+              title="Show adjustment details"
+            >
+              Why?
+            </button>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if reminder.notes %}
+        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-2">{{ reminder.notes }}</p>
+        {% endif %}
+      </div>
+
+      <button
+        class="btn btn-primary flex-shrink-0 w-full sm:w-auto quick-complete-btn"
+        data-reminder-id="{{ reminder.id }}"
+        data-reminder-title="{{ reminder.title }}"
+        title="Mark complete"
+      >
+        <span aria-hidden="true">✓</span> Complete
+      </button>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if due_reminders|length > 3 %}
+  <div class="text-center text-sm text-slate-600 dark:text-slate-400 mt-4 pt-4 border-t border-emerald-200 dark:border-emerald-700">
+    <a href="{{ url_for('reminders.index') }}" class="font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
+      + {{ due_reminders|length - 3 }} more task{% if due_reminders|length > 4 %}s{% endif %} due today →
+    </a>
+  </div>
+  {% endif %}
+</section>
+
+{% elif plant_count > 0 %}
+<section class="card mb-8 bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 border-2 border-emerald-200 dark:border-emerald-700" aria-labelledby="all-clear-title">
+  <div class="flex items-center gap-3 mb-2">
+    <div class="text-4xl" aria-hidden="true">✅</div>
+    <div>
+      <h3 id="all-clear-title" class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-1">You're all set today</h3>
+      <p class="text-base text-slate-600 dark:text-slate-400">{{ reassurance_message }}</p>
+    </div>
+  </div>
+  <p class="text-xs text-slate-500 dark:text-slate-400 italic mt-3 mb-4">💡 {{ daily_tip }}</p>
+  <div>
+    <a href="{{ url_for('web.assistant') }}" class="text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
+      🤖 Ask the Care Assistant about your plants →
+    </a>
+  </div>
+</section>
+{% else %}
+<!-- First Plant CTA -->
+<section class="card mb-8 text-center bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/10 dark:to-cyan-900/10 border-2 border-emerald-200 dark:border-emerald-700" aria-labelledby="first-plant-title">
+  <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 flex items-center justify-center">
+    <span class="text-6xl" aria-hidden="true">🌱</span>
+  </div>
+
+  <h3 id="first-plant-title" class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+    Let's Add Your First Plant!
+  </h3>
+
+  <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+    Start your plant care journey today. We'll help you set up reminders, track care activities, and get personalized AI advice for your plants.
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-3 justify-center">
+    <a href="{{ url_for('plants.add') }}" class="btn btn-primary btn-lg">
+      <span aria-hidden="true">🪴</span> Add Your First Plant
+    </a>
+    <a href="{{ url_for('web.assistant') }}" class="btn btn-secondary">
+      <span aria-hidden="true">🤖</span> Learn About Plant Care
+    </a>
+  </div>
+</section>
+{% endif %}
+
+<!-- Quick Actions -->
+<section class="card mb-8" aria-labelledby="actions-title">
+  <h3 id="actions-title" class="section-title">Quick Actions</h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    <a href="{{ url_for('plants.add') }}" class="btn btn-primary">
+      <span aria-hidden="true">🪴</span> Add Plant
+    </a>
+    <a href="{{ url_for('reminders.create') }}" class="btn btn-primary">
+      <span aria-hidden="true">📝</span> New Reminder
+    </a>
+    <a href="{{ url_for('web.assistant') }}" class="btn btn-secondary">
+      <span aria-hidden="true">🤖</span> Care Assistant
+    </a>
+    <a href="{{ url_for('plants.index') }}" class="btn btn-secondary">
+      <span aria-hidden="true">🌿</span> View All Plants
+    </a>
+  </div>
+</section>
+
+<!-- Plants -->
+{% if plant_count > 0 %}
+<section class="card mb-8" aria-labelledby="plants-title">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+    <h3 id="plants-title" class="section-title !mb-0">My Plants</h3>
+    <a href="{{ url_for('plants.index') }}" class="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
+      Manage plants →
+    </a>
+  </div>
+
+  <!-- Plant count and scroll controls -->
+  <div class="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-3 mb-4">
+    <div class="flex items-center gap-3 flex-wrap">
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Your collection:
+      </p>
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1
+                   bg-emerald-100 dark:bg-emerald-900/30
+                   text-emerald-700 dark:text-emerald-300
+                   text-sm font-medium rounded-full border border-emerald-200 dark:border-emerald-700/50"
+            role="status"
+            aria-live="polite">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        {{ plant_count }} plant{{ 's' if plant_count != 1 else '' }}
+      </span>
+    </div>
+
+    <!-- Scroll arrow buttons (mobile only) -->
+    <div class="flex sm:hidden items-center gap-1" role="group" aria-label="Scroll controls">
+      <button type="button"
+              id="dashboard-scroll-left-btn"
+              class="p-2 bg-white dark:bg-slate-800 text-slate-400 dark:text-slate-500
+                     hover:text-emerald-600 dark:hover:text-emerald-400
+                     hover:bg-emerald-50 dark:hover:bg-emerald-900/20
+                     rounded-lg border border-slate-200 dark:border-slate-700
+                     transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed
+                     focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+              aria-label="Scroll plants left"
+              disabled>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <button type="button"
+              id="dashboard-scroll-right-btn"
+              class="p-2 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300
+                     hover:text-emerald-600 dark:hover:text-emerald-400
+                     hover:bg-emerald-50 dark:hover:bg-emerald-900/20
+                     rounded-lg border border-slate-200 dark:border-slate-700
+                     transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed
+                     focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+              aria-label="Scroll plants right">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Horizontal scrollable plant carousel -->
+  <div class="relative -mx-4 px-4 overflow-hidden">
+    <!-- Left gradient indicator (outside scroll container to stay fixed) -->
+    <div id="dashboard-gradient-left"
+         class="absolute left-0 top-0 bottom-0 w-4 sm:w-8
+                bg-gradient-to-r from-white via-white/90 to-transparent
+                dark:from-slate-800 dark:via-slate-800/90 dark:to-transparent
+                shadow-[inset_-4px_0_8px_-4px_rgba(0,0,0,0.1)]
+                dark:shadow-[inset_-4px_0_8px_-4px_rgba(0,0,0,0.3)]
+                pointer-events-none z-10 opacity-0 transition-opacity duration-200"
+         aria-hidden="true">
+    </div>
+
+    <!-- Right gradient indicator -->
+    <div id="dashboard-gradient-right"
+         class="absolute right-0 top-0 bottom-0 w-4 sm:w-8
+                bg-gradient-to-l from-white via-white/90 to-transparent
+                dark:from-slate-800 dark:via-slate-800/90 dark:to-transparent
+                shadow-[inset_4px_0_8px_-4px_rgba(0,0,0,0.1)]
+                dark:shadow-[inset_4px_0_8px_-4px_rgba(0,0,0,0.3)]
+                pointer-events-none z-10 transition-opacity duration-200"
+         aria-hidden="true">
+    </div>
+
+    <!-- Scrollable container -->
+    <div id="dashboard-plants-scroll-container"
+         class="overflow-x-auto scroll-smooth -mx-2 px-2 pb-2"
+         style="scrollbar-width: thin; scrollbar-color: rgb(16 185 129) transparent;"
+         role="region"
+         aria-label="Your plants carousel"
+         tabindex="0">
+      <div class="flex gap-3">
+        {% for plant in latest_plants %}
+        <a href="{{ url_for('plants.view', plant_id=plant.id) }}"
+           class="flex flex-col items-center p-2 bg-slate-50 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-400 transition-all duration-200 flex-shrink-0 w-28"
+           aria-label="View {{ plant.name }}{% if plant.nickname %}, also known as {{ plant.nickname }}{% endif %}">
+          {% if plant.photo_url_thumb or plant.photo_url %}
+            <img src="{{ plant.photo_url_thumb or plant.photo_url }}" alt="{{ plant.name }}" class="w-16 h-16 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
+          {% else %}
+            <div class="w-16 h-16 bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 rounded-lg flex items-center justify-center mb-2 text-3xl" aria-hidden="true">
+              🪴
+            </div>
+          {% endif %}
+          <span class="text-sm font-medium text-slate-900 dark:text-slate-100 text-center line-clamp-2">
+            {{ plant.name }}
+          </span>
+          {% if plant.nickname %}
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">"{{ plant.nickname }}"</span>
+          {% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="empty-state mb-8" aria-labelledby="empty-title">
+  <img src="{{ url_for('static', filename='images/illustrations/seedling-empty-state.svg') }}"
+       alt=""
+       class="empty-state-illustration"
+       aria-hidden="true">
+  <h3 id="empty-title" class="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+    Ready to start your plant collection?
+  </h3>
+  <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-md">
+    Add your first plant to get personalized care reminders and track its growth.
+  </p>
+  <a href="{{ url_for('plants.add') }}" class="btn btn-primary">
+    <span aria-hidden="true">🌱</span> Add Your First Plant
+  </a>
+</section>
+{% endif %}
+
+<!-- CSRF token for AJAX requests (secure storage) -->
+<div id="csrf-token" data-csrf="{{ csrf_token() }}" class="hidden"></div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

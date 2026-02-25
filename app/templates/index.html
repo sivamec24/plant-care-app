@@ -1,0 +1,523 @@
+{% extends "base.html" %}
+
+{% block title %}PlantCareAI — AI-Powered Plant Care Assistant • EDH Dev{% endblock %}
+
+{% block description %}Ask for plant care help from an AI-powered assistant that gives practical tips based on your plants and local weather.{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* Show loading overlay when form is submitting */
+  .grid-two.is-submitting .combined-loading-overlay {
+    display: flex !important;
+  }
+
+  /* Temperature unit toggle functionality */
+  #weather-section[data-units="f"] .only-c {
+    display: none;
+  }
+  #weather-section[data-units="c"] .only-f {
+    display: none;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Main Content Grid (Form First) -->
+<section class="grid-two grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 relative" aria-labelledby="form-title" aria-busy="false">
+  <!-- Loading Overlay -->
+  <div class="combined-loading-overlay fixed inset-0 bg-slate-900/50 dark:bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center hidden" role="status" aria-live="polite" aria-atomic="true">
+    <div class="card text-center">
+      <div class="inline-block w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mb-4" aria-hidden="true"></div>
+      <div id="loading-message" class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+        Germinating… <span class="sr-only">(Loading your answer)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Card -->
+  <div class="card" aria-labelledby="form-title">
+    <h1 id="form-title" class="page-title">Get Plant Care Advice</h1>
+
+    <form id="ask-form" action="{{ url_for('web.assistant') }}" method="post" novalidate>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <!-- Hidden field to store selected plant ID for AI context -->
+      <input type="hidden" id="selected_plant_id" name="selected_plant_id" value="{{ selected_plant_id or '' }}"/>
+      
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Fields marked with <span class="text-rose-500">*</span> are required.</p>
+
+      <!-- Plant & City (Two Columns) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label for="plant" class="label">Plant <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span></label>
+          <input id="plant" name="plant" type="text" autocomplete="off"
+                 class="input"
+                 placeholder="e.g., Monstera deliciosa"
+                 value="{{ (form_values and form_values.plant) or '' }}" />
+        </div>
+        <div>
+          <label for="city" class="label">City or ZIP <span class="text-sm font-normal text-slate-500 dark:text-slate-400">(Optional)</span></label>
+          <input id="city" name="city" type="text" autocomplete="off"
+                 class="input"
+                 placeholder="e.g., Austin, TX or 73301"
+                 value="{{ (form_values and form_values.city) or '' }}" />
+        </div>
+      </div>
+
+      <!-- Care Context -->
+      <div class="mb-6">
+        <label for="care_context" class="label">Where is the plant?</label>
+        <select id="care_context" name="care_context" class="input">
+          <option value="indoor_potted"
+            {% if (form_values and form_values.care_context == 'indoor_potted') or (not form_values) %}selected{% endif %}>
+            Indoor (potted)
+          </option>
+          <option value="outdoor_potted"
+            {% if form_values and form_values.care_context == 'outdoor_potted' %}selected{% endif %}>
+            Outdoor (potted)
+          </option>
+          <option value="outdoor_bed"
+            {% if form_values and form_values.care_context == 'outdoor_bed' %}selected{% endif %}>
+            Outdoor (in-ground bed)
+          </option>
+          <option value="greenhouse"
+            {% if form_values and form_values.care_context == 'greenhouse' %}selected{% endif %}>
+            Greenhouse
+          </option>
+          <option value="office"
+            {% if form_values and form_values.care_context == 'office' %}selected{% endif %}>
+            Office
+          </option>
+        </select>
+      </div>
+
+      <!-- Question -->
+      <div class="mb-6">
+        <label for="question" class="label">Question <span class="text-red-600 dark:text-red-400">*</span></label>
+        <textarea id="question" name="question" rows="5"
+                  class="input"
+                  placeholder="e.g., How often should I water?"
+                  required
+                  maxlength="1200"
+                  aria-required="true">{{ (form_values and form_values.question) or '' }}</textarea>
+
+        <!-- Inline suggestion chips (unauthenticated users only) -->
+        {% if not user_plants %}
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="text-sm text-slate-500 dark:text-slate-400">💡 Try:</span>
+          <button type="button" class="preset-chip text-sm px-2.5 py-1.5
+                                       bg-emerald-50 dark:bg-emerald-900/20
+                                       text-emerald-700 dark:text-emerald-300
+                                       rounded-md border border-emerald-200 dark:border-emerald-700/50
+                                       hover:bg-emerald-100 dark:hover:bg-emerald-900/30
+                                       transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  data-plant="Monstera deliciosa"
+                  data-question="How often should I water?"
+                  data-context="indoor_potted"
+                  aria-label="Fill form with: Monstera deliciosa, indoor potted, how often to water?">
+            🪴 Monstera (indoor): How often to water? →
+          </button>
+          <button type="button" class="preset-chip text-sm px-2.5 py-1.5
+                                       bg-emerald-50 dark:bg-emerald-900/20
+                                       text-emerald-700 dark:text-emerald-300
+                                       rounded-md border border-emerald-200 dark:border-emerald-700/50
+                                       hover:bg-emerald-100 dark:hover:bg-emerald-900/30
+                                       transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  data-plant="Lavender"
+                  data-question="How much sun does it need?"
+                  data-context="outdoor_bed"
+                  aria-label="Fill form with: Lavender, outdoor in-ground bed, how much sun does it need?">
+            🌿 Lavender (outdoor): How much sun? →
+          </button>
+          <button type="button" class="preset-chip text-sm px-2.5 py-1.5
+                                       bg-emerald-50 dark:bg-emerald-900/20
+                                       text-emerald-700 dark:text-emerald-300
+                                       rounded-md border border-emerald-200 dark:border-emerald-700/50
+                                       hover:bg-emerald-100 dark:hover:bg-emerald-900/30
+                                       transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  data-plant="Snake Plant"
+                  data-question="Fertilizer schedule?"
+                  data-context="indoor_potted"
+                  aria-label="Fill form with: Snake Plant, indoor potted, fertilizer schedule?">
+            🌱 Snake Plant (indoor): Fertilizer? →
+          </button>
+        </div>
+        <div class="mt-3 text-sm text-slate-500 dark:text-slate-400">
+          <span aria-hidden="true">📚</span> Or browse our <a href="{{ url_for('guides.index') }}" class="text-emerald-600 dark:text-emerald-400 hover:underline">plant care guides</a> for detailed care instructions.
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button id="submit-btn" class="btn btn-primary" type="submit">
+          <span aria-hidden="true">🤖</span> Ask
+        </button>
+        <button id="reset-btn" class="btn btn-secondary" type="button" aria-label="Clear all fields">
+          Reset
+        </button>
+      </div>
+    </form>
+
+    {% if ai_error and source == 'rule' %}
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-4" role="status" aria-live="polite">
+        AI unavailable — showing rule-based tips.
+      </p>
+    {% endif %}
+  </div>
+
+  <!-- Answer Card -->
+  <div id="answer-box" class="answer-card card" aria-labelledby="answer-title" role="region" aria-live="polite" aria-atomic="true" tabindex="-1">
+    {% if answer %}
+      <div class="mb-4">
+        <h2 id="answer-title" class="section-title !mb-2">Answer</h2>
+        <div class="text-sm text-slate-500 dark:text-slate-400">
+          Generated by: <strong class="text-slate-700 dark:text-slate-300">{% if source == 'openai' %}OpenAI{% elif source == 'gemini' %}Google Gemini{% else %}Rule-based engine{% endif %}</strong>
+        </div>
+      </div>
+      <p class="prewrap whitespace-pre-wrap text-slate-900 dark:text-slate-100">{{ answer }}</p>
+
+      <!-- Copy/Share Buttons -->
+      <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2">
+        <button type="button" id="copy-answer-btn" class="btn btn-sm btn-secondary"
+                data-question="{{ form_values.question | e }}"
+                data-plant="{{ form_values.plant | e }}"
+                data-city="{{ form_values.city | e }}"
+                data-context="{{ form_values.care_context | e }}"
+                data-answer="{{ answer | e }}">
+          <span id="copy-icon" aria-hidden="true">📋</span>
+          <span id="copy-text">Copy</span>
+        </button>
+        <button type="button" id="share-answer-btn" class="btn btn-sm btn-secondary"
+                data-question="{{ form_values.question | e }}"
+                data-plant="{{ form_values.plant | e }}"
+                data-city="{{ form_values.city | e }}"
+                data-context="{{ form_values.care_context | e }}"
+                data-answer="{{ answer | e }}">
+          <span aria-hidden="true">↗</span>
+          <span>Share</span>
+        </button>
+      </div>
+
+      <!-- Micro-Feedback -->
+      <div id="feedback-section" class="mt-3 flex flex-wrap items-center gap-2 text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Did this help?</span>
+        <div id="feedback-buttons" class="flex gap-1">
+          <button type="button" class="feedback-btn px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700
+                         text-slate-600 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-600
+                         dark:hover:border-emerald-400 dark:hover:text-emerald-400 transition-colors"
+                  data-rating="yes">👍 Yes</button>
+          <button type="button" class="feedback-btn px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700
+                         text-slate-600 dark:text-slate-400 hover:border-amber-500 hover:text-amber-600
+                         dark:hover:border-amber-400 dark:hover:text-amber-400 transition-colors"
+                  data-rating="somewhat">🤔 Somewhat</button>
+          <button type="button" class="feedback-btn px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700
+                         text-slate-600 dark:text-slate-400 hover:border-rose-500 hover:text-rose-600
+                         dark:hover:border-rose-400 dark:hover:text-rose-400 transition-colors"
+                  data-rating="no">👎 No</button>
+        </div>
+        <span id="feedback-thanks" class="hidden text-emerald-600 dark:text-emerald-400">
+          Thanks for your feedback!
+        </span>
+      </div>
+
+      <!-- Hidden data for feedback submission -->
+      <script type="application/json" id="feedback-data">
+        {
+          "question": {{ form_values.question | tojson }},
+          "plant": {{ (form_values.plant or '') | tojson }},
+          "city": {{ (form_values.city or '') | tojson }},
+          "care_context": {{ (form_values.care_context or '') | tojson }},
+          "ai_source": {{ (source or '') | tojson }}
+        }
+      </script>
+    {% else %}
+      <h2 id="answer-placeholder-title" class="section-title">Answer</h2>
+      <p class="text-slate-500 dark:text-slate-400">Submit a question to see guidance here.</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Signup Prompt for Unauthenticated Users -->
+{% if not is_authenticated and answer %}
+<section class="mb-8">
+  <div class="bg-gradient-to-r from-emerald-50 to-cyan-50 dark:from-emerald-900/20 dark:to-cyan-900/20
+              border border-emerald-200 dark:border-emerald-700/50 rounded-xl p-4
+              flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="text-2xl" aria-hidden="true">🌱</span>
+      <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+        <strong class="text-emerald-700 dark:text-emerald-400">Want personalized care advice?</strong>
+        <span class="hidden sm:inline"> Sign up free to save your plants and get tailored reminders.</span>
+      </p>
+    </div>
+    <a href="{{ url_for('auth.signup') }}" class="btn btn-sm btn-primary whitespace-nowrap">
+      Sign Up Free
+    </a>
+  </div>
+</section>
+{% endif %}
+
+<!-- Your Plants Section (Compact, below form) -->
+{% if user_plants %}
+<section class="card mb-8" aria-labelledby="your-plants-title">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+    <h2 id="your-plants-title" class="section-title !mb-0">Select a plant</h2>
+    <a href="{{ url_for('plants.index') }}" class="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
+      Manage plants →
+    </a>
+  </div>
+
+  <!-- Plant count and scroll controls -->
+  <div class="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-3 mb-4">
+    <div class="flex items-center gap-3 flex-wrap">
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Choose a plant for plant-specific advice:
+      </p>
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1
+                   bg-emerald-100 dark:bg-emerald-900/30
+                   text-emerald-700 dark:text-emerald-300
+                   text-sm font-medium rounded-full border border-emerald-200 dark:border-emerald-700/50"
+            role="status"
+            aria-live="polite">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+        </svg>
+        <span>{{ user_plants|length }} plant{{ 's' if user_plants|length != 1 else '' }}</span>
+      </span>
+    </div>
+
+    <!-- Scroll arrow buttons (mobile only) -->
+    <div class="flex sm:hidden items-center gap-1" role="group" aria-label="Scroll controls">
+      <button type="button"
+              id="scroll-left-btn"
+              class="p-3 bg-white dark:bg-slate-800 text-slate-400 dark:text-slate-500
+                     hover:text-emerald-600 dark:hover:text-emerald-400
+                     hover:bg-emerald-50 dark:hover:bg-emerald-900/20
+                     rounded-lg border border-slate-200 dark:border-slate-700
+                     transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed
+                     focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+              aria-label="Scroll plants left"
+              disabled>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <button type="button"
+              id="scroll-right-btn"
+              class="p-3 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300
+                     hover:text-emerald-600 dark:hover:text-emerald-400
+                     hover:bg-emerald-50 dark:hover:bg-emerald-900/20
+                     rounded-lg border border-slate-200 dark:border-slate-700
+                     transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed
+                     focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+              aria-label="Scroll plants right">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Horizontal scrollable plant carousel (compact) -->
+  <div class="relative -mx-4 px-4 overflow-hidden">
+    <!-- Left gradient indicator (outside scroll container to stay fixed) -->
+    <div id="gradient-left"
+         class="absolute left-0 top-0 bottom-0 w-4 sm:w-8
+                bg-gradient-to-r from-white via-white/90 to-transparent
+                dark:from-slate-800 dark:via-slate-800/90 dark:to-transparent
+                shadow-[inset_-4px_0_8px_-4px_rgba(0,0,0,0.1)]
+                dark:shadow-[inset_-4px_0_8px_-4px_rgba(0,0,0,0.3)]
+                pointer-events-none z-10 opacity-0 transition-opacity duration-300"
+         aria-hidden="true"></div>
+
+    <!-- Right gradient indicator (outside scroll container to stay fixed) -->
+    <div id="gradient-right"
+         class="absolute right-0 top-0 bottom-0 w-4 sm:w-8
+                bg-gradient-to-l from-white via-white/90 to-transparent
+                dark:from-slate-800 dark:via-slate-800/90 dark:to-transparent
+                shadow-[inset_4px_0_8px_-4px_rgba(0,0,0,0.1)]
+                dark:shadow-[inset_4px_0_8px_-4px_rgba(0,0,0,0.3)]
+                pointer-events-none z-10 transition-opacity duration-300"
+         aria-hidden="true"></div>
+
+    <div id="plants-scroll-container"
+         class="overflow-x-auto scroll-smooth -mx-2 px-2 pb-2"
+         style="scrollbar-width: thin; scrollbar-color: rgb(16 185 129) transparent;"
+         role="region"
+         aria-label="Your plants carousel"
+         tabindex="0">
+      <div id="user-plants-grid" class="flex gap-3">
+        {% for plant in user_plants %}
+        <button type="button"
+                class="plant-select-btn flex flex-col items-center p-2 bg-slate-50 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-400 transition-all duration-200 flex-shrink-0 w-28"
+                data-plant-id="{{ plant.id }}"
+                data-plant-name="{{ plant.name }}"
+                data-plant-species="{{ plant.species or '' }}"
+                data-plant-location="{{ plant.location or 'indoor_potted' }}"
+                aria-label="Select {{ plant.name }}{% if plant.nickname %}, also known as {{ plant.nickname }}{% endif %}">
+          {% if plant.photo_url_thumb or plant.photo_url %}
+            <img src="{{ plant.photo_url_thumb or plant.photo_url }}" alt="{{ plant.name }}" class="w-16 h-16 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
+          {% else %}
+            <div class="w-16 h-16 bg-gradient-to-br from-emerald-100 to-cyan-100 dark:from-emerald-900/30 dark:to-cyan-900/30 rounded-lg flex items-center justify-center mb-2 text-3xl" aria-hidden="true">
+              🪴
+            </div>
+          {% endif %}
+          <span class="text-sm font-medium text-slate-900 dark:text-slate-100 text-center line-clamp-2">
+            {{ plant.name }}
+          </span>
+        </button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Weather Section -->
+<section id="weather-section" class="mb-8" data-units="f">
+  {% if weather %}
+    <div class="card">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="section-title !mb-0" id="weather-heading">
+          Local weather for {{ form_values.city or 'your area' }}
+          <span class="sr-only">Use the toggle to switch temperature units.</span>
+        </h2>
+        <!-- Units toggle -->
+        <form class="units-toggle flex items-center gap-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg" aria-label="Temperature units">
+          <fieldset role="radiogroup" aria-label="Select units" class="flex gap-1">
+            <label class="px-3 py-1 rounded cursor-pointer transition-colors has-[:checked]:bg-white has-[:checked]:dark:bg-slate-600 has-[:checked]:shadow">
+              <input type="radio" name="units" value="f" checked class="sr-only">
+              <span class="text-sm font-medium text-slate-700 dark:text-slate-300">°F</span>
+            </label>
+            <label class="px-3 py-1 rounded cursor-pointer transition-colors has-[:checked]:bg-white has-[:checked]:dark:bg-slate-600 has-[:checked]:shadow">
+              <input type="radio" name="units" value="c" class="sr-only">
+              <span class="text-sm font-medium text-slate-700 dark:text-slate-300">°C</span>
+            </label>
+          </fieldset>
+        </form>
+      </div>
+
+      <!-- Upcoming hours (Now card + 3-hour intervals, blends today + tomorrow) -->
+      <div class="mb-6 overflow-x-auto" aria-label="Upcoming hourly forecast, 3-hour intervals">
+        <div class="flex gap-3 pb-2" role="list">
+          <!-- Now card -->
+          <div class="flex-shrink-0 w-20 text-center p-3 rounded-xl border-2 bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-700" role="listitem" aria-label="Current temperature">
+            <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400 mb-2">Now</div>
+            <div class="text-3xl mb-2" aria-hidden="true">{{ weather.emoji or '⛅' }}</div>
+            <div class="text-sm font-semibold text-slate-900 dark:text-slate-100">
+              <span class="only-f">{{ (weather.temp_f is not none) and (weather.temp_f|round(0)|string + '°F') or '—' }}</span>
+              <span class="only-c">{{ (weather.temp_c is not none) and (weather.temp_c|round(0)|string + '°C') or '—' }}</span>
+            </div>
+          </div>
+
+          {% if hourly %}
+          {% set ns = namespace(prev_label='') %}
+          {% for h in hourly %}
+            {% if h.date_label != ns.prev_label and not loop.first %}
+            <div class="flex-shrink-0 flex items-center px-1" role="separator" aria-label="{{ h.date_label }}">
+              <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 whitespace-nowrap">{{ h.date_label }}</div>
+            </div>
+            {% endif %}
+            {% set ns.prev_label = h.date_label %}
+            <div class="flex-shrink-0 w-20 text-center p-3 rounded-xl border bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700" role="listitem" aria-label="{{ h.time }} ({{ h.date_label }})">
+              <div class="text-xs font-medium text-slate-600 dark:text-slate-400 mb-2">{{ h.time }}</div>
+              <div class="text-3xl mb-2" aria-hidden="true">{{ h.emoji }}</div>
+              <div class="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                <span class="only-f">{{ (h.temp_f is not none) and (h.temp_f|round(0)|string + '°F') or '' }}</span>
+                <span class="only-c">{{ (h.temp_c is not none) and (h.temp_c|round(0)|string + '°C') or '' }}</span>
+              </div>
+            </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Daily forecast (Today highlighted + future days) -->
+      {% if forecast %}
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        {% for f in forecast %}
+          <div class="p-4 rounded-xl border {{ 'bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/20 dark:to-cyan-900/20 border-2 border-emerald-200 dark:border-emerald-700' if f.is_today else 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' }}">
+            <div class="flex items-start justify-between mb-3">
+              <div class="text-sm font-bold text-slate-900 dark:text-slate-100">{{ 'Today' if f.is_today else f.day }}</div>
+              <div class="text-4xl" aria-hidden="true">{{ f.emoji or '⛅' }}</div>
+            </div>
+
+            <div class="text-xs text-slate-600 dark:text-slate-400 mb-1">{{ f.date }}</div>
+            <div class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">{{ (f.conditions or 'N/A')|capitalize }}</div>
+
+            <div class="text-sm mb-1">
+              <span class="text-slate-600 dark:text-slate-400">High:</span>
+              <span class="font-semibold text-slate-900 dark:text-slate-100">
+                <span class="only-f">{{ (f.temp_max_f is not none) and (f.temp_max_f|round(0)|string + '°F') or '—' }}</span>
+                <span class="only-c">{{ (f.temp_max_c is not none) and (f.temp_max_c|round(0)|string + '°C') or '—' }}</span>
+              </span>
+            </div>
+            <div class="text-sm mb-2">
+              <span class="text-slate-600 dark:text-slate-400">Low:</span>
+              <span class="font-semibold text-slate-900 dark:text-slate-100">
+                <span class="only-f">{{ (f.temp_min_f is not none) and (f.temp_min_f|round(0)|string + '°F') or '—' }}</span>
+                <span class="only-c">{{ (f.temp_min_c is not none) and (f.temp_min_c|round(0)|string + '°C') or '—' }}</span>
+              </span>
+            </div>
+
+            <div class="text-xs text-slate-500 dark:text-slate-400">
+              Humidity: {{ f.humidity }}% • Wind:
+              <span class="only-f">{{ f.wind_mph }} mph</span>
+              <span class="only-c">{{ (f.wind_mps is not none) and (f.wind_mps|round(1)|string + ' m/s') or '—' }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  {% elif form_values and form_values.city %}
+    <div class="card">
+      <p class="text-slate-500 dark:text-slate-400">No weather data available for that city or ZIP.</p>
+    </div>
+  {% else %}
+    <div class="card">
+      <p class="text-slate-500 dark:text-slate-400">Enter a city or ZIP to include weather insights in the answer.</p>
+    </div>
+  {% endif %}
+</section>
+
+<!-- Recent Q&A History -->
+<section class="card" aria-labelledby="history-title">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <h2 id="history-title" class="section-title !mb-0">Recent Q&amp;A</h2>
+    {% if has_history %}
+      <form method="POST" action="{{ url_for('web.clear_history') }}" class="inline">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <button type="submit" class="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Clear</button>
+      </form>
+    {% endif %}
+  </div>
+
+  {% if has_history %}
+    <ul class="space-y-4">
+      {% for item in history %}
+        <li class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-2">{{ item.ts }}</div>
+          <div class="text-sm text-slate-600 dark:text-slate-400 mb-2 flex items-center gap-2 flex-wrap">
+            <span class="badge badge-emerald font-mono">{% if item.source == 'openai' %}OpenAI{% elif item.source == 'gemini' %}Gemini{% elif item.source == 'ai' %}AI{% else %}Rule{% endif %}</span>
+            {% if item.care_context %}<span class="badge badge-cyan font-mono">{{ item.care_context }}</span>{% endif %}
+            {% if item.plant %}<span><strong>Plant:</strong> {{ item.plant }}</span>{% endif %}
+            {% if item.city %}<span><strong>City/Zip:</strong> {{ item.city }}</span>{% endif %}
+          </div>
+          <div class="text-sm mb-2 text-slate-900 dark:text-slate-100"><strong>Q:</strong> {{ item.question }}</div>
+          <details class="group">
+            <summary class="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 cursor-pointer transition-colors">Show answer</summary>
+            <pre class="mt-2 p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 text-sm whitespace-pre-wrap text-slate-900 dark:text-slate-100">{{ item.answer }}</pre>
+          </details>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-slate-500 dark:text-slate-400">No questions yet. Ask something above to populate the history.</p>
+  {% endif %}
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/assistant.js') }}"></script>
+{% endblock %}

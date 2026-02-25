@@ -1,0 +1,1098 @@
+[
+    {
+        "slug": "why-are-my-plant-leaves-drooping",
+        "route_name": "drooping",
+        "title": "Why Are My Plant Leaves Drooping? (And What to Do)",
+        "meta_description": "Drooping leaves are stressful to see. Learn the 8 most common causes — from watering issues to light problems — and how to fix each one fast.",
+        "emoji": "\ud83e\udd40",
+        "intro": "Nothing's more disheartening than seeing your once-perky plant suddenly slumping over. Don't panic — drooping leaves are one of the most common plant problems, and they're usually fixable once you identify the cause. The tricky part is that many different issues can look the same, so you'll need to play detective. Here's a comprehensive guide to figuring out what's wrong and getting your plant back to its upright self.",
+        "causes": [
+            {
+                "title": "Underwatering",
+                "description": "The most common culprit. When soil gets too dry, plants can't maintain turgor pressure in their cells, causing leaves to wilt and droop. Check if the soil is bone dry several inches down — if it has pulled away from the edges of the pot, it's been dry for too long.",
+                "fix": "Water thoroughly until it drains from the bottom of the pot. Most plants perk up within a few hours. Going forward, check soil moisture every few days with the finger test."
+            },
+            {
+                "title": "Overwatering",
+                "description": "Ironically, too much water causes drooping too. Waterlogged roots can't absorb oxygen, leading to root suffocation and eventually root rot. If the soil is soggy, smells musty, or has been wet for more than a week, overwatering is likely your problem.",
+                "fix": "Stop watering immediately and let the soil dry out completely. If you suspect root rot, unpot the plant, trim mushy brown roots, and repot in fresh well-draining soil."
+            },
+            {
+                "title": "Temperature stress",
+                "description": "Sudden temperature changes — like cold drafts from windows, hot air from heating vents, or being placed near an exterior door in winter — can shock plants into drooping. Most houseplants prefer consistent temperatures between 60–75°F (15–24°C).",
+                "fix": "Move your plant away from drafts, vents, and temperature extremes. Once relocated to a stable environment, most plants recover within a day or two."
+            },
+            {
+                "title": "Transplant shock",
+                "description": "Recently repotted? Plants often droop for a few days to a week while their roots adjust to new soil. Root disturbance during repotting temporarily reduces the plant's ability to take up water, causing temporary wilting.",
+                "fix": "Keep soil lightly moist (not soggy), place in indirect light, and avoid fertilizing for 2–3 weeks. Patience is key — most plants bounce back on their own."
+            },
+            {
+                "title": "Root bound",
+                "description": "If roots are circling the pot with nowhere to grow, or poking out of drainage holes, the plant can't absorb enough water or nutrients to support its foliage. The plant may droop quickly after watering because the roots can't retain moisture.",
+                "fix": "Repot into a container 1–2 inches wider with fresh potting mix. Gently loosen any circling roots before placing in the new pot."
+            },
+            {
+                "title": "Too much direct sunlight",
+                "description": "Many houseplants — especially tropicals like pothos, peace lilies, and ferns — wilt in harsh direct sun. The heat causes rapid moisture loss from leaves, and the plant droops to reduce its sun exposure. You may also notice bleached or scorched patches.",
+                "fix": "Move the plant to a spot with bright indirect light, or filter direct sun with a sheer curtain. Water if the soil is dry — sun stress and dehydration often go together."
+            },
+            {
+                "title": "Low humidity",
+                "description": "Plants native to tropical environments can droop when indoor humidity drops below 40%, which is common during winter heating season. The leaves lose moisture faster than the roots can replace it, especially on thin-leaved species like calatheas and ferns.",
+                "fix": "Group plants together, place them on a pebble tray with water, or run a humidifier nearby. Misting provides only brief relief and isn't a long-term solution."
+            },
+            {
+                "title": "Pest infestation",
+                "description": "Sap-sucking pests like spider mites, mealybugs, and aphids weaken plants by draining nutrients from leaves and stems. A severe infestation can cause widespread drooping, along with sticky residue, webbing, or visible insects on leaf undersides.",
+                "fix": "Inspect leaves closely (especially undersides). Treat with insecticidal soap, neem oil, or rubbing alcohol on a cotton swab. Isolate the affected plant to prevent spread."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Can drooping leaves recover?",
+                "answer": "Yes, most plants perk up within a few hours of watering if underwatering is the cause. Recovery from overwatering or root rot takes longer — typically 1–2 weeks."
+            },
+            {
+                "question": "Should I cut off drooping leaves?",
+                "answer": "Only if they've turned yellow or brown. Healthy drooping leaves will usually recover once you fix the underlying issue."
+            },
+            {
+                "question": "Why is my plant drooping after repotting?",
+                "answer": "Transplant shock is normal. Keep soil lightly moist, avoid direct sun for a week, and your plant should recover within a few days."
+            },
+            {
+                "question": "Why does my plant droop in the afternoon but recover overnight?",
+                "answer": "This is usually heat or light stress. The plant wilts during peak sun hours when water loss exceeds uptake, then recovers in cooler evening temperatures."
+            },
+            {
+                "question": "Can overwatering and underwatering both cause drooping?",
+                "answer": "Yes — this is the most confusing part of plant care. Check the soil: dry soil means underwatering, soggy soil means overwatering. The fix is opposite for each."
+            }
+        ],
+        "comparison_table": {
+            "title": "Overwatering vs. Underwatering Droop",
+            "intro": "Since both overwatering and underwatering cause drooping, here's how to tell them apart:",
+            "headers": ["Symptom", "Underwatering", "Overwatering"],
+            "rows": [
+                ["Soil feel", "Dry, crumbly, pulls from pot edges", "Soggy, wet, may smell musty"],
+                ["Leaf texture", "Dry, crispy, papery edges", "Soft, mushy, limp"],
+                ["Leaf color", "Brown, dry tips", "Yellow, especially lower leaves"],
+                ["Pot weight", "Very light", "Heavy"],
+                ["Recovery speed", "Hours after watering", "Days to weeks"],
+                ["Root health", "Dry but white/firm", "Brown, mushy, slimy"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "peace-lily", "name": "Peace Lily"},
+            {"slug": "pothos", "name": "Pothos"},
+            {"slug": "fiddle-leaf-fig", "name": "Fiddle Leaf Fig"}
+        ],
+        "bottom_line": "Drooping is one of the most common plant distress signals, but it's rarely a death sentence. Start by checking soil moisture — that's the cause about 70% of the time. If the soil is fine, work through temperature, light, humidity, and pests. Most plants recover fully once you address the root cause.",
+        "cta_text": "Ask PlantCareAI why your plant is drooping",
+        "cta_question": "Why is my plant drooping?",
+        "related_pages": ["am-i-overwatering-my-plant", "why-are-my-plant-leaves-turning-yellow"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Plant leaves usually droop from underwatering, overwatering, or temperature stress. Check the soil first — if the top 2 inches are dry, water thoroughly. If it's soggy, stop watering and let it dry out.",
+        "h2_causes": "8 Common Causes of Drooping Plant Leaves",
+        "h2_bottom_line": "The Bottom Line on Drooping Leaves"
+    },
+    {
+        "slug": "am-i-overwatering-my-plant",
+        "route_name": "overwatering",
+        "title": "Am I Overwatering My Plant? Signs & Fixes",
+        "meta_description": "Overwatering kills more houseplants than anything else. Learn the telltale signs you're giving your plant too much water and how to fix it.",
+        "emoji": "\ud83d\udca7",
+        "intro": "Here's a hard truth: overwatering kills more houseplants than neglect ever will. It's easy to do — we want to show our plants love, and watering feels like caring. But too much of a good thing can drown your plant's roots and invite fungal diseases. Learning to recognize the signs early is the single most important skill in plant care.",
+        "causes": [
+            {
+                "title": "Yellow leaves (especially lower ones)",
+                "description": "When older leaves turn yellow and feel soft or mushy, it's often the first visible sign of overwatering. The roots are sitting in too much water and can't absorb nutrients properly, so the plant sacrifices its oldest leaves first.",
+                "fix": "Let the soil dry out completely before watering again. Remove yellowed leaves — they won't recover. Check that your pot has drainage holes."
+            },
+            {
+                "title": "Soil stays wet for days",
+                "description": "If your soil is still moist a week after watering, you're watering too frequently, your pot lacks drainage, or the soil mix is too dense. Roots need oxygen between waterings — constantly wet soil suffocates them.",
+                "fix": "Switch to a well-draining potting mix with perlite or pumice. Ensure your pot has drainage holes. Water only when the top 1–2 inches of soil are dry."
+            },
+            {
+                "title": "Mushy stems or brown, soft roots",
+                "description": "This is root rot territory — the most serious consequence of overwatering. Healthy roots are white or tan and firm. If they're brown, black, or mushy when you unpot the plant, fungal decay has set in.",
+                "fix": "Unpot the plant, trim all mushy roots with sterilized scissors, treat with hydrogen peroxide solution, and repot in fresh dry soil. Hold off watering for a few days."
+            },
+            {
+                "title": "Fungus gnats hovering near soil",
+                "description": "Those tiny dark flies zigzagging around your plant love moist organic soil. A gnat infestation is a reliable indicator that your soil is staying too wet for too long — the larvae feed on fungi that thrive in damp conditions.",
+                "fix": "Let the top 2 inches of soil dry completely between waterings. Use yellow sticky traps for adults and a hydrogen peroxide soil drench to kill larvae."
+            },
+            {
+                "title": "Mold or white fuzz on soil surface",
+                "description": "White fuzzy growth on top of your soil is saprophytic mold that thrives in consistently moist, low-airflow environments. While the mold itself is usually harmless, it's a warning sign that conditions are too wet.",
+                "fix": "Scrape off visible mold, improve air circulation around the plant, and reduce watering frequency. Consider adding a thin layer of perlite on top of the soil."
+            },
+            {
+                "title": "Drooping despite wet soil",
+                "description": "This is one of the most confusing symptoms. Your plant is wilting, so you assume it needs water — but the soil is already moist. The drooping is actually caused by damaged roots that can no longer take up water, even though it's available.",
+                "fix": "Do not add more water. Check roots for rot. If they're mushy, follow the root rot treatment steps. If roots look okay, let the soil dry and improve drainage going forward."
+            },
+            {
+                "title": "Edema (water-filled bumps on leaves)",
+                "description": "Small raised bumps or blisters on leaf undersides — often on succulents, jade plants, and peperomias — indicate edema. The plant absorbs water faster than it can transpire, causing cells to burst.",
+                "fix": "Reduce watering frequency and increase light and airflow. Affected leaves won't heal but new growth will be normal once watering improves."
+            },
+            {
+                "title": "Slow or stunted growth",
+                "description": "Chronically overwatered plants often stop producing new growth entirely. The roots are too stressed or damaged to support new leaves. The plant enters survival mode, focusing energy on maintaining existing foliage rather than growing.",
+                "fix": "Correct your watering schedule and ensure good drainage. Once root health recovers (2–4 weeks), new growth should resume — especially during spring and summer."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Can an overwatered plant be saved?",
+                "answer": "Yes, if caught early. Stop watering, let the soil dry out completely, and check for root rot. Trim mushy roots and repot in fresh soil if needed."
+            },
+            {
+                "question": "How long does it take for an overwatered plant to recover?",
+                "answer": "Most plants recover within 1–2 weeks after correcting watering habits. If root rot is present, recovery may take 3–4 weeks."
+            },
+            {
+                "question": "Should I repot an overwatered plant?",
+                "answer": "Only if you suspect root rot or the soil isn't draining well. Otherwise, just let the soil dry out completely before watering again."
+            },
+            {
+                "question": "How do I know if my plant needs water or has too much?",
+                "answer": "Always check the soil before watering. Stick your finger 2 inches in — if it's moist, wait. A moisture meter is also helpful for larger pots."
+            },
+            {
+                "question": "Is it better to underwater or overwater?",
+                "answer": "Underwatering is almost always safer. Most plants recover quickly from brief drought but struggle to recover from root rot caused by overwatering."
+            }
+        ],
+        "comparison_table": {
+            "title": "Overwatering vs. Underwatering Symptoms",
+            "intro": "Many overwatering symptoms look similar to underwatering. Here's how to tell them apart:",
+            "headers": ["Symptom", "Overwatering", "Underwatering"],
+            "rows": [
+                ["Leaf color", "Yellow, soft, mushy", "Brown, dry, crispy"],
+                ["Leaf feel", "Limp and soft", "Dry and papery"],
+                ["Soil", "Soggy, wet for days", "Dry, crumbly, pulls from pot"],
+                ["Stems", "Soft, possibly mushy at base", "Firm but dry"],
+                ["Roots", "Brown, mushy, smelly", "Dry but white and firm"],
+                ["Pot weight", "Heavy", "Very light"],
+                ["Pests", "Fungus gnats common", "Spider mites more likely"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "monstera-deliciosa", "name": "Monstera Deliciosa"},
+            {"slug": "peace-lily", "name": "Peace Lily"},
+            {"slug": "zz-plant", "name": "ZZ Plant"}
+        ],
+        "bottom_line": "Overwatering is the #1 killer of houseplants, but it's entirely preventable. The golden rule: always check soil moisture before watering. If the top 1–2 inches are still moist, wait. Use pots with drainage holes, choose well-draining soil mixes, and remember that most plants prefer to dry out slightly between waterings.",
+        "cta_text": "Get personalized watering advice for your plant",
+        "cta_question": "How often should I water my plant?",
+        "related_pages": ["how-often-should-i-water-my-plant", "why-are-my-plant-leaves-drooping"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Signs of overwatering include yellow lower leaves, mushy stems, soil that stays wet for days, and fungus gnats. Let the soil dry out between waterings and ensure your pot has drainage holes.",
+        "h2_causes": "8 Signs You're Overwatering Your Plant",
+        "h2_bottom_line": "The Bottom Line on Overwatering"
+    },
+    {
+        "slug": "how-often-should-i-water-my-plant",
+        "route_name": "watering_frequency",
+        "title": "How Often Should I Water My Plant? (Stop Guessing)",
+        "meta_description": "There's no universal watering schedule. Learn the 8 factors that determine how often your plant needs water — based on soil, light, humidity, and season.",
+        "emoji": "\ud83d\udebf",
+        "intro": "\"Water once a week\" is the most common — and most misleading — plant care advice out there. The truth is, watering frequency depends on your specific plant, pot, soil, light, humidity, and even the weather outside. A monstera in a south-facing window in July needs water far more often than a snake plant in a dim corner in December. Here's how to figure out the right rhythm for your plants.",
+        "causes": [
+            {
+                "title": "Check the soil, not the calendar",
+                "description": "The most reliable watering method: stick your finger 1–2 inches into the soil. Dry? Water thoroughly. Still moist? Wait and check again in a day or two. This simple test accounts for all the variables that a fixed schedule can't — light, temperature, humidity, and season all affect how fast soil dries.",
+                "fix": "Make the finger test a habit every 2–3 days. For larger or deeper pots where your finger can't reach, use a wooden chopstick — insert it to the bottom and check if it comes out damp."
+            },
+            {
+                "title": "Know your plant's water preferences",
+                "description": "Different plants have dramatically different water needs. Succulents and cacti want to dry out completely between waterings. Tropical foliage plants (monstera, pothos, philodendron) like to dry out slightly in the top inch. Ferns and calatheas prefer consistently moist (never soggy) soil.",
+                "fix": "Research your specific plant's native habitat. Desert plants need drought cycles. Tropical understory plants want regular moisture. Match your watering to the plant's natural environment."
+            },
+            {
+                "title": "Factor in the season",
+                "description": "Plants need significantly more water during active growth (spring and summer) and much less during dormancy (fall and winter). During winter, most houseplants can go 50–100% longer between waterings. Continuing a summer watering schedule into winter is one of the most common causes of root rot.",
+                "fix": "Reduce watering frequency by about half during fall and winter. Let soil dry out more between waterings. Resume more frequent watering in early spring when you see new growth."
+            },
+            {
+                "title": "Consider your light levels",
+                "description": "Bright light drives faster photosynthesis, which uses more water. A plant near a sunny south-facing window dries out much faster than an identical plant in a dim north-facing room. More light = more frequent watering. Less light = less frequent watering.",
+                "fix": "Check soil moisture more often for plants in bright locations. Plants in low light need less water — wait until soil is thoroughly dry before watering."
+            },
+            {
+                "title": "Account for humidity and temperature",
+                "description": "Low humidity and warm temperatures cause soil to dry out faster. During winter heating season, indoor air can drop below 30% humidity, dramatically speeding up evaporation. Conversely, cool, humid rooms keep soil moist much longer.",
+                "fix": "Be prepared to water more often in heated rooms during winter (despite plants needing less water overall). Use a hygrometer to monitor room humidity — anything below 40% speeds up soil drying."
+            },
+            {
+                "title": "Pot material and size matter",
+                "description": "Terracotta pots are porous and wick moisture out through their walls, drying soil 2–3x faster than plastic or glazed ceramic. Small pots dry out faster than large ones. A 4-inch terracotta pot may need water every 3–4 days in summer, while a 10-inch plastic pot might go 2+ weeks.",
+                "fix": "Choose pot material based on your watering style. If you tend to overwater, use terracotta. If you often forget to water, plastic retains moisture longer. Always ensure drainage holes."
+            },
+            {
+                "title": "Soil composition affects drainage",
+                "description": "Dense, peat-heavy soils hold water for days. Chunky mixes with perlite, bark, and pumice drain quickly and dry faster. The right soil mix for your plant determines how long moisture stays in the root zone — and therefore how often you need to water.",
+                "fix": "Amend heavy soil with perlite or pumice for better drainage. Use specialized mixes for cacti/succulents. Repot plants in compacted soil that stays wet for more than a week."
+            },
+            {
+                "title": "Watch for your plant's signals",
+                "description": "Many plants give visible clues when they need water. Peace lilies droop dramatically. Pothos leaves curl at the edges. Prayer plants fold their leaves. Succulent leaves wrinkle when thirsty. Learning your plant's specific 'I'm thirsty' signal helps you time watering perfectly.",
+                "fix": "Observe how your plant looks right before and right after watering. Over time, you'll recognize subtle signs of thirst before the plant shows stress."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Do plants need more water in summer?",
+                "answer": "Yes — most houseplants need more frequent watering during spring and summer when they're actively growing, light is stronger, and temperatures are higher."
+            },
+            {
+                "question": "Should I water plants on a schedule?",
+                "answer": "No — check soil moisture instead. Conditions change with weather, season, and environment, so a fixed schedule often leads to overwatering or underwatering."
+            },
+            {
+                "question": "Is it better to underwater or overwater?",
+                "answer": "Underwatering is almost always safer. Most plants recover quickly from brief drought but struggle with root rot from chronic overwatering."
+            },
+            {
+                "question": "Should I water until it drains from the bottom?",
+                "answer": "Yes — thorough bottom-drainage watering ensures the entire root zone is moistened evenly. Shallow watering encourages roots to stay near the surface."
+            },
+            {
+                "question": "Can I use a moisture meter instead of the finger test?",
+                "answer": "Yes — moisture meters are especially useful for large pots where your finger can't reach the root zone. They're inexpensive and widely available."
+            }
+        ],
+        "comparison_table": {
+            "title": "Watering Needs by Plant Type",
+            "intro": "General watering frequency guidelines for common houseplant categories:",
+            "headers": ["Plant Type", "Water When", "Typical Frequency", "Examples"],
+            "rows": [
+                ["Succulents & Cacti", "Soil completely dry", "Every 2–4 weeks", "Aloe, jade, echeveria"],
+                ["Tropical Foliage", "Top 1–2 inches dry", "Every 1–2 weeks", "Monstera, pothos, philodendron"],
+                ["Moisture-Loving", "Surface barely dry", "Every 4–7 days", "Ferns, calathea, peace lily"],
+                ["Drought-Tolerant", "Top 2–3 inches dry", "Every 1–3 weeks", "Snake plant, ZZ plant, rubber plant"],
+                ["Flowering Plants", "Top inch dry", "Every 5–10 days", "African violet, orchid, anthurium"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "monstera-deliciosa", "name": "Monstera Deliciosa"},
+            {"slug": "snake-plant", "name": "Snake Plant"},
+            {"slug": "pothos", "name": "Pothos"},
+            {"slug": "peace-lily", "name": "Peace Lily"}
+        ],
+        "bottom_line": "There's no magic number — the best watering 'schedule' is one that responds to your plant's actual needs. Check the soil, consider the season, and learn your plant's thirst signals. With practice, watering becomes intuitive rather than guesswork. When in doubt, it's almost always better to wait an extra day than to water too soon.",
+        "cta_text": "Get a personalized watering recommendation",
+        "cta_question": "When should I water my plant?",
+        "related_pages": ["am-i-overwatering-my-plant", "should-i-water-my-plant-today"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Most houseplants need water every 1–2 weeks, but the real answer is: check the soil. Stick your finger 1–2 inches in — if it's dry, water thoroughly. Frequency depends on light, humidity, pot type, soil, and season.",
+        "h2_causes": "8 Factors That Affect How Often to Water",
+        "h2_bottom_line": "The Bottom Line on Watering Frequency"
+    },
+    {
+        "slug": "why-are-my-plant-leaves-turning-yellow",
+        "route_name": "yellow_leaves",
+        "title": "Why Are My Plant Leaves Turning Yellow?",
+        "meta_description": "Yellow leaves can mean many things — from simple aging to serious problems. Learn the 8 most common causes and how to diagnose what's wrong with your plant.",
+        "emoji": "\ud83c\udf42",
+        "intro": "Yellow leaves are your plant's way of waving a little flag that says \"something's off.\" The tricky part? Yellowing can have many different causes, and figuring out which one applies to your plant takes some detective work. The good news is that the pattern of yellowing — which leaves, how fast, and what they feel like — gives you strong clues about the problem.",
+        "causes": [
+            {
+                "title": "Natural aging",
+                "description": "Good news first: some yellowing is completely normal. Older leaves at the bottom of the plant naturally yellow and drop as the plant focuses energy on new growth. If only one or two lower leaves yellow occasionally while the rest of the plant looks healthy, this is just normal leaf turnover.",
+                "fix": "No action needed — simply remove the yellow leaf. If your plant is otherwise healthy and producing new growth, this is part of its natural life cycle."
+            },
+            {
+                "title": "Overwatering",
+                "description": "The #1 cause of yellow leaves in houseplants. When roots sit in water, they can't absorb nutrients or oxygen properly. Leaves turn yellow — often starting with lower leaves — and feel soft or mushy rather than crispy. The soil will typically feel wet or soggy.",
+                "fix": "Let the soil dry out completely before watering again. Check that your pot has drainage holes. If you suspect root rot, unpot the plant and trim any brown, mushy roots."
+            },
+            {
+                "title": "Underwatering",
+                "description": "Severely dry plants also yellow, but the leaves usually feel crispy and dry rather than soft. The yellowing often starts at the tips and edges and works inward. Check if your soil has pulled away from the pot edges — that's a telltale sign of chronic underwatering.",
+                "fix": "Water thoroughly until it drains from the bottom. If soil has become hydrophobic (water runs right through), soak the entire pot in a basin of water for 15–20 minutes."
+            },
+            {
+                "title": "Nutrient deficiency",
+                "description": "If your plant hasn't been fertilized in months and the potting soil is old, it may be running low on essential nutrients. Nitrogen deficiency shows as uniform yellowing of older leaves. Iron deficiency yellows new growth first while veins stay green (interveinal chlorosis).",
+                "fix": "Apply a balanced liquid fertilizer at half-strength during the growing season (spring/summer). For iron deficiency specifically, use an acidic fertilizer or chelated iron supplement."
+            },
+            {
+                "title": "Too much direct sun",
+                "description": "Some plants get sunburned when exposed to intense direct light — especially shade-loving species moved suddenly to a bright window. Yellow or bleached patches appear on leaves facing the light source, and the damage is typically one-sided.",
+                "fix": "Move the plant to bright indirect light, or filter direct sun with a sheer curtain. Damaged leaves won't recover, but new growth will be normal once light is corrected."
+            },
+            {
+                "title": "Too little light",
+                "description": "Plants in very low light can't photosynthesize efficiently, leading to overall pale green or yellow foliage. The plant may also become leggy as it stretches toward any available light source. This is gradual — happening over weeks or months rather than days.",
+                "fix": "Move the plant to a brighter spot or supplement with a grow light. Most houseplants need at least medium indirect light (a few feet from a window) to maintain healthy color."
+            },
+            {
+                "title": "Temperature stress or cold drafts",
+                "description": "Exposure to temperatures below 50°F (10°C) or sudden cold drafts from windows, doors, or air conditioning can trigger rapid yellowing. Tropical plants are especially sensitive — even a single night of cold exposure can cause yellowing within days.",
+                "fix": "Move the plant away from cold drafts, exterior doors, and air conditioning vents. Keep temperatures consistently between 60–75°F (15–24°C) for most houseplants."
+            },
+            {
+                "title": "Root rot or root damage",
+                "description": "If many leaves are yellowing quickly and the plant seems to be declining overall, root rot may be the underlying cause. This is usually the result of chronic overwatering, but can also be caused by pathogens in contaminated soil. A sour or musty smell from the pot is a strong indicator.",
+                "fix": "Unpot and inspect the roots. Trim any brown, mushy roots with sterilized scissors. Repot in fresh well-draining soil and reduce watering going forward."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Should I remove yellow leaves from my plant?",
+                "answer": "Yes — yellow leaves won't turn green again. Removing them lets the plant redirect energy to healthy new growth."
+            },
+            {
+                "question": "Can yellow leaves turn green again?",
+                "answer": "No. Once a leaf has turned yellow, the chlorophyll is gone and it won't recover. It's best to remove it and address the underlying cause."
+            },
+            {
+                "question": "Is one yellow leaf on my plant normal?",
+                "answer": "Yes — occasional yellowing of older lower leaves is natural leaf turnover and not a cause for concern, especially if the rest of the plant looks healthy."
+            },
+            {
+                "question": "Why are only the bottom leaves of my plant turning yellow?",
+                "answer": "Bottom-leaf yellowing is typically either natural aging (normal) or overwatering (check soil moisture). If the soil is consistently soggy, reduce watering frequency."
+            },
+            {
+                "question": "Why are the new leaves on my plant yellow?",
+                "answer": "Yellow new growth usually indicates an iron deficiency or very low light. Try a fertilizer with micronutrients and ensure the plant gets adequate bright indirect light."
+            }
+        ],
+        "comparison_table": {
+            "title": "Yellow Leaf Diagnosis by Pattern",
+            "intro": "The pattern of yellowing tells you a lot about the cause. Use this guide to narrow down the problem:",
+            "headers": ["Pattern", "Likely Cause", "Check This"],
+            "rows": [
+                ["Lower leaves yellow, soft", "Overwatering", "Is soil soggy? Does pot drain?"],
+                ["Lower leaves yellow, crispy", "Underwatering", "Is soil bone dry?"],
+                ["Overall pale/yellow", "Low light or nitrogen deficiency", "How far from window? When last fertilized?"],
+                ["New growth yellow, veins green", "Iron deficiency", "Soil pH too high? Needs chelated iron"],
+                ["One-sided yellow patches", "Sunburn", "Direct sun hitting those leaves?"],
+                ["Rapid multi-leaf yellowing", "Root rot or cold stress", "Check roots and recent temperatures"],
+                ["1–2 bottom leaves only", "Natural aging", "Plant otherwise healthy? No action needed"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "pothos", "name": "Pothos"},
+            {"slug": "peace-lily", "name": "Peace Lily"},
+            {"slug": "philodendron", "name": "Philodendron"}
+        ],
+        "bottom_line": "Yellow leaves rarely mean immediate doom — they're a diagnostic clue. Start by checking your watering habits, since that's the cause about 60% of the time. If watering seems fine, work through light, nutrients, temperature, and root health. The pattern of yellowing is your best guide to the underlying problem.",
+        "cta_text": "Ask PlantCareAI to diagnose your yellow leaves",
+        "cta_question": "Why are my plant's leaves turning yellow?",
+        "related_pages": ["am-i-overwatering-my-plant", "why-are-my-plant-leaves-drooping"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Yellow leaves are most often caused by overwatering or natural aging. If lower leaves yellow and feel soft with soggy soil, reduce watering. If only old leaves yellow while the plant looks healthy, it's normal leaf turnover.",
+        "h2_causes": "8 Common Causes of Yellow Leaves",
+        "h2_bottom_line": "The Bottom Line on Yellow Leaves"
+    },
+    {
+        "slug": "should-i-water-my-plant-today",
+        "route_name": "water_today",
+        "title": "Should I Water My Plant Today?",
+        "meta_description": "Not sure if it's time to water? Learn the 8 quick checks that tell you whether your plant needs water right now — plus how weather and season affect watering.",
+        "emoji": "\ud83e\udd14",
+        "intro": "You're staring at your plant, watering can in hand, wondering: \"Do you need this or not?\" We've all been there. The good news is that there are several reliable ways to check — and once you learn them, you'll never have to guess again. Here are the methods plant experts actually use.",
+        "causes": [
+            {
+                "title": "Do the finger test",
+                "description": "The simplest and most reliable method: stick your finger 1–2 inches into the soil. If it feels dry at that depth, most plants are ready for water. If it still feels moist or cool, wait and check again in a day or two. This works for about 90% of common houseplants.",
+                "fix": "For most tropical houseplants, water when the top inch is dry. For succulents and cacti, wait until soil is dry several inches down. For moisture-lovers like ferns, water when the surface is barely dry."
+            },
+            {
+                "title": "Lift the pot",
+                "description": "Dry soil is surprisingly light. Water adds significant weight — a well-watered pot can weigh 2–3 times more than a dry one. Once you get a sense of how heavy your pot feels right after watering, you can gauge moisture by weight alone. Light pot = time to water.",
+                "fix": "Practice lifting your pot right after watering and again a few days later. Over time, you'll develop an intuitive sense of when it's time — no finger testing needed."
+            },
+            {
+                "title": "Look at the leaves",
+                "description": "Many plants give visible signals before they're truly stressed. Peace lilies droop slightly (but bounce back immediately after watering). Pothos leaves curl at the edges. Prayer plant leaves stay open instead of folding up at night. Succulent leaves wrinkle or feel less firm.",
+                "fix": "Learn your specific plant's thirst signals by observing it over several watering cycles. These early warnings let you catch the need before the plant shows real stress."
+            },
+            {
+                "title": "Use a moisture meter",
+                "description": "For larger pots where your finger can't reach deep enough, an inexpensive soil moisture meter provides a reading at the root zone level. Insert it about halfway down the pot and check the reading. Most meters have dry/moist/wet zones.",
+                "fix": "Water when the meter reads in the lower portion of the 'dry' zone for drought-tolerant plants, or when it first enters the 'dry' zone for moisture-loving plants."
+            },
+            {
+                "title": "Check the weather and humidity",
+                "description": "Weather affects indoor plants more than most people realize. On rainy, overcast, or humid days, your plant uses less water and soil stays moist longer. On dry, sunny days — or when heating or air conditioning is running — soil dries faster. Indoor humidity below 40% speeds up evaporation significantly.",
+                "fix": "On hot, sunny days in summer, check plants more frequently. On overcast or rainy days, hold off and check soil before watering. In heated winter rooms, monitor soil moisture more closely."
+            },
+            {
+                "title": "Consider the season",
+                "description": "In winter, most houseplants slow their metabolism and use much less water. A plant that needed watering every 5 days in July might only need water every 10–14 days in January. Continuing summer watering habits into winter is one of the top causes of root rot.",
+                "fix": "Extend the time between waterings by about 50% during fall and winter. Always check soil moisture rather than relying on a calendar — winter dry times vary by plant and environment."
+            },
+            {
+                "title": "Look at the soil surface",
+                "description": "While the surface alone isn't the whole story (deeper soil may still be moist), a bone-dry, cracked, or pulling-away-from-the-pot surface is a strong indicator that it's time to water. Conversely, a dark, moist-looking surface means the soil is still wet enough.",
+                "fix": "Combine the surface check with the finger test for a complete picture. If the surface is dry but soil an inch down is still moist, you can usually wait another day."
+            },
+            {
+                "title": "Use the chopstick or skewer test",
+                "description": "Insert a plain wooden chopstick or bamboo skewer into the soil to the bottom of the pot. Leave it for a minute, then pull it out. Like testing a cake — if it comes out damp with soil clinging to it, the soil is moist. If it comes out clean and dry, it's time to water.",
+                "fix": "This is especially useful for deep pots or tall planters where your finger can't reach the root zone. Keep a designated chopstick in the pot for easy, consistent testing."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "What time of day is best to water plants?",
+                "answer": "Morning is ideal — it gives leaves time to dry and roots time to absorb moisture before cooler nighttime temperatures. Avoid watering late at night."
+            },
+            {
+                "question": "Can I use tap water for my plants?",
+                "answer": "Yes, most plants tolerate tap water fine. Sensitive species like calatheas, dracaenas, and spider plants prefer filtered water due to fluoride sensitivity."
+            },
+            {
+                "question": "How do I know if I'm overwatering?",
+                "answer": "Signs include soil that stays wet for more than a week, yellowing lower leaves, fungus gnats, and a musty smell from the pot."
+            },
+            {
+                "question": "Should I water a little every day or a lot less often?",
+                "answer": "Water deeply but infrequently — thorough watering that drains from the bottom is much better than frequent shallow sips, which encourage shallow root growth."
+            },
+            {
+                "question": "Does the type of water matter?",
+                "answer": "For most plants, no. Tap water is fine. For sensitive species, use filtered or distilled water. Cold water can shock tropical roots — room temperature is best."
+            }
+        ],
+        "comparison_table": {
+            "title": "Soil Moisture Test Methods",
+            "intro": "Choose the method that works best for your situation:",
+            "headers": ["Method", "Best For", "Accuracy", "Cost"],
+            "rows": [
+                ["Finger test (1–2 inches)", "Small to medium pots", "Good for most plants", "Free"],
+                ["Lift the pot", "Light pots you can handle", "Good once calibrated", "Free"],
+                ["Chopstick/skewer test", "Deep or large pots", "Very good (full depth)", "Free"],
+                ["Moisture meter", "Large pots, deep planters", "Precise root-zone reading", "$5–15"],
+                ["Visual leaf signals", "Familiar plants you know well", "Good for timing, not precision", "Free"],
+                ["Soil surface check", "Quick daily glance", "Surface only (supplement with other tests)", "Free"]
+            ]
+        },
+        "bottom_line": "When in doubt, wait. Most plants recover far better from slight underwatering than from overwatering. The finger test is your most reliable tool — it takes 3 seconds and works for nearly every plant. If the soil is dry and the plant looks thirsty, water thoroughly until it drains from the bottom. If the soil is still moist, check again tomorrow.",
+        "cta_text": "Get a weather-aware watering recommendation",
+        "cta_question": "Should I water my plant today?",
+        "related_pages": ["how-often-should-i-water-my-plant", "am-i-overwatering-my-plant"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Check the top 1–2 inches of soil with your finger. If it's dry, water thoroughly until it drains from the bottom. If it's still moist, wait another day or two. When in doubt, wait — most plants handle drought better than overwatering.",
+        "h2_causes": "8 Ways to Tell If Your Plant Needs Water",
+        "h2_bottom_line": "The Bottom Line on Watering Today"
+    },
+    {
+        "slug": "why-is-my-plant-not-growing",
+        "route_name": "not_growing",
+        "title": "Why Is My Plant Not Growing? Common Causes",
+        "meta_description": "Your plant seems stuck? Learn the 8 most common reasons houseplants stop growing — from dormancy to root problems — and how to get them thriving again.",
+        "emoji": "\ud83c\udf31",
+        "intro": "You've been watering, feeding, and waiting — but your plant hasn't put out a new leaf in weeks (or months). Before you worry, know that stalled growth is incredibly common and usually has a straightforward explanation. Plants grow in response to specific conditions, and when any key factor is off, they'll pause and wait for better times.",
+        "causes": [
+            {
+                "title": "It's dormant (seasonal slowdown)",
+                "description": "Most houseplants slow down or stop growing in fall and winter when daylight hours shorten and temperatures drop. This is a completely natural rest period — the plant is conserving energy, not dying. Even tropical plants grown indoors respond to reduced winter light.",
+                "fix": "No action needed — this is normal. Reduce watering and stop fertilizing until spring. Growth will resume when daylight increases in March/April."
+            },
+            {
+                "title": "Not enough light",
+                "description": "Light is the engine of growth — it powers photosynthesis, which is how plants make food. A plant in a dim corner may survive for months but won't actively grow. Signs of low light include leggy, stretched-out stems and small, pale new leaves.",
+                "fix": "Move the plant closer to a window. Most houseplants need bright indirect light (within 3–5 feet of a window). If natural light is limited, supplement with a grow light on a 12-hour timer."
+            },
+            {
+                "title": "Root bound (outgrown its pot)",
+                "description": "If roots are circling the bottom of the pot, poking out of drainage holes, or visible on the soil surface, your plant has outgrown its container. The roots can't absorb enough water or nutrients to support new growth, and the plant essentially stalls.",
+                "fix": "Repot into a container 1–2 inches wider with fresh potting mix. Gently loosen circling roots before placing in the new pot. Best done in spring at the start of the growing season."
+            },
+            {
+                "title": "Nutrient depletion",
+                "description": "Potting soil loses its nutrients over time as the plant uses them up and they wash out during watering. If you haven't fertilized in months — or the plant has been in the same soil for over a year — it may simply be hungry. Nitrogen is the primary nutrient that drives leaf growth.",
+                "fix": "Apply a balanced liquid fertilizer (10-10-10 or 20-20-20) at half-strength every 2–4 weeks during the growing season (spring through early fall). Stop fertilizing in winter."
+            },
+            {
+                "title": "Overwatering stress",
+                "description": "Chronically wet soil suffocates roots and can cause root rot, which shuts down nutrient absorption. A plant dealing with root stress puts all its energy into survival rather than new growth. The soil may smell musty, and you might see yellow lower leaves alongside the growth stall.",
+                "fix": "Let soil dry out between waterings. Check roots for rot — if mushy, trim affected roots and repot in fresh, well-draining soil. Ensure your pot has drainage holes."
+            },
+            {
+                "title": "Underwatering stress",
+                "description": "While most plants tolerate occasional drought, chronic underwatering prevents them from having the water pressure needed to push out new growth. The plant conserves energy by not producing new leaves. Leaves may also curl or develop crispy edges.",
+                "fix": "Establish a consistent watering routine — check soil moisture every few days and water when the top 1–2 inches are dry. If soil has become hydrophobic, soak the pot in a basin of water."
+            },
+            {
+                "title": "Temperature too low",
+                "description": "Most tropical houseplants need temperatures above 60°F (15°C) to grow actively. In cooler rooms — especially near drafty windows or in unheated spaces — plants will slow or stop growing even during the otherwise active spring and summer months.",
+                "fix": "Keep plants in rooms that stay between 65–80°F (18–27°C). Move them away from cold windows, exterior doors, and air conditioning vents."
+            },
+            {
+                "title": "Recent repotting or environmental change",
+                "description": "Plants that have been recently moved, repotted, or brought home from a nursery often pause growth for 2–6 weeks while they adjust. During this acclimation period, the plant is establishing roots and adapting to new light, temperature, and humidity conditions.",
+                "fix": "Be patient and avoid the temptation to 'help' by moving the plant around, repotting again, or fertilizing. Give it a stable spot with appropriate light and water normally."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Is it normal for plants not to grow in winter?",
+                "answer": "Yes — most houseplants enter dormancy in fall and winter, slowing or pausing growth until spring when light increases. This is completely normal."
+            },
+            {
+                "question": "How can I make my plant grow faster?",
+                "answer": "Increase light (the #1 factor), ensure proper watering, fertilize during the growing season, and check if the plant is root-bound and needs repotting."
+            },
+            {
+                "question": "Why is my new plant not growing?",
+                "answer": "New plants often pause growth while adjusting to their new environment. Give them 2–6 weeks to acclimate before worrying."
+            },
+            {
+                "question": "Should I fertilize a plant that isn't growing?",
+                "answer": "Not if it's dormant (fall/winter). Fertilize only during active growing season. If a plant isn't growing in spring/summer despite good light, check roots before fertilizing."
+            },
+            {
+                "question": "Do grow lights help plants grow faster?",
+                "answer": "Yes — if low light is the limiting factor, a grow light can significantly boost growth. Use full-spectrum LEDs on a 12–14 hour timer placed 6–12 inches above the plant."
+            }
+        ],
+        "comparison_table": {
+            "title": "Growth Stall Causes by Season",
+            "intro": "When your plant stopped growing helps narrow down the cause:",
+            "headers": ["Season", "Most Likely Cause", "What to Do"],
+            "rows": [
+                ["Fall/Winter", "Natural dormancy", "Reduce water, stop fertilizing, wait for spring"],
+                ["Spring (no new growth)", "Insufficient light or root-bound", "Move closer to window, check if roots are circling pot"],
+                ["Summer (stalled)", "Overwatering, nutrient depletion, or heat stress", "Check roots, fertilize, ensure temps under 85°F"],
+                ["After repotting", "Transplant shock (normal)", "Be patient — growth resumes in 2–6 weeks"],
+                ["After moving", "Environmental acclimation", "Give stable conditions, avoid further changes"],
+                ["Year-round stall", "Chronic low light or poor soil", "Improve light, refresh soil, check root health"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "snake-plant", "name": "Snake Plant"},
+            {"slug": "zz-plant", "name": "ZZ Plant"},
+            {"slug": "rubber-plant", "name": "Rubber Plant"}
+        ],
+        "bottom_line": "Patience is the most underrated plant care skill. If your plant looks healthy but isn't growing, check the season first — winter dormancy is the #1 reason. If it's growing season and growth has stalled, work through light, pot size, nutrients, and watering. Most plants reward even small improvements with a flush of new growth.",
+        "cta_text": "Ask PlantCareAI why your plant stopped growing",
+        "cta_question": "Why is my plant not growing?",
+        "related_pages": ["how-often-should-i-water-my-plant", "why-are-my-plant-leaves-turning-yellow"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Slow or stalled plant growth is usually caused by insufficient light, seasonal dormancy (fall/winter), or a root-bound pot. If it's growing season and your plant looks healthy but isn't growing, check light levels and pot size first.",
+        "h2_causes": "8 Common Reasons Your Plant Stopped Growing",
+        "h2_bottom_line": "The Bottom Line on Slow Plant Growth"
+    },
+    {
+        "slug": "indoor-plant-care-for-beginners",
+        "route_name": "beginners_guide",
+        "title": "Indoor Plant Care for Beginners (Simple Guide)",
+        "meta_description": "New to houseplants? This beginner-friendly guide covers 9 essentials — watering, light, soil, common mistakes, and the best starter plants to build your confidence.",
+        "emoji": "\ud83e\udeb4",
+        "intro": "Welcome to the world of houseplants. It's easier than you think — most plants are surprisingly forgiving, and you definitely don't need a green thumb to keep them alive. The secret that experienced plant parents know? Most plant problems come from doing too much (overwatering, overfertilizing) rather than too little. Here are the fundamentals that will set you up for success from day one.",
+        "causes": [
+            {
+                "title": "Start with forgiving plants",
+                "description": "Your first plants should be ones that tolerate mistakes — because you'll make some, and that's okay. Pothos, snake plants, ZZ plants, and spider plants are nearly indestructible. They handle irregular watering, low light, and benign neglect. Build your confidence with these before graduating to fussier species like fiddle leaf figs or calatheas.",
+                "fix": "Visit a local garden center and ask for their most beginner-friendly houseplants. Most staff will steer you toward the right species. Avoid impulse-buying beautiful but demanding plants until you've kept easy ones alive for a few months."
+            },
+            {
+                "title": "Water only when the soil tells you to",
+                "description": "Forget rigid schedules like 'water every Sunday.' Instead, stick your finger about an inch into the soil — if it's dry, water thoroughly until it drains from the bottom of the pot. If it's still moist, wait and check again in a day or two. This single habit prevents the #1 killer of houseplants: overwatering.",
+                "fix": "Set a reminder to check soil moisture every 3–4 days. You'll quickly learn each plant's rhythm. When in doubt, it's almost always better to wait than to water too soon."
+            },
+            {
+                "title": "Give them the right light",
+                "description": "Most houseplants thrive in bright, indirect light — near a window but not in harsh direct sun. Think of it like a well-lit room where you can comfortably read. Low-light tolerant plants like pothos and snake plants can handle dimmer spots, but even they do best with some natural light.",
+                "fix": "Place plants within 3–8 feet of a window. East-facing windows provide gentle morning sun. South- or west-facing windows need sheer curtains for most plants. North-facing windows are ideal for low-light species."
+            },
+            {
+                "title": "Choose pots with drainage holes",
+                "description": "This is non-negotiable for beginners. Drainage holes let excess water escape, preventing the soggy soil conditions that cause root rot. Decorative pots without holes are fine as cache pots (slip the nursery pot inside), but never leave plants sitting in collected water.",
+                "fix": "If you love a pot without drainage, use it as a cover pot — place the plant in a plastic nursery pot inside the decorative one. After watering, remove the inner pot, let it drain, then place it back."
+            },
+            {
+                "title": "Don't repot right away",
+                "description": "A new plant needs time to adjust to your home's light, temperature, and humidity. Repotting adds stress on top of stress. Wait at least 2–4 weeks before repotting, and only do it if the plant is truly root-bound (roots circling the pot or poking out of drainage holes).",
+                "fix": "When you do repot, go only 1–2 inches bigger in pot diameter. Too much extra soil holds excess moisture that small roots can't use, increasing root rot risk."
+            },
+            {
+                "title": "Don't overfertilize",
+                "description": "New plant parents often think fertilizer = plant food = more growth. But too much fertilizer is worse than too little — it burns roots and leaf tips. Most houseplants only need fertilizing during the growing season (spring and summer), not year-round.",
+                "fix": "Use a balanced liquid fertilizer diluted to half the recommended strength, once a month during spring and summer. Skip fertilizing entirely in fall and winter when plants are dormant."
+            },
+            {
+                "title": "Learn to read leaf signals",
+                "description": "Your plant communicates through its leaves — learning to read them is the most valuable skill in plant care. Yellow leaves usually mean overwatering. Drooping can mean underwatering (check soil). Brown crispy edges suggest low humidity. Pale or leggy growth means not enough light.",
+                "fix": "When you notice a change, check soil moisture first (it's the cause 70% of the time), then consider light, humidity, and temperature. Don't panic — most problems are fixable if caught early."
+            },
+            {
+                "title": "Understand that some leaf loss is normal",
+                "description": "It's natural for older lower leaves to yellow and drop occasionally — the plant is redirecting energy to new growth. One yellow leaf on an otherwise healthy plant is not an emergency. Worry only when multiple leaves change at once or new growth looks unhealthy.",
+                "fix": "Simply remove yellow or dead leaves by gently pulling or cutting them. This tidies the plant and lets it focus energy where it matters."
+            },
+            {
+                "title": "Be patient — plants grow slowly",
+                "description": "Houseplants don't grow like outdoor garden plants. A new leaf every few weeks is perfectly normal for most species. In winter, many plants stop growing entirely and that's fine — they're resting. Growth picks back up in spring when light increases.",
+                "fix": "Resist the urge to 'help' a healthy but slow-growing plant by overwatering or overfertilizing. If the leaves look green and healthy, the plant is doing fine. Patience is the most underrated plant care tool."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "What is the easiest houseplant to keep alive?",
+                "answer": "Pothos and snake plants are widely considered the most forgiving — they tolerate low light, irregular watering, and general neglect."
+            },
+            {
+                "question": "How often should beginners water their plants?",
+                "answer": "Check soil moisture every few days and water only when the top inch feels dry. Avoid watering on a fixed schedule — let the soil guide you."
+            },
+            {
+                "question": "Do indoor plants need direct sunlight?",
+                "answer": "Most houseplants prefer bright indirect light, not direct sun. Direct sunlight can burn leaves on common species like pothos, peace lilies, and philodendrons."
+            },
+            {
+                "question": "How do I know if my plant is happy?",
+                "answer": "New growth, firm green leaves, and steady (if slow) development are signs of a happy plant. Don't worry about occasional older leaf loss — that's normal."
+            },
+            {
+                "question": "What's the most common mistake new plant owners make?",
+                "answer": "Overwatering — by far. New owners water too often out of love. Let the soil dry between waterings and you'll avoid the #1 cause of houseplant death."
+            }
+        ],
+        "comparison_table": {
+            "title": "Best Beginner-Friendly Plants Compared",
+            "intro": "Start with these forgiving species that tolerate beginner mistakes:",
+            "headers": ["Plant", "Light Needs", "Water Frequency", "Difficulty"],
+            "rows": [
+                ["Pothos", "Low to bright indirect", "When top inch dry", "Very easy"],
+                ["Snake Plant", "Low to bright indirect", "When top 2 inches dry", "Very easy"],
+                ["ZZ Plant", "Low to medium", "When mostly dry", "Very easy"],
+                ["Spider Plant", "Medium to bright indirect", "When top inch dry", "Easy"],
+                ["Peace Lily", "Low to medium", "When slightly dry (droops as signal)", "Easy"],
+                ["Rubber Plant", "Medium to bright indirect", "When top inch dry", "Easy-moderate"],
+                ["Monstera", "Bright indirect", "When top 1–2 inches dry", "Moderate"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "pothos", "name": "Pothos"},
+            {"slug": "snake-plant", "name": "Snake Plant"},
+            {"slug": "spider-plant", "name": "Spider Plant"},
+            {"slug": "zz-plant", "name": "ZZ Plant"}
+        ],
+        "bottom_line": "Plant care isn't about perfection — it's about paying attention. Start with easy, forgiving plants. Water when the soil tells you to, not on a schedule. Give them decent light and pots with drainage. Most importantly, remember that doing less is usually better than doing more. Your plants are tougher than you think.",
+        "cta_text": "Get personalized advice for your first plants",
+        "cta_question": "I'm new to plants, what should I know?",
+        "related_pages": ["how-often-should-i-water-my-plant", "am-i-overwatering-my-plant"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Start with low-maintenance plants like pothos, snake plants, or ZZ plants. Water only when the top inch of soil is dry (not on a schedule), choose pots with drainage holes, and place plants near bright indirect light.",
+        "h2_causes": "9 Essential Indoor Plant Care Tips for Beginners",
+        "h2_bottom_line": "The Bottom Line for New Plant Parents"
+    },
+    {
+        "slug": "why-are-my-plant-leaves-curling",
+        "route_name": "curling_leaves",
+        "title": "Why Are My Plant Leaves Curling?",
+        "meta_description": "Curling leaves are a sign your plant is stressed. Learn the 8 most common causes — from watering and humidity to pests — and how to fix each one.",
+        "emoji": "\ud83c\udf43",
+        "intro": "When your plant's leaves start curling inward, outward, or crisping at the edges, it's telling you something is off in its environment. The direction of the curl actually matters — leaves curling inward usually signal a moisture problem, while curling downward often points to heat or light stress. The good news? Curling is usually reversible once you figure out the trigger.",
+        "causes": [
+            {
+                "title": "Underwatering",
+                "description": "The most common reason for curling. When a plant doesn't have enough water, leaves curl inward to reduce surface area and conserve moisture. Check if the soil is dry several inches down — if it's pulling away from the pot edges, it's been too dry for too long.",
+                "fix": "Water thoroughly until it drains from the bottom. Leaves should begin to unfurl within a few hours. Establish a routine of checking soil moisture every few days."
+            },
+            {
+                "title": "Low humidity",
+                "description": "Many tropical houseplants — calatheas, ferns, alocasias, and marantas — curl when indoor humidity drops below 40%. This is especially common during winter heating season when forced air dries out the environment. Leaf edges may also turn brown and crispy.",
+                "fix": "Run a humidifier near your plants, group them together to create a micro-humidity zone, or place pots on a pebble tray filled with water. Aim for 50–60% humidity for tropical species."
+            },
+            {
+                "title": "Too much direct light",
+                "description": "Intense direct sunlight can cause leaves to curl downward or develop crispy, bleached edges as the plant tries to reduce sun exposure. This is especially common when plants are moved suddenly from low light to a bright window.",
+                "fix": "Move the plant back from the window or filter light with a sheer curtain. If the plant needs to be in a bright spot, acclimate it gradually over 1–2 weeks."
+            },
+            {
+                "title": "Temperature stress",
+                "description": "Cold drafts from windows, blasts of hot air from heating vents, or sudden temperature swings can cause leaf curling. Most houseplants prefer stable temperatures between 60–80°F (15–27°C) and react badly to extremes in either direction.",
+                "fix": "Relocate the plant away from drafts, vents, radiators, and exterior doors. Avoid placing plants near single-pane windows in winter where temperatures can drop significantly."
+            },
+            {
+                "title": "Pests (aphids, thrips, spider mites)",
+                "description": "Sap-sucking pests feed on plant tissue, causing leaves to curl, distort, and develop stippled or mottled patterns. Aphids cluster on new growth, thrips leave silvery streaks, and spider mites create fine webbing on leaf undersides.",
+                "fix": "Inspect leaf undersides carefully. Treat with insecticidal soap or neem oil spray, covering both sides of leaves. Isolate affected plants and repeat treatment every 5–7 days for 2–3 weeks."
+            },
+            {
+                "title": "Overwatering and root problems",
+                "description": "While less common than underwatering, severely overwatered plants can also curl as damaged roots fail to deliver water to leaves. The curling looks similar to underwatering, but the soil will be soggy rather than dry. A musty smell or yellow lower leaves alongside curling suggests root issues.",
+                "fix": "Stop watering and let the soil dry. If root rot is suspected, unpot and inspect — trim any mushy brown roots and repot in fresh, well-draining soil."
+            },
+            {
+                "title": "Overfertilizing (salt buildup)",
+                "description": "Too much fertilizer causes salt to accumulate in the soil, burning roots and causing leaf tips to curl and brown. You may see a white crusty deposit on the soil surface or pot rim. This is more common with synthetic fertilizers used at full strength.",
+                "fix": "Flush the soil by running water through the pot for several minutes to leach out excess salts. Reduce fertilizer frequency and always dilute to half-strength."
+            },
+            {
+                "title": "Transplant or environmental shock",
+                "description": "Plants recently moved to a new location, repotted, or brought home from a nursery may curl temporarily as they adjust to different light, temperature, and humidity conditions. This is a stress response and usually resolves on its own.",
+                "fix": "Place in a stable spot with indirect light, keep soil lightly moist, and avoid fertilizing for 2–3 weeks. Most plants adjust within 1–2 weeks."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Can curling leaves uncurl?",
+                "answer": "Yes — once you fix the underlying issue (usually watering or humidity), most leaves will unfurl within a few days. Severely damaged leaves may not fully recover."
+            },
+            {
+                "question": "Why are my leaves curling and turning brown?",
+                "answer": "This combination usually indicates underwatering or very low humidity. The plant is losing moisture faster than it can replace it. Increase watering and humidity."
+            },
+            {
+                "question": "Do pests cause leaves to curl?",
+                "answer": "Yes — aphids, thrips, and spider mites can cause leaf curling and distortion. Always check leaf undersides for tiny insects, webbing, or sticky residue."
+            },
+            {
+                "question": "Why do my calathea leaves curl at night?",
+                "answer": "Calatheas naturally fold their leaves upward at night (nyctinasty) — this is normal behavior, not a problem. If they stay curled during the day, check humidity and soil moisture."
+            },
+            {
+                "question": "Does the direction of curling matter?",
+                "answer": "Yes — inward curling usually means moisture stress (underwatering or low humidity). Downward curling often indicates heat, light, or nutrient issues. Distorted curling suggests pests."
+            }
+        ],
+        "comparison_table": {
+            "title": "Leaf Curling Direction & Likely Cause",
+            "intro": "The direction your leaves curl can help narrow down the problem:",
+            "headers": ["Curl Direction", "Common Causes", "First Thing to Check"],
+            "rows": [
+                ["Inward (edges roll up)", "Underwatering, low humidity", "Soil moisture and room humidity"],
+                ["Downward (tips droop)", "Heat stress, too much light, overfertilizing", "Distance from light source and temperature"],
+                ["Upward (cupping)", "Light deficiency, cold stress", "Light levels and temperature"],
+                ["Twisted or distorted", "Pest damage (aphids, thrips)", "Leaf undersides for insects"],
+                ["Edges crispy + curling", "Low humidity, underwatering", "Humidity levels and watering schedule"],
+                ["Random curling + yellowing", "Root rot, overwatering", "Soil moisture and root health"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "monstera-deliciosa", "name": "Monstera Deliciosa"},
+            {"slug": "fiddle-leaf-fig", "name": "Fiddle Leaf Fig"},
+            {"slug": "philodendron", "name": "Philodendron"}
+        ],
+        "bottom_line": "Leaf curling is your plant's stress response — not a death sentence. The direction of the curl is your biggest diagnostic clue. Start by checking soil moisture and humidity levels, then investigate light, temperature, and pests. Most plants bounce back within a week once the cause is addressed.",
+        "cta_text": "Ask PlantCareAI to diagnose your curling leaves",
+        "cta_question": "Why are my plant's leaves curling?",
+        "related_pages": ["why-are-my-plant-leaves-drooping", "why-are-my-plant-leaves-turning-yellow"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Leaf curling is usually a stress response to underwatering, low humidity, or too much direct sun. Check the direction: inward curling means moisture stress, downward curling means heat/light stress, and distorted curling means pests.",
+        "h2_causes": "8 Common Causes of Curling Plant Leaves",
+        "h2_bottom_line": "The Bottom Line on Leaf Curling"
+    },
+    {
+        "slug": "how-to-get-rid-of-fungus-gnats",
+        "route_name": "fungus_gnats",
+        "title": "How to Get Rid of Fungus Gnats on Houseplants",
+        "meta_description": "Tiny flies buzzing around your plants? Fungus gnats thrive in moist soil. Learn 9 proven methods to eliminate them fast and prevent them from coming back.",
+        "emoji": "\ud83e\udeb0",
+        "intro": "If you see tiny dark flies hovering around your houseplants or zigzagging near the soil surface, you're dealing with fungus gnats. They're more annoying than dangerous to mature plants, but their larvae feed on organic matter in the soil — and sometimes young roots. The key to beating them is understanding their life cycle: adults live only about a week but lay up to 200 eggs in moist topsoil. Here's how to break that cycle and get rid of them for good.",
+        "causes": [
+            {
+                "title": "Let the soil dry out between waterings",
+                "description": "Fungus gnats lay eggs in moist topsoil — they literally cannot reproduce in dry soil. Allowing the top 1–2 inches to dry completely between waterings breaks their life cycle at the source. This is the single most effective long-term fix and should be your first step.",
+                "fix": "Check soil moisture before watering. Use the finger test and only water when the top inch feels dry. For gnat-prone plants, let soil dry even deeper than usual for a few weeks."
+            },
+            {
+                "title": "Use yellow sticky traps",
+                "description": "Adult fungus gnats are strongly attracted to the color yellow. Small yellow sticky traps placed near the soil surface or stuck into the soil on stakes catch adult gnats before they can lay more eggs. This reduces the breeding population quickly while you address the larvae in the soil.",
+                "fix": "Place 1–2 traps per plant, positioned at soil level. Replace traps every 1–2 weeks or when they're full. These are available cheaply at garden centers or online."
+            },
+            {
+                "title": "Try a hydrogen peroxide soil drench",
+                "description": "Mix one part 3% hydrogen peroxide with four parts water and water your plants with this solution. The fizzing action kills larvae and eggs in the soil without harming plant roots. It also adds extra oxygen to the root zone, which is a bonus for plant health.",
+                "fix": "Apply the H2O2 solution once a week for 3 consecutive weeks to break the entire life cycle. Water normally between treatments, allowing soil to dry as much as possible."
+            },
+            {
+                "title": "Add a sand or gravel top layer",
+                "description": "A half-inch layer of coarse sand, perlite, or decorative gravel on top of the soil creates a dry barrier that prevents gnats from reaching the moist soil where they lay eggs. The surface stays dry even after watering (moisture passes through to the roots below).",
+                "fix": "Apply an even layer at least 1/2 inch thick over the entire soil surface. Avoid fine sand (it holds moisture) — use coarse horticultural sand, perlite, or decorative small stones."
+            },
+            {
+                "title": "Use mosquito dunks (BTI)",
+                "description": "Bacillus thuringiensis israelensis (BTI) is a naturally occurring biological larvicide that specifically targets gnat and mosquito larvae. It's completely safe for plants, pets, and humans. Soak a piece of mosquito dunk in your watering can overnight, then use that water for your plants.",
+                "fix": "Use BTI-treated water for every watering for 4–6 weeks. This ensures each new generation of larvae is killed before reaching adulthood. Available at hardware and garden stores."
+            },
+            {
+                "title": "Try neem oil soil drench",
+                "description": "Neem oil mixed into water and applied to soil acts as both a larvicide and a repellent. It disrupts the gnat life cycle by preventing larvae from maturing. Mix 1 teaspoon of cold-pressed neem oil with 1 liter of water and a drop of dish soap as an emulsifier.",
+                "fix": "Apply neem solution to soil every 1–2 weeks until gnats are gone. Don't use neem as a foliar spray for this purpose — it works against gnats only when applied to the soil."
+            },
+            {
+                "title": "Improve soil drainage",
+                "description": "Dense, peat-heavy potting mixes retain moisture for days — creating the perfect gnat nursery. Soil that stays wet for more than a week is an open invitation for fungus gnats. Good drainage means faster drying, which means fewer gnats.",
+                "fix": "Amend existing soil with perlite or pumice (mix in about 25–30% by volume). For future repotting, use a chunky, well-draining mix rather than dense peat-based soil."
+            },
+            {
+                "title": "Use apple cider vinegar traps for adults",
+                "description": "Fill a small jar with apple cider vinegar and add a drop of dish soap. The vinegar attracts adult gnats and the soap breaks the surface tension so they can't escape. This works well alongside sticky traps for a multi-pronged approach.",
+                "fix": "Place vinegar traps near the most affected plants. Refresh every 2–3 days. This catches adults but doesn't affect larvae — combine with soil treatments for full effectiveness."
+            },
+            {
+                "title": "Repot with fresh, well-draining soil",
+                "description": "If the infestation is severe and other methods aren't working fast enough, repotting removes the larvae-infested soil entirely. Use fresh, sterile potting mix amended with perlite for better drainage. Discard the old soil outside — don't compost it indoors.",
+                "fix": "Gently remove all old soil from roots, rinse roots if needed, and repot in fresh mix. Add a sand or gravel top layer immediately to prevent re-infestation. Resume careful watering."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Are fungus gnats harmful to plants?",
+                "answer": "Adult gnats are mostly harmless nuisances. Their larvae can damage young roots and seedlings in large numbers, but mature plants usually tolerate them. The bigger issue is they signal overwatering."
+            },
+            {
+                "question": "How long does it take to get rid of fungus gnats?",
+                "answer": "With consistent treatment — drying soil, sticky traps, and soil drenches — most infestations clear up in 2–3 weeks. The full life cycle is about 3–4 weeks."
+            },
+            {
+                "question": "Does cinnamon kill fungus gnats?",
+                "answer": "Cinnamon has mild antifungal properties and can deter gnats when sprinkled on topsoil, but it's not as effective as drying the soil, using BTI, or hydrogen peroxide drenches."
+            },
+            {
+                "question": "Why do I keep getting fungus gnats back?",
+                "answer": "Recurring infestations almost always mean the soil is staying too moist. Address your watering habits permanently, improve soil drainage, and new gnats won't establish."
+            },
+            {
+                "question": "Can fungus gnats spread to other plants?",
+                "answer": "Yes — adult gnats fly between plants and will lay eggs in any moist soil they find. Treat all nearby plants, not just the most affected one."
+            }
+        ],
+        "comparison_table": {
+            "title": "Fungus Gnat Treatment Methods Compared",
+            "intro": "For best results, combine 2–3 methods simultaneously:",
+            "headers": ["Method", "Targets", "Speed", "Effort"],
+            "rows": [
+                ["Drying soil out", "Larvae (prevents new eggs)", "Slow (1–2 weeks)", "Low"],
+                ["Yellow sticky traps", "Adults only", "Immediate", "Low"],
+                ["Hydrogen peroxide drench", "Larvae and eggs", "Fast (1–3 weeks)", "Low"],
+                ["Sand/gravel top layer", "Prevents egg-laying", "Immediate barrier", "Low (one-time)"],
+                ["Mosquito dunks (BTI)", "Larvae specifically", "1–2 weeks", "Low"],
+                ["Neem oil drench", "Larvae and eggs", "1–2 weeks", "Medium"],
+                ["Apple cider vinegar trap", "Adults only", "Immediate", "Low"],
+                ["Full repotting", "Everything (removes all)", "Immediate", "High"],
+                ["Bottom watering only", "Keeps surface dry", "Ongoing prevention", "Medium"]
+            ]
+        },
+        "bottom_line": "Fungus gnats are a moisture problem in disguise. The most effective strategy combines three approaches: dry the soil out (stops egg-laying), trap adults (sticky traps or vinegar), and kill larvae (H2O2 drench or BTI). Within 2–3 weeks, they'll be gone. For long-term prevention, never let soil stay constantly soggy and use well-draining potting mixes.",
+        "cta_text": "Ask PlantCareAI about your gnat problem",
+        "cta_question": "How do I get rid of fungus gnats on my plants?",
+        "related_pages": ["am-i-overwatering-my-plant", "how-often-should-i-water-my-plant"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Fungus gnats breed in moist topsoil. To eliminate them: let the top 2 inches of soil dry between waterings, use yellow sticky traps for adults, and apply a hydrogen peroxide soil drench (1 part H2O2 to 4 parts water) weekly to kill larvae.",
+        "h2_causes": "9 Proven Ways to Eliminate Fungus Gnats",
+        "h2_bottom_line": "The Bottom Line on Fungus Gnats"
+    },
+    {
+        "slug": "why-are-my-plant-leaves-turning-brown",
+        "route_name": "brown_leaves",
+        "title": "Why Are My Plant Leaves Turning Brown? Causes & Fixes",
+        "meta_description": "Brown leaves can mean many things — from low humidity to sunburn to root issues. Learn to identify the 9 most common patterns and fix each one.",
+        "emoji": "\ud83c\udf42",
+        "intro": "Brown spots, crispy edges, or entire leaves turning brown? The pattern matters — a lot. Where and how the browning appears tells you exactly what's going wrong. A leaf with brown crispy edges has a completely different cause than one with dark mushy spots. Let's decode what your plant is trying to say so you can fix it fast.",
+        "causes": [
+            {
+                "title": "Low humidity (crispy brown edges)",
+                "description": "If leaf edges turn brown and papery while the center stays green, your air is too dry. This is the #1 cause of brown edges on tropical houseplants and is especially common during winter when indoor heating dries out the air. Calatheas, ferns, and peace lilies are particularly sensitive.",
+                "fix": "Run a humidifier near your plants, aiming for 50–60% humidity. Group plants together to create a microclimate. A pebble tray with water beneath the pot can also help."
+            },
+            {
+                "title": "Overwatering (soft brown spots)",
+                "description": "Mushy, dark brown spots — especially with yellow halos around them — often signal overwatering or root rot. The spots feel soft and wet rather than dry. This type of browning usually starts on lower leaves and can spread quickly if the roots are compromised.",
+                "fix": "Let the soil dry out completely. Check roots — if they're brown and mushy, trim the damaged portions with sterilized scissors and repot in fresh, well-draining soil."
+            },
+            {
+                "title": "Sunburn (bleached or crispy patches)",
+                "description": "Direct harsh sunlight can scorch leaves, leaving bleached white or crispy brown patches, usually on the side of the plant facing the light source. This commonly happens when plants are moved suddenly from low light to direct sun without a transition period.",
+                "fix": "Move the plant to bright indirect light. If it needs to be near a window, use a sheer curtain to filter direct sun. Damaged leaves won't heal, but new growth will be normal."
+            },
+            {
+                "title": "Underwatering (dry, crispy whole leaves)",
+                "description": "If entire leaves turn brown and feel dry and crispy — starting from the tips and edges and working inward — your plant needs more water. Check the soil: if it has pulled away from the pot edges or feels rock-hard, it's been dry for too long.",
+                "fix": "Water thoroughly until it drains from the bottom. If the soil is hydrophobic (water runs straight through), soak the whole pot in a basin of water for 20 minutes to rehydrate the soil."
+            },
+            {
+                "title": "Mineral buildup from tap water",
+                "description": "Brown tips on spider plants, dracaenas, and calatheas are a classic sign of fluoride and chlorine sensitivity. These minerals accumulate in leaf tips over time, causing progressive browning. The tips turn brown but the rest of the leaf stays healthy.",
+                "fix": "Switch to filtered water, rainwater, or distilled water. You can also let tap water sit out overnight before using — this allows chlorine (but not fluoride) to dissipate."
+            },
+            {
+                "title": "Fertilizer burn",
+                "description": "Too much fertilizer or fertilizing a dry plant causes salt buildup that burns roots and leaf tips. You may see a white crusty residue on the soil surface or pot rim. Brown tips that appear within a few days of fertilizing are a strong indicator.",
+                "fix": "Flush the soil by running water through the pot for several minutes. Reduce fertilizer frequency and always dilute to half the recommended strength. Never fertilize dry soil."
+            },
+            {
+                "title": "Cold damage",
+                "description": "Tropical plants exposed to cold drafts or temperatures below 50°F (10°C) can develop dark brown or black patches on leaves. The damage often appears waterlogged initially, then turns dry and papery. This is common near single-pane windows in winter.",
+                "fix": "Move the plant away from cold sources. Trim damaged leaves — they won't recover. Keep temperatures consistently above 60°F (15°C) for most houseplants."
+            },
+            {
+                "title": "Bacterial or fungal leaf spot",
+                "description": "Brown spots with defined borders — sometimes with yellow halos or concentric rings — can indicate a bacterial or fungal infection. These spots may spread to nearby leaves if conditions stay wet. Overhead watering and poor air circulation increase the risk.",
+                "fix": "Remove affected leaves immediately. Improve air circulation and avoid getting water on leaves when watering. In severe cases, treat with a copper-based fungicide."
+            },
+            {
+                "title": "Root rot (advanced browning)",
+                "description": "If multiple leaves are browning rapidly and the plant is declining overall, root rot may be the underlying cause. The browning happens because damaged roots can no longer supply water and nutrients to the foliage. Check for a musty smell from the pot.",
+                "fix": "Unpot and inspect roots. Trim all mushy, brown roots. Treat with hydrogen peroxide, repot in fresh soil, and reduce watering frequency going forward."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "Should I cut off brown leaves?",
+                "answer": "Yes — fully brown leaves won't recover. For partially brown leaves, trim the brown portions with clean scissors, cutting just inside the brown area."
+            },
+            {
+                "question": "Why are only the tips of my leaves turning brown?",
+                "answer": "Brown leaf tips usually indicate low humidity, mineral buildup from tap water, or inconsistent watering. It's one of the most common cosmetic issues in houseplants."
+            },
+            {
+                "question": "Can brown leaves turn green again?",
+                "answer": "No — once leaf tissue has died and turned brown, it cannot regenerate. Remove damaged portions and focus on preventing further browning."
+            },
+            {
+                "question": "Why are my plant leaves turning brown in winter?",
+                "answer": "Winter heating dries indoor air dramatically, causing brown crispy edges on humidity-loving plants. Cold drafts from windows can also cause dark brown patches."
+            },
+            {
+                "question": "Should I worry about one brown leaf?",
+                "answer": "Not necessarily — older leaves naturally die and brown. Worry if you see browning on multiple leaves, new growth, or if browning is spreading rapidly."
+            }
+        ],
+        "comparison_table": {
+            "title": "Brown Leaf Diagnosis Guide",
+            "intro": "Use the pattern of browning to identify the cause:",
+            "headers": ["Brown Pattern", "Feels Like", "Likely Cause"],
+            "rows": [
+                ["Edges only (margins)", "Dry, papery, crispy", "Low humidity"],
+                ["Tips only", "Dry, pointed", "Tap water minerals or low humidity"],
+                ["Soft dark spots", "Mushy, wet", "Overwatering or root rot"],
+                ["Bleached patches", "Dry, papery", "Sunburn (direct light)"],
+                ["Whole leaf crispy", "Dry, crumbly", "Underwatering"],
+                ["Spots with rings/halos", "Dry or slightly raised", "Bacterial/fungal infection"],
+                ["Dark waterlogged patches", "Soft initially, then dry", "Cold damage"],
+                ["Tips after fertilizing", "Dry, brown", "Fertilizer burn"],
+                ["Rapid multi-leaf browning", "Mixed", "Root rot (check roots)"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "fiddle-leaf-fig", "name": "Fiddle Leaf Fig"},
+            {"slug": "spider-plant", "name": "Spider Plant"},
+            {"slug": "aloe-vera", "name": "Aloe Vera"}
+        ],
+        "bottom_line": "The pattern of browning is your biggest diagnostic clue: crispy edges mean humidity, mushy spots mean overwatering, bleached patches mean light damage, and brown tips mean water quality or fertilizer burn. Identify the pattern first, then apply the targeted fix. Most browning is preventable once you know the trigger.",
+        "cta_text": "Ask PlantCareAI to diagnose your brown leaves",
+        "cta_question": "Why are my plant's leaves turning brown?",
+        "related_pages": ["why-are-my-plant-leaves-turning-yellow", "why-are-my-plant-leaves-curling"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "The pattern of browning reveals the cause: crispy brown edges mean low humidity, soft dark spots mean overwatering, bleached patches mean sunburn, and brown tips mean tap water minerals or fertilizer burn.",
+        "h2_causes": "9 Common Causes of Brown Leaves on Plants",
+        "h2_bottom_line": "The Bottom Line on Brown Leaves"
+    },
+    {
+        "slug": "how-to-treat-root-rot",
+        "route_name": "root_rot",
+        "title": "How to Treat Root Rot (Step-by-Step Recovery Guide)",
+        "meta_description": "Root rot doesn't have to kill your plant. Follow these 9 steps to identify root rot early, treat it effectively, and prevent it from coming back.",
+        "emoji": "\ud83e\udeb5",
+        "intro": "Root rot is one of the most common killers of houseplants — but catching it early gives your plant a fighting chance. If your plant is wilting despite moist soil, has yellowing leaves, or smells musty at the base, root rot could be the culprit. This guide walks you through identification, treatment, and prevention so you can save your plant and stop root rot from happening again.",
+        "causes": [
+            {
+                "title": "Know the warning signs",
+                "description": "Root rot often goes unnoticed until it's advanced because the damage happens underground. Watch for these above-ground warning signs: wilting despite wet soil, yellowing leaves (especially lower ones), mushy brown stems near the soil line, a musty or sour smell from the pot, and slow or stopped growth. Multiple symptoms together strongly suggest root rot.",
+                "fix": "If you notice 2 or more of these signs simultaneously, act immediately — don't wait to see if the plant recovers on its own. Early intervention dramatically improves survival chances."
+            },
+            {
+                "title": "Unpot and inspect the roots",
+                "description": "Gently remove the plant from its pot and rinse the roots under lukewarm running water to remove all old soil. This gives you a clear view of root health. Healthy roots are white or light tan, firm to the touch, and have a fresh earthy smell. Rotting roots are brown, black, or gray, feel mushy or slimy, and may have a foul odor.",
+                "fix": "Be gentle when handling the root ball — damaged but salvageable roots can break easily. If the soil smells strongly of rot, that's confirmation. Place the plant on newspaper or a towel to examine roots."
+            },
+            {
+                "title": "Trim all damaged roots aggressively",
+                "description": "Using clean, sharp scissors or pruning shears sterilized with rubbing alcohol, cut away ALL brown, mushy, or slimy roots. Cut back to where you see healthy white tissue. Don't be conservative — it's far better to have a small amount of healthy root system than a large amount of rotting one. Rotting roots will spread the fungal infection to healthy tissue.",
+                "fix": "Sterilize your cutting tool between cuts (dip in rubbing alcohol) to avoid spreading fungal spores. If more than 75% of roots are gone, the plant will need extra care during recovery."
+            },
+            {
+                "title": "Treat remaining roots with hydrogen peroxide",
+                "description": "After trimming, soak the remaining healthy roots in a solution of one part 3% hydrogen peroxide to two parts water for 10–15 minutes. The bubbling action kills remaining fungal spores on root surfaces without harming the plant. This is a critical step — skipping it risks the fungus re-establishing.",
+                "fix": "Alternatively, dust the trimmed roots with a powdered fungicide (like cinnamon powder as a mild natural option, or a commercial root fungicide for severe cases). Let roots air-dry for 30 minutes before repotting."
+            },
+            {
+                "title": "Clean or replace the pot",
+                "description": "The old pot harbors fungal spores that can reinfect your plant. If reusing the pot, scrub it thoroughly with a solution of 1 part bleach to 9 parts water, then rinse well and let it dry completely. For severe cases, using a brand new pot is safer. Always choose a pot with drainage holes.",
+                "fix": "Consider downsizing the pot slightly — a plant with fewer roots doesn't need as much soil volume. Excess soil around a small root system stays wet too long and invites re-infection."
+            },
+            {
+                "title": "Repot in fresh, well-draining soil",
+                "description": "Discard ALL old soil — do not reuse any of it. Use fresh potting mix amended with perlite or pumice (about 25–30% by volume) for extra drainage. The goal is a mix that retains enough moisture for roots but drains quickly so it never stays soggy. Never use garden soil for houseplants.",
+                "fix": "For plants especially prone to root rot (succulents, ZZ plants, snake plants), use a cactus/succulent mix or add even more perlite. Ensure the drainage hole isn't blocked."
+            },
+            {
+                "title": "Water carefully after repotting",
+                "description": "After repotting, wait 2–3 days before watering lightly. The trimmed roots need time to form a callus over the cut surfaces — watering too soon can introduce new infections through open wounds. When you do water, do so sparingly until you see signs of new growth.",
+                "fix": "For the first 2 weeks, water about half as much as you normally would. Place the plant in bright indirect light (not direct sun) to reduce stress. Resist the urge to fertilize — stressed roots can't handle it."
+            },
+            {
+                "title": "Monitor recovery closely",
+                "description": "Recovery from root rot takes 2–6 weeks depending on severity. Signs of successful recovery include new leaf growth, firming up of remaining leaves, and the plant regaining its upright posture. Some leaf loss during recovery is normal — the plant is shedding what its reduced root system can't support.",
+                "fix": "Check the plant every few days. If wilting continues after 2 weeks despite correct watering, unpot and reinspect — the rot may not have been fully removed. Be patient and avoid overcompensating with water."
+            },
+            {
+                "title": "Prevent root rot from returning",
+                "description": "Root rot is almost always caused by overwatering, poor drainage, or both. Once you've saved your plant, prevention is about permanently changing your habits: always check soil moisture before watering, use pots with drainage holes, choose well-draining soil mixes, and never let plants sit in saucers of standing water.",
+                "fix": "Adopt the finger test permanently — only water when the top 1–2 inches of soil are dry. Consider a moisture meter for larger pots. Empty saucers 30 minutes after watering."
+            }
+        ],
+        "faqs": [
+            {
+                "question": "How do I know if my plant has root rot?",
+                "answer": "The main signs are: wilting despite moist soil, mushy brown roots (check by unpotting), yellowing leaves, and a foul or musty smell from the pot."
+            },
+            {
+                "question": "Can a plant survive root rot?",
+                "answer": "Yes, if caught early. Even plants that have lost most of their roots can recover if the remaining roots are healthy. Plants with 25% or more healthy roots have a good chance."
+            },
+            {
+                "question": "What causes root rot in houseplants?",
+                "answer": "Overwatering combined with poor drainage is the primary cause. Fungal pathogens like Pythium and Phytophthora thrive in waterlogged, oxygen-deprived soil."
+            },
+            {
+                "question": "Can root rot spread to other plants?",
+                "answer": "The fungal pathogens can spread through contaminated soil, shared saucers, or dirty tools. Always sterilize tools and isolate affected plants during treatment."
+            },
+            {
+                "question": "Should I propagate a plant with root rot as backup?",
+                "answer": "Yes — if your plant has healthy stems or leaves, taking a cutting and rooting it in water or clean soil is smart insurance in case the main plant doesn't survive."
+            }
+        ],
+        "comparison_table": {
+            "title": "Root Rot Severity & Treatment Guide",
+            "intro": "Treatment approach depends on how far the rot has progressed:",
+            "headers": ["Severity", "Signs", "Root Damage", "Treatment", "Survival Rate"],
+            "rows": [
+                ["Early/Mild", "Slight wilting, 1–2 yellow leaves", "Less than 25% roots affected", "Dry out, trim bad roots, repot", "Very high (90%+)"],
+                ["Moderate", "Multiple yellow leaves, musty smell", "25–50% roots affected", "Trim, H2O2 treatment, fresh soil", "Good (70–80%)"],
+                ["Severe", "Widespread wilting, stem mushiness", "50–75% roots affected", "Aggressive trim, fungicide, new pot", "Fair (40–60%)"],
+                ["Critical", "Plant collapsing, most roots gone", "75%+ roots affected", "Trim to any healthy tissue, propagate backup", "Low (20–30%)"]
+            ]
+        },
+        "related_guides": [
+            {"slug": "monstera-deliciosa", "name": "Monstera Deliciosa"},
+            {"slug": "peace-lily", "name": "Peace Lily"},
+            {"slug": "pothos", "name": "Pothos"}
+        ],
+        "bottom_line": "Root rot is serious but survivable if caught early. The key steps are: recognize the signs, unpot and inspect, trim aggressively, treat with H2O2, repot in fresh well-draining soil, and permanently fix your watering habits. Prevention is always easier than cure — use pots with drainage holes, check soil before watering, and never let plants sit in standing water.",
+        "cta_text": "Ask PlantCareAI for help saving your plant",
+        "cta_question": "My plant has root rot, how do I save it?",
+        "related_pages": ["am-i-overwatering-my-plant", "why-are-my-plant-leaves-turning-yellow"],
+        "last_updated": "2026-02-23",
+        "quick_answer": "Root rot is caused by overwatering and poor drainage. To save your plant: unpot and inspect roots, trim all mushy brown roots, treat with hydrogen peroxide, repot in fresh well-draining soil, and water only when the top 1–2 inches are dry going forward.",
+        "h2_causes": "9 Steps to Identify, Treat & Prevent Root Rot",
+        "h2_bottom_line": "The Bottom Line on Root Rot Recovery"
+    }
+]
